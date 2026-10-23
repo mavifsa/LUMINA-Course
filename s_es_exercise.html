@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis TOEFL Interaktif: Subject-Verb Agreement (-s/-es)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-teal-900 text-white shadow-md py-6 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-teal-700 text-teal-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">TOEFL Grammar Mastery</span>
+                <h1 class="text-2xl font-bold mt-1">Subject-Verb Agreement: Suffix -s / -es</h1>
+                <p class="text-teal-200 text-sm">20 Soal Interaktif (10 Error Analysis & 10 Fill in the Blank)</p>
+            </div>
+            <div id="score-badge" class="hidden bg-teal-800 border border-teal-600 px-4 py-2 rounded-xl text-center">
+                <span class="block text-xs text-teal-300">Skor Akhir</span>
+                <span id="final-score-text" class="text-xl font-bold text-white">0 / 20</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+            <div class="w-16 h-16 bg-teal-50 text-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">✍️</div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Simulasi TOEFL Structure: Subject-Verb Agreement (-s/-es)</h2>
+            <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                Uji pemahaman Anda tentang penambahan akhiran <em>-s/-es</em> pada Present Tense.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-md mx-auto mb-8 text-left text-sm text-slate-700">
+                <p class="font-semibold text-slate-900 mb-2">Komposisi Soal (Total 20 Soal):</p>
+                <ul class="space-y-1 list-disc list-inside">
+                    <li>10 Soal Error Analysis / Structure Error</li>
+                    <li>10 Soal Fill in the Blank</li>
+                    <li>Pilihan Jawaban: A, B, C, D, E</li>
+                </ul>
+            </div>
+            <button onclick="startQuiz()" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-sm">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden space-y-6">
+            <!-- Progress Bar & Info -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sm font-semibold text-slate-600">
+                    Soal <span id="current-q-num" class="text-teal-600 font-bold">1</span> dari <span id="total-q-num">20</span>
+                    <span id="difficulty-badge" class="ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium"></span>
+                </div>
+                <div class="w-1/3 md:w-1/2 bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-teal-600 h-2.5 rounded-full transition-all duration-300" style="width: 5%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+                <!-- Question Type Tag -->
+                <div>
+                    <span id="question-type-tag" class="text-xs font-semibold px-3 py-1 rounded-md bg-slate-100 text-slate-600 uppercase tracking-wide"></span>
+                </div>
+
+                <div id="question-text" class="text-lg md:text-xl font-medium text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Rationale Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+                    <div class="font-bold text-slate-900 flex items-center gap-2">
+                        <span>💡 Pembahasan Tata Bahasa</span>
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-2.5 rounded-xl transition shadow-sm">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center space-y-6">
+            <div class="w-20 h-20 bg-teal-50 text-teal-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🏆</div>
+            <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">
+                Selamat, Anda telah menyelesaikan simulasi 20 Soal Subject-Verb Agreement (-s/-es).
+            </p>
+            <div class="inline-block bg-teal-50 border border-teal-200 rounded-2xl px-8 py-4">
+                <span id="final-score-display" class="text-4xl font-extrabold text-teal-600">0</span>
+                <span class="text-xl text-slate-500 font-semibold"> / 20</span>
+            </div>
+            <div>
+                <button onclick="restartQuiz()" class="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-sm">
+                    Ulangi Kuis
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
+        &copy; LUMINA PROJECT 2026 • TOEFL Preparation • Subject-Verb Agreement (-s/-es)
+    </footer>
+
+    <!-- Script Quiz Logic -->
+    <script>
+        const questionsData = [
+            // --- SECTION 1: ERROR ANALYSIS (10 SOAL) ---
+            // Mudah (5)
+            {
+                questionNumber: 1,
+                type: "Error Analysis (Dari Materi)",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Sometimes, <u>Ihsan</u> (A) <u>washs</u> (B) his <u>vintage</u> (C) Renault car <u>in front of</u> (D) his garage (E).",
+                answerOptions: [
+                    { text: "Ihsan", isCorrect: false, rationale: "Subjek tunggal (singular subject) sudah tepat." },
+                    { text: "washs", isCorrect: true, rationale: "Benar! Pilihan B salah. Kata kerja yang berakhiran -sh (wash) jika bertemu subjek tunggal (Ihsan) pada Present Tense harus ditambah suffix -es, sehingga menjadi 'washes', bukan 'washs'." },
+                    { text: "vintage", isCorrect: false, rationale: "Adjective modifier sudah tepat." },
+                    { text: "in front of", isCorrect: false, rationale: "Preposisi lokasi sudah tepat." },
+                    { text: "his garage", isCorrect: false, rationale: "Noun phrase objek preposisi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 2,
+                type: "Error Analysis (Dari Materi)",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Anggi <u>haves</u> (A) <u>a branded</u> (B) T-shirt <u>that</u> (C) she <u>bought</u> (D) last week (E).",
+                answerOptions: [
+                    { text: "haves", isCorrect: true, rationale: "Benar! Pilihan A salah. Kata 'have' khusus untuk subjek tunggal (Anggi) pada Present Tense berubah menjadi 'has', bukan 'haves'." },
+                    { text: "a branded", isCorrect: false, rationale: "Article dan adjective modifier sudah tepat." },
+                    { text: "that", isCorrect: false, rationale: "Relative pronoun sudah tepat." },
+                    { text: "bought", isCorrect: false, rationale: "Verb past tense klausa relatif penanda masa lalu 'last week' sudah tepat." },
+                    { text: "last week", isCorrect: false, rationale: "Keterangan waktu lampau klausa relatif sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 3,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The diligent <u>student</u> (A) <u>studys</u> (B) English grammar <u>every evening</u> (C) <u>to prepare for</u> (D) the exam (E).",
+                answerOptions: [
+                    { text: "student", isCorrect: false, rationale: "Subjek tunggal sudah tepat." },
+                    { text: "studys", isCorrect: true, rationale: "Benar! Pilihan B salah. Kata kerja yang berakhiran huruf konsonan + y (study) diubah huruf y-nya menjadi i kemudian ditambah -es (y $\\rightarrow$ i + es), sehingga penulisan yang benar adalah 'studies'." },
+                    { text: "every evening", isCorrect: false, rationale: "Keterangan waktu rutin Present Tense sudah tepat." },
+                    { text: "to prepare for", isCorrect: false, rationale: "Infinitive of purpose sudah tepat." },
+                    { text: "the exam", isCorrect: false, rationale: "Noun phrase objek sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 4,
+                type: "Error Analysis (Dari Materi)",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>She <u>goes</u> (A) to <u>the graduation</u> (B) ceremony <u>yesterday</u> (C) <u>with</u> (D) her family (E).",
+                answerOptions: [
+                    { text: "goes", isCorrect: true, rationale: "Benar! Pilihan A salah. Penambahan suffix -s/-es hanya berlaku untuk time Present Tense. Karena terdapat penanda waktu lampau 'yesterday', kata kerja yang benar harus menggunakan Simple Past 'went', bukan 'goes'." },
+                    { text: "the graduation", isCorrect: false, rationale: "Noun adjunct penjelas acara sudah tepat." },
+                    { text: "yesterday", isCorrect: false, rationale: "Adverb of time penanda lampau sudah tepat." },
+                    { text: "with", isCorrect: false, rationale: "Preposisi penyerta sudah tepat." },
+                    { text: "her family", isCorrect: false, rationale: "Noun phrase objek preposisi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 5,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The experienced <u>technician</u> (A) <u>fixs</u> (B) the <u>broken</u> (C) machine <u>in</u> (D) the workshop (E).",
+                answerOptions: [
+                    { text: "technician", isCorrect: false, rationale: "Subjek tunggal (singular) sudah tepat." },
+                    { text: "fixs", isCorrect: true, rationale: "Benar! Pilihan B salah. Kata kerja yang berakhiran huruf -x (fix) jika berpasangan dengan subjek tunggal harus ditambah suffix -es, menjadi 'fixes', bukan 'fixs'." },
+                    { text: "broken", isCorrect: false, rationale: "Past participle sebagai adjective sudah tepat." },
+                    { text: "in", isCorrect: false, rationale: "Preposisi lokasi sudah tepat." },
+                    { text: "the workshop", isCorrect: false, rationale: "Noun phrase tempat sudah tepat." }
+                ]
+            },
+            // Sedang (4)
+            {
+                questionNumber: 6,
+                type: "Error Analysis (Dari Materi)",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The crocodile <u>will</u> (A) <u>eats</u> (B) the moose <u>if</u> (C) it <u>gets</u> (D) too close to the riverbank (E).",
+                answerOptions: [
+                    { text: "will", isCorrect: false, rationale: "Modal auxiliary sudah tepat." },
+                    { text: "eats", isCorrect: true, rationale: "Benar! Pilihan B salah. Aturan penambahan -s/-es tidak berlaku jika verb didahului oleh modal auxiliary (will, can, should, dll.). Kata kerja setelah modal 'will' harus kembali ke Bare Verb / Infinitive dasar yaitu 'eat', bukan 'eats'." },
+                    { text: "if", isCorrect: false, rationale: "Conjunction of condition sudah tepat." },
+                    { text: "gets", isCorrect: false, rationale: "Verb Present Tense +s untuk subjek tunggal 'it' sudah tepat." },
+                    { text: "too close to the riverbank", isCorrect: false, rationale: "Adverbial phrase lokasi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 7,
+                type: "Error Analysis (Dari Materi)",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>U.S. law <u>recognizes</u> (A) Tesla as <u>the original</u> (B) inventor of <u>the radio</u> (C), <u>not</u> (D) Marconi (E).",
+                answerOptions: [
+                    { text: "recognizes", isCorrect: false, rationale: "Verb Present +s untuk subjek tunggal 'U.S. law' sudah tepat." },
+                    { text: "the original", isCorrect: false, rationale: "Adjective modifier sudah tepat." },
+                    { text: "the radio", isCorrect: false, rationale: "Noun objek preposisi sudah tepat." },
+                    { text: "not", isCorrect: false, rationale: "Negasi pembanding nama orang sudah tepat." },
+                    { text: "Marconi", isCorrect: false, rationale: "Proper noun sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 8,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>You <u>should</u> (A) <u>submits</u> (B) your <u>research</u> (C) paper to the professor <u>today</u> (D) before noon (E).",
+                answerOptions: [
+                    { text: "should", isCorrect: false, rationale: "Modal auxiliary penanda saran sudah tepat." },
+                    { text: "submits", isCorrect: true, rationale: "Benar! Pilihan B salah. Aturan penambahan suffix -s/-es tidak berlaku setelah modal auxiliary (should). Kata kerja harus berupa Bare Verb 'submit', bukan 'submits'." },
+                    { text: "research", isCorrect: false, rationale: "Noun adjunct penjelas paper sudah tepat." },
+                    { text: "today", isCorrect: false, rationale: "Adverb of time sudah tepat." },
+                    { text: "before noon", isCorrect: false, rationale: "Prepositional phrase batas waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 9,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Hanum <u>does not</u> (A) <u>understands</u> (B) about <u>Aristotle's</u> (C) rhetorics <u>in</u> (D) philosophy class (E).",
+                answerOptions: [
+                    { text: "does not", isCorrect: false, rationale: "Auxiliary negatif Present Tense untuk subjek tunggal 'Hanum' sudah tepat." },
+                    { text: "understands", isCorrect: true, rationale: "Benar! Pilihan B salah. Ketika kata kerja dibantu oleh auxiliary 'does not', penambahan suffix -s/-es pada verb utama dibatalkan. Seharusnya berupa bare verb 'understand', bukan 'understands'." },
+                    { text: "Aristotle's", isCorrect: false, rationale: "Possessive noun sudah tepat." },
+                    { text: "in", isCorrect: false, rationale: "Preposisi konteks kelas sudah tepat." },
+                    { text: "philosophy class", isCorrect: false, rationale: "Noun phrase pelengkap sudah tepat." }
+                ]
+            },
+            // Sulit (1)
+            {
+                questionNumber: 10,
+                type: "Error Analysis",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Each <u>of the students</u> (A) in the advanced language <u>class</u> (B) <u>trys</u> (C) hard to master <u>complex</u> (D) grammar rules (E).",
+                answerOptions: [
+                    { text: "of the students", isCorrect: false, rationale: "Prepositional phrase penjelas setelah 'Each' sudah tepat." },
+                    { text: "class", isCorrect: false, rationale: "Noun objek preposisi tempat sudah tepat." },
+                    { text: "trys", isCorrect: true, rationale: "Benar! Pilihan C salah. Frasa 'Each of...' memerlukan kata kerja tunggal (singular verb). Kata kerja 'try' berakhiran konsonan + y, sehingga perubahannya menjadi 'tries' (y $\\rightarrow$ i + es), bukan 'trys'." },
+                    { text: "complex", isCorrect: false, rationale: "Adjective modifier sudah tepat." },
+                    { text: "grammar rules", isCorrect: false, rationale: "Noun phrase objek dari master sudah tepat." }
+                ]
+            },
+
+            // --- SECTION 2: FILL IN THE BLANK (10 SOAL) ---
+            // Mudah (5)
+            {
+                questionNumber: 11,
+                type: "Fill in the Blank (Dari Materi)",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>I _____ eat a kilo of durian in one sitting.",
+                answerOptions: [
+                    { text: "can", isCorrect: true, rationale: "Benar! Kata 'can' adalah Modal Auxiliary dari contoh materi yang diikuti bare verb 'eat' tanpa tambahan -s/-es." },
+                    { text: "cans", isCorrect: false, rationale: "Salah. Modal auxiliary tidak pernah ditambah suffix -s." },
+                    { text: "eats", isCorrect: false, rationale: "Salah. Subjek 'I' tidak membutuhkan verb +s." },
+                    { text: "is can", isCorrect: false, rationale: "Salah. Penumpukan to be dan modal auxiliary tidak valid." },
+                    { text: "canning", isCorrect: false, rationale: "Salah. Bentuk V-ing modal tidak tepat." }
+                ]
+            },
+            {
+                questionNumber: 12,
+                type: "Fill in the Blank (Dari Materi)",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ he going back to Batik museum at St. Jetayu 3, Panjang Wetan?",
+                answerOptions: [
+                    { text: "Is", isCorrect: true, rationale: "Benar! Kalimat tanya Present Continuous untuk subjek tunggal 'he' menggunakan auxiliary 'Is'." },
+                    { text: "Does", isCorrect: false, rationale: "Salah. 'Does' diikuti bare verb, bukan V-ing 'going'." },
+                    { text: "Are", isCorrect: false, rationale: "Salah. 'Are' untuk subjek jamak/you/we/they." },
+                    { text: "Am", isCorrect: false, rationale: "Salah. 'Am' hanya untuk subjek 'I'." },
+                    { text: "Was", isCorrect: false, rationale: "Salah. 'Was' penanda past tense." }
+                ]
+            },
+            {
+                questionNumber: 13,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The bee _____ around the colorful flowers in the garden every morning.",
+                answerOptions: [
+                    { text: "buzzes", isCorrect: true, rationale: "Benar! Verb 'buzz' berakhiran huruf -z. Jika berpasangan dengan subjek tunggal 'The bee' pada Present Tense, maka mendapat akhiran -es menjadi 'buzzes'." },
+                    { text: "buzz", isCorrect: false, rationale: "Salah. 'buzz' adalah bare verb untuk subjek jamak." },
+                    { text: "buzzs", isCorrect: false, rationale: "Salah. Penulisan suffix salah (-z harus +es)." },
+                    { text: "buzzies", isCorrect: false, rationale: "Salah. 'buzz' tidak berakhiran huruf -y." },
+                    { text: "is buzz", isCorrect: false, rationale: "Salah. Struktur grammar tidak valid." }
+                ]
+            },
+            {
+                questionNumber: 14,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>My sister _____ TV every night after completing her homework.",
+                answerOptions: [
+                    { text: "watches", isCorrect: true, rationale: "Benar! Verb 'watch' berakhiran -ch. Untuk subjek tunggal 'My sister' pada Present Tense, kata kerja ditambah suffix -es menjadi 'watches'." },
+                    { text: "watchs", isCorrect: false, rationale: "Salah. Kata berakhiran -ch harus ditambah -es." },
+                    { text: "watch", isCorrect: false, rationale: "Salah. Bare verb tanpa -es tidak cocok untuk subjek tunggal." },
+                    { text: "watching", isCorrect: false, rationale: "Salah. V-ing membutuhkan to be untuk menjadi predikat." },
+                    { text: "is watch", isCorrect: false, rationale: "Salah. Bentuk grammar tidak valid." }
+                ]
+            },
+            {
+                questionNumber: 15,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The baby _____ loudly whenever he feels hungry.",
+                answerOptions: [
+                    { text: "cries", isCorrect: true, rationale: "Benar! Verb 'cry' berakhiran konsonan + y. Untuk subjek tunggal 'The baby', huruf y diubah menjadi i lalu ditambah -es (y $\\rightarrow$ i + es) menjadi 'cries'." },
+                    { text: "crys", isCorrect: false, rationale: "Salah. Huruf y harus diubah menjadi i terlebih dahulu." },
+                    { text: "cry", isCorrect: false, rationale: "Salah. Bare verb untuk subjek jamak." },
+                    { text: "crying", isCorrect: false, rationale: "Salah. V-ing tanpa auxiliary bukan finite verb." },
+                    { text: "is cry", isCorrect: false, rationale: "Salah. Struktur tidak valid." }
+                ]
+            },
+            // Sedang (4)
+            {
+                questionNumber: 16,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>Our teacher, Naily, _____ beautiful and kind to all of her students.",
+                answerOptions: [
+                    { text: "is", isCorrect: true, rationale: "Benar! Subjek 'Our teacher, Naily' adalah subjek tunggal (singular subject), sehingga to be Present Tense yang tepat adalah 'is'." },
+                    { text: "are", isCorrect: false, rationale: "Salah. 'are' digunakan untuk subjek jamak." },
+                    { text: "am", isCorrect: false, rationale: "Salah. 'am' hanya untuk subjek 'I'." },
+                    { text: "be", isCorrect: false, rationale: "Salah. Bare infinitive tidak bisa menjadi predikat langsung." },
+                    { text: "were", isCorrect: false, rationale: "Salah. 'were' adalah past tense jamak." }
+                ]
+            },
+            {
+                questionNumber: 17,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>He _____ fast every morning along the beach to maintain his fitness.",
+                answerOptions: [
+                    { text: "walks", isCorrect: true, rationale: "Benar! Verb 'walk' adalah kata kerja umum (selain -sh, -ch, -x, -o, -z, konsonan+y). Untuk subjek tunggal 'He', cukup ditambahkan suffix -s menjadi 'walks'." },
+                    { text: "walkes", isCorrect: false, rationale: "Salah. 'walk' tidak butuh suffix -es." },
+                    { text: "walk", isCorrect: false, rationale: "Salah. Bare verb tanpa -s untuk subjek jamak/I/you." },
+                    { text: "walking", isCorrect: false, rationale: "Salah. V-ing butuh auxiliary." },
+                    { text: "is walk", isCorrect: false, rationale: "Salah. Struktur tidak baku." }
+                ]
+            },
+            {
+                questionNumber: 18,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The new policy _____ all employees to wear formal attire on Mondays.",
+                answerOptions: [
+                    { text: "requires", isCorrect: true, rationale: "Benar! Subjek 'The new policy' bersifat tunggal (singular), sehingga kata kerja 'require' yang berakhiran vokal + e tinggal ditambah suffix -s menjadi 'requires'." },
+                    { text: "require", isCorrect: false, rationale: "Salah. Bare verb untuk subjek jamak." },
+                    { text: "requireses", isCorrect: false, rationale: "Salah. Redundansi penulisan suffix." },
+                    { text: "requiring", isCorrect: false, rationale: "Salah. V-ing butuh auxiliary." },
+                    { text: "is require", isCorrect: false, rationale: "Salah. Struktur tidak valid." }
+                ]
+            },
+            {
+                questionNumber: 19,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>If the weather is good tomorrow, he _____ his bicycle to the office.",
+                answerOptions: [
+                    { text: "will ride", isCorrect: true, rationale: "Benar! Setelah modal auxiliary 'will', kata kerja harus kembali ke bentuk dasar / bare verb ('ride') tanpa penambahan suffix -s/-es." },
+                    { text: "will rides", isCorrect: false, rationale: "Salah. Modal auxiliary tidak boleh diikuti verb +s." },
+                    { text: "will riding", isCorrect: false, rationale: "Salah. Modal auxiliary tidak langsung diikuti V-ing." },
+                    { text: "rides", isCorrect: false, rationale: "Salah. Menghilangkan modal auxiliary 'will' penanda rencana conditional type 1." },
+                    { text: "will to ride", isCorrect: false, rationale: "Salah. Modal auxiliary tidak diikuti To-Infinitive." }
+                ]
+            },
+            // Sulit (1)
+            {
+                questionNumber: 20,
+                type: "Fill in the Blank",
+                difficulty: "Sulit",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>Neither of the applicants _____ the strict requirements set by the human resources department.",
+                answerOptions: [
+                    { text: "satisfies", isCorrect: true, rationale: "Benar! Subjek 'Neither of the applicants' dianggap tunggal (singular pronoun 'Neither'), sehingga kata kerja 'satisfy' (konsonan + y) berubah menjadi 'satisfies' (y $\\rightarrow$ i + es)." },
+                    { text: "satisfy", isCorrect: false, rationale: "Salah. 'satisfy' adalah bentuk jamak, sedangkan 'Neither of...' membutuhkan verb tunggal." },
+                    { text: "satisfys", isCorrect: false, rationale: "Salah. Huruf y harus diubah menjadi i terlebih dahulu." },
+                    { text: "satisfying", isCorrect: false, rationale: "Salah. V-ing tanpa auxiliary tidak bisa menjadi predikat utama." },
+                    { text: "is satisfy", isCorrect: false, rationale: "Salah. Struktur grammar tidak valid." }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let score = 0;
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        
+        const questionTextEl = document.getElementById('question-text');
+        const questionTypeTagEl = document.getElementById('question-type-tag');
+        const difficultyBadgeEl = document.getElementById('difficulty-badge');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTextEl = document.getElementById('explanation-text');
+        
+        const currentQNumEl = document.getElementById('current-q-num');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const scoreBadge = document.getElementById('score-badge');
+        const finalScoreText = document.getElementById('final-score-text');
+        const finalScoreDisplay = document.getElementById('final-score-display');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            scoreBadge.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            currentQNumEl.textContent = q.questionNumber;
+            progressBarEl.style.width = `${((currentQuestionIndex + 1) / questionsData.length) * 100}%`;
+
+            questionTypeTagEl.textContent = q.type;
+            
+            // Set Difficulty Badge Color
+            difficultyBadgeEl.textContent = q.difficulty;
+            if (q.difficulty === "Mudah") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 text-emerald-800";
+            } else if (q.difficulty === "Sedang") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-amber-100 text-amber-800";
+            } else {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-rose-100 text-rose-800";
+            }
+
+            questionTextEl.innerHTML = q.question;
+            optionsContainerEl.innerHTML = '';
+            explanationBoxEl.classList.add('hidden');
+
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                let baseClasses = "w-full text-left p-4 rounded-xl border transition flex items-start gap-3 text-sm md:text-base ";
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (opt.isCorrect) {
+                        baseClasses += "bg-emerald-50 border-emerald-300 text-emerald-900 font-medium";
+                    } else if (isSelected && !opt.isCorrect) {
+                        baseClasses += "bg-rose-50 border-rose-300 text-rose-900";
+                    } else {
+                        baseClasses += "bg-white border-slate-200 text-slate-700 opacity-60";
+                    }
+                    btn.disabled = true;
+                } else {
+                    baseClasses += "bg-white border-slate-200 hover:border-teal-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="font-bold bg-slate-100 text-slate-700 w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs">${optionLetters[idx]}</span>
+                    <span class="mt-0.5">${opt.text}</span>
+                `;
+
+                if (userAnswers[currentQuestionIndex] === null) {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optionsContainerEl.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                showExplanation();
+            }
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questionsData.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+
+        function selectAnswer(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const q = questionsData[currentQuestionIndex];
+            
+            if (q.answerOptions[optionIndex].isCorrect) {
+                score++;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation() {
+            const q = questionsData[currentQuestionIndex];
+            const selectedOpt = q.answerOptions[userAnswers[currentQuestionIndex]];
+            explanationTextEl.innerHTML = selectedOpt.rationale;
+            explanationBoxEl.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            finalScoreText.textContent = `${score} / 20`;
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            score = 0;
+            resultScreen.classList.add('hidden');
+            scoreBadge.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

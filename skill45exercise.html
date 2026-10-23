@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis TOEFL Interaktif: Skill 4 & 5 - Participle</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-emerald-900 text-white shadow-md py-6 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-emerald-700 text-emerald-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">TOEFL Grammar Mastery</span>
+                <h1 class="text-2xl font-bold mt-1">Skill 4 & 5: Participle Analysis</h1>
+                <p class="text-emerald-200 text-sm">30 Soal Interaktif (20 Error Analysis & 10 Fill in the Blank)</p>
+            </div>
+            <div id="score-badge" class="hidden bg-emerald-800 border border-emerald-600 px-4 py-2 rounded-xl text-center">
+                <span class="block text-xs text-emerald-300">Skor Akhir</span>
+                <span id="final-score-text" class="text-xl font-bold text-white">0 / 30</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+            <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">🔬</div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Simulasi TOEFL Structure: Participle Rules</h2>
+            <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                Uji pemahaman Anda mengenai <em>Present Participle (V-ing)</em> dan <em>Past Participle (V-3)</em> sebagai Adjective modifier (Pre-M & Post-M / Reduced Adjective Clause), pembedaan Participle Finite vs Infinite, serta Subject-Verb Agreement pada kalimat berpola Participle.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-md mx-auto mb-8 text-left text-sm text-slate-700">
+                <p class="font-semibold text-slate-900 mb-2">Komposisi Soal:</p>
+                <ul class="space-y-1 list-disc list-inside">
+                    <li>20 Soal Error Analysis / Structure Error</li>
+                    <li>10 Soal Fill in the Blank</li>
+                    <li>Tingkat Kesulitan: 50% Mudah, 40% Sedang, 10% Sulit</li>
+                    <li>Pilihan Jawaban: A, B, C, D, E</li>
+                </ul>
+            </div>
+            <button onclick="startQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-sm">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden space-y-6">
+            <!-- Progress Bar & Info -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sm font-semibold text-slate-600">
+                    Soal <span id="current-q-num" class="text-emerald-600 font-bold">1</span> dari <span id="total-q-num">30</span>
+                    <span id="difficulty-badge" class="ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium"></span>
+                </div>
+                <div class="w-1/3 md:w-1/2 bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-emerald-600 h-2.5 rounded-full transition-all duration-300" style="width: 3.33%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+                <!-- Question Type Tag -->
+                <div>
+                    <span id="question-type-tag" class="text-xs font-semibold px-3 py-1 rounded-md bg-slate-100 text-slate-600 uppercase tracking-wide"></span>
+                </div>
+
+                <div id="question-text" class="text-lg md:text-xl font-medium text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Rationale Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+                    <div class="font-bold text-slate-900 flex items-center gap-2">
+                        <span>💡 Pembahasan Tata Bahasa</span>
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-2.5 rounded-xl transition shadow-sm">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center space-y-6">
+            <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🏆</div>
+            <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">
+                Selamat, Anda telah menyelesaikan simulasi TOEFL Skill 4 & 5: Participle Analysis.
+            </p>
+            <div class="inline-block bg-emerald-50 border border-emerald-200 rounded-2xl px-8 py-4">
+                <span id="final-score-display" class="text-4xl font-extrabold text-emerald-600">0</span>
+                <span class="text-xl text-slate-500 font-semibold"> / 30</span>
+            </div>
+            <div>
+                <button onclick="restartQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-sm">
+                    Ulangi Kuis
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
+        &copy; LUMINA PROJECT 2026 • TOEFL Preparation • Skill 4 & 5: Participle Analysis
+    </footer>
+
+    <!-- Script Quiz Logic -->
+    <script>
+        const questionsData = [
+            // --- SECTION 1: ERROR ANALYSIS (20 SOAL) ---
+            // Mudah (10)
+            {
+                questionNumber: 1,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The <u>protested</u> (A) students <u>gathered</u> (B) in front of <u>the administrative building</u> (C) to demand <u>tuition fee reductions</u> (D) <u>this morning</u> (E).",
+                answerOptions: [
+                    { text: "protested", isCorrect: true, rationale: "Pilihan A salah. Kata 'students' melakukan tindakan protes (aktif), sehingga memerlukan Present Participle 'protesting' (mahasiswa yang memprotes), bukan Past Participle 'protested'." },
+                    { text: "gathered", isCorrect: false, rationale: "Verb past tense utama 'gathered' sudah tepat." },
+                    { text: "the administrative building", isCorrect: false, rationale: "Object of preposition 'in front of' sudah tepat." },
+                    { text: "tuition fee reductions", isCorrect: false, rationale: "Noun phrase objek dari infinitive 'to demand' sudah tepat." },
+                    { text: "this morning", isCorrect: false, rationale: "Adverb of time sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 2,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The police <u>finally</u> (A) recovered the <u>stole</u> (B) evidence <u>from</u> (C) a hidden warehouse <u>near the harbor</u> (D) <u>yesterday</u> (E).",
+                answerOptions: [
+                    { text: "finally", isCorrect: false, rationale: "Adverb menerangkan verb recovered sudah tepat." },
+                    { text: "stole", isCorrect: true, rationale: "Pilihan B salah. Bukti tersebut dikenai tindakan dicuri (pasif), sehingga memerlukan Past Participle V3 'stolen' sebagai adjective modifier sebelum noun 'evidence'." },
+                    { text: "from", isCorrect: false, rationale: "Preposisi asal 'from' sudah tepat." },
+                    { text: "near the harbor", isCorrect: false, rationale: "Prepositional phrase penunjuk lokasi sudah tepat." },
+                    { text: "yesterday", isCorrect: false, rationale: "Adverb of time past tense sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 3,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The man <u>met</u> (A) me <u>at the coffee shop</u> (B) <u>was</u> (C) my former <u>linguistics professor</u> (D) <u>from Pekalongan</u> (E).",
+                answerOptions: [
+                    { text: "met", isCorrect: true, rationale: "Pilihan A salah. Pria tersebut melakukan tindakan menemui saya (aktif). Maknanya adalah 'The man who met me', sehingga dalam bentuk reduced adjective clause harus menggunakan Present Participle 'meeting', bukan Past Participle 'met'." },
+                    { text: "at the coffee shop", isCorrect: false, rationale: "Prepositional phrase tempat sudah tepat." },
+                    { text: "was", isCorrect: false, rationale: "Finite verb utama kalimat 'was' sudah tepat." },
+                    { text: "linguistics professor", isCorrect: false, rationale: "Noun phrase complement sudah tepat." },
+                    { text: "from Pekalongan", isCorrect: false, rationale: "Prepositional phrase penjelas sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 4,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The activists <u>murdering</u> (A) in 2004 <u>was</u> (B) Munir Said Thalib, <u>a prominent human rights defender</u> (C) <u>in Indonesia</u> (D) <u>history</u> (E).",
+                answerOptions: [
+                    { text: "murdering", isCorrect: true, rationale: "Pilihan A salah. Aktivis tersebut bermakna pasif (dibunuh pada tahun 2004), berasal dari 'who was murdered'. Bentuk reduced clause yang benar harus menggunakan Past Participle 'murdered', bukan 'murdering'." },
+                    { text: "was", isCorrect: false, rationale: "Finite verb 'was' sesuai dengan subjek tunggal 'The activist'." },
+                    { text: "a prominent human rights defender", isCorrect: false, rationale: "Appositive noun phrase sudah tepat." },
+                    { text: "in Indonesia", isCorrect: false, rationale: "Prepositional modifier sudah tepat." },
+                    { text: "history", isCorrect: false, rationale: "Noun penjelas konteks sejarah sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 5,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Experiments <u>use</u> (A) gene therapy <u>represent</u> (B) a giant step <u>into</u> (C) the <u>advanced medicine</u> (D) of the future (E).",
+                answerOptions: [
+                    { text: "use", isCorrect: true, rationale: "Pilihan A salah. Kata 'use' adalah bare verb yang membuat kalimat bertumpuk verb. 'Experiments' melakukan tindakan menggunakan (aktif), sehingga harus berupa Present Participle 'using' (singkatan dari 'which use')." },
+                    { text: "represent", isCorrect: false, rationale: "Finite verb 'represent' (jamak) sesuai dengan subjek 'Experiments'." },
+                    { text: "into", isCorrect: false, rationale: "Preposisi arah/tujuan 'into' sudah tepat." },
+                    { text: "advanced medicine", isCorrect: false, rationale: "Noun phrase dengan Past Participle modifier 'advanced' sudah tepat." },
+                    { text: "of the future", isCorrect: false, rationale: "Prepositional phrase modifier sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 6,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The <u>hiding</u> (A) documents <u>were</u> (B) finally <u>discovered</u> (C) by <u>the investigative journalist</u> (D) <u>behind the cabinet</u> (E).",
+                answerOptions: [
+                    { text: "hiding", isCorrect: true, rationale: "Pilihan A salah. Dokumen tersebut disembunyikan (pasif), bukan sembunyi sendiri. Maka harus menggunakan Past Participle 'hidden' (the hidden documents), bukan 'hiding'." },
+                    { text: "were", isCorrect: false, rationale: "Auxiliary verb jamak 'were' sesuai dengan 'documents'." },
+                    { text: "discovered", isCorrect: false, rationale: "Past participle pembentuk kalimat pasif 'were discovered' sudah tepat." },
+                    { text: "the investigative journalist", isCorrect: false, rationale: "Object of preposition 'by' sudah tepat." },
+                    { text: "behind the cabinet", isCorrect: false, rationale: "Prepositional phrase penunjuk tempat sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 7,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>My <u>glasses</u> (A) <u>is</u> (B) <u>broken</u> (C) <u>after</u> (D) falling from the table (E).",
+                answerOptions: [
+                    { text: "glasses", isCorrect: false, rationale: "Noun 'glasses' adalah kata benda berpasangan yang bernilai jamak." },
+                    { text: "is", isCorrect: true, rationale: "Pilihan B salah. Kata benda 'glasses' bernilai jamak (plural), sehingga kata kerja penghubung (linking verb) harus menggunakan 'are', bukan 'is'." },
+                    { text: "broken", isCorrect: false, rationale: "Past participle 'broken' bertindak sebagai adjective complement sudah tepat." },
+                    { text: "after", isCorrect: false, rationale: "Preposisi waktu diikuti gerund 'falling' sudah tepat." },
+                    { text: "falling from the table", isCorrect: false, rationale: "Gerund phrase setelah preposisi 'after' sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 8,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The student <u>answering</u> (A) <u>the highest number of</u> (B) questions <u>correctly</u> (C) <u>were awarded</u> (D) <u>a scholarship</u> (E).",
+                answerOptions: [
+                    { text: "answering", isCorrect: false, rationale: "Present Participle 'answering' (yang menjawab) sebagai post-modifier sudah tepat." },
+                    { text: "the highest number of", isCorrect: false, rationale: "Quantifier phrase sudah tepat." },
+                    { text: "correctly", isCorrect: false, rationale: "Adverb 'correctly' menerangkan participle answering sudah tepat." },
+                    { text: "were awarded", isCorrect: true, rationale: "Pilihan D salah. Subjek utama kalimat adalah 'The student' (tunggal), sedangkan 'answering...' adalah Participle modifier. Maka verb pasif harus berupa 'was awarded'." },
+                    { text: "a scholarship", isCorrect: false, rationale: "Noun phrase objek pasif sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 9,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The <u>murdered</u> (A) victim <u>was</u> (B) <u>a well-known activist</u> (C) <u>working</u> (D) <u>for human rights organization</u> (E).",
+                answerOptions: [
+                    { text: "murdered", isCorrect: false, rationale: "Past Participle 'murdered' sebagai pre-modifier bermakna pasif (terbunuh) sudah tepat." },
+                    { text: "was", isCorrect: false, rationale: "Verb singular 'was' cocok dengan subjek 'victim'." },
+                    { text: "a well-known activist", isCorrect: false, rationale: "Noun phrase complement sudah tepat." },
+                    { text: "working", isCorrect: false, rationale: "Present Participle 'working' (yang bekerja) sebagai post-modifier sudah tepat." },
+                    { text: "for human rights organization", isCorrect: true, rationale: "Pilihan E salah. Kata benda tunggal dapat dihitung 'organization' harus didahului article 'a' menjadi 'for a human rights organization' atau diubah menjadi jamak 'organizations'." }
+                ]
+            },
+            {
+                questionNumber: 10,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The article <u>publish</u> (A) <u>in the academic journal</u> (B) <u>discusses</u> (C) <u>the impact of</u> (D) social media on youth (E).",
+                answerOptions: [
+                    { text: "publish", isCorrect: true, rationale: "Pilihan A salah. Artikel tersebut dikenai tindakan diterbitkan (pasif). Dalam pola reduced clause 'which was published', kata kerja harus berupa Past Participle 'published', bukan bare verb 'publish'." },
+                    { text: "in the academic journal", isCorrect: false, rationale: "Prepositional phrase lokasi penerbitan sudah tepat." },
+                    { text: "discusses", isCorrect: false, rationale: "Finite verb 'discusses' (singular) cocok dengan subjek 'The article'." },
+                    { text: "the impact of", isCorrect: false, rationale: "Noun phrase sebagai objek sudah tepat." },
+                    { text: "social media on youth", isCorrect: false, rationale: "Prepositional phrase pelengkap sudah tepat." }
+                ]
+            },
+            // Sedang (8)
+            {
+                questionNumber: 11,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Any students</u> (A) <u>wished</u> (B) to enroll in <u>the advanced linguistics seminar</u> (C) <u>must submit</u> (D) their applications by Friday (E).",
+                answerOptions: [
+                    { text: "Any students", isCorrect: false, rationale: "Quantifier 'Any' diikuti plural noun 'students' sudah tepat." },
+                    { text: "wished", isCorrect: true, rationale: "Pilihan B salah. Siswa tersebut melakukan tindakan berkeinginan/berharap (aktif). Asalnya 'who wish', sehingga bentuk Participle modifier yang tepat adalah Present Participle 'wishing', bukan 'wished'." },
+                    { text: "the advanced linguistics seminar", isCorrect: false, rationale: "Noun phrase objek dari infinitive 'to enroll in' sudah tepat." },
+                    { text: "must submit", isCorrect: false, rationale: "Modal verb 'must submit' sebagai finite predicate utama sudah tepat." },
+                    { text: "their applications by Friday", isCorrect: false, rationale: "Noun phrase dan prepositional phrase waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 12,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The scientific report <u>detailed</u> (A) <u>the damage</u> (B) <u>causing</u> (C) by <u>the recent earthquake</u> (D) was released yesterday (E).",
+                answerOptions: [
+                    { text: "detailed", isCorrect: false, rationale: "Participle modifier 'detailed' (yang merinci) menerangkan report sudah tepat." },
+                    { text: "the damage", isCorrect: false, rationale: "Noun phrase objek dari participle sudah tepat." },
+                    { text: "causing", isCorrect: true, rationale: "Pilihan C salah. Kerusakan (damage) tersebut disebabkan oleh gempa (pasif). Asalnya 'which was caused by', maka bentuk yang benar adalah Past Participle 'caused', bukan Present Participle 'causing'." },
+                    { text: "by the recent earthquake", isCorrect: false, rationale: "Prepositional phrase penunjuk pelaku pasif sudah tepat." },
+                    { text: "was released yesterday", isCorrect: false, rationale: "Finite verb pasif utama 'was released' sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 13,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The proposal <u>submitted</u> (A) <u>by the research team</u> (B) <u>contain</u> (C) several <u>innovative solutions</u> (D) for water purification (E).",
+                answerOptions: [
+                    { text: "submitted", isCorrect: false, rationale: "Past Participle 'submitted' (yang diajukan) sebagai reduced passive clause sudah tepat." },
+                    { text: "by the research team", isCorrect: false, rationale: "Prepositional phrase pelaku pasif sudah tepat." },
+                    { text: "contain", isCorrect: true, rationale: "Pilihan C salah. Subjek utama kalimat adalah 'The proposal' (tunggal), sedangkan 'submitted by...' adalah Participle modifier. Kata kerja utama harus berbentuk 'contains'." },
+                    { text: "innovative solutions", isCorrect: false, rationale: "Noun phrase jamak sebagai objek sudah tepat." },
+                    { text: "for water purification", isCorrect: false, rationale: "Prepositional phrase tujuan sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 14,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The candidate <u>receives</u> (A) <u>the highest number</u> (B) of votes in <u>the local election</u> (C) <u>will be declared</u> (D) the official winner (E).",
+                answerOptions: [
+                    { text: "receives", isCorrect: true, rationale: "Pilihan A salah. 'Receives' adalah finite verb. Kehadirannya menyebabkan double verb tanpa conjunction karena predikat utama adalah 'will be declared'. Harusnya diubah menjadi Present Participle 'receiving' (yang menerima)." },
+                    { text: "the highest number", isCorrect: false, rationale: "Noun phrase objek dari participle sudah tepat." },
+                    { text: "the local election", isCorrect: false, rationale: "Object of preposition 'in' sudah tepat." },
+                    { text: "will be declared", isCorrect: false, rationale: "Finite modal verb pasif utama sudah tepat." },
+                    { text: "the official winner", isCorrect: false, rationale: "Noun phrase complement sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 15,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Having finishing</u> (A) the comprehensive literature review, <u>the graduate student</u> (B) began <u>writing</u> (C) the first draft <u>of her dissertation</u> (D) <u>last week</u> (E).",
+                answerOptions: [
+                    { text: "Having finishing", isCorrect: true, rationale: "Pilihan A salah. Bentuk Perfect Participle yang benar adalah 'Having' + Past Participle (V3), yaitu 'Having finished', bukan V-ing 'finishing'." },
+                    { text: "the graduate student", isCorrect: false, rationale: "Subjek utama kalimat sudah tepat." },
+                    { text: "writing", isCorrect: false, rationale: "Gerund 'writing' sebagai objek dari verb 'began' sudah tepat." },
+                    { text: "of her dissertation", isCorrect: false, rationale: "Prepositional phrase penjelas draft sudah tepat." },
+                    { text: "last week", isCorrect: false, rationale: "Keterangan waktu past tense sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 16,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The <u>destroying</u> (A) bridge <u>was rebuilt</u> (B) <u>by the government</u> (C) <u>within six months</u> (D) <u>after the disaster</u> (E).",
+                answerOptions: [
+                    { text: "destroying", isCorrect: true, rationale: "Pilihan A salah. Jembatan tersebut hancur/dihancurkan (pasif), bukan menghancurkan. Maka harus menggunakan Past Participle 'destroyed' (the destroyed bridge), bukan Present Participle 'destroying'." },
+                    { text: "was rebuilt", isCorrect: false, rationale: "Finite verb pasif 'was rebuilt' sudah tepat." },
+                    { text: "by the government", isCorrect: false, rationale: "Prepositional phrase pelaku pasif sudah tepat." },
+                    { text: "within six months", isCorrect: false, rationale: "Prepositional phrase durasi waktu sudah tepat." },
+                    { text: "after the disaster", isCorrect: false, rationale: "Prepositional phrase penunjuk waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 17,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>All delegates</u> (A) <u>attended</u> (B) the international summit <u>are required</u> (C) <u>to present</u> (D) their credentials <u>at the registration desk</u> (E).",
+                answerOptions: [
+                    { text: "All delegates", isCorrect: false, rationale: "Subjek jamak kalimat sudah tepat." },
+                    { text: "attended", isCorrect: true, rationale: "Pilihan B salah. Para delegasi melakukan tindakan menghadiri (aktif). Menggunakan 'attended' (V2/V3) membuat konfusi predikat pasif/past. Harusnya menggunakan Present Participle 'attending' (yang menghadiri)." },
+                    { text: "are required", isCorrect: false, rationale: "Finite verb pasif utama 'are required' sudah tepat." },
+                    { text: "to present", isCorrect: false, rationale: "To-infinitive complement dari required sudah tepat." },
+                    { text: "at the registration desk", isCorrect: false, rationale: "Prepositional phrase tempat sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 18,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The <u>surrounding</u> (A) mountains <u>protects</u> (B) the valley <u>from</u> (C) harsh winter winds <u>every year</u> (D) <u>during storm season</u> (E).",
+                answerOptions: [
+                    { text: "surrounding", isCorrect: false, rationale: "Present Participle 'surrounding' (yang mengelilingi) sebagai pre-modifier sudah tepat." },
+                    { text: "protects", isCorrect: true, rationale: "Pilihan B salah. Subjek kalimat adalah 'mountains' (jamak), sehingga kata kerja bentuk present harus berupa 'protect' tanpa '-s'." },
+                    { text: "from", isCorrect: false, rationale: "Preposisi pelengkap dari verb protect 'protect... from' sudah tepat." },
+                    { text: "every year", isCorrect: false, rationale: "Keterangan frekuensi rutin sudah tepat." },
+                    { text: "during storm season", isCorrect: false, rationale: "Prepositional phrase waktu sudah tepat." }
+                ]
+            },
+            // Sulit (2)
+            {
+                questionNumber: 19,
+                type: "Error Analysis",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Located</u> (A) on the remote island, <u>the research facility</u> (B) <u>conducting</u> (C) groundbreaking studies <u>on deep-sea ecosystems</u> (D) <u>has received global recognition</u> (E).",
+                answerOptions: [
+                    { text: "Located", isCorrect: false, rationale: "Past Participle modifier di awal kalimat 'Located on...' sudah tepat menerangkan facility." },
+                    { text: "the research facility", isCorrect: false, rationale: "Subjek utama kalimat (tunggal) sudah tepat." },
+                    { text: "conducting", isCorrect: false, rationale: "Present Participle modifier 'conducting' (yang melakukan) sudah tepat." },
+                    { text: "on deep-sea ecosystems", isCorrect: false, rationale: "Prepositional phrase objek penelitian sudah tepat." },
+                    { text: "has received global recognition", isCorrect: false, rationale: "Tetapi perhatikan: tidak ada yang salah pada A, B, D, E. Mana yang sebenarnya bermasalah jika kita lihat struktur keseluruhan? Kalimat ini memiliki participle ganda yang valid. Namun mari cek kesepakatan agreement: Subjek 'the research facility' -> 'has received' (singular) sudah tepat. Opsi tidak ada yang salah kecuali konteks pasif/aktif jika diuji." }
+                ],
+                // Let's refine Q19 to have a clear error:
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Located</u> (A) on the remote island, <u>the research facility</u> (B) <u>conducted</u> (C) by international scientists <u>have received</u> (D) <u>global recognition</u> (E).",
+                answerOptions: [
+                    { text: "Located", isCorrect: false, rationale: "Past Participle modifier di awal kalimat 'Located...' menerangkan facility sudah tepat." },
+                    { text: "the research facility", isCorrect: false, rationale: "Subjek utama kalimat (tunggal) sudah tepat." },
+                    { text: "conducted", isCorrect: false, rationale: "Past Participle 'conducted' (yang dijalankan) sebagai modifier pasif sudah tepat." },
+                    { text: "have received", isCorrect: true, rationale: "Pilihan D salah. Subjek utama adalah 'the research facility' (tunggal). Participle di awal dan di tengah adalah modifier. Kata kerja bantu harus berupa 'has received'." },
+                    { text: "global recognition", isCorrect: false, rationale: "Noun phrase objek sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 20,
+                type: "Error Analysis",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>The new technology</u> (A) <u>developed</u> (B) by the engineers <u>allowing</u> (C) solar panels to <u>generate power</u> (D) even <u>on cloudy days</u> (E).",
+                answerOptions: [
+                    { text: "The new technology", isCorrect: false, rationale: "Subjek utama kalimat sudah tepat." },
+                    { text: "developed", isCorrect: false, rationale: "Past Participle modifier 'developed by...' (yang dikembangkan) sudah tepat." },
+                    { text: "allowing", isCorrect: true, rationale: "Pilihan C salah. 'allowing' adalah Participle (infinite). Akibatnya kalimat ini tidak memiliki Finite Verb utama sama sekali (fragment). Kata 'allowing' harus diubah menjadi finite verb 'allows'." },
+                    { text: "generate power", isCorrect: false, rationale: "Bare infinitive setelah 'to' dalam 'to generate power' sudah tepat." },
+                    { text: "on cloudy days", isCorrect: false, rationale: "Prepositional phrase keterangan kondisi sudah tepat." }
+                ]
+            },
+
+            // --- SECTION 2: FILL IN THE BLANK (10 SOAL) ---
+            // Mudah (5)
+            {
+                questionNumber: 21,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The man _____ me at the conference yesterday was a distinguished linguist from England.",
+                answerOptions: [
+                    { text: "meeting", isCorrect: true, rationale: "Benar! 'meeting' adalah Present Participle (aktif) yang menjelaskan 'The man' (singkatan dari 'who met me')." },
+                    { text: "met", isCorrect: false, rationale: "Salah. 'met' bermakna pasif (yang ditemui) atau V2 yang menciptakan struktur ganda tanpa konjungsi." },
+                    { text: "was met", isCorrect: false, rationale: "Salah. Memasukkan verb pasif 'was met' membuat double verb dengan 'was a distinguished linguist'." },
+                    { text: "he met", isCorrect: false, rationale: "Salah. Menambahkan pronoun subjek redundan." },
+                    { text: "meets", isCorrect: false, rationale: "Salah. Finite verb 'meets' menyebabkan double verb." }
+                ]
+            },
+            {
+                questionNumber: 22,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The activist _____ in 2004 was Munir Said Thalib, a fearless advocate for justice.",
+                answerOptions: [
+                    { text: "murdered", isCorrect: true, rationale: "Benar! 'murdered' adalah Past Participle (pasif) yang menjelaskan 'The activist' (singkatan dari 'who was murdered')." },
+                    { text: "murdering", isCorrect: false, rationale: "Salah. 'murdering' bermakna aktif (yang membunuh)." },
+                    { text: "was murdered", isCorrect: false, rationale: "Salah. 'was murdered' adalah finite verb yang menyebabkan double verb dengan 'was Munir'." },
+                    { text: "who murdered", isCorrect: false, rationale: "Salah. Mengubah makna menjadi aktif (yang membunuh orang lain)." },
+                    { text: "he was murdered", isCorrect: false, rationale: "Salah. Menimbulkan klausa independen berlebihan." }
+                ]
+            },
+            {
+                questionNumber: 23,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>Experiments _____ gene therapy represent a giant step into modern medicine.",
+                answerOptions: [
+                    { text: "using", isCorrect: true, rationale: "Benar! 'using' adalah Present Participle (aktif) yang menjelaskan 'Experiments' (eksperimen yang menggunakan...)." },
+                    { text: "used", isCorrect: false, rationale: "Salah. 'used' bermakna pasif (eksperimen yang digunakan gene therapy)." },
+                    { text: "are using", isCorrect: false, rationale: "Salah. 'are using' adalah finite verb yang menyebabkan double verb dengan 'represent'." },
+                    { text: "which used by", isCorrect: false, rationale: "Salah. Preposisi 'by' tidak sesuai konteks objek 'gene therapy'." },
+                    { text: "use", isCorrect: false, rationale: "Salah. Bare verb 'use' menciptakan double verb." }
+                ]
+            },
+            {
+                questionNumber: 24,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The police successfully recovered the _____ evidence from a hidden container near the port.",
+                answerOptions: [
+                    { text: "stolen", isCorrect: true, rationale: "Benar! 'stolen' adalah Past Participle V3 bermakna pasif (bukti yang dicuri) yang berfungsi sebagai Pre-Modifier noun 'evidence'." },
+                    { text: "stealing", isCorrect: false, rationale: "Salah. 'stealing' bermakna aktif (bukti yang mencuri)." },
+                    { text: "stole", isCorrect: false, rationale: "Salah. 'stole' adalah V2 (past tense verb), bukan adjective." },
+                    { text: "steal", isCorrect: false, rationale: "Salah. 'steal' adalah bare verb." },
+                    { text: "was stolen", isCorrect: false, rationale: "Salah. 'was stolen' adalah clause predicate, bukan modifier." }
+                ]
+            },
+            {
+                questionNumber: 25,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The _____ students marched peacefully toward the parliament building to demand reform.",
+                answerOptions: [
+                    { text: "protesting", isCorrect: true, rationale: "Benar! 'protesting' adalah Present Participle V-ing bermakna aktif (mahasiswa yang memprotes) sebagai Pre-Modifier noun 'students'." },
+                    { text: "protested", isCorrect: false, rationale: "Salah. 'protested' bermakna pasif (mahasiswa yang diprotes)." },
+                    { text: "protest", isCorrect: false, rationale: "Salah. Bare verb 'protest' tidak bertindak sebagai adjective." },
+                    { text: "were protesting", isCorrect: false, rationale: "Salah. 'were protesting' adalah finite verb." },
+                    { text: "they protest", isCorrect: false, rationale: "Salah. Struktur klausa tidak tepat." }
+                ]
+            },
+            // Sedang (4)
+            {
+                questionNumber: 26,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The research team analyzed data _____ from over five hundred surveyed households.",
+                answerOptions: [
+                    { text: "collected", isCorrect: true, rationale: "Benar! 'collected' adalah Past Participle (pasif) yang menjelaskan 'data' (data yang dikumpulkan dari...)." },
+                    { text: "collecting", isCorrect: false, rationale: "Salah. 'collecting' bermakna aktif (data yang mengumpulkan)." },
+                    { text: "was collected", isCorrect: false, rationale: "Salah. Memasukkan verb 'was collected' menyebabkan double verb dengan 'analyzed'." },
+                    { text: "they collected", isCorrect: false, rationale: "Salah. Memasukkan subjek pronoun berlebihan." },
+                    { text: "collect", isCorrect: false, rationale: "Salah. Bare verb merusak struktur." }
+                ]
+            },
+            {
+                questionNumber: 27,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ on the mountain peak, the weather station transmits real-time climate observations daily.",
+                answerOptions: [
+                    { text: "Situated", isCorrect: true, rationale: "Benar! 'Situated' adalah Past Participle modifier di awal kalimat yang menerangkan 'the weather station' (yang terletak di...)." },
+                    { text: "Situating", isCorrect: false, rationale: "Salah. 'Situating' bermakna aktif (yang menempatkan)." },
+                    { text: "It is situated", isCorrect: false, rationale: "Salah. Membentuk run-on sentence dengan klausa utama." },
+                    { text: "Because situated", isCorrect: false, rationale: "Salah. Conjunction 'Because' membutuhkan S+V." },
+                    { text: "To situate", isCorrect: false, rationale: "Salah. Infinitive of purpose kurang tepat secara makna pasif lokasi." }
+                ]
+            },
+            {
+                questionNumber: 28,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The candidate _____ for the administrative position must hold a master's degree in management.",
+                answerOptions: [
+                    { text: "applying", isCorrect: true, rationale: "Benar! 'applying' adalah Present Participle (aktif) yang menjelaskan 'The candidate' (kandidat yang melamar...)." },
+                    { text: "applied", isCorrect: false, rationale: "Salah. 'applied' bermakna pasif (kandidat yang dilamar)." },
+                    { text: "is applying", isCorrect: false, rationale: "Salah. Memasukkan verb 'is applying' menyebabkan double verb dengan 'must hold'." },
+                    { text: "who applied by", isCorrect: false, rationale: "Salah. Preposisi 'by' salah untuk konteks melamar posisi." },
+                    { text: "applies", isCorrect: false, rationale: "Salah. Finite verb 'applies' menyebabkan double verb." }
+                ]
+            },
+            {
+                questionNumber: 29,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The ancient manuscripts _____ in the university vault belong to the rare book collection.",
+                answerOptions: [
+                    { text: "preserved", isCorrect: true, rationale: "Benar! 'preserved' adalah Past Participle (pasif) yang menjelaskan 'manuscripts' (yang dilestarikan/disimpan)." },
+                    { text: "preserving", isCorrect: false, rationale: "Salah. Bermakna aktif (naskah yang melestarikan)." },
+                    { text: "are preserved", isCorrect: false, rationale: "Salah. Memasukkan finite verb 'are preserved' menyebabkan double verb dengan 'belong'." },
+                    { text: "they preserve", isCorrect: false, rationale: "Salah. Merusak struktur modifier." },
+                    { text: "preserve", isCorrect: false, rationale: "Salah. Bare verb merusak kalimat." }
+                ]
+            },
+            // Sulit (1)
+            {
+                questionNumber: 30,
+                type: "Fill in the Blank",
+                difficulty: "Sulit",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ after months of rigorous investigation, the final report highlighted several critical security vulnerabilities.",
+                answerOptions: [
+                    { text: "Completed", isCorrect: true, rationale: "Benar! Past Participle 'Completed' di awal kalimat berfungsi sebagai Participle modifier pasif yang menerangkan 'the final report' (laporan yang diselesaikan setelah...)." },
+                    { text: "Completing", isCorrect: false, rationale: "Salah. 'Completing' bermakna bahwa laporan itu sendiri yang melakukan tindakan menyelesaikan." },
+                    { text: "Having completed", isCorrect: false, rationale: "Salah. 'Having completed' bermakna aktif (laporan itu yang telah menyelesaikan investigasi)." },
+                    { text: "It was completed", isCorrect: false, rationale: "Salah. Menimbulkan dua klausa tanpa konjungsi." },
+                    { text: "To complete", isCorrect: false, rationale: "Salah. Infinitive of purpose kurang pas secara konteks pemicu report." }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let score = 0;
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        
+        const questionTextEl = document.getElementById('question-text');
+        const questionTypeTagEl = document.getElementById('question-type-tag');
+        const difficultyBadgeEl = document.getElementById('difficulty-badge');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTextEl = document.getElementById('explanation-text');
+        
+        const currentQNumEl = document.getElementById('current-q-num');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const scoreBadge = document.getElementById('score-badge');
+        const finalScoreText = document.getElementById('final-score-text');
+        const finalScoreDisplay = document.getElementById('final-score-display');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            scoreBadge.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            currentQNumEl.textContent = q.questionNumber;
+            progressBarEl.style.width = `${((currentQuestionIndex + 1) / questionsData.length) * 100}%`;
+
+            questionTypeTagEl.textContent = q.type;
+            
+            // Set Difficulty Badge Color
+            difficultyBadgeEl.textContent = q.difficulty;
+            if (q.difficulty === "Mudah") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 text-emerald-800";
+            } else if (q.difficulty === "Sedang") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-amber-100 text-amber-800";
+            } else {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-rose-100 text-rose-800";
+            }
+
+            questionTextEl.innerHTML = q.question;
+            optionsContainerEl.innerHTML = '';
+            explanationBoxEl.classList.add('hidden');
+
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                let baseClasses = "w-full text-left p-4 rounded-xl border transition flex items-start gap-3 text-sm md:text-base ";
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (opt.isCorrect) {
+                        baseClasses += "bg-emerald-50 border-emerald-300 text-emerald-900 font-medium";
+                    } else if (isSelected && !opt.isCorrect) {
+                        baseClasses += "bg-rose-50 border-rose-300 text-rose-900";
+                    } else {
+                        baseClasses += "bg-white border-slate-200 text-slate-700 opacity-60";
+                    }
+                    btn.disabled = true;
+                } else {
+                    baseClasses += "bg-white border-slate-200 hover:border-emerald-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="font-bold bg-slate-100 text-slate-700 w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs">${optionLetters[idx]}</span>
+                    <span class="mt-0.5">${opt.text}</span>
+                `;
+
+                if (userAnswers[currentQuestionIndex] === null) {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optionsContainerEl.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                showExplanation();
+            }
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questionsData.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+
+        function selectAnswer(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const q = questionsData[currentQuestionIndex];
+            
+            if (q.answerOptions[optionIndex].isCorrect) {
+                score++;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation() {
+            const q = questionsData[currentQuestionIndex];
+            const selectedOpt = q.answerOptions[userAnswers[currentQuestionIndex]];
+            explanationTextEl.innerHTML = selectedOpt.rationale;
+            explanationBoxEl.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            finalScoreText.textContent = `${score} / 30`;
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            score = 0;
+            resultScreen.classList.add('hidden');
+            scoreBadge.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

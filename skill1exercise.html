@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Interaktif TOEFL: Skill 1 (Subject & Verb)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white shadow-md py-6 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-indigo-700 text-indigo-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">TOEFL Mastery</span>
+                <h1 class="text-2xl font-bold mt-1">Skill 1: Analisis Subject & Verb</h1>
+                <p class="text-indigo-200 text-sm">Latihan 35 Soal Tingkat Lanjut (A-B-C-D-E)</p>
+            </div>
+            <div id="score-badge" class="hidden bg-indigo-800 border border-indigo-600 px-4 py-2 rounded-xl text-center">
+                <span class="block text-xs text-indigo-300">Skor Akhir</span>
+                <span id="final-score-text" class="text-xl font-bold text-white">0 / 35</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+            <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">🎯</div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Selamat Datang di Simulasi Analisis TOEFL</h2>
+            <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                Kuis ini dirancang khusus untuk mahasiswa guna menguji ketelitian dalam mendeteksi <em>Subject utama, Verb finite & infinite, Subject-Verb agreement, gerund phrase, noun clause,</em> serta jebakan struktur kalimat kompleks.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-md mx-auto mb-8 text-left text-sm text-slate-700">
+                <ul class="space-y-2">
+                    <li>✅ <strong>Jumlah Soal:</strong> 35 Butir</li>
+                    <li>✅ <strong>Pilihan Jawaban:</strong> A, B, C, D, E</li>
+                    <li>✅ <strong>Fitur:</strong> Pembahasan & Rationale komprehensif dalam Bahasa Indonesia</li>
+                </ul>
+            </div>
+            <button onclick="startQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-sm">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden space-y-6">
+            <!-- Progress Bar & Info -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sm font-semibold text-slate-600">
+                    Soal <span id="current-q-num" class="text-indigo-600 font-bold">1</span> dari <span id="total-q-num">35</span>
+                </div>
+                <div class="w-1/2 bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full transition-all duration-300" style="width: 2.85%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+                <div id="question-text" class="text-lg md:text-xl font-semibold text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Rationale Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+                    <div class="font-bold text-slate-900 flex items-center gap-2">
+                        <span>💡 Pembahasan & Analisis Fungsional</span>
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2.5 rounded-xl transition shadow-sm">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center space-y-6">
+            <div class="w-20 h-20 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🏆</div>
+            <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">
+                Anda telah menyelesaikan seluruh 35 soal analisis Skill 1 TOEFL. Berikut adalah pencapaian total skor Anda:
+            </p>
+            <div class="inline-block bg-indigo-50 border border-indigo-200 rounded-2xl px-8 py-4">
+                <span id="final-score-display" class="text-4xl font-extrabold text-indigo-600">0</span>
+                <span class="text-xl text-slate-500 font-semibold"> / 35</span>
+            </div>
+            <div>
+                <button onclick="restartQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-sm">
+                    Ulangi Kuis
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
+        &copy; LUMINA PROJECT 2026 • TOEFL Interactive Practice Module • Skill 1: Subject & Verb Analysis
+    </footer>
+
+    <!-- Script Quiz Logic -->
+    <script>
+        const questionsData = [
+            {
+                questionNumber: 1,
+                question: "Pilihlah opsi yang tepat untuk melengkapi bagian rumpang kalimat berikut: The collection of rare manuscripts in the university library _____ recently restored by expert conservators.",
+                answerOptions: [
+                    { text: "were", isCorrect: false, rationale: "Salah. Head noun dari kalimat ini adalah collection yang bernilai singular, sehingga tidak cocok berpasangan dengan plural verb 'were'." },
+                    { text: "have been", isCorrect: false, rationale: "Salah. Kata 'collection' berbentuk singular, sehingga membutuhkan singular verb, bukan plural auxiliary 'have been'." },
+                    { text: "was", isCorrect: true, rationale: "Benar. Head noun dari subject kalimat ini adalah singular ('collection'). Prepositional phrase 'of rare manuscripts' diabaikan dalam menentukan subject-verb agreement." },
+                    { text: "are", isCorrect: false, rationale: "Salah. Plural verb 'are' tidak sesuai dengan singular head noun 'collection'." },
+                    { text: "being", isCorrect: false, rationale: "Salah. Diperlukan main finite verb pasif untuk melengkapi struktur kalimat utama." }
+                ]
+            },
+            {
+                questionNumber: 2,
+                question: "Identifikasi fungsi dari frasa yang dicetak miring pada kalimat berikut: <em>Analyzing complex syntactic structures</em> requires immense patience and high linguistic competence.",
+                answerOptions: [
+                    { text: "Finite verb phrase yang bertindak sebagai predikat utama", isCorrect: false, rationale: "Salah. Frasa tersebut bertindak sebagai main subject, bukan sebagai predikat." },
+                    { text: "Gerund phrase yang bertindak sebagai subject dari klausa", isCorrect: true, rationale: "Benar. Frasa 'Analyzing complex syntactic structures' berfungsi sebagai gerund phrase yang bertindak sebagai main subject." },
+                    { text: "Adjective clause yang menerangkan kata patience", isCorrect: false, rationale: "Salah. Frasa ini tidak menerangkan noun melainkan bertindak sebagai elemen utama subjek." },
+                    { text: "Infinitive phrase yang berfungsi sebagai adverbial adjunct", isCorrect: false, rationale: "Salah. Frasa diawali oleh gerund (-ing), bukan infinitive (to + V1)." },
+                    { text: "Reduced relative clause yang berfungsi sebagai post-modifier", isCorrect: false, rationale: "Salah. Tidak ada head noun yang diterangkan di awal frasa ini." }
+                ]
+            },
+            {
+                questionNumber: 3,
+                question: "Manakah dari kalimat berikut yang memiliki kesalahan dalam penentuan atau pembentukan verb utama?",
+                answerOptions: [
+                    { text: "The professor who teaches syntax is renowned worldwide.", isCorrect: false, rationale: "Salah (tatabahasa benar). Kalimat ini memiliki struktur yang tepat dengan klausa penjelas." },
+                    { text: "Having finished the assignment, the students left the lecture hall.", isCorrect: false, rationale: "Salah (tatabahasa benar). Frasa 'Having finished' adalah participle phrase yang tepat sebagai keterangan." },
+                    { text: "The linguistic data collected by the researchers shows unexpected patterns.", isCorrect: false, rationale: "Salah (tatabahasa benar). Kata 'data' difungsikan sebagai mass noun dengan singular verb." },
+                    { text: "What the committee decided yesterday remain confidential.", isCorrect: true, rationale: "Benar (mengandung kesalahan). Noun clause 'What the committee decided yesterday' bertindak sebagai singular subject, sehingga harus berpasangan dengan singular verb 'remains', bukan 'remain'." },
+                    { text: "To master a second language requires consistent practice every single day.", isCorrect: false, rationale: "Salah (tatabahasa benar). To-infinitive phrase sebagai subjek berpasangan tepat dengan singular verb 'requires'." }
+                ]
+            },
+            {
+                questionNumber: 4,
+                question: "Identifikasi main finite verb dalam kalimat berikut: The theories proposed by Chomsky regarding universal grammar have fundamentally altered modern linguistics.",
+                answerOptions: [
+                    { text: "proposed", isCorrect: false, rationale: "Salah. Kata 'proposed' adalah past participle (V3) yang berfungsi sebagai reduced adjective clause (infinite verb) penerang kata 'theories'." },
+                    { text: "regarding", isCorrect: false, rationale: "Salah. Kata 'regarding' berfungsi sebagai prepositional modifier." },
+                    { text: "have altered", isCorrect: true, rationale: "Benar. Kombinasi auxiliary verb 'have' dan ordinary verb 'altered' membentuk main finite verb untuk subjek jamak 'theories'." },
+                    { text: "altered", isCorrect: false, rationale: "Salah. Hanya merupakan bagian dari frasa verb sempurna 'have altered'." },
+                    { text: "universal", isCorrect: false, rationale: "Salah. Kata 'universal' adalah adjective yang menerangkan 'grammar'." }
+                ]
+            },
+            {
+                questionNumber: 5,
+                question: "Pilihlah kata yang tepat untuk melengkapi kalimat berikut: Neither the lead researcher nor her assistants _____ present at the conference yesterday.",
+                answerOptions: [
+                    { text: "was", isCorrect: false, rationale: "Salah. Pada struktur correlative conjunction 'neither... nor', agreement verb mengikuti subjek terdekat ('assistants' yang berbentuk plural)." },
+                    { text: "were", isCorrect: true, rationale: "Benar. Sesuai aturan proximity agreement pada 'neither... nor', verb menyesuaikan dengan subjek terdekat yaitu 'assistants' (plural)." },
+                    { text: "is", isCorrect: false, rationale: "Salah. Terdapat keterangan waktu lampau 'yesterday' dan ketidakcocokan agreement." },
+                    { text: "has been", isCorrect: false, rationale: "Salah. Memakai auxiliary singular dan tenses yang tidak sesuai dengan penanda waktu lampau." },
+                    { text: "be", isCorrect: false, rationale: "Salah. Base form tidak dapat berdiri sendiri sebagai main finite verb." }
+                ]
+            },
+            {
+                questionNumber: 6,
+                question: "Opsi manakah yang menganalisis dengan benar frasa yang dicetak miring pada kalimat: <em>To understand the intricate nuances of phonology</em> takes years of dedicated study.",
+                answerOptions: [
+                    { text: "Adjective clause yang menerangkan phonology", isCorrect: false, rationale: "Salah. Frasa tersebut tidak menerangkan noun sebelumnya." },
+                    { text: "To-infinitive phrase yang bertindak sebagai subject", isCorrect: true, rationale: "Benar. Frasa yang diawali oleh 'To understand' berfungsi sebagai singular subject dari verb 'takes'." },
+                    { text: "Gerund phrase yang bertindak sebagai complement", isCorrect: false, rationale: "Salah. Frasa menggunakan marker 'to' (infinitive), bukan akhiran '-ing' (gerund)." },
+                    { text: "Finite clause yang berfungsi sebagai object", isCorrect: false, rationale: "Salah. Posisinya berada di awal kalimat sebagai subjek utama." },
+                    { text: "Participial phrase yang menunjukkan waktu", isCorrect: false, rationale: "Salah. Ini adalah infinitive phrase, bukan participle." }
+                ]
+            },
+            {
+                questionNumber: 7,
+                question: "Pada kalimat 'The books <em>borrowed from the library</em> were returned on time', apakah status tata bahasa dari kata 'borrowed'?",
+                answerOptions: [
+                    { text: "Finite verb dalam bentuk past tense", isCorrect: false, rationale: "Salah. Jika dianggap finite verb, kalimat akan mengalami kesalahan double verb tanpa conjunction." },
+                    { text: "Infinite verb yang berfungsi sebagai modifier dari reduced relative clause", isCorrect: true, rationale: "Benar. 'Borrowed' adalah past participle (V3) yang merupakan hasil penyederhanaan (reducing) dari adjective clause 'which were borrowed', sehingga berstatus infinite verb." },
+                    { text: "Primary auxiliary verb", isCorrect: false, rationale: "Salah. Kata ini adalah ordinary lexical verb dalam bentuk past participle." },
+                    { text: "Gerund yang bertindak sebagai noun", isCorrect: false, rationale: "Salah. Tidak berakhiran '-ing' dan tidak berfungsi sebagai noun." },
+                    { text: "Imperative verb command", isCorrect: false, rationale: "Salah. Kalimat ini adalah pernyataan deklaratif." }
+                ]
+            },
+            {
+                questionNumber: 8,
+                question: "Manakah dari kalimat berikut yang menunjukkan penggunaan Subject-Verb Agreement yang tepat pada collective noun atau quantifier?",
+                answerOptions: [
+                    { text: "A number of students is participating in the seminar.", isCorrect: false, rationale: "Salah. Ungkapan 'A number of' diikuti plural verb ('are'), sedangkan 'The number of' diikuti singular verb." },
+                    { text: "Every student and professor are required to attend the lecture.", isCorrect: false, rationale: "Salah. Penggunaan 'Every' sebelum subjek majemuk mengambil singular verb ('is')." },
+                    { text: "The majority of the research data points toward a new conclusion.", isCorrect: true, rationale: "Benar. Kata kerja 'points' (singular) berpasangan dengan fokus konteks mass noun dari kata 'data'." },
+                    { text: "Each of the manuscripts contain valuable historical insights.", isCorrect: false, rationale: "Salah. Subjek utamanya adalah 'Each' (singular), sehingga memerlukan verb 'contains'." },
+                    { text: "Ten miles are too far to walk for the conference.", isCorrect: false, rationale: "Salah. Ukuran jarak, waktu, dan uang yang dianggap sebagai satu kesatuan menggunakan singular verb ('is')." }
+                ]
+            },
+            {
+                questionNumber: 9,
+                question: "Identifikasi kalimat yang memiliki kesalahan bentuk verb atau kekurangan main finite verb:",
+                answerOptions: [
+                    { text: "The discovery of ancient artifacts provided new clues about the civilization.", isCorrect: false, rationale: "Salah (tatabahasa benar). Memiliki subjek 'discovery' dan finite verb 'provided'." },
+                    { text: "Language learners who practice regularly achieving fluency much faster.", isCorrect: true, rationale: "Benar (mengandung kesalahan). Klausa utama kekurangan main finite verb karena kata 'achieving' berstatus infinite verb (harus diubah menjadi 'achieve')." },
+                    { text: "What causes climate change remains a subject of intense scientific debate.", isCorrect: false, rationale: "Salah (tatabahasa benar). Subject berupa noun clause berpasangan tepat dengan singular verb 'remains'." },
+                    { text: "Having been written in Latin, the manuscript was difficult to decipher.", isCorrect: false, rationale: "Salah (tatabahasa benar). Struktur participle phrase penjelas subjek sudah tepat." },
+                    { text: "Governments around the world invest heavily in technological innovation.", isCorrect: false, rationale: "Salah (tatabahasa benar). Subjek 'Governments' berpasangan tepat dengan verb 'invest'." }
+                ]
+            },
+            {
+                questionNumber: 10,
+                question: "Pilihlah opsi yang tepat: The analysis of various dialects across the region _____ crucial for understanding sociolinguistic evolution.",
+                answerOptions: [
+                    { text: "are", isCorrect: false, rationale: "Salah. Plural verb tidak cocok dengan singular head noun 'analysis'." },
+                    { text: "were", isCorrect: false, rationale: "Salah. Plural past verb tidak sesuai dengan singular head noun 'analysis'." },
+                    { text: "is", isCorrect: true, rationale: "Benar. Head noun dari kalimat ini adalah 'analysis' (singular), sehingga membutuhkan singular verb 'is'." },
+                    { text: "have been", isCorrect: false, rationale: "Salah. Plural auxiliary tidak cocok dengan kata 'analysis'." },
+                    { text: "be", isCorrect: false, rationale: "Salah. Base form tidak dapat bertindak langsung sebagai main finite verb." }
+                ]
+            },
+            {
+                questionNumber: 11,
+                question: "Pada kalimat 'What researchers have uncovered about human cognition is remarkable', struktur klausa subjek awal diklasifikasikan sebagai:",
+                answerOptions: [
+                    { text: "Simple noun phrase dengan post-modifier", isCorrect: false, rationale: "Salah. Struktur ini diawali oleh question word penanda klausa." },
+                    { text: "Adjective clause yang menerangkan human cognition", isCorrect: false, rationale: "Salah. Klausa ini bertindak sebagai entitas kata benda utuh." },
+                    { text: "Noun clause yang berfungsi sebagai subject", isCorrect: true, rationale: "Benar. Klausa 'What researchers have uncovered about human cognition' bertindak sebagai noun clause yang berfungsi sebagai subjek utama." },
+                    { text: "Gerund phrase yang bertindak sebagai subject complement", isCorrect: false, rationale: "Salah. Tidak terdapat gerund phrase di awal kalimat." },
+                    { text: "Adverbial clause of condition", isCorrect: false, rationale: "Salah. Ini bukan klausa keterangan pengandaian." }
+                ]
+            },
+            {
+                questionNumber: 12,
+                question: "Identifikasi infinite verb dalam kalimat berikut: Students hoping to achieve high scores on the TOEFL test must study diligently.",
+                answerOptions: [
+                    { text: "hoping", isCorrect: true, rationale: "Benar. Kata 'hoping' adalah present participle yang berfungsi sebagai reduced adjective clause ('who hope'), sehingga berstatus infinite verb." },
+                    { text: "must", isCorrect: false, rationale: "Salah. 'Must' adalah modal auxiliary yang bersama kata kerja utama membentuk finite predicate." },
+                    { text: "study", isCorrect: false, rationale: "Salah. 'Study' adalah base verb (V1) yang terletak setelah modal 'must', sehingga berstatus finite." },
+                    { text: "test", isCorrect: false, rationale: "Salah. 'Test' di sini berfungsi sebagai noun dalam frasa 'TOEFL test'." },
+                    { text: "achieve", isCorrect: false, rationale: "Salah. Merupakan bagian dari to-infinitive phrase 'to achieve'." }
+                ]
+            },
+            {
+                questionNumber: 13,
+                question: "Manakah kalimat berikut yang menerapkan Subject-Verb Agreement dengan benar saat menggunakan ekspresi kuantitas seperti 'some', 'all', atau 'none'?",
+                answerOptions: [
+                    { text: "All of the equipment have been updated recently.", isCorrect: false, rationale: "Salah. 'Equipment' adalah uncountable noun, sehingga memerlukan singular verb ('has')." },
+                    { text: "None of the students was absent from the lecture.", isCorrect: false, rationale: "Salah. Pada konteks formal plural noun setelah 'none of', kata 'were' lebih tepat digunakan." },
+                    { text: "Half of the lecture notes is missing from the folder.", isCorrect: false, rationale: "Salah. 'Notes' berbentuk jamak, sehingga setengah dari kata benda jamak mengambil plural verb ('are')." },
+                    { text: "All of the information provided in the report is accurate.", isCorrect: true, rationale: "Benar. Uncountable noun 'information' setelah kuantifier 'All of the' mewajibkan penggunaan singular verb 'is'." },
+                    { text: "Some of the books is damaged.", isCorrect: false, rationale: "Salah. 'Books' berbentuk plural, sehingga memerlukan 'are'." }
+                ]
+            },
+            {
+                questionNumber: 14,
+                question: "Analisislah dua verb dalam kalimat: The findings <em>presented</em> at the conference <em>have opened</em> new avenues for research.",
+                answerOptions: [
+                    { text: "Kedua verb berstatus finite.", isCorrect: false, rationale: "Salah. 'Presented' berstatus infinite." },
+                    { text: "'Presented' berstatus infinite, dan 'have opened' berstatus finite.", isCorrect: true, rationale: "Benar. 'Presented' adalah past participle modifier (infinite verb), sedangkan 'have opened' adalah predikat utama kalimat (finite verb)." },
+                    { text: "Kedua verb berstatus infinite.", isCorrect: false, rationale: "Salah. 'Have opened' membentuk finite predicate." },
+                    { text: "'Presented' berstatus finite, dan 'have opened' berstatus infinite.", isCorrect: false, rationale: "Salah. Klasifikasi terbalik." },
+                    { text: "Kedua verb merupakan auxiliary verb.", isCorrect: false, rationale: "Salah. Kata 'presented' dan 'opened' adalah lexical verbs." }
+                ]
+            },
+            {
+                questionNumber: 15,
+                question: "Pilihlah kalimat yang memiliki struktur subjek dan verb yang benar secara tata bahasa:",
+                answerOptions: [
+                    { text: "The rapid expansion of digital technologies transformed modern communication.", isCorrect: true, rationale: "Benar. Head noun 'expansion' berpasangan secara tepat dengan finite verb 'transformed'." },
+                    { text: "A series of lectures on syntax given by the professor.", isCorrect: false, rationale: "Salah. Kalimat ini tergolong sentence fragment karena tidak memiliki main finite verb." },
+                    { text: "What the committee proposed to change the syllabus.", isCorrect: false, rationale: "Salah. Hanya berupa klausa subjek tanpa adanya predikat utama." },
+                    { text: "The students studying in the library is preparing for exams.", isCorrect: false, rationale: "Salah. Head noun 'students' berbentuk plural, sehingga membutuhkan 'are', bukan 'is'." },
+                    { text: "To master foreign languages require consistent daily practice.", isCorrect: false, rationale: "Salah. To-infinitive subject membutuhkan singular verb 'requires'." }
+                ]
+            },
+            {
+                questionNumber: 16,
+                question: "Identifikasi jenis dan fungsi dari subjek pada kalimat: Whether the experiment will succeed remains uncertain.",
+                answerOptions: [
+                    { text: "Gerund phrase yang bertindak sebagai subjek", isCorrect: false, rationale: "Salah. Diawali oleh conjunction 'whether'." },
+                    { text: "Noun clause yang bertindak sebagai subjek", isCorrect: true, rationale: "Benar. 'Whether the experiment will succeed' adalah noun clause yang berfungsi sebagai subjek dari verb 'remains'." },
+                    { text: "Adjective clause yang menerangkan experiment", isCorrect: false, rationale: "Salah. Berfungsi sebagai entitas noun utuh." },
+                    { text: "Infinitive phrase yang bertindak sebagai objek", isCorrect: false, rationale: "Salah. Terletak pada posisi subjek." },
+                    { text: "Participial modifier phrase", isCorrect: false, rationale: "Salah. Klausa ini memiliki subjek dan modal verb internal sendiri." }
+                ]
+            },
+            {
+                questionNumber: 17,
+                question: "Pilihlah bentuk verb yang tepat: Statistics _____ considered a challenging subject by many undergraduate students.",
+                answerOptions: [
+                    { text: "are", isCorrect: false, rationale: "Salah. Nama cabang ilmu/akademik yang berakhiran -s dianggap sebagai singular noun." },
+                    { text: "is", isCorrect: true, rationale: "Benar. Bidang studi akademik berakhiran -s (seperti statistics, mathematics) mengambil singular verb 'is'." },
+                    { text: "were being", isCorrect: false, rationale: "Salah. Mismatch agreement dan tenses." },
+                    { text: "have", isCorrect: false, rationale: "Salah. Bentuk plural verb." },
+                    { text: "be", isCorrect: false, rationale: "Salah. Base form tidak dapat digunakan." }
+                ]
+            },
+            {
+                questionNumber: 18,
+                question: "Pada kalimat 'Having analyzed the data, the researcher published the findings', apakah status dari frasa 'Having analyzed'?",
+                answerOptions: [
+                    { text: "Finite verb dalam bentuk past perfect tense", isCorrect: false, rationale: "Salah. Ini adalah struktur participle, bukan finite verb." },
+                    { text: "Infinite verb hasil dari penyederhanaan (reduced) adverbial clause", isCorrect: true, rationale: "Benar. 'Having analyzed' adalah infinite perfect participle phrase yang berasal dari adverbial clause ('After the researcher had analyzed...')." },
+                    { text: "Verb utama dari kalimat", isCorrect: false, rationale: "Salah. Verb utama kalimat adalah 'published'." },
+                    { text: "Gerund yang bertindak sebagai objek preposisi", isCorrect: false, rationale: "Salah. Berfungsi sebagai adverbial modifier waktu/urutan." },
+                    { text: "Adjective yang menerangkan researcher", isCorrect: false, rationale: "Salah. Menerangkan keseluruhan aksi klausa utama." }
+                ]
+            },
+            {
+                questionNumber: 19,
+                question: "Manakah dari kalimat berikut yang memiliki kesalahan Subject-Verb Agreement?",
+                answerOptions: [
+                    { text: "The group of international scholars is arriving today.", isCorrect: false, rationale: "Salah (tatabahasa benar). Head noun 'group' bernilai singular, sesuai dengan 'is'." },
+                    { text: "Each of the books in the library feature unique illustrations.", isCorrect: true, rationale: "Benar (mengandung kesalahan). Kata 'Each' bernilai singular, sehingga verb seharusnya 'features', bukan 'feature'." },
+                    { text: "Physics is an essential branch of science.", isCorrect: false, rationale: "Salah (tatabahasa benar). Bidang ilmu berakhiran -s mengambil singular verb 'is'." },
+                    { text: "Ten years is a long time to wait for a breakthrough.", isCorrect: false, rationale: "Salah (tatabahasa benar). Keterangan durasi waktu mengambil singular verb 'is'." },
+                    { text: "The criteria for selection are strict.", isCorrect: false, rationale: "Salah (tatabahasa benar). Kata 'criteria' berbentuk plural (singular: criterion), sesuai dengan 'are'." }
+                ]
+            },
+            {
+                questionNumber: 20,
+                question: "Identifikasi main verb phrase dalam kalimat: By the time the conference began, all participants had registered online.",
+                answerOptions: [
+                    { text: "began", isCorrect: false, rationale: "Salah. Kata 'began' adalah finite verb milik klausa anak/keterangan ('By the time...')." },
+                    { text: "had registered", isCorrect: true, rationale: "Benar. 'Had registered' adalah main finite verb phrase dari klausa utama (induk kalimat)." },
+                    { text: "registered", isCorrect: false, rationale: "Salah. Hanya bagian dari kombinasi auxiliary-ordinary verb 'had registered'." },
+                    { text: "online", isCorrect: false, rationale: "Salah. Kata 'online' adalah adverb." },
+                    { text: "participants", isCorrect: false, rationale: "Salah. 'Participants' adalah noun subjek." }
+                ]
+            },
+            {
+                questionNumber: 21,
+                question: "Pilihlah kata yang tepat untuk melengkapi kalimat: Not only the professor but also the students _____ preparing for the annual symposium.",
+                answerOptions: [
+                    { text: "is", isCorrect: false, rationale: "Salah. Pada struktur 'not only... but also', agreement verb menyesuaikan subjek terdekat ('students' yang berbentuk plural)." },
+                    { text: "are", isCorrect: true, rationale: "Benar. Verb disesuaikan dengan subjek terdekat yaitu 'students' (plural)." },
+                    { text: "was", isCorrect: false, rationale: "Salah. Verb singular tidak cocok dengan subjek terdekat yang berbentuk plural." },
+                    { text: "has been", isCorrect: false, rationale: "Salah. Merupakan struktur singular." },
+                    { text: "be", isCorrect: false, rationale: "Salah. Base form tidak tepat digunakan." }
+                ]
+            },
+            {
+                questionNumber: 22,
+                question: "Apakah fungsi gramatikal kata 'Writing' pada kalimat: <em>Writing academic papers</em> requires strict adherence to citation guidelines.",
+                answerOptions: [
+                    { text: "Finite verb dalam bentuk progressive tense", isCorrect: false, rationale: "Salah. Tidak ada auxiliary 'be' yang mendahuluinya." },
+                    { text: "Gerund phrase yang bertindak sebagai subject", isCorrect: true, rationale: "Benar. 'Writing academic papers' berfungsi sebagai gerund phrase yang bertindak sebagai subjek dari 'requires'." },
+                    { text: "Present participle yang menerangkan papers", isCorrect: false, rationale: "Salah. Bertindak sebagai pelaku utama aksi, bukan modifier." },
+                    { text: "Infinitive complement", isCorrect: false, rationale: "Salah. Berupa gerund, bukan infinitive." },
+                    { text: "Reduced relative clause", isCorrect: false, rationale: "Salah. Bukan hasil pelepasan adjective clause." }
+                ]
+            },
+            {
+                questionNumber: 23,
+                question: "Kalimat manakah yang mengandung penggunaan infinite verb atau participle yang tidak tepat?",
+                answerOptions: [
+                    { text: "The book written by the linguist became a bestseller.", isCorrect: false, rationale: "Salah (tatabahasa benar). Kata 'written' adalah modifier reduced relative clause yang tepat." },
+                    { text: "Students studying in the library preparing for exams.", isCorrect: true, rationale: "Benar (mengandung kesalahan). Kalimat ini tidak memiliki main finite verb karena 'studying' dan 'preparing' keduanya berstatus infinite participle." },
+                    { text: "Having completed her thesis, she graduated with honors.", isCorrect: false, rationale: "Salah (tatabahasa benar). Struktur participial modifier sudah tepat." },
+                    { text: "To understand quantum physics requires advanced mathematics.", isCorrect: false, rationale: "Salah (tatabahasa benar). To-infinitive subject sudah tepat." },
+                    { text: "The data collected by the team was published yesterday.", isCorrect: false, rationale: "Salah (tatabahasa benar). Past participle modifier sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 24,
+                question: "Pilihlah opsi yang tepat: The number of international students enrolled in the university _____ increased significantly this year.",
+                answerOptions: [
+                    { text: "have", isCorrect: false, rationale: "Salah. 'The number of' selalu membutuhkan singular verb." },
+                    { text: "were", isCorrect: false, rationale: "Salah. Plural past verb tidak sesuai." },
+                    { text: "has", isCorrect: true, rationale: "Benar. Frasa 'The number of' dianggap singular, sehingga memerlukan singular auxiliary verb 'has'." },
+                    { text: "are", isCorrect: false, rationale: "Salah. Plural verb tidak sesuai." },
+                    { text: "be", isCorrect: false, rationale: "Salah. Base form tidak tepat." }
+                ]
+            },
+            {
+                questionNumber: 25,
+                question: "Analisislah struktur kalimat berikut: What matters most in language acquisition is consistent exposure.",
+                answerOptions: [
+                    { text: "Subject berupa noun clause; verb adalah 'is'.", isCorrect: true, rationale: "Benar. 'What matters most in language acquisition' adalah noun clause yang bertindak sebagai subjek singular dari verb 'is'." },
+                    { text: "Subject berupa gerund phrase; verb adalah 'matters'.", isCorrect: false, rationale: "Salah. Subjek diawali oleh klausa dengan kata 'What'." },
+                    { text: "Subject adalah 'consistency'; verb adalah 'matters'.", isCorrect: false, rationale: "Salah. Seluruh klausa diawali 'What' bertindak sebagai subjek." },
+                    { text: "Merupakan kalimat perintah (imperative command).", isCorrect: false, rationale: "Salah. Ini adalah kalimat pernyataan (declarative)." },
+                    { text: "Mengandung kesalahan Subject-Verb Agreement.", isCorrect: false, rationale: "Salah. Noun clause tunggal berpasangan tepat dengan singular verb 'is'." }
+                ]
+            },
+            {
+                questionNumber: 26,
+                question: "Manakah dari kata berikut yang berfungsi sebagai Emphasize Auxiliary dalam kalimat?",
+                answerOptions: [
+                    { text: "have", isCorrect: false, rationale: "Salah. Merupakan primary auxiliary untuk perfect tense." },
+                    { text: "do", isCorrect: true, rationale: "Benar. 'Do', 'does', atau 'did' dapat berfungsi sebagai emphasize auxiliary untuk memberikan penekanan arti (benar-benar)." },
+                    { text: "can", isCorrect: false, rationale: "Salah. Merupakan modal auxiliary." },
+                    { text: "being", isCorrect: false, rationale: "Salah. Merupakan progressive/passive auxiliary." },
+                    { text: "must", isCorrect: false, rationale: "Salah. Merupakan modal auxiliary." }
+                ]
+            },
+            {
+                questionNumber: 27,
+                question: "Pilihlah bentuk verb yang tepat untuk mengisi bagian rumpang: Each of the research proposals submitted by the candidates _____ evaluated carefully.",
+                answerOptions: [
+                    { text: "are", isCorrect: false, rationale: "Salah. Subjek utama 'Each' bernilai singular." },
+                    { text: "were", isCorrect: false, rationale: "Salah. Plural verb tidak sesuai." },
+                    { text: "is", isCorrect: true, rationale: "Benar. Head noun 'Each' bernilai singular, sehingga membutuhkan singular verb 'is'." },
+                    { text: "have been", isCorrect: false, rationale: "Salah. Plural auxiliary structure tidak tepat." },
+                    { text: "be", isCorrect: false, rationale: "Salah. Base form tidak dapat digunakan." }
+                ]
+            },
+            {
+                questionNumber: 28,
+                question: "Pada kalimat 'The committee members are expressing their opinions', apakah status dari 'are expressing'?",
+                answerOptions: [
+                    { text: "Kedua kata adalah infinite verb.", isCorrect: false, rationale: "Salah. Membentuk finite continuous verb phrase." },
+                    { text: "'Are' adalah auxiliary finite, dan 'expressing' adalah ordinary finite (kombinasi progressive construction).", isCorrect: true, rationale: "Benar. Auxiliary 'are' berpasangan dengan V-ing 'expressing' membentuk kesatuan finite verb phrase." },
+                    { text: "Kedua kata adalah auxiliary verb.", isCorrect: false, rationale: "Salah. Kata 'expressing' adalah ordinary lexical verb." },
+                    { text: "Kedua kata adalah infinite verb.", isCorrect: false, rationale: "Salah." },
+                    { text: "'Are' berstatus infinite dan 'expressing' berstatus finite.", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 29,
+                question: "Manakah dari opsi berikut yang menunjukkan penerapan Subject-Verb Agreement yang tepat pada kalimat bermodifier penghalang?",
+                answerOptions: [
+                    { text: "The bouquet of fragrant roses look wonderful.", isCorrect: false, rationale: "Salah. Head noun 'bouquet' berbentuk singular, memerlukan kata kerja 'looks'." },
+                    { text: "The quality of these recordings are exceptional.", isCorrect: false, rationale: "Salah. Head noun 'quality' berbentuk singular, memerlukan kata kerja 'is'." },
+                    { text: "The strategy for solving complex problems requires patience.", isCorrect: true, rationale: "Benar. Singular head noun 'strategy' berpasangan secara tepat dengan singular verb 'requires'." },
+                    { text: "The results of the experiment confirms the hypothesis.", isCorrect: false, rationale: "Salah. Head noun 'results' berbentuk plural, memerlukan kata kerja 'confirm'." },
+                    { text: "A list of recommended readings are provided.", isCorrect: false, rationale: "Salah. Head noun 'list' berbentuk singular, memerlukan kata kerja 'is'." }
+                ]
+            },
+            {
+                questionNumber: 30,
+                question: "Identifikasi peran gramatikal dari 'To travel' pada kalimat: To travel extensively provides profound cultural insights.",
+                answerOptions: [
+                    { text: "Adverbial modifier of purpose", isCorrect: false, rationale: "Salah. Kata ini bertindak sebagai subjek utama kalimat." },
+                    { text: "To-infinitive phrase yang bertindak sebagai subject", isCorrect: true, rationale: "Benar. 'To travel extensively' berfungsi sebagai subjek tunggal dari finite verb 'provides'." },
+                    { text: "Object of preposition", isCorrect: false, rationale: "Salah. Tidak didahului oleh kata depan." },
+                    { text: "Gerund phrase complement", isCorrect: false, rationale: "Salah. Ini adalah infinitive phrase (to + V1)." },
+                    { text: "Reduced adjective clause", isCorrect: false, rationale: "Salah. Bukan klausa sifat tereduksi." }
+                ]
+            },
+            {
+                questionNumber: 31,
+                question: "Pilihlah struktur kalimat yang tepat:",
+                answerOptions: [
+                    { text: "Governments and educational institutions investing heavily in online learning.", isCorrect: false, rationale: "Salah. Kalimat kekurangan finite verb utama (hanya menggunakan infinite verb 'investing')." },
+                    { text: "Investing heavily in online learning is a priority for modern educational institutions.", isCorrect: true, rationale: "Benar. Gerund phrase 'Investing heavily in online learning' bertindak sebagai singular subject yang berpasangan tepat dengan singular verb 'is'." },
+                    { text: "What educational institutions investing in online learning.", isCorrect: false, rationale: "Salah. Struktur noun clause tidak lengkap tanpa predikat utama." },
+                    { text: "The investment in online learning by institutions are necessary.", isCorrect: false, rationale: "Salah. Head noun 'investment' berbentuk singular, memerlukan 'is'." },
+                    { text: "To investing in online learning require careful planning.", isCorrect: false, rationale: "Salah. Bentuk yang benar adalah 'To invest', dan verb harus berupa 'requires'." }
+                ]
+            },
+            {
+                questionNumber: 32,
+                question: "Pada kalimat 'The linguist who published the groundbreaking paper received an award', klausa relatif yang ada berfungsi sebagai:",
+                answerOptions: [
+                    { text: "Adverbial clause of time", isCorrect: false, rationale: "Salah. Klausa ini menerangkan kata benda, bukan waktu." },
+                    { text: "Adjective clause yang bertindak sebagai post-modifier dari kata linguist", isCorrect: true, rationale: "Benar. Relative clause 'who published the groundbreaking paper' berfungsi menerangkan head noun 'linguist'." },
+                    { text: "Noun clause yang bertindak sebagai direct object", isCorrect: false, rationale: "Salah. Berfungsi menerangkan noun subjek secara langsung." },
+                    { text: "Main independent clause", isCorrect: false, rationale: "Salah. Ini adalah anak kalimat terikat (dependent clause)." },
+                    { text: "Participial phrase", isCorrect: false, rationale: "Salah. Mengandung relative pronoun dan finite verb." }
+                ]
+            },
+            {
+                questionNumber: 33,
+                question: "Pilihlah opsi yang tepat untuk melengkapi kalimat: Neither the professor nor the students _____ aware of the schedule change.",
+                answerOptions: [
+                    { text: "was", isCorrect: false, rationale: "Salah. Pada struktur 'neither... nor', agreement disesuaikan dengan subjek terdekat ('students' yang berbentuk plural)." },
+                    { text: "is", isCorrect: false, rationale: "Salah. Present singular verb tidak cocok dengan plural closer subject." },
+                    { text: "were", isCorrect: true, rationale: "Benar. Verb disesuaikan dengan subjek terdekat yaitu 'students' (plural)." },
+                    { text: "has been", isCorrect: false, rationale: "Salah. Auxiliary singular tidak tepat." },
+                    { text: "be", isCorrect: false, rationale: "Salah. Base form tidak tepat digunakan." }
+                ]
+            },
+            {
+                questionNumber: 34,
+                question: "Identifikasi finite verb dalam kalimat: Having reviewed the literature, the committee approved the research proposal.",
+                answerOptions: [
+                    { text: "Having reviewed", isCorrect: false, rationale: "Salah. Ini adalah participial infinite phrase yang bertindak sebagai adverbial modifier." },
+                    { text: "approved", isCorrect: true, rationale: "Benar. 'Approved' adalah main past tense finite verb dari klausa utama." },
+                    { text: "proposal", isCorrect: false, rationale: "Salah. 'Proposal' adalah noun objek." },
+                    { text: "research", isCorrect: false, rationale: "Salah. 'Research' adalah noun penjelas (noun adjunct)." },
+                    { text: "committee", isCorrect: false, rationale: "Salah. 'Committee' adalah noun subjek." }
+                ]
+            },
+            {
+                questionNumber: 35,
+                question: "Manakah dari kalimat berikut yang menunjukkan Subject-Verb Agreement yang sempurna dan kelengkapan struktur?",
+                answerOptions: [
+                    { text: "The collection of historical documents in the archives are extremely valuable.", isCorrect: false, rationale: "Salah. Head noun 'collection' berbentuk singular, memerlukan 'is'." },
+                    { text: "What the researchers discovered during the expedition remains confidential.", isCorrect: true, rationale: "Benar. Noun clause subject 'What the researchers discovered during the expedition' bernilai singular, berpasangan tepat dengan singular verb 'remains'." },
+                    { text: "Each of the participants were given a questionnaire.", isCorrect: false, rationale: "Salah. 'Each' bernilai singular, memerlukan kata 'was'." },
+                    { text: "The number of applicants have risen dramatically.", isCorrect: false, rationale: "Salah. 'The number of' selalu membutuhkan singular verb 'has'." },
+                    { text: "To analyze syntactic structures require deep understanding.", isCorrect: false, rationale: "Salah. Singular infinitive subject membutuhkan kata 'requires'." }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let score = 0;
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        
+        const questionTextEl = document.getElementById('question-text');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTextEl = document.getElementById('explanation-text');
+        
+        const currentQNumEl = document.getElementById('current-q-num');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const scoreBadge = document.getElementById('score-badge');
+        const finalScoreText = document.getElementById('final-score-text');
+        const finalScoreDisplay = document.getElementById('final-score-display');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            scoreBadge.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            currentQNumEl.textContent = q.questionNumber;
+            progressBarEl.style.width = `${((currentQuestionIndex + 1) / questionsData.length) * 100}%`;
+
+            questionTextEl.innerHTML = q.question;
+            optionsContainerEl.innerHTML = '';
+            explanationBoxEl.classList.add('hidden');
+
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                let baseClasses = "w-full text-left p-4 rounded-xl border transition flex items-start gap-3 text-sm md:text-base ";
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (opt.isCorrect) {
+                        baseClasses += "bg-green-50 border-green-300 text-green-900 font-medium";
+                    } else if (isSelected && !opt.isCorrect) {
+                        baseClasses += "bg-red-50 border-red-300 text-red-900";
+                    } else {
+                        baseClasses += "bg-white border-slate-200 text-slate-700 opacity-60";
+                    }
+                    btn.disabled = true;
+                } else {
+                    baseClasses += "bg-white border-slate-200 hover:border-indigo-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="font-bold bg-slate-100 text-slate-700 w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs">${optionLetters[idx]}</span>
+                    <span class="mt-0.5">${opt.text}</span>
+                `;
+
+                if (userAnswers[currentQuestionIndex] === null) {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optionsContainerEl.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                showExplanation();
+            }
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questionsData.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+
+        function selectAnswer(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const q = questionsData[currentQuestionIndex];
+            
+            if (q.answerOptions[optionIndex].isCorrect) {
+                score++;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation() {
+            const q = questionsData[currentQuestionIndex];
+            const selectedOpt = q.answerOptions[userAnswers[currentQuestionIndex]];
+            explanationTextEl.textContent = selectedOpt.rationale;
+            explanationBoxEl.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            finalScoreText.textContent = `${score} / 35`;
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            score = 0;
+            resultScreen.classList.add('hidden');
+            scoreBadge.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

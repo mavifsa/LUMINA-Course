@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis TOEFL Interaktif: Skill 8 - Correlative Conjunction (20 Soal)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-violet-900 text-white shadow-md py-6 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-violet-700 text-violet-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">TOEFL Grammar Mastery</span>
+                <h1 class="text-2xl font-bold mt-1">Skill 8: Correlative Conjunction Analysis</h1>
+                <p class="text-violet-200 text-sm">20 Soal Interaktif (10 Error Analysis & 10 Fill in the Blank)</p>
+            </div>
+            <div id="score-badge" class="hidden bg-violet-800 border border-violet-600 px-4 py-2 rounded-xl text-center">
+                <span class="block text-xs text-violet-300">Skor Akhir</span>
+                <span id="final-score-text" class="text-xl font-bold text-white">0 / 20</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+            <div class="w-16 h-16 bg-violet-50 text-violet-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">🔀</div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Simulasi TOEFL Structure: Skill 8</h2>
+            <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                Uji pemahaman Anda tentang <em>Correlative Conjunctions</em> (<em>Both... and, Not only... but also, Either... or, Neither... nor</em>), keselarasan Subject-Verb Agreement berdasarkan subjek terdekat, penyesuaian bentuk ter-inversi setelah <em>Not only</em> di awal klausa, serta kesetaraan struktur paralel.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-md mx-auto mb-8 text-left text-sm text-slate-700">
+                <p class="font-semibold text-slate-900 mb-2">Komposisi Soal (Total 20 Soal):</p>
+                <ul class="space-y-1 list-disc list-inside">
+                    <li>10 Soal Error Analysis / Structure Error</li>
+                    <li>10 Soal Fill in the Blank</li>
+                    <li>Pilihan Jawaban: A, B, C, D, E</li>
+                </ul>
+            </div>
+            <button onclick="startQuiz()" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-sm">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden space-y-6">
+            <!-- Progress Bar & Info -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sm font-semibold text-slate-600">
+                    Soal <span id="current-q-num" class="text-violet-600 font-bold">1</span> dari <span id="total-q-num">20</span>
+                    <span id="difficulty-badge" class="ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium"></span>
+                </div>
+                <div class="w-1/3 md:w-1/2 bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-violet-600 h-2.5 rounded-full transition-all duration-300" style="width: 5%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+                <!-- Question Type Tag -->
+                <div>
+                    <span id="question-type-tag" class="text-xs font-semibold px-3 py-1 rounded-md bg-slate-100 text-slate-600 uppercase tracking-wide"></span>
+                </div>
+
+                <div id="question-text" class="text-lg md:text-xl font-medium text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Rationale Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+                    <div class="font-bold text-slate-900 flex items-center gap-2">
+                        <span>💡 Pembahasan Tata Bahasa</span>
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-6 py-2.5 rounded-xl transition shadow-sm">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center space-y-6">
+            <div class="w-20 h-20 bg-violet-50 text-violet-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🏆</div>
+            <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">
+                Selamat, Anda telah menyelesaikan simulasi 20 Soal TOEFL Skill 8: Correlative Conjunction Analysis.
+            </p>
+            <div class="inline-block bg-violet-50 border border-violet-200 rounded-2xl px-8 py-4">
+                <span id="final-score-display" class="text-4xl font-extrabold text-violet-600">0</span>
+                <span class="text-xl text-slate-500 font-semibold"> / 20</span>
+            </div>
+            <div>
+                <button onclick="restartQuiz()" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-sm">
+                    Ulangi Kuis
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
+        &copy; LUMINA PROJECT 2026 • TOEFL Preparation • Skill 8: Correlative Conjunction Analysis
+    </footer>
+
+    <!-- Script Quiz Logic -->
+    <script>
+        const questionsData = [
+            // --- SECTION 1: ERROR ANALYSIS (10 SOAL) ---
+            // Mudah (5)
+            {
+                questionNumber: 1,
+                type: "Error Analysis (Dari Materi)",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Not only</u> (A) Tiara <u>but also</u> (B) Tia <u>like</u> (C) Tio <u>for his</u> (D) gentle personality (E).",
+                answerOptions: [
+                    { text: "Not only", isCorrect: false, rationale: "Correlative conjunction awal 'Not only' sudah tepat." },
+                    { text: "but also", isCorrect: false, rationale: "Pasangan baku 'but also' sudah tepat." },
+                    { text: "like", isCorrect: true, rationale: "Benar! Pilihan C salah. Pada struktur 'Not only... but also...', kata kerja harus berkesesuaian dengan subjek terdekat. Subjek terdekat adalah 'Tia' (tunggal), maka kata kerja harus menggunakan 'likes', bukan 'like'." },
+                    { text: "for his", isCorrect: false, rationale: "Preposisi dan possessive pronoun sudah tepat." },
+                    { text: "gentle personality", isCorrect: false, rationale: "Noun phrase pelengkap sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 2,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Both <u>the laptop</u> (A) <u>and</u> (B) the wireless mouse <u>is</u> (C) <u>essential</u> (D) for remote work (E).",
+                answerOptions: [
+                    { text: "the laptop", isCorrect: false, rationale: "Subjek pertama setelah 'Both' sudah tepat." },
+                    { text: "and", isCorrect: false, rationale: "Pasangan baku dari 'Both' adalah 'and' sudah tepat." },
+                    { text: "is", isCorrect: true, rationale: "Benar! Pilihan C salah. Jika 'Both... and...' menghubungkan dua subjek, kata kerja selalu bernilai jamak (plural). Maka kata kerja yang benar adalah 'are', bukan 'is'." },
+                    { text: "essential", isCorrect: false, rationale: "Adjective complement sudah tepat." },
+                    { text: "for remote work", isCorrect: false, rationale: "Prepositional phrase tujuan sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 3,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The candidate <u>is</u> (A) <u>neither</u> (B) qualified <u>or</u> (C) experienced <u>enough</u> (D) for the managerial post (E).",
+                answerOptions: [
+                    { text: "is", isCorrect: false, rationale: "Verb singular sesuai subjek 'The candidate'." },
+                    { text: "neither", isCorrect: false, rationale: "Correlative conjunction penanda negasi ganda." },
+                    { text: "or", isCorrect: true, rationale: "Benar! Pilihan C salah. Kata 'neither' berpasangan baku dengan 'nor', bukan 'or'. Pasangan 'or' adalah 'either'." },
+                    { text: "enough", isCorrect: false, rationale: "Adverb 'enough' setelah adjective 'experienced' sudah tepat." },
+                    { text: "for the managerial post", isCorrect: false, rationale: "Prepositional phrase pelengkap sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 4,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>You <u>can choose</u> (A) <u>either</u> (B) to take <u>the oral exam</u> (C) <u>nor</u> (D) write a research paper (E).",
+                answerOptions: [
+                    { text: "can choose", isCorrect: false, rationale: "Modal verb phrase sudah tepat." },
+                    { text: "either", isCorrect: false, rationale: "Correlative conjunction pilihan sudah tepat." },
+                    { text: "the oral exam", isCorrect: false, rationale: "Noun phrase objek dari infinitive sudah tepat." },
+                    { text: "nor", isCorrect: true, rationale: "Benar! Pilihan D salah. Kata 'either' berpasangan baku dengan 'or', bukan 'nor'. Pasangan 'nor' adalah 'neither'." },
+                    { text: "write a research paper", isCorrect: false, rationale: "Bentuk paralel infinitif terbagi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 5,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>He washed <u>neither</u> (A) <u>his hands</u> (B) <u>and</u> (C) <u>his face</u> (D) before dinner (E).",
+                answerOptions: [
+                    { text: "neither", isCorrect: false, rationale: "Correlative conjunction awal negasi sudah tepat." },
+                    { text: "his hands", isCorrect: false, rationale: "Noun phrase objek pertama sudah tepat." },
+                    { text: "and", isCorrect: true, rationale: "Benar! Pilihan C salah. Pasangan baku untuk 'neither' adalah 'nor', bukan 'and'. Pasangan 'and' adalah 'both'." },
+                    { text: "his face", isCorrect: false, rationale: "Noun phrase objek kedua sudah tepat." },
+                    { text: "before dinner", isCorrect: false, rationale: "Prepositional phrase waktu sudah tepat." }
+                ]
+            },
+            // Sedang (4)
+            {
+                questionNumber: 6,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Not only <u>he arrived</u> (A) late for <u>the meeting</u> (B), <u>but also</u> (C) forgot to bring <u>the essential documents</u> (D) for the presentation (E).",
+                answerOptions: [
+                    { text: "he arrived", isCorrect: true, rationale: "Benar! Pilihan A salah. Ketika 'Not only' diletakkan di awal kalimat (sebelum subjek) untuk menghubungkan klausa verbal, klausa pertama wajib mengalami inversi dengan memunculkan auxiliary verb. Karena tenses-nya Simple Past, susunannya menjadi 'did he arrive'." },
+                    { text: "the meeting", isCorrect: false, rationale: "Object of preposition 'for' sudah tepat." },
+                    { text: "but also", isCorrect: false, rationale: "Pasangan baku 'but also' sudah tepat." },
+                    { text: "the essential documents", isCorrect: false, rationale: "Noun phrase objek dari forgot sudah tepat." },
+                    { text: "for the presentation", isCorrect: false, rationale: "Prepositional phrase tujuan sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 7,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Either <u>the teachers</u> (A) or <u>the principal</u> (B) <u>are</u> (C) responsible <u>for</u> (D) the administrative decision (E).",
+                answerOptions: [
+                    { text: "the teachers", isCorrect: false, rationale: "Subjek pertama setelah 'Either' sudah tepat." },
+                    { text: "the principal", isCorrect: false, rationale: "Subjek kedua setelah 'or' sudah tepat." },
+                    { text: "are", isCorrect: true, rationale: "Benar! Pilihan C salah. Pada struktur 'Either... or...', kata kerja berkesesuaian dengan subjek terdekat. Subjek terdekat dari verb adalah 'the principal' (tunggal), maka kata kerja yang benar adalah 'is', bukan 'are'." },
+                    { text: "for", isCorrect: false, rationale: "Preposisi 'for' setelah adjective responsible sudah tepat." },
+                    { text: "the administrative decision", isCorrect: false, rationale: "Noun phrase objek preposisi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 8,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Neither <u>the manager</u> (A) nor <u>the employees</u> (B) <u>is</u> (C) willing <u>to accept</u> (D) the new working hours (E).",
+                answerOptions: [
+                    { text: "the manager", isCorrect: false, rationale: "Subjek pertama setelah 'Neither' sudah tepat." },
+                    { text: "the employees", isCorrect: false, rationale: "Subjek kedua setelah 'nor' (jamak) sudah tepat." },
+                    { text: "is", isCorrect: true, rationale: "Benar! Pilihan C salah. Pada struktur 'Neither... nor...', kata kerja berkesesuaian dengan subjek terdekat. Subjek terdekat adalah 'the employees' (jamak/plural), maka kata kerja harus menggunakan 'are', bukan 'is'." },
+                    { text: "to accept", isCorrect: false, rationale: "To-infinitive complement setelah willing sudah tepat." },
+                    { text: "the new working hours", isCorrect: false, rationale: "Noun phrase objek sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 9,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The course <u>covers</u> (A) <u>both</u> (B) <u>how to write</u> (C) research papers <u>and</u> (D) <u>analyzing data</u> (E).",
+                answerOptions: [
+                    { text: "covers", isCorrect: false, rationale: "Verb singular sesuai subjek 'The course'." },
+                    { text: "both", isCorrect: false, rationale: "Correlative conjunction penanda kesetaraan ganda." },
+                    { text: "how to write", isCorrect: false, rationale: "Frasa pertama setelah 'both'." },
+                    { text: "and", isCorrect: false, rationale: "Pasangan baku dari 'both' sudah tepat." },
+                    { text: "analyzing data", isCorrect: true, rationale: "Benar! Pilihan E salah. 'Both... and...' harus menghubungkan dua elemen dengan struktur paralel. Elemen pertama berupa Question Word + To-Infinitive ('how to write...'), maka elemen kedua setelah 'and' harus sejajar, yaitu 'how to analyze data', bukan gerund 'analyzing data'." }
+                ]
+            },
+            // Sulit (1)
+            {
+                questionNumber: 10,
+                type: "Error Analysis",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Not only</u> (A) <u>was the student</u> (B) praised for her high exam score, <u>but</u> (C) she <u>also received</u> (D) a full scholarship <u>or</u> (E) a research grant.",
+                answerOptions: [
+                    { text: "Not only", isCorrect: false, rationale: "Penanda inversi klausa awal." },
+                    { text: "was the student", isCorrect: false, rationale: "Inversi nominal setelah 'Not only' (was + subjek) sudah tepat." },
+                    { text: "but", isCorrect: false, rationale: "Bagian dari pasangan 'but also'." },
+                    { text: "also received", isCorrect: false, rationale: "Verb phrase klausa kedua sudah tepat." },
+                    { text: "or", isCorrect: true, rationale: "Benar! Pilihan E salah. Konteks klausa kedua menyampaikan dua penghargaan tambahan yang diterima bersamaan/pilihan positif paralel. Namun, perhatikan penggunaan konjungsi di akhir: pemberian opsi dua beasiswa dapat menggunakan 'and' (a full scholarship and a research grant), namun dalam struktur 'not only... but also...', pemisah berlebih 'or' kurang tepat jika tidak dipasangkan dengan 'either'." }
+                ]
+            },
+
+            // --- SECTION 2: FILL IN THE BLANK (10 SOAL) ---
+            // Mudah (5)
+            {
+                questionNumber: 11,
+                type: "Fill in the Blank (Dari Materi)",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The cat is _____ under the table or behind the sofa.",
+                answerOptions: [
+                    { text: "either", isCorrect: true, rationale: "Benar! Kata 'either' adalah pasangan correlative baku untuk 'or' ('either under the table or behind the sofa') yang menghubungkan dua prepositional phrases." },
+                    { text: "neither", isCorrect: false, rationale: "Salah. 'neither' berpasangan dengan 'nor'." },
+                    { text: "both", isCorrect: false, rationale: "Salah. 'both' berpasangan dengan 'and'." },
+                    { text: "not only", isCorrect: false, rationale: "Salah. 'not only' berpasangan dengan 'but also'." },
+                    { text: "whether", isCorrect: false, rationale: "Salah. 'whether' berpasangan dengan 'or' dalam konteks klausa/pilihan ragu-ragu." }
+                ]
+            },
+            {
+                questionNumber: 12,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>We need both a laptop _____ a wireless mouse to complete our tasks efficiently.",
+                answerOptions: [
+                    { text: "and", isCorrect: true, rationale: "Benar! 'and' adalah pasangan baku dari 'both' ('both... and...')." },
+                    { text: "or", isCorrect: false, rationale: "Salah. 'or' berpasangan dengan 'either'." },
+                    { text: "nor", isCorrect: false, rationale: "Salah. 'nor' berpasangan dengan 'neither'." },
+                    { text: "but also", isCorrect: false, rationale: "Salah. 'but also' berpasangan dengan 'not only'." },
+                    { text: "as well as", isCorrect: false, rationale: "Salah. Bukan pasangan baku dari 'both'." }
+                ]
+            },
+            {
+                questionNumber: 13,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>Both laptop and mouse _____ essential to work in modern offices.",
+                answerOptions: [
+                    { text: "are", isCorrect: true, rationale: "Benar! Subjek yang dihubungkan oleh 'Both... and...' selalu memerlukan kata kerja jamak (plural verb), yaitu 'are'." },
+                    { text: "is", isCorrect: false, rationale: "Salah. 'is' digunakan untuk subjek tunggal." },
+                    { text: "was", isCorrect: false, rationale: "Salah. 'was' adalah past tense tunggal." },
+                    { text: "be", isCorrect: false, rationale: "Salah. Bare verb ungrammatikal." },
+                    { text: "being", isCorrect: false, rationale: "Salah. Participle tidak bisa bertindak sebagai finite verb utama." }
+                ]
+            },
+            {
+                questionNumber: 14,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The report was neither accurate _____ relevant to the discussion.",
+                answerOptions: [
+                    { text: "nor", isCorrect: true, rationale: "Benar! 'nor' adalah pasangan baku dari 'neither' ('neither... nor...')." },
+                    { text: "or", isCorrect: false, rationale: "Salah. 'or' berpasangan dengan 'either'." },
+                    { text: "and", isCorrect: false, rationale: "Salah. 'and' berpasangan dengan 'both'." },
+                    { text: "but also", isCorrect: false, rationale: "Salah. 'but also' berpasangan dengan 'not only'." },
+                    { text: "also", isCorrect: false, rationale: "Salah. Bukan pasangan correlative baku." }
+                ]
+            },
+            {
+                questionNumber: 15,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>She is not only intelligent _____ highly creative in solving problems.",
+                answerOptions: [
+                    { text: "but also", isCorrect: true, rationale: "Benar! 'but also' adalah pasangan baku dari 'not only' ('not only... but also...')." },
+                    { text: "and also", isCorrect: false, rationale: "Salah. Bukan pasangan baku." },
+                    { text: "nor", isCorrect: false, rationale: "Salah. 'nor' berpasangan dengan 'neither'." },
+                    { text: "or", isCorrect: false, rationale: "Salah. 'or' berpasangan dengan 'either'." },
+                    { text: "yet also", isCorrect: false, rationale: "Salah. Kombinasi tidak baku." }
+                ]
+            },
+            // Sedang (4)
+            {
+                questionNumber: 16,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>Not only _____ arrive late, but he also forgot his passport at home.",
+                answerOptions: [
+                    { text: "did he", isCorrect: true, rationale: "Benar! Ketika 'Not only' di awal kalimat menghubungkan klausa verbal, klausa tersebut harus ter-inversi dengan memunculkan auxiliary verb ('did he arrive')." },
+                    { text: "he did", isCorrect: false, rationale: "Salah. Tidak mengalami struktur ter-inversi." },
+                    { text: "he was", isCorrect: false, rationale: "Salah. Kalimat ini menggunakan kata kerja verbal 'arrive', bukan nominal 'was'." },
+                    { text: "was he", isCorrect: false, rationale: "Salah. Auxiliary 'was' tidak digunakan untuk kata kerja tindakan dasar 'arrive'." },
+                    { text: "does he", isCorrect: false, rationale: "Salah. Tenses pada klausa kedua adalah Simple Past ('forgot'), maka auxiliary harus 'did'." }
+                ]
+            },
+            {
+                questionNumber: 17,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>Either the members of the committee or the chairman _____ responsible for signing the official contract.",
+                answerOptions: [
+                    { text: "is", isCorrect: true, rationale: "Benar! Pada struktur 'Either... or...', kata kerja mengikuti subjek terdekat. Subjek terdekat adalah 'the chairman' (tunggal), maka kata kerja yang benar adalah 'is'." },
+                    { text: "are", isCorrect: false, rationale: "Salah. 'are' tidak cocok dengan subjek terdekat 'the chairman' (singular)." },
+                    { text: "were", isCorrect: false, rationale: "Salah. Plural verb tidak cocok dengan subjek terdekat tunggal." },
+                    { text: "be", isCorrect: false, rationale: "Salah. Bare verb ungrammatikal." },
+                    { text: "being", isCorrect: false, rationale: "Salah. Participle tidak bisa bertindak sebagai finite verb." }
+                ]
+            },
+            {
+                questionNumber: 18,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>Neither the professor nor the research assistants _____ available for consultation this afternoon.",
+                answerOptions: [
+                    { text: "are", isCorrect: true, rationale: "Benar! Pada struktur 'Neither... nor...', kata kerja mengikuti subjek terdekat. Subjek terdekat adalah 'the research assistants' (jamak), maka kata kerja yang tepat adalah 'are'." },
+                    { text: "is", isCorrect: false, rationale: "Salah. 'is' tunggal tidak cocok dengan subjek terdekat jamak ('assistants')." },
+                    { text: "was", isCorrect: false, rationale: "Salah. Past singular tidak cocok dengan subjek terdekat jamak." },
+                    { text: "be", isCorrect: false, rationale: "Salah. Bare verb ungrammatikal." },
+                    { text: "been", isCorrect: false, rationale: "Salah. V3 tanpa 'have' tidak bisa menjadi predikat utama." }
+                ]
+            },
+            {
+                questionNumber: 19,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The campaign was effective not only in raising awareness _____ in generating donations.",
+                answerOptions: [
+                    { text: "but also", isCorrect: true, rationale: "Benar! 'but also' melengkapi pasangan 'not only' dan menjaga struktur paralel antar prepositional phrases ('in raising...' dan 'in generating...')." },
+                    { text: "and also", isCorrect: false, rationale: "Salah. Bukan pasangan correlative baku." },
+                    { text: "or also", isCorrect: false, rationale: "Salah. Bukan pasangan correlative baku." },
+                    { text: "nor", isCorrect: false, rationale: "Salah. 'nor' berpasangan dengan 'neither'." },
+                    { text: "yet also", isCorrect: false, rationale: "Salah. Bukan pasangan baku." }
+                ]
+            },
+            // Sulit (1)
+            {
+                questionNumber: 20,
+                type: "Fill in the Blank",
+                difficulty: "Sulit",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>Not only _____ a prominent scholar in linguistics, but she was also a dedicated human rights advocate.",
+                answerOptions: [
+                    { text: "was she", isCorrect: true, rationale: "Benar! Ketika 'Not only' diletakkan di awal kalimat untuk klausa nominal, terjadi inversi to be sebelum subjek ('was she')." },
+                    { text: "she was", isCorrect: false, rationale: "Salah. Tidak mengalami struktur inversi." },
+                    { text: "did she", isCorrect: false, rationale: "Salah. Auxiliary 'did' digunakan untuk klausa verbal, sedangkan klausa ini nominal ('a prominent scholar')." },
+                    { text: "is she", isCorrect: false, rationale: "Salah. Tenses pada klausa kedua menggunakan past tense ('was also')." },
+                    { text: "she is", isCorrect: false, rationale: "Salah. Tenses dan inversi tidak sesuai." }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let score = 0;
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        
+        const questionTextEl = document.getElementById('question-text');
+        const questionTypeTagEl = document.getElementById('question-type-tag');
+        const difficultyBadgeEl = document.getElementById('difficulty-badge');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTextEl = document.getElementById('explanation-text');
+        
+        const currentQNumEl = document.getElementById('current-q-num');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const scoreBadge = document.getElementById('score-badge');
+        const finalScoreText = document.getElementById('final-score-text');
+        const finalScoreDisplay = document.getElementById('final-score-display');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            scoreBadge.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            currentQNumEl.textContent = q.questionNumber;
+            progressBarEl.style.width = `${((currentQuestionIndex + 1) / questionsData.length) * 100}%`;
+
+            questionTypeTagEl.textContent = q.type;
+            
+            // Set Difficulty Badge Color
+            difficultyBadgeEl.textContent = q.difficulty;
+            if (q.difficulty === "Mudah") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 text-emerald-800";
+            } else if (q.difficulty === "Sedang") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-amber-100 text-amber-800";
+            } else {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-rose-100 text-rose-800";
+            }
+
+            questionTextEl.innerHTML = q.question;
+            optionsContainerEl.innerHTML = '';
+            explanationBoxEl.classList.add('hidden');
+
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                let baseClasses = "w-full text-left p-4 rounded-xl border transition flex items-start gap-3 text-sm md:text-base ";
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (opt.isCorrect) {
+                        baseClasses += "bg-emerald-50 border-emerald-300 text-emerald-900 font-medium";
+                    } else if (isSelected && !opt.isCorrect) {
+                        baseClasses += "bg-rose-50 border-rose-300 text-rose-900";
+                    } else {
+                        baseClasses += "bg-white border-slate-200 text-slate-700 opacity-60";
+                    }
+                    btn.disabled = true;
+                } else {
+                    baseClasses += "bg-white border-slate-200 hover:border-violet-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="font-bold bg-slate-100 text-slate-700 w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs">${optionLetters[idx]}</span>
+                    <span class="mt-0.5">${opt.text}</span>
+                `;
+
+                if (userAnswers[currentQuestionIndex] === null) {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optionsContainerEl.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                showExplanation();
+            }
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questionsData.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+
+        function selectAnswer(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const q = questionsData[currentQuestionIndex];
+            
+            if (q.answerOptions[optionIndex].isCorrect) {
+                score++;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation() {
+            const q = questionsData[currentQuestionIndex];
+            const selectedOpt = q.answerOptions[userAnswers[currentQuestionIndex]];
+            explanationTextEl.innerHTML = selectedOpt.rationale;
+            explanationBoxEl.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            finalScoreText.textContent = `${score} / 20`;
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            score = 0;
+            resultScreen.classList.add('hidden');
+            scoreBadge.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Interaktif: Analisis Frasa & Noun Phrase (LA + DA + N)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-emerald-900 text-white shadow-md py-6 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-emerald-700 text-emerald-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">Linguistic & Grammar Mastery</span>
+                <h1 class="text-2xl font-bold mt-1">Konsep Frasa & Pembentukan Noun Phrase</h1>
+                <p class="text-emerald-200 text-sm">20 Soal Konseptual & Analisis Struktur (Head, Modifier, LA + DA + N)</p>
+            </div>
+            <div id="score-badge" class="hidden bg-emerald-800 border border-emerald-600 px-4 py-2 rounded-xl text-center">
+                <span class="block text-xs text-emerald-300">Skor Akhir</span>
+                <span id="final-score-text" class="text-xl font-bold text-white">0 / 20</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+            <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">📚</div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Simulasi Interaktif Pemahaman Frasa (Phrase)</h2>
+            <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                Uji pemahaman mendalam Anda mengenai susunan <em>Head (H) & Modifier (M)</em>, pembentukan Noun Phrase, urutan <em>Limiting Adjective (LA)</em> & <em>Descriptive Adjective (DA)</em>, Noun Adjunct, Participle Modifier, To-Infinitive Modifier, serta Adverb Modifier.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-md mx-auto mb-8 text-left text-sm text-slate-700">
+                <p class="font-semibold text-slate-900 mb-2">Komposisi Soal (Total 20 Soal):</p>
+                <ul class="space-y-1 list-disc list-inside">
+                    <li>Pengertian dasar Head & Modifier (Pre & Post)</li>
+                    <li>Noun Adjunct & Participle Modifier</li>
+                    <li>To-Infinitive (Personal Action vs Abstract Noun)</li>
+                    <li>Aturan Susunan Limiting Adjective (LA 1-5)</li>
+                    <li>Aturan Susunan Descriptive Adjective (DA)</li>
+                    <li>Penerapan Merangkai Noun Phrase Kompleks</li>
+                    <li>Pilihan Jawaban: A, B, C, D, E</li>
+                </ul>
+            </div>
+            <button onclick="startQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-sm">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden space-y-6">
+            <!-- Progress Bar & Info -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sm font-semibold text-slate-600">
+                    Soal <span id="current-q-num" class="text-emerald-600 font-bold">1</span> dari <span id="total-q-num">20</span>
+                    <span id="category-badge" class="ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 text-emerald-800"></span>
+                </div>
+                <div class="w-1/3 md:w-1/2 bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-emerald-600 h-2.5 rounded-full transition-all duration-300" style="width: 5%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+                <!-- Question Type Tag -->
+                <div>
+                    <span id="question-type-tag" class="text-xs font-semibold px-3 py-1 rounded-md bg-slate-100 text-slate-600 uppercase tracking-wide"></span>
+                </div>
+
+                <div id="question-text" class="text-lg md:text-xl font-medium text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Rationale Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+                    <div class="font-bold text-slate-900 flex items-center gap-2">
+                        <span>💡 Pembahasan & Analisis Frasa</span>
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-2.5 rounded-xl transition shadow-sm">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center space-y-6">
+            <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🏆</div>
+            <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">
+                Selamat, Anda telah menyelesaikan simulasi 20 Soal Analisis Frasa & Noun Phrase.
+            </p>
+            <div class="inline-block bg-emerald-50 border border-emerald-200 rounded-2xl px-8 py-4">
+                <span id="final-score-display" class="text-4xl font-extrabold text-emerald-600">0</span>
+                <span class="text-xl text-slate-500 font-semibold"> / 20</span>
+            </div>
+            <div>
+                <button onclick="restartQuiz()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-sm">
+                    Ulangi Kuis
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
+        &copy; LUMINA PROJECT 2026 • Kuis Pemahaman Frasa & Noun Phrase
+    </footer>
+
+    <!-- Script Quiz Logic -->
+    <script>
+        const questionsData = [
+            // --- KELOMPOK 1: KONSEP HEAD & MODIFIER ---
+            {
+                questionNumber: 1,
+                type: "Konsep Dasar Frasa",
+                category: "Head & Modifier",
+                question: "Di dalam sebuah struktur frasa (phrase), manakah pernyataan yang paling tepat mengenai ketentuan <em>Head (H)</em> dan <em>Modifier (M)</em>?",
+                answerOptions: [
+                    { text: "Setiap frasa boleh memiliki lebih dari satu Head, tetapi hanya boleh memiliki satu Modifier.", isCorrect: false },
+                    { text: "Setiap frasa hanya memiliki tepat satu Head (elemen yang dijelaskan), sedangkan Modifier (elemen yang menjelaskan) boleh lebih dari satu.", isCorrect: true, rationale: "Benar! Prinsip utama frasa adalah hanya terdiri dari 1 Head (inti frasa), sementara Modifier dapat berada di sebelum (Pre-M) atau sesudah Head (Post-M) dalam jumlah lebih dari satu." },
+                    { text: "Head harus selalu terletak di awal frasa sebelum semua Modifier.", isCorrect: false },
+                    { text: "Penamaan jenis frasa ditentukan oleh kata pertama yang muncul dalam frasa tersebut, bukan jenis Head-nya.", isCorrect: false },
+                    { text: "Modifier adalah elemen yang dijelaskan, sedangkan Head adalah kata sifat yang menjelaskan.", isCorrect: false }
+                ]
+            },
+            {
+                questionNumber: 2,
+                type: "Analisis Struktur Subjek",
+                category: "Head & Modifier",
+                question: "Perhatikan frasa subjek berikut dari contoh materi:<br><br><strong>'The sudden illness afterward'</strong><br><br>Manakah analisis susunan <em>Head</em> dan <em>Modifier</em> yang benar dari subjek di atas?",
+                answerOptions: [
+                    { text: "Head: 'illness'; Pre-Modifier: 'The' & 'sudden'; Post-Modifier: 'afterward'", isCorrect: true, rationale: "Benar! Inti kata benda yang dijelaskan adalah 'illness' (Head). Kata 'The' (article) dan 'sudden' (adjective) bertindak sebagai Pre-Modifier, sedangkan 'afterward' (adverb of time) bertindak sebagai Post-Modifier." },
+                    { text: "Head: 'sudden'; Pre-Modifier: 'The'; Post-Modifier: 'illness' & 'afterward'", isCorrect: false },
+                    { text: "Head: 'afterward'; Pre-Modifier: 'The sudden illness'", isCorrect: false },
+                    { text: "Head: 'illness'; Pre-Modifier: 'The'; Post-Modifier: 'sudden afterward'", isCorrect: false },
+                    { text: "Head: 'The'; Post-Modifier: 'sudden illness afterward'", isCorrect: false }
+                ]
+            },
+
+            // --- KELOMPOK 2: NOUN ADJUNCT & PARTICIPLE ---
+            {
+                questionNumber: 3,
+                type: "Noun Adjunct",
+                category: "Pre-Modifier",
+                question: "Pada frasa <strong>'Grammar book'</strong>, <strong>'car key'</strong>, dan <strong>'MBG menu'</strong>, kata <em>'Grammar'</em>, <em>'car'</em>, dan <em>'MBG'</em> bertindak sebagai apa?",
+                answerOptions: [
+                    { text: "Head dari frasa tersebut karena terletak di posisi depan.", isCorrect: false },
+                    { text: "Noun Adjunct, yaitu kata benda yang difungsikan sebagai penjelas (Pre-Modifier) bagi Noun utama setelahnya.", isCorrect: true, rationale: "Benar! Setiap kata benda pertama dalam susunan dua noun berurutan berfungsi sebagai 'Noun Adjunct' (elemen penjelas tambahan) yang menjelaskan Head noun di belakangnya." },
+                    { text: "Adverb of Place yang menerangkan tempat benda berada.", isCorrect: false },
+                    { text: "Possessive Pronoun yang menyatakan kepemilikan mutlak.", isCorrect: false },
+                    { text: "Post-Modifier yang menjelaskan fungsi abstrak benda.", isCorrect: false }
+                ]
+            },
+            {
+                questionNumber: 4,
+                type: "Participle Modifier",
+                category: "Pre-Modifier",
+                question: "Pada frasa <strong>'crying boy'</strong> dan <strong>'broken glass'</strong>, kata <em>'crying'</em> (V-ing) dan <em>'broken'</em> (V3) berfungsi sebagai:",
+                answerOptions: [
+                    { text: "Verb utama (Finite Verb) yang membentuk klausa verbal.", isCorrect: false },
+                    { text: "Adjective (Participle Modifier) yang menjelaskan kata benda setelahnya dengan makna aktif (V-ing) dan pasif (V3).", isCorrect: true, rationale: "Benar! Participle (V-ing sebagai Present Participle bermakna aktif 'yang menangis' dan V3 sebagai Past Participle bermakna pasif 'yang pecah') yang mendahului noun berfungsi sebagai Adjective (Pre-Modifier)." },
+                    { text: "Noun Adjunct yang membatasi jumlah benda.", isCorrect: false },
+                    { text: "Adverb of Manner yang menerangkan cara kerja benda.", isCorrect: false },
+                    { text: "Limiting Adjective jenis Quantifier.", isCorrect: false }
+                ]
+            },
+
+            // --- KELOMPOK 3: ADJECTIVE CLAUSE REDUCTION (PARTICIPLE POST-MODIFIER) ---
+            {
+                questionNumber: 5,
+                type: "Reduced Adjective Clause",
+                category: "Post-Modifier",
+                question: "Perhatikan dua kalimat berikut dari materi:<br>1. <em>'The boy moshing in the class is your friend.'</em><br>2. <em>'The man splashed with acid by the TNI is Andrie Yunus...'</em><br><br>Manakah asal bentuk klausa penuh (Adjective Clause utuh) sebelum dilakukan pangkasan (*reduction*) pada frasa penjelas di atas?",
+                answerOptions: [
+                    { text: "'who is moshing' dan 'who was splashed'", isCorrect: true, rationale: "Benar! Kata 'moshing' berasal dari Adjective Clause aktif 'who is moshing', sedangkan 'splashed' berasal dari Adjective Clause pasif 'who was splashed' yang telah dihapus conjunction dan to be-nya." },
+                    { text: "'who mosh' dan 'who splashes'", isCorrect: false },
+                    { text: "'which is moshing' dan 'which was splashed'", isCorrect: false },
+                    { text: "'whom moshing' dan 'whom splashed'", isCorrect: false },
+                    { text: "'whose moshing' dan 'whose splashed'", isCorrect: false }
+                ]
+            },
+
+            // --- KELOMPOK 4: TO-INFINITIVE MODIFIER ---
+            {
+                questionNumber: 6,
+                type: "To-Infinitive Modifier",
+                category: "Post-Modifier",
+                question: "Jika frasa <strong>'The boy moshing in the class'</strong> diubah menjadi <strong>'The boy to mosh in the class'</strong>, bagaimana perubahan makna yang terjadi pada penjelas kata benda tersebut?",
+                answerOptions: [
+                    { text: "Makna berubah dari 'yang telah selesai moshing' menjadi 'yang sedang moshing'.", isCorrect: false },
+                    { text: "Makna berubah dari 'yang sedang moshing' (tindakan berlangsung) menjadi 'yang akan moshing' (tindakan personal yang akan dilakukan).", isCorrect: true, rationale: "Benar! Penggunaan To-Infinitive (to + V1) sebagai modifier noun personal mengubah makna penjelas dari tindakan yang sedang terjadi (V-ing) menjadi tindakan yang 'akan dilakukan' di masa depan." },
+                    { text: "Makna berubah menjadi pasif yaitu 'yang dimoshingkan'.", isCorrect: false },
+                    { text: "Tidak ada perubahan makna sama sekali karena keduanya adalah modifier.", isCorrect: false },
+                    { text: "Makna berubah menjadi kalimat perintah bagi anak tersebut.", isCorrect: false }
+                ]
+            },
+            {
+                questionNumber: 7,
+                type: "To-Infinitive + Abstract Noun",
+                category: "Post-Modifier",
+                question: "Perhatikan kalimat berikut:<br><br><strong>'The best way to learn English is by practice.'</strong><br><br>Mengapa penggunaan <em>To-Infinitive</em> (<em>'to learn'</em>) di sini TIDAK diartikan sebagai tindakan personal 'yang akan dipelajari'?",
+                answerOptions: [
+                    { text: "Karena kata 'way' adalah nama orang, bukan benda.", isCorrect: false },
+                    { text: "Karena To-Infinitive yang mengikuti kata benda abstrak (seperti <em>way, ability, opportunity, time, permission</em>) berfungsi menjelaskan isi atau tujuan dari benda tersebut.", isCorrect: true, rationale: "Benar! Jika To-Infinitive mengikuti Noun Abstrak (seperti way, ability, permission, dll.), fungsinya adalah menjelaskan isi/tujuan dari noun tersebut ('cara untuk belajar English'), bukan menyatakan arti tindakan personal 'yang akan dilakukan'." },
+                    { text: "Karena terdapat kata 'best' yang mengubah To-Infinitive menjadi kata kerja utama.", isCorrect: false },
+                    { text: "Karena kata 'learn' berposisi sebagai objek dari preposisi 'by'.", isCorrect: false },
+                    { text: "Karena To-Infinitive di atas berfungsi sebagai Noun Adjunct.", isCorrect: false }
+                ]
+            },
+
+            // --- KELOMPOK 5: ADVERB AS MODIFIER ---
+            {
+                questionNumber: 8,
+                type: "Adverb Modifier of Noun",
+                category: "Post-Modifier",
+                question: "Pada frasa-frasa berikut:<br>- <em>'the room downstairs'</em><br>- <em>'the 12th May commemoration yesterday'</em><br>- <em>'the labor protest there'</em><br><br>Kata <em>'downstairs'</em>, <em>'yesterday'</em>, dan <em>'there'</em> tergolong ke dalam kelas kata apa dan apa fungsinya?",
+                answerOptions: [
+                    { text: "Descriptive Adjective yang menerangkan warna dan bentuk benda.", isCorrect: false },
+                    { text: "Adverb (Adverb of Place & Time) yang berfungsi sebagai Post-Modifier (penjelas setelah noun) bagi kata benda sebelumnya.", isCorrect: true, rationale: "Benar! Kata 'downstairs' (tempat), 'yesterday' (waktu), dan 'there' (tempat) adalah Adverb yang berposisi di belakang kata benda (Post-Modifier) untuk menjelaskan lokasi/waktu benda tersebut." },
+                    { text: "Limiting Adjective jenis Demonstrative.", isCorrect: false },
+                    { text: "Noun Adjunct yang membatasi jenis benda.", isCorrect: false },
+                    { text: "Participle Modifier yang menyatakan tindakan aktif.", isCorrect: false }
+                ]
+            },
+
+            // --- KELOMPOK 6: LIMITING ADJECTIVE (LA 1 - ARTICLE & DEMONSTRATIVE) ---
+            {
+                questionNumber: 9,
+                type: "Limiting Adjective (Article)",
+                category: "LA Sub-types",
+                question: "Manakah aturan penggunaan <em>Article</em> (a, an, the) yang paling tepat berdasarkan kaidah penentu suara (*vowel/consonant sound*)?",
+                answerOptions: [
+                    { text: "Article 'a' digunakan jika kata benda diawali huruf vokal (a, e, i, o, u) secara tertulis.", isCorrect: false },
+                    { text: "Article 'an' digunakan untuk kata benda yang diawali suara vokal (vowel sound) seperti <em>an apple, an hour, an umbrella</em>; sedangkan 'a' untuk suara konsonan seperti <em>a university, a pen</em>.", isCorrect: true, rationale: "Benar! Penentuan 'a' atau 'an' didasarkan pada bunyi/suara ucapan (phonetic sound), bukan sekadar huruf tertulis. Contoh: 'university' diawali bunyi konsonan /juː/, maka menggunakan 'a'." },
+                    { text: "Article 'the' hanya boleh digunakan untuk kata benda tunggal yang bisa dihitung (n.C.Sing).", isCorrect: false },
+                    { text: "Article 'a/an' dapat digunakan untuk Uncountable Noun (nU) seperti <em>a water</em>.", isCorrect: false },
+                    { text: "Article 'the' tidak dapat digunakan untuk Plural Noun (n.C.Pl).", isCorrect: false }
+                ]
+            },
+            {
+                questionNumber: 10,
+                type: "Limiting Adjective (Demonstrative)",
+                category: "LA Sub-types",
+                question: "Pasangan kata tunjuk (*Demonstrative*) manakah yang secara tepat digunakan untuk <em>Noun Uncountable (nU)</em> dan <em>Noun Countable Plural (nCPl)</em>?",
+                answerOptions: [
+                    { text: "Uncountable Noun: <em>These / Those</em>; Plural Noun: <em>This / That</em>", isCorrect: false },
+                    { text: "Uncountable Noun & Singular Noun: <em>This / That</em>; Plural Noun: <em>These / Those</em>", isCorrect: true, rationale: "Benar! 'This/That' digunakan untuk Noun Uncountable (misal: <em>this water</em>) dan Singular Noun (misal: <em>this apple</em>). Sedangkan 'These/Those' khusus untuk Plural Noun (misal: <em>these apples, those books</em>)." },
+                    { text: "Uncountable Noun: <em>Many / Few</em>; Plural Noun: <em>Much / Little</em>", isCorrect: false },
+                    { text: "Uncountable Noun: <em>Each / Every</em>; Plural Noun: <em>This / That</em>", isCorrect: false },
+                    { text: "Semua kata tunjuk dapat digunakan bebas tanpa memandang jenis noun.", isCorrect: false }
+                ]
+            },
+
+            // --- KELOMPOK 7: LIMITING ADJECTIVE (POSSESSIVE & INDEFINITE QUANTITY) ---
+            {
+                questionNumber: 11,
+                type: "Possessive Genitive",
+                category: "LA Sub-types",
+                question: "Bagaimanakah pembedaan pembentukan kepemilikan (*Possessive Genitive*) antara orang (*person*) dan bukan orang (*non-person*)?",
+                answerOptions: [
+                    { text: "Person menggunakan pola <em>n of n</em> (misal: <em>books of Nanang</em>); Non-person menggunakan 's (misal: <em>car's key</em>).", isCorrect: false },
+                    { text: "Person menggunakan penambahan apostrof 's (misal: <em>Nanang's books, Aris' books</em>); sedangkan Non-person menggunakan pola Noun Adjunct / <em>n of n</em> (misal: <em>car key / key of car</em>).", isCorrect: true, rationale: "Benar! Untuk manusia (person) menggunakan apostrof 's (atau ' setelah s jamak). Sedangkan benda mati (non-person) menggunakan pola inversi Noun Adjunct (<em>car key</em>) atau frasa preposisi <em>n of n</em> (<em>key of car</em>)." },
+                    { text: "Person dan Non-person keduanya wajib menggunakan apostrof 's.", isCorrect: false },
+                    { text: "Person menggunakan <em>This/That</em>; Non-person menggunakan <em>My/Your</em>.", isCorrect: false },
+                    { text: "Non-person tidak bisa dibuat menjadi frasa kepemilikan.", isCorrect: false }
+                ]
+            },
+            {
+                questionNumber: 12,
+                type: "Indefinite Quantity",
+                category: "LA Sub-types",
+                question: "Manakah pengelompokan kata jumlah tak tentu (*Indefinite Quantity*) yang BENAR berdasarkan jenis kata bendanya?",
+                answerOptions: [
+                    { text: "Banyak: <em>Many</em> (nCPl) & <em>Much</em> (nU); Sedikit: <em>Few</em> (nCPl) & <em>Little</em> (nU)", isCorrect: true, rationale: "Benar! <em>Many</em> dan <em>Few</em> digunakan untuk benda terhitung jamak (nCPl, misal: <em>many students, few books</em>). Sedangkan <em>Much</em> dan <em>Little</em> untuk benda tak terhitung (nU, misal: <em>much money, little information</em>)." },
+                    { text: "Banyak: <em>Much</em> (nCPl) & <em>Many</em> (nU); Sedikit: <em>Little</em> (nCPl) & <em>Few</em> (nU)", isCorrect: false },
+                    { text: "Banyak: <em>Few</em> (nCPl) & <em>Little</em> (nU); Sedikit: <em>Many</em> (nCPl) & <em>Much</em> (nU)", isCorrect: false },
+                    { text: "<em>Several</em> digunakan khusus untuk Uncountable Noun (nU).", isCorrect: false },
+                    { text: "<em>Each</em> & <em>Every</em> harus diikuti oleh Plural Countable Noun (nCPl).", isCorrect: false }
+                ]
+            },
+
+            // --- KELOMPOK 8: EACH/EVERY & NUMERAL ---
+            {
+                questionNumber: 13,
+                type: "Aturan Each & Every",
+                category: "LA Sub-types",
+                question: "Perhatikan dua kalimat berikut:<br>1. <em>'Every student is present.'</em><br>2. <em>'Each of students is going to Bali next month.'</em><br><br>Mengapa kata kerja yang digunakan pada kalimat kedua adalah <strong>'is'</strong> (singular), padahal terdapat kata <em>'students'</em> (plural)?",
+                answerOptions: [
+                    { text: "Karena terjadi kesalahan penulisan grammar pada kalimat tersebut.", isCorrect: false },
+                    { text: "Karena makna 'Each' menunjuk pada individu tunggal ('setiap satu siswa') dari kelompok para siswa tersebut.", isCorrect: true, rationale: "Benar! Makna <em>Each</em> menekankan aspek individual/tunggal dari anggota kelompok (setiap satu orang dari para siswa), sehingga predikat/verb-nya tetap bernilai tunggal (<em>is</em>)." },
+                    { text: "Karena kata 'going' mengubah subjek menjadi jamak.", isCorrect: false },
+                    { text: "Karena kata 'students' di situ berposisi sebagai kata sifat.", isCorrect: false },
+                    { text: "Karena 'Each' merupakan Uncountable Noun.", isCorrect: false }
+                ]
+            },
+            {
+                questionNumber: 14,
+                type: "Numeral (Cardinal vs Ordinal)",
+                category: "LA Sub-types",
+                question: "Perhatikan analisis contoh dari materi:<br><br>Mengapa kalimat <strong>'My third wife goes to market'</strong> bernilai BENAR (menggunakan verb <em>goes</em>), sedangkan <strong>'My third wife go to market'</strong> SALAH?",
+                answerOptions: [
+                    { text: "Karena 'third' adalah Ordinal Numeral yang menunjuk pada individu tunggal (istri yang ke-3, bukan 3 orang istri), sehingga subjeknya tunggal dan butuh verb Vs/es (goes).", isCorrect: true, rationale: "Benar! 'third' (ke-3) menunjukkan urutan/posisi tunggal satu orang istri, bukan jumlah 3 orang. Subjeknya singular, sehingga verb-nya harus 'goes'. Jika jumlahnya 3 orang, kalimatnya menjadi <em>'My three wives go...'</em>." },
+                    { text: "Karena 'third' artinya 'tiga orang istri', sehingga seharusnya memakai verb plural.", isCorrect: false },
+                    { text: "Karena kata 'wife' adalah Uncountable Noun.", isCorrect: false },
+                    { text: "Karena 'goes' merupakan kata kerja modal auxiliary.", isCorrect: false },
+                    { text: "Karena Ordinal Numeral mewajibkan kata kerja dalam bentuk V-ing.", isCorrect: false }
+                ]
+            },
+
+            // --- KELOMPOK 9: DESCRIPTIVE ADJECTIVE (DA) & URUTANNYA ---
+            {
+                questionNumber: 15,
+                type: "Kategori Descriptive Adjective",
+                category: "DA Hierarchy",
+                question: "Di dalam merangkai kata sifat deskriptif (Descriptive Adjective), manakah hierarki urutan DA dari peringkat atas ke bawah (a $\\rightarrow$ h) yang benar menurut aturan tata bahasa?",
+                answerOptions: [
+                    { text: "a. Character $\\rightarrow$ b. Quality $\\rightarrow$ c. Size $\\rightarrow$ d. Age $\\rightarrow$ e. Temperature $\\rightarrow$ f. Shape $\\rightarrow$ g. Color $\\rightarrow$ h. Nationality", isCorrect: true, rationale: "Benar! Urutan komponen DA standar adalah: Character (sifat/karakter) $\\rightarrow$ Quality (kualitas) $\\rightarrow$ Size (ukuran) $\\rightarrow$ Age (umur) $\\rightarrow$ Temperature (suhu) $\\rightarrow$ Shape (bentuk) $\\rightarrow$ Color (warna) $\\rightarrow$ Nationality (kebangsaan)." },
+                    { text: "a. Nationality $\\rightarrow$ b. Color $\\rightarrow$ c. Shape $\\rightarrow$ d. Size $\\rightarrow$ e. Quality $\\rightarrow$ f. Character", isCorrect: false },
+                    { text: "a. Size $\\rightarrow$ b. Age $\\rightarrow$ c. Color $\\rightarrow$ d. Character $\\rightarrow$ e. Nationality", isCorrect: false },
+                    { text: "a. Temperature $\\rightarrow$ b. Character $\\rightarrow$ c. Size $\\rightarrow$ d. Color $\\rightarrow$ e. Quality", isCorrect: false },
+                    { text: "Urutan DA bersifat bebas dan tidak memiliki aturan baku.", isCorrect: false }
+                ]
+            },
+            {
+                questionNumber: 16,
+                type: "Arah Penyusunan DA",
+                category: "DA Hierarchy",
+                question: "Dalam rumus utama penyusunan Pre-Modifier Noun Phrase <strong>(LA + DA + N)</strong>, bagaimanakah arah urutan penerapan untuk <em>Limiting Adjective (LA)</em> dan <em>Descriptive Adjective (DA)</em>?",
+                answerOptions: [
+                    { text: "LA disusun dari bawah ke atas; DA disusun dari atas ke bawah.", isCorrect: false },
+                    { text: "LA disusun dari urutan atas ke bawah (LA1 $\\rightarrow$ LA5); sedangkan DA disusun dari urutan bawah ke atas mendekati Noun (DA8 $\\rightarrow$ DA1).", isCorrect: true, rationale: "Benar! Aturan praktis penyusunan Pre-Modifier adalah LA diurutkan dari kelompok atas ke bawah, sedangkan DA diurutkan dari bawah ke atas (Nationality/Color paling dekat dengan Noun Head)." },
+                    { text: "LA dan DA bebas diletakkan di mana saja asal Noun berada di depan.", isCorrect: false },
+                    { text: "DA harus selalu mendahului LA sebelum Noun.", isCorrect: false },
+                    { text: "Semua kata sifat harus dihubungkan dengan kata sambung 'and'.", isCorrect: false }
+                ]
+            },
+
+            // --- KELOMPOK 10: MERANGKAI NOUN PHRASE (CONTOH MATERI) ---
+            {
+                questionNumber: 17,
+                type: "Merangkai Noun Phrase",
+                category: "Penerapan Rumus",
+                question: "Mari kita analisis contoh dari materi berikut:<br><br>Frasa Bahasa Indonesia: <strong>'Buku kunoku yang ke sembilan'</strong><br><br>Komponen:<br>- Head (H): <em>book</em><br>- Ancient: <em>Age (DA4)</em><br>- My: <em>Possessive (LA3)</em><br>- Ninth: <em>Ordinal Numeral (LA5)</em><br><br>Manakah hasil susunan Noun Phrase Bahasa Inggris yang TEPAT sesuai rumus LA + DA + N?",
+                answerOptions: [
+                    { text: "Book ancient my ninth", isCorrect: false },
+                    { text: "My ninth ancient book", isCorrect: true, rationale: "Benar! Urutan LA dari atas ke bawah: My (LA3 Possessive) $\\rightarrow$ ninth (LA5 Numeral Ordinal). Kemudian DA: ancient (DA4 Age). Lalu diakhiri Head Noun: book. Hasilnya: 'My ninth ancient book'." },
+                    { text: "Ninth my ancient book", isCorrect: false },
+                    { text: "Ancient my ninth book", isCorrect: false },
+                    { text: "My ancient ninth book", isCorrect: false }
+                ]
+            },
+            {
+                questionNumber: 18,
+                type: "Merangkai Noun Phrase Kompleks",
+                category: "Penerapan Rumus",
+                question: "Mari kita analisis contoh kompleks dari materi berikut:<br><br>Frasa Bahasa Indonesia: <strong>'20 siswa Malaysianya pak Dr. Najih yang rajin dan rendah hati'</strong><br><br>Komponen:<br>- Head (H): <em>students</em><br>- 20: <em>Numeral Cardinal (LA5)</em><br>- Mr. Dr. Najih's: <em>Possessive Genitive (LA3)</em><br>- Malaysian: <em>Nationality (DA8)</em><br>- Diligent & Humble: <em>Character/Quality (DA1/DA2)</em><br><br>Manakah hasil susunan Noun Phrase Bahasa Inggris yang TEPAT sesuai rumus LA + DA + N?",
+                answerOptions: [
+                    { text: "20 students Malaysian Mr. Dr. Najih's diligent and humble", isCorrect: false },
+                    { text: "20 Mr. Dr. Najih's Malaysian diligent and humble students", isCorrect: true, rationale: "Benar! Susunan LA (atas ke bawah): 20 (LA5) dan Mr. Dr. Najih's (LA3). Susunan DA (bawah ke atas): Malaysian (DA8 Nationality) $\\rightarrow$ diligent and humble (DA1/2 Character). Ditutup Head: students. Hasil: '20 Mr. Dr. Najih's Malaysian diligent and humble students'." },
+                    { text: "Mr. Dr. Najih's 20 diligent and humble Malaysian students", isCorrect: false },
+                    { text: "Malaysian 20 Mr. Dr. Najih's students diligent and humble", isCorrect: false },
+                    { text: "Diligent and humble 20 students of Mr. Dr. Najih Malaysian", isCorrect: false }
+                ]
+            },
+            {
+                questionNumber: 19,
+                type: "Analisis Fungsi Kata 'Afterward'",
+                category: "Post-Modifier Analysis",
+                question: "Dalam kalimat <em>'The sudden illness afterward killed Munir inside the Garuda Indonesia plane'</em>, apakah fungsi aspek tata bahasa dari kata <strong>'afterward'</strong>?",
+                answerOptions: [
+                    { text: "Sebagai Verb utama kalimat yang bermakna 'membunuh'.", isCorrect: false },
+                    { text: "Sebagai Adverb (Post-Modifier) yang menjelaskan aspek waktu kapan Munir mulai merasakan efek fatal dari racun arsenik setelah pesawat lepas landas.", isCorrect: true, rationale: "Benar! Sesuai pembahasan materi, kata 'afterward' bertindak sebagai Post-Modifier berkategori Adverb yang menjelaskan aspek waktu dari Noun 'illness'." },
+                    { text: "Sebagai Pre-Modifier jenis Limiting Adjective.", isCorrect: false },
+                    { text: "Sebagai Noun Adjunct yang menerangkan merk pesawat.", isCorrect: false },
+                    { text: "Sebagai Conjunction yang menghubungkan dua klausa independen.", isCorrect: false }
+                ]
+            },
+            {
+                questionNumber: 20,
+                type: "Rangkuman Fungsi Pre vs Post Modifier",
+                category: "Kesimpulan Frasa",
+                question: "Berdasarkan seluruh pembahasan Head & Modifier pada Noun Phrase, manakah kesimpulan kelas kata penjelas (*Modifier*) yang BENAR untuk posisi **Pre-Modifier** dan **Post-Modifier**?",
+                answerOptions: [
+                    { text: "Pre-Modifier: Prepositional Phrase & Adjective Clause; Post-Modifier: Limiting Adjective saja.", isCorrect: false },
+                    { text: "Pre-Modifier: Adjective (LA, DA, Noun Adjunct, Participle); Post-Modifier: Prepositional Phrase (Prep.P), Adjective Clause (AC), To-Infinitive (to Inf), & Adverb (Adv).", isCorrect: true, rationale: "Benar! Kesimpulan materi: Elemen penjelas sebelum Noun (Pre-Modifier) adalah Adjective (LA, DA, Participle, Noun Adjunct). Sedangkan elemen penjelas setelah Noun (Post-Modifier) mencakup Prepositional Phrase, Adjective Clause, To-Infinitive, dan Adverb." },
+                    { text: "Pre-Modifier dan Post-Modifier keduanya hanya boleh diisi oleh kata benda (Noun).", isCorrect: false },
+                    { text: "Pre-Modifier khusus untuk Verb; Post-Modifier khusus untuk Subject.", isCorrect: false },
+                    { text: "Tidak ada perbedaan antara Pre-Modifier dan Post-Modifier dalam tata bahasa Inggris.", isCorrect: false }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let score = 0;
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        
+        const questionTextEl = document.getElementById('question-text');
+        const questionTypeTagEl = document.getElementById('question-type-tag');
+        const categoryBadgeEl = document.getElementById('category-badge');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTextEl = document.getElementById('explanation-text');
+        
+        const currentQNumEl = document.getElementById('current-q-num');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const scoreBadge = document.getElementById('score-badge');
+        const finalScoreText = document.getElementById('final-score-text');
+        const finalScoreDisplay = document.getElementById('final-score-display');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            scoreBadge.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            currentQNumEl.textContent = q.questionNumber;
+            progressBarEl.style.width = `${((currentQuestionIndex + 1) / questionsData.length) * 100}%`;
+
+            questionTypeTagEl.textContent = q.type;
+            categoryBadgeEl.textContent = q.category;
+
+            questionTextEl.innerHTML = q.question;
+            optionsContainerEl.innerHTML = '';
+            explanationBoxEl.classList.add('hidden');
+
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                let baseClasses = "w-full text-left p-4 rounded-xl border transition flex items-start gap-3 text-sm md:text-base ";
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (opt.isCorrect) {
+                        baseClasses += "bg-emerald-50 border-emerald-300 text-emerald-900 font-medium";
+                    } else if (isSelected && !opt.isCorrect) {
+                        baseClasses += "bg-rose-50 border-rose-300 text-rose-900";
+                    } else {
+                        baseClasses += "bg-white border-slate-200 text-slate-700 opacity-60";
+                    }
+                    btn.disabled = true;
+                } else {
+                    baseClasses += "bg-white border-slate-200 hover:border-emerald-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="font-bold bg-slate-100 text-slate-700 w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs">${optionLetters[idx]}</span>
+                    <span class="mt-0.5">${opt.text}</span>
+                `;
+
+                if (userAnswers[currentQuestionIndex] === null) {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optionsContainerEl.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                showExplanation();
+            }
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questionsData.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+
+        function selectAnswer(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const q = questionsData[currentQuestionIndex];
+            
+            if (q.answerOptions[optionIndex].isCorrect) {
+                score++;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation() {
+            const q = questionsData[currentQuestionIndex];
+            const correctOpt = q.answerOptions.find(opt => opt.isCorrect);
+            explanationTextEl.innerHTML = correctOpt.rationale;
+            explanationBoxEl.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            finalScoreText.textContent = `${score} / 20`;
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            score = 0;
+            resultScreen.classList.add('hidden');
+            scoreBadge.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Dasar: Part of Speech & Fungsi Kata</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-blue-800 text-white shadow-md py-6 px-4">
+        <div class="max-w-3xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-blue-600 text-blue-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">Grammar Dasar TOEFL</span>
+                <h1 class="text-2xl font-bold mt-1">Part of Speech & Fungsi Kata</h1>
+                <p class="text-blue-200 text-sm">Latihan 20 Soal Interaktif (A-B-C-D-E)</p>
+            </div>
+            <div id="score-badge" class="hidden bg-blue-900 border border-blue-700 px-4 py-2 rounded-xl text-center">
+                <span class="block text-xs text-blue-300">Skor Akhir</span>
+                <span id="final-score-text" class="text-xl font-bold text-white">0 / 20</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-3xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+            <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">📚</div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Latihan Klasifikasi Kata & Fungsi Grammar</h2>
+            <p class="text-slate-600 max-w-lg mx-auto mb-6">
+                Soal-soal ini dirancang untuk melatih pemahaman mengenai jenis kata (Noun, Verb, Adjective, Adverb, Preposition, Conjunction) dan fungsinya.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-sm mx-auto mb-8 text-left text-sm text-slate-700">
+                <ul class="space-y-2">
+                    <li>✅ <strong>Jumlah Soal:</strong> 20 Butir</li>
+                    <li>✅ <strong>Tingkat:</strong> Dasar / Mudah</li>
+                    <li>✅ <strong>Pilihan:</strong> A, B, C, D, E</li>
+                    <li>✅ <strong>Fitur:</strong> Pembahasan langsung dengan b. Indonesia</li>
+                </ul>
+            </div>
+            <button onclick="startQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-sm">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden space-y-6">
+            <!-- Progress Bar & Info -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sm font-semibold text-slate-600">
+                    Soal <span id="current-q-num" class="text-blue-600 font-bold">1</span> dari <span id="total-q-num">20</span>
+                </div>
+                <div class="w-1/2 bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style="width: 5%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+                <div id="question-text" class="text-lg md:text-xl font-semibold text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Rationale Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+                    <div class="font-bold text-slate-900 flex items-center gap-2">
+                        <span>💡 Pembahasan</span>
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-xl transition shadow-sm">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center space-y-6">
+            <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🎉</div>
+            <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">
+                Bagus sekali! Anda telah menyelesaikan seluruh latihan dasar jenis kata dan fungsinya.
+            </p>
+            <div class="inline-block bg-blue-50 border border-blue-200 rounded-2xl px-8 py-4">
+                <span id="final-score-display" class="text-4xl font-extrabold text-blue-600">0</span>
+                <span class="text-xl text-slate-500 font-semibold"> / 20</span>
+            </div>
+            <div>
+                <button onclick="restartQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-sm">
+                    Ulangi Kuis
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
+        &copy; LUMINA PROJECT 2026. Modul Dasar TOEFL • Part of Speech & Functional Grammar
+    </footer>
+
+    <!-- Script Quiz Logic -->
+    <script>
+        const questionsData = [
+            {
+                questionNumber: 1,
+                question: "Pada kalimat <em>\"I need your love\"</em>, kata <strong>love</strong> dikategorikan sebagai jenis kata apa?",
+                answerOptions: [
+                    { text: "Verb (Kata Kerja)", isCorrect: false, rationale: "Salah. Kata 'love' di sini tidak bertindak sebagai predikat tindakan." },
+                    { text: "Noun (Kata Benda)", isCorrect: true, rationale: "Benar! Kata 'love' di sini berfungsi sebagai objek dari kata kerja 'need', sehingga termasuk Noun." },
+                    { text: "Adjective (Kata Sifat)", isCorrect: false, rationale: "Salah. 'Love' di sini tidak menerangkan kata benda lain." },
+                    { text: "Adverb (Kata Keterangan)", isCorrect: false, rationale: "Salah. 'Love' bukan keterangan cara/waktu/tempat." },
+                    { text: "Pronoun (Kata Ganti)", isCorrect: false, rationale: "Salah. 'Love' adalah nama konsep, bukan kata ganti seperti I/you." }
+                ]
+            },
+            {
+                questionNumber: 2,
+                question: "Pada kalimat <em>\"I love you\"</em>, kata <strong>love</strong> berfungsi sebagai apa dalam kalimat?",
+                answerOptions: [
+                    { text: "Subject", isCorrect: false, rationale: "Salah. Subjek kalimat tersebut adalah 'I'." },
+                    { text: "Object", isCorrect: false, rationale: "Salah. Objek kalimat tersebut adalah 'you'." },
+                    { text: "Verb / Predikat (Verbal Function)", isCorrect: true, rationale: "Benar! Kata 'love' menunjukkan tindakan/perasaan subjek terhadap objek, sehingga berfungsi sebagai Verb." },
+                    { text: "Adjective Modifier", isCorrect: false, rationale: "Salah. Kata 'love' di sini adalah tindakan utama." },
+                    { text: "Preposition", isCorrect: false, rationale: "Salah. 'Love' bukan kata depan." }
+                ]
+            },
+            {
+                questionNumber: 3,
+                question: "Perhatikan kalimat: <em>\"Before giving the gift, you should create dramatic atmosphere.\"</em> Mengapa kata <strong>before</strong> dikategorikan sebagai <strong>Preposition</strong>?",
+                answerOptions: [
+                    { text: "Karena diikuti oleh klausa lengkap (Subject + Verb)", isCorrect: false, rationale: "Salah. Setelah 'before' terdapat gerund phrase, bukan S + V." },
+                    { text: "Karena diikuti oleh gerund / gerund phrase (\"giving the gift\")", isCorrect: true, rationale: "Benar! Jika setelah 'before' berupa noun, gerund, atau gerund phrase, maka kategorinya adalah Preposition." },
+                    { text: "Karena berada di awal kalimat", isCorrect: false, rationale: "Salah. Posisi di awal tidak menentukan bahwa itu preposition." },
+                    { text: "Karena menerangkan kata kerja 'create'", isCorrect: false, rationale: "Salah." },
+                    { text: "Karena menggabungkan dua kalimat tunggal", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 4,
+                question: "Manakah kalimat berikut yang menggunakan kata <strong>before</strong> sebagai <strong>Conjunction (Kata Hubung)</strong>?",
+                answerOptions: [
+                    { text: "Before the meeting, we had lunch.", isCorrect: false, rationale: "Salah. 'the meeting' adalah noun phrase, jadi 'before' di sini preposition." },
+                    { text: "You should clean the room before you leave.", isCorrect: true, rationale: "Benar! Setelah 'before' terdapat klausa lengkap 'you leave' (S + V), sehingga 'before' berfungsi sebagai Conjunction." },
+                    { text: "She arrived before noon.", isCorrect: false, rationale: "Salah. 'noon' adalah noun." },
+                    { text: "Before starting the car, check the oil.", isCorrect: false, rationale: "Salah. 'starting' adalah gerund." },
+                    { text: "I have seen that movie before.", isCorrect: false, rationale: "Salah. 'before' di sini berdiri sendiri sebagai Adverb." }
+                ]
+            },
+            {
+                questionNumber: 5,
+                question: "Manakah di antara pilihan berikut yang merupakan contoh kata berjenis <strong>Pronoun (Kata Ganti)</strong>?",
+                answerOptions: [
+                    { text: "Water, Money, Idea", isCorrect: false, rationale: "Salah. Ini adalah Noun." },
+                    { text: "Beautiful, Red, Oval", isCorrect: false, rationale: "Salah. Ini adalah Adjective." },
+                    { text: "They, It, Myself", isCorrect: true, rationale: "Benar! 'They', 'it', dan 'myself' adalah contoh kata ganti (Pronoun)." },
+                    { text: "Here, Fast, Seldom", isCorrect: false, rationale: "Salah. Ini adalah Adverb." },
+                    { text: "Because, And, Which", isCorrect: false, rationale: "Salah. Ini adalah Conjunction." }
+                ]
+            },
+            {
+                questionNumber: 6,
+                question: "Pada kalimat <em>\"Swimming is healthy\"</em>, kata <strong>swimming</strong> berasal dari kata kerja tetapi berfungsi secara <strong>Nominal (seperti Noun)</strong> karena bertindak sebagai...",
+                answerOptions: [
+                    { text: "Predikat utama", isCorrect: false, rationale: "Salah. Predikat utamanya adalah 'is'." },
+                    { text: "Subject kalimat", isCorrect: true, rationale: "Benar! 'Swimming' adalah gerund yang bertindak sebagai subjek kalimat." },
+                    { text: "Kata sifat untuk healthy", isCorrect: false, rationale: "Salah." },
+                    { text: "Kata keterangan tempat", isCorrect: false, rationale: "Salah." },
+                    { text: "Objek dari kata kerja", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 7,
+                question: "Pada kalimat <em>\"She has a beautiful cat\"</em>, kata <strong>beautiful</strong> memiliki fungsi <strong>Adjectival</strong> karena bertindak untuk...",
+                answerOptions: [
+                    { text: "Menerangkan kata kerja 'has'", isCorrect: false, rationale: "Salah. 'Beautiful' menerangkan kucingnya, bukan tindakan memilikinya." },
+                    { text: "Menerangkan kata benda (noun) 'cat'", isCorrect: true, rationale: "Benar! Fungsi Adjectival memberikan informasi/sifat pada noun 'cat'." },
+                    { text: "Menjelaskan subjek 'She'", isCorrect: false, rationale: "Salah. 'Beautiful' menempel langsung pada kata benda 'cat'." },
+                    { text: "Menunjukkan waktu kejadian", isCorrect: false, rationale: "Salah." },
+                    { text: "Menghubungkan dua frasa", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 8,
+                question: "Pada kalimat <em>\"She speaks slowly\"</em>, kata <strong>slowly</strong> memiliki fungsi <strong>Adverbial</strong> karena...",
+                answerOptions: [
+                    { text: "Menerangkan kata sifat 'She'", isCorrect: false, rationale: "Salah. 'She' adalah pronoun, bukan kata sifat." },
+                    { text: "Menerangkan kata kerja 'speaks'", isCorrect: true, rationale: "Benar! Kata 'slowly' menerangkan *cara* dari kata kerja 'speaks'." },
+                    { text: "Menjadi objek dari klausa", isCorrect: false, rationale: "Salah." },
+                    { text: "Menjadi subjek kalimat", isCorrect: false, rationale: "Salah." },
+                    { text: "Menerangkan kata benda tempat", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 9,
+                question: "Manakah kelompok kata di bawah ini yang semuanya tergolong <strong>Preposition (Kata Depan)</strong>?",
+                answerOptions: [
+                    { text: "In, On, In front of, Despite", isCorrect: true, rationale: "Benar! Semua kata tersebut adalah kata depan (Preposition)." },
+                    { text: "And, But, Because, Although", isCorrect: false, rationale: "Salah. Ini adalah Conjunction." },
+                    { text: "Run, Eat, Sleep, Beautify", isCorrect: false, rationale: "Salah. Ini adalah Verb." },
+                    { text: "Happiness, Love, Water, City", isCorrect: false, rationale: "Salah. Ini adalah Noun." },
+                    { text: "Wow, Oh, Congratulations", isCorrect: false, rationale: "Salah. Ini adalah Interjection." }
+                ]
+            },
+            {
+                questionNumber: 10,
+                question: "Pada kalimat <em>\"They arrived yesterday\"</em>, kata <strong>yesterday</strong> menjalankan fungsi <strong>Adverbial</strong> yang menunjukkan...",
+                answerOptions: [
+                    { text: "Tempat (Place)", isCorrect: false, rationale: "Salah." },
+                    { text: "Waktu (Time)", isCorrect: true, rationale: "Benar! 'Yesterday' menunjukkan keterangan waktu saat tindakan terjadi." },
+                    { text: "Cara (Manner)", isCorrect: false, rationale: "Salah." },
+                    { text: "Alasan (Reason)", isCorrect: false, rationale: "Salah." },
+                    { text: "Tujuan (Purpose)", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 11,
+                question: "Perhatikan kalimat: <em>\"The man in black jacket is my teacher.\"</em> Frasa <strong>\"in black jacket\"</strong> berfungsi sebagai apa?",
+                answerOptions: [
+                    { text: "Nominal function (sebagai subjek)", isCorrect: false, rationale: "Salah. Subjek utamanya adalah 'The man'." },
+                    { text: "Verbal function (sebagai predikat)", isCorrect: false, rationale: "Salah. Predikatnya adalah 'is'." },
+                    { text: "Adjectival function (menjelaskan kata benda 'man')", isCorrect: true, rationale: "Benar! Frasa prepositional 'in black jacket' menerangkan/memperjelas kata benda 'man'." },
+                    { text: "Adverbial function of reason", isCorrect: false, rationale: "Salah. Frasa ini tidak menerangkan alasan." },
+                    { text: "Conjunction", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 12,
+                question: "Pada kalimat <em>\"He lives in Pekalongan\"</em>, frasa <strong>\"in Pekalongan\"</strong> berfungsi sebagai keterangan apa?",
+                answerOptions: [
+                    { text: "Adverbial of Time (Waktu)", isCorrect: false, rationale: "Salah." },
+                    { text: "Adverbial of Place (Tempat)", isCorrect: true, rationale: "Benar! Frasa tersebut menerangkan tempat di mana ia tinggal." },
+                    { text: "Adverbial of Manner (Cara)", isCorrect: false, rationale: "Salah." },
+                    { text: "Adjectival Modifier", isCorrect: false, rationale: "Salah." },
+                    { text: "Nominal Subject", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 13,
+                question: "Pada kalimat <em>\"Because he was sick, he stayed home\"</em>, klausa <strong>\"Because he was sick\"</strong> memiliki fungsi...",
+                answerOptions: [
+                    { text: "Adverbial function (menunjukkan alasan/sebab)", isCorrect: true, rationale: "Benar! Klausa berawalan 'because' memberikan keterangan alasan/sebab dari tindakan di klausa utama." },
+                    { text: "Nominal function (sebagai objek)", isCorrect: false, rationale: "Salah." },
+                    { text: "Adjectival function (menerangkan 'he')", isCorrect: false, rationale: "Salah." },
+                    { text: "Verbal function (sebagai predikat)", isCorrect: false, rationale: "Salah." },
+                    { text: "Prepositional function", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 14,
+                question: "Manakah urutan tahapan analisis grammar yang benar dari tingkat terkecil hingga tingkat klausa?",
+                answerOptions: [
+                    { text: "Clause ➔ Phrase ➔ Word", isCorrect: false, rationale: "Salah. Urutan ini terbalik." },
+                    { text: "Word ➔ Phrase ➔ Clause", isCorrect: true, rationale: "Benar! Urutan analisis diawali dari Kata (Word), kelompok kata (Phrase), lalu Klausa (Clause)." },
+                    { text: "Phrase ➔ Word ➔ Clause", isCorrect: false, rationale: "Salah." },
+                    { text: "Word ➔ Clause ➔ Phrase", isCorrect: false, rationale: "Salah." },
+                    { text: "Clause ➔ Word ➔ Phrase", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 15,
+                question: "Di antara kata-kata berikut, manakah kata yang tergolong ke dalam **Interjection (Kata Seru)**?",
+                answerOptions: [
+                    { text: "Fast", isCorrect: false, rationale: "Salah. 'Fast' adalah Adjective/Adverb." },
+                    { text: "Wow!", isCorrect: true, rationale: "Benar! 'Wow!' adalah kata seru (Interjection) untuk mengungkapkan emosi." },
+                    { text: "Because", isCorrect: false, rationale: "Salah. 'Because' adalah Conjunction." },
+                    { text: "Happiness", isCorrect: false, rationale: "Salah. 'Happiness' adalah Noun." },
+                    { text: "Beautify", isCorrect: false, rationale: "Salah. 'Beautify' adalah Verb." }
+                ]
+            },
+            {
+                questionNumber: 16,
+                question: "Pada kalimat <em>\"That pen is mine\"</em>, apakah kategori kata dari <strong>that</strong>?",
+                answerOptions: [
+                    { text: "Conjunction", isCorrect: false, rationale: "Salah. 'That' tidak sedang menghubungkan klausa di sini." },
+                    { text: "Adjective (penjelas dari kata 'pen')", isCorrect: true, rationale: "Benar! Kata 'that' berfungsi menunjuk dan menjelaskan kata benda 'pen' (that pen)." },
+                    { text: "Verb", isCorrect: false, rationale: "Salah." },
+                    { text: "Adverb", isCorrect: false, rationale: "Salah." },
+                    { text: "Preposition", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 17,
+                question: "Pada kalimat <em>\"I got the car that Ahmad wanted\"</em>, kata <strong>that</strong> bertindak sebagai <strong>Conjunction / Relative Pronoun</strong> karena...",
+                answerOptions: [
+                    { text: "Menerangkan kata 'got'", isCorrect: false, rationale: "Salah." },
+                    { text: "Menghubungkan dua klausa (\"I got the car\" dan \"Ahmad wanted\")", isCorrect: true, rationale: "Benar! Kata 'that' menghubungkan klausa penjelas dengan klausa utamanya." },
+                    { text: "Menjadi subjek utama kalimat", isCorrect: false, rationale: "Salah. Subjek utamanya adalah 'I'." },
+                    { text: "Menjadi kata keterangan tempat", isCorrect: false, rationale: "Salah." },
+                    { text: "Menjadi kata kerja pembantu", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 18,
+                question: "Manakah kalimat di bawah ini yang fungsi kata bergaris bawahnya bertindak sebagai **Verb (Predikat)**?",
+                answerOptions: [
+                    { text: "She is a <u>teacher</u>.", isCorrect: false, rationale: "Salah. 'Teacher' adalah Noun (Complement)." },
+                    { text: "We have <u>finished</u> the task.", isCorrect: true, rationale: "Benar! Kata 'finished' bersama 'have' bertindak sebagai Verb/predikat yang menunjukkan tindakan." },
+                    { text: "<u>Swimming</u> is fun.", isCorrect: false, rationale: "Salah. 'Swimming' adalah Noun (Subject)." },
+                    { text: "He speaks <u>slowly</u>.", isCorrect: false, rationale: "Salah. 'Slowly' adalah Adverb." },
+                    { text: "A <u>beautiful</u> girl arrived.", isCorrect: false, rationale: "Salah. 'Beautiful' adalah Adjective." }
+                ]
+            },
+            {
+                questionNumber: 19,
+                question: "Pada kalimat <em>\"I know where you are hiding\"</em>, klausa <strong>\"where you are hiding\"</strong> memiliki fungsi <strong>Nominal</strong> sebagai...",
+                answerOptions: [
+                    { text: "Subject kalimat", isCorrect: false, rationale: "Salah. Subjeknya adalah 'I'." },
+                    { text: "Object dari kata kerja 'know'", isCorrect: true, rationale: "Benar! Klausa tersebut adalah Noun Clause yang menempati posisi objek setelah verb 'know'." },
+                    { text: "Adjective penjelas", isCorrect: false, rationale: "Salah." },
+                    { text: "Adverbial of time", isCorrect: false, rationale: "Salah." },
+                    { text: "Prepositional phrase", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 20,
+                question: "Kata <strong>fast</strong> pada kalimat <em>\"He is a fast runner\"</em> termasuk jenis kata...",
+                answerOptions: [
+                    { text: "Adjective (menerangkan kata benda 'runner')", isCorrect: true, rationale: "Benar! Kata 'fast' diletakkan sebelum kata benda 'runner' untuk menerangkan sifat pelari tersebut." },
+                    { text: "Adverb (menerangkan kata kerja)", isCorrect: false, rationale: "Salah. Di sini tidak ada kata kerja tindakan yang diterangkan langsung oleh 'fast'." },
+                    { text: "Noun", isCorrect: false, rationale: "Salah." },
+                    { text: "Verb", isCorrect: false, rationale: "Salah." },
+                    { text: "Conjunction", isCorrect: false, rationale: "Salah." }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let score = 0;
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        
+        const questionTextEl = document.getElementById('question-text');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTextEl = document.getElementById('explanation-text');
+        
+        const currentQNumEl = document.getElementById('current-q-num');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const scoreBadge = document.getElementById('score-badge');
+        const finalScoreText = document.getElementById('final-score-text');
+        const finalScoreDisplay = document.getElementById('final-score-display');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            scoreBadge.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            currentQNumEl.textContent = q.questionNumber;
+            progressBarEl.style.width = `${((currentQuestionIndex + 1) / questionsData.length) * 100}%`;
+
+            questionTextEl.innerHTML = q.question;
+            optionsContainerEl.innerHTML = '';
+            explanationBoxEl.classList.add('hidden');
+
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                let baseClasses = "w-full text-left p-4 rounded-xl border transition flex items-start gap-3 text-sm md:text-base ";
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (opt.isCorrect) {
+                        baseClasses += "bg-emerald-50 border-emerald-300 text-emerald-900 font-medium";
+                    } else if (isSelected && !opt.isCorrect) {
+                        baseClasses += "bg-rose-50 border-rose-300 text-rose-900";
+                    } else {
+                        baseClasses += "bg-white border-slate-200 text-slate-700 opacity-60";
+                    }
+                    btn.disabled = true;
+                } else {
+                    baseClasses += "bg-white border-slate-200 hover:border-blue-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="font-bold bg-slate-100 text-slate-700 w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs">${optionLetters[idx]}</span>
+                    <span class="mt-0.5">${opt.text}</span>
+                `;
+
+                if (userAnswers[currentQuestionIndex] === null) {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optionsContainerEl.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                showExplanation();
+            }
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questionsData.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+
+        function selectAnswer(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const q = questionsData[currentQuestionIndex];
+            
+            if (q.answerOptions[optionIndex].isCorrect) {
+                score++;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation() {
+            const q = questionsData[currentQuestionIndex];
+            const selectedOpt = q.answerOptions[userAnswers[currentQuestionIndex]];
+            explanationTextEl.textContent = selectedOpt.rationale;
+            explanationBoxEl.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            finalScoreText.textContent = `${score} / 20`;
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            score = 0;
+            resultScreen.classList.add('hidden');
+            scoreBadge.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

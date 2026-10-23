@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis TOEFL Interaktif: Skill 2 - Preposition</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white shadow-md py-6 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-indigo-700 text-indigo-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">TOEFL Grammar Mastery</span>
+                <h1 class="text-2xl font-bold mt-1">Skill 2: Kenali Preposition</h1>
+                <p class="text-indigo-200 text-sm">30 Soal Interaktif (20 Error Analysis & 10 Fill in the Blank)</p>
+            </div>
+            <div id="score-badge" class="hidden bg-indigo-800 border border-indigo-600 px-4 py-2 rounded-xl text-center">
+                <span class="block text-xs text-indigo-300">Skor Akhir</span>
+                <span id="final-score-text" class="text-xl font-bold text-white">0 / 30</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+            <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">📝</div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Simulasi TOEFL Structure: Preposition Rules</h2>
+            <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                Uji pemahaman Anda mengenai Aturan Preposisi (Prep + Object of Preposition), perbedaan Preposition vs Conjunction (seperti <em>after, before, despite vs although, because of vs because</em>), serta pengaruh Prepositional Phrase terhadap Subject-Verb Agreement.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-md mx-auto mb-8 text-left text-sm text-slate-700">
+                <p class="font-semibold text-slate-900 mb-2">Komposisi Soal:</p>
+                <ul class="space-y-1 list-disc list-inside">
+                    <li>20 Soal Error Analysis / Structure Error</li>
+                    <li>10 Soal Fill in the Blank</li>
+                    <li>Tingkat Kesulitan: 50% Mudah, 40% Sedang, 10% Sulit</li>
+                    <li>Pilihan Jawaban: A, B, C, D, E</li>
+                </ul>
+            </div>
+            <button onclick="startQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-sm">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden space-y-6">
+            <!-- Progress Bar & Info -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sm font-semibold text-slate-600">
+                    Soal <span id="current-q-num" class="text-indigo-600 font-bold">1</span> dari <span id="total-q-num">30</span>
+                    <span id="difficulty-badge" class="ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium"></span>
+                </div>
+                <div class="w-1/3 md:w-1/2 bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full transition-all duration-300" style="width: 3.33%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+                <!-- Question Type Tag -->
+                <div>
+                    <span id="question-type-tag" class="text-xs font-semibold px-3 py-1 rounded-md bg-slate-100 text-slate-600 uppercase tracking-wide"></span>
+                </div>
+
+                <div id="question-text" class="text-lg md:text-xl font-medium text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Rationale Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+                    <div class="font-bold text-slate-900 flex items-center gap-2">
+                        <span>💡 Pembahasan Tata Bahasa</span>
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2.5 rounded-xl transition shadow-sm">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center space-y-6">
+            <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🏆</div>
+            <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">
+                Selamat, Anda telah menguji pemahaman aturan Skill 2: Preposition dalam tes TOEFL.
+            </p>
+            <div class="inline-block bg-indigo-50 border border-indigo-200 rounded-2xl px-8 py-4">
+                <span id="final-score-display" class="text-4xl font-extrabold text-indigo-600">0</span>
+                <span class="text-xl text-slate-500 font-semibold"> / 30</span>
+            </div>
+            <div>
+                <button onclick="restartQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-sm">
+                    Ulangi Kuis
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
+        &copy; LUMINA PROJECT 2026 • TOEFL Preparation • Skill 2: Preposition Analysis
+    </footer>
+
+    <!-- Script Quiz Logic -->
+    <script>
+        const questionsData = [
+            // --- SECTION 1: ERROR ANALYSIS (20 SOAL) ---
+            // Mudah (10)
+            {
+                questionNumber: 1,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Because of</u> (A) the heavy rainstorm <u>continued</u> (B) for hours, the local authority <u>decided</u> (C) to postpone <u>the soccer match</u> (D) <u>until next week</u> (E).",
+                answerOptions: [
+                    { text: "Because of", isCorrect: true, rationale: "Pilihan A salah. Setelah 'Because of' diikuti frasa klausa lengkap dengan Verb 'continued'. Harusnya menggunakan Conjunction 'Because', bukan Preposition 'Because of'." },
+                    { text: "continued", isCorrect: false, rationale: "Penggunaan verb 'continued' sudah tepat sebagai predikat dari klausa." },
+                    { text: "decided", isCorrect: false, rationale: "Penggunaan 'decided' sudah tepat sebagai verb utama." },
+                    { text: "the soccer match", isCorrect: false, rationale: "Penggunaan noun phrase sebagai objek dari postpone sudah tepat." },
+                    { text: "until next week", isCorrect: false, rationale: "Prepositional phrase 'until next week' sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 2,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Despite</u> (A) he <u>had studied</u> (B) diligently all night, he <u>could not</u> (C) answer <u>the complex syntax question</u> (D) on the exam (E).",
+                answerOptions: [
+                    { text: "Despite", isCorrect: true, rationale: "Pilihan A salah. 'Despite' adalah preposisi dan harus diikuti Noun/Gerund. Karena diikuti S + V ('he had studied'), maka harus menggunakan conjunction seperti 'Although'." },
+                    { text: "had studied", isCorrect: false, rationale: "Penggunaan past perfect tense 'had studied' sudah benar." },
+                    { text: "could not", isCorrect: false, rationale: "Modal auxiliary 'could not' sudah tepat." },
+                    { text: "the complex syntax question", isCorrect: false, rationale: "Noun phrase sebagai objek sudah tepat." },
+                    { text: "on the exam", isCorrect: false, rationale: "Prepositional phrase 'on the exam' sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 3,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The candidate <u>with</u> (A) the most impressive <u>credentials</u> (B) <u>were</u> (C) selected <u>for</u> (D) the administrative post <u>at the university</u> (E).",
+                answerOptions: [
+                    { text: "with", isCorrect: false, rationale: "Preposisi 'with' sudah tepat memperkenalkan penjelas subjek." },
+                    { text: "credentials", isCorrect: false, rationale: "Noun plural sebagai object of preposition 'with' sudah tepat." },
+                    { text: "were", isCorrect: true, rationale: "Pilihan C salah. Kata 'credentials' adalah Object of Preposition, bukan subjek. Subjek kalimat adalah 'The candidate' (tunggal), sehingga kata kerja seharusnya 'was', bukan 'were'." },
+                    { text: "for", isCorrect: false, rationale: "Preposisi 'for' sudah tepat menunjukkan tujuan." },
+                    { text: "at the university", isCorrect: false, rationale: "Prepositional phrase menunjukkan tempat sudah benar." }
+                ]
+            },
+            {
+                questionNumber: 4,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>After</u> (A) <u>finish</u> (B) the lab report, the chemistry student <u>submitted</u> (C) the document <u>directly</u> (D) to the laboratory assistant (E).",
+                answerOptions: [
+                    { text: "After", isCorrect: false, rationale: "Preposisi 'After' sudah tepat menolak bentuk klausa tereduksi atau objek preposisi." },
+                    { text: "finish", isCorrect: true, rationale: "Pilihan B salah. Preposisi harus diikuti oleh Object of Preposition berupa Noun atau Gerund (V-ing). Bentuk yang benar adalah 'finishing'." },
+                    { text: "submitted", isCorrect: false, rationale: "Verb past tense 'submitted' sudah sesuai dengan konteks." },
+                    { text: "directly", isCorrect: false, rationale: "Adverb 'directly' sudah tepat menerangkan verb submitted." },
+                    { text: "to the laboratory assistant", isCorrect: false, rationale: "Prepositional phrase sebagai penerima sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 5,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The new research center <u>in</u> (A) the outskirts <u>of</u> (B) the capital city <u>offer</u> (C) modern facilities <u>for</u> (D) scientific studies (E).",
+                answerOptions: [
+                    { text: "in", isCorrect: false, rationale: "Preposisi 'in' menunjukkan lokasi sudah tepat." },
+                    { text: "of", isCorrect: false, rationale: "Preposisi 'of' membentuk noun phrase penjelas sudah tepat." },
+                    { text: "offer", isCorrect: true, rationale: "Pilihan C salah. Subjek kalimat adalah 'The new research center' (tunggal), sedangkan 'outskirts' dan 'capital city' adalah objek preposisi. Kata kerja harus berbentuk 'offers'." },
+                    { text: "for", isCorrect: false, rationale: "Preposisi 'for' sudah tepat." },
+                    { text: "scientific studies", isCorrect: false, rationale: "Noun phrase plural sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 6,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>In front</u> (A) the main library, <u>a large group</u> (B) of undergraduate students <u>gathered</u> (C) <u>to protest</u> (D) the fee increase (E).",
+                answerOptions: [
+                    { text: "In front", isCorrect: true, rationale: "Pilihan A salah. Preposisi yang lengkap untuk menunjukkan posisi di depan adalah 'In front of', bukan hanya 'In front'." },
+                    { text: "a large group", isCorrect: false, rationale: "Subjek noun phrase 'a large group' sudah benar." },
+                    { text: "gathered", isCorrect: false, rationale: "Verb 'gathered' sudah tepat." },
+                    { text: "to protest", isCorrect: false, rationale: "Infinitive of purpose 'to protest' sudah tepat." },
+                    { text: "the fee increase", isCorrect: false, rationale: "Noun phrase sebagai objek sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 7,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The books <u>on</u> (A) the top shelf <u>about</u> (B) ancient history <u>belongs</u> (C) <u>to</u> (D) the reference section (E).",
+                answerOptions: [
+                    { text: "on", isCorrect: false, rationale: "Preposisi lokasi 'on' sudah tepat." },
+                    { text: "about", isCorrect: false, rationale: "Preposisi topik 'about' sudah tepat." },
+                    { text: "belongs", isCorrect: true, rationale: "Pilihan C salah. Subjek kalimat adalah 'The books' (jamak). Kata 'shelf' dan 'history' adalah objek dari preposisi. Maka kata kerja harus berupa 'belong' tanpa '-s'." },
+                    { text: "to", isCorrect: false, rationale: "Pasangan verb 'belong to' sudah tepat." },
+                    { text: "the reference section", isCorrect: false, rationale: "Noun phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 8,
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Before</u> (A) <u>he attended</u> (B) the lecture, the student <u>read</u> (C) the assigned chapter <u>in</u> (D) <u>thoroughly</u> (E).",
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                answerOptions: [
+                    { text: "Before", isCorrect: false, rationale: "Kata 'Before' sebagai Conjunction diikuti S+V 'he attended' sudah tepat." },
+                    { text: "he attended", isCorrect: false, rationale: "Subjek dan Verb sudah tepat." },
+                    { text: "read", isCorrect: false, rationale: "Verb bentuk past 'read' sudah tepat." },
+                    { text: "in", isCorrect: true, rationale: "Pilihan D salah. Kata preposisi 'in' berlebihan dan salah karena 'thoroughly' adalah adverb. Keterangan 'in' harus dihilangkan sehingga menjadi 'read the assigned chapter thoroughly'." },
+                    { text: "thoroughly", isCorrect: false, rationale: "Adverb 'thoroughly' menerangkan cara membaca dengan tepat." }
+                ]
+            },
+            {
+                questionNumber: 9,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>During</u> (A) the professor <u>was explaining</u> (B) the formula, <u>several</u> (C) students <u>took</u> (D) detailed notes (E).",
+                answerOptions: [
+                    { text: "During", isCorrect: true, rationale: "Pilihan A salah. 'During' adalah preposisi yang harus diikuti kata benda (Noun/NP). Karena diikuti klausa 'the professor was explaining' (S+V), harusnya menggunakan Conjunction 'While'." },
+                    { text: "was explaining", isCorrect: false, rationale: "Verb past continuous sudah tepat." },
+                    { text: "several", isCorrect: false, rationale: "Determiner 'several' diikuti jamak sudah tepat." },
+                    { text: "took", isCorrect: false, rationale: "Verb past 'took' sudah tepat." },
+                    { text: "detailed notes", isCorrect: false, rationale: "Noun phrase sebagai objek sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 10,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The economic growth <u>of</u> (A) developing countries <u>are</u> (B) influenced <u>by</u> (C) international trade <u>agreements</u> (D) <u>and investments</u> (E).",
+                answerOptions: [
+                    { text: "of", isCorrect: false, rationale: "Preposisi 'of' menandakan kepemilikan/hubungan sudah tepat." },
+                    { text: "are", isCorrect: true, rationale: "Pilihan B salah. Subjek kalimat adalah 'The economic growth' (uncountable/tunggal). 'Developing countries' adalah objek dari preposisi 'of'. Seharusnya menggunakan 'is'." },
+                    { text: "by", isCorrect: false, rationale: "Preposisi 'by' menandakan pelaku pasif sudah tepat." },
+                    { text: "agreements", isCorrect: false, rationale: "Noun plural sudah tepat." },
+                    { text: "and investments", isCorrect: false, rationale: "Bentuk paralel sudah tepat." }
+                ]
+            },
+            // Sedang (8)
+            {
+                questionNumber: 11,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Under</u> (A) the supervision <u>of</u> (B) senior investigators, the collection <u>of</u> (C) rare geological samples <u>were</u> (D) cataloged <u>systematically</u> (E).",
+                answerOptions: [
+                    { text: "Under", isCorrect: false, rationale: "Preposisi 'Under' pembuka frasa preposisi sudah tepat." },
+                    { text: "of", isCorrect: false, rationale: "Preposisi 'of' pembentuk noun phrase sudah tepat." },
+                    { text: "of", isCorrect: false, rationale: "Preposisi 'of' kedua pembentuk noun phrase penjelas sudah tepat." },
+                    { text: "were", isCorrect: true, rationale: "Pilihan D salah. Subjek kalimat adalah 'the collection' (tunggal). Frasa 'of rare geological samples' adalah post-modifier (prepositional phrase). Kata kerja harus berupa 'was cataloged'." },
+                    { text: "systematically", isCorrect: false, rationale: "Adverb 'systematically' menerangkan verb cataloged sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 12,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Because</u> (A) the unexpected drop <u>in</u> (B) market demand, the manufacturing firm <u>had to</u> (C) reduce its daily production <u>output</u> (D) <u>significantly</u> (E).",
+                answerOptions: [
+                    { text: "Because", isCorrect: true, rationale: "Pilihan A salah. 'Because' adalah conjunction yang butuh S+V. Struktur setelahnya 'the unexpected drop in market demand' adalah noun phrase (tanpa verb utama). Harusnya menggunakan Preposition 'Because of'." },
+                    { text: "in", isCorrect: false, rationale: "Preposisi 'in' setelah drop/decrease sudah tepat." },
+                    { text: "had to", isCorrect: false, rationale: "Past modal 'had to' sudah tepat." },
+                    { text: "output", isCorrect: false, rationale: "Noun 'output' sebagai objek sudah tepat." },
+                    { text: "significantly", isCorrect: false, rationale: "Adverb menerangkan reduce sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 13,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Since</u> (A) the implementation <u>of</u> (B) the new policy, the number <u>of</u> (C) late submissions <u>have</u> (D) decreased <u>noticeably</u> (E).",
+                answerOptions: [
+                    { text: "Since", isCorrect: false, rationale: "Preposisi 'Since' diikuti titik waktu/kejadian awal sudah tepat." },
+                    { text: "of", isCorrect: false, rationale: "Preposisi 'of' sudah tepat." },
+                    { text: "of", isCorrect: false, rationale: "Frasa 'the number of' diikuti plural noun sudah benar." },
+                    { text: "have", isCorrect: true, rationale: "Pilihan D salah. Frasa 'the number of' memiliki subjek inti 'the number' yang bernilai tunggal (singular). Maka kata kerja harus berbentuk 'has decreased', bukan 'have'." },
+                    { text: "noticeably", isCorrect: false, rationale: "Adverb 'noticeably' sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 14,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>As</u> (A) a result <u>from</u> (B) the survey, the committee <u>concluded</u> (C) that most employees <u>preferred</u> (D) flexible working <u>hours</u> (E).",
+                answerOptions: [
+                    { text: "As", isCorrect: false, rationale: "Bagian dari idiom 'As a result of' sudah tepat menggunakan As." },
+                    { text: "from", isCorrect: true, rationale: "Pilihan B salah. Idiom frasa preposisi yang baku adalah 'As a result of', bukan 'As a result from'." },
+                    { text: "concluded", isCorrect: false, rationale: "Verb past tense sudah tepat." },
+                    { text: "preferred", isCorrect: false, rationale: "Verb past tense dalam noun clause sudah tepat." },
+                    { text: "hours", isCorrect: false, rationale: "Noun 'working hours' sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 15,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>On the rim</u> (A) of the crater, the fumes <u>from</u> (B) the active volcano <u>rises</u> (C) continuously <u>into</u> (D) <u>the clear sky</u> (E).",
+                answerOptions: [
+                    { text: "On the rim", isCorrect: false, rationale: "Prepositional phrase penunjuk lokasi sudah tepat." },
+                    { text: "from", isCorrect: false, rationale: "Preposisi asal 'from' sudah tepat." },
+                    { text: "rises", isCorrect: true, rationale: "Pilihan C salah. Subjek kalimat adalah 'the fumes' (plural noun). 'From the active volcano' adalah prepositional phrase. Kata kerja seharusnya berbentuk plural tanpa -s, yaitu 'rise'." },
+                    { text: "into", isCorrect: false, rationale: "Preposisi arah 'into' sudah tepat." },
+                    { text: "the clear sky", isCorrect: false, rationale: "Noun phrase sebagai objek preposisi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 16,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>In spite</u> (A) the heavy traffic <u>along</u> (B) the highway, the keynote speaker <u>managed</u> (C) to arrive <u>at</u> (D) the auditorium <u>on time</u> (E).",
+                answerOptions: [
+                    { text: "In spite", isCorrect: true, rationale: "Pilihan A salah. Bentuk frasa preposisi yang benar adalah 'In spite of' (harus memakai 'of')." },
+                    { text: "along", isCorrect: false, rationale: "Preposisi lokasi 'along' sudah tepat." },
+                    { text: "managed", isCorrect: false, rationale: "Verb 'managed' diikuti to-infinitive sudah tepat." },
+                    { text: "at", isCorrect: false, rationale: "Preposisi tempat 'at' sudah tepat." },
+                    { text: "on time", isCorrect: false, rationale: "Idiom 'on time' (tepat waktu) sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 17,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>To</u> (A) the newly appointed researchers, <u>the problem</u> (B) <u>regarding</u> (C) data encryption <u>were</u> (D) extremely <u>difficult to solve</u> (E).",
+                answerOptions: [
+                    { text: "To", isCorrect: false, rationale: "Preposisi 'To' di awal kalimat membentuk prepositional phrase (bukan subjek)." },
+                    { text: "the problem", isCorrect: false, rationale: "Subjek kalimat adalah 'the problem' (tunggal)." },
+                    { text: "regarding", isCorrect: false, rationale: "Preposisi/participial 'regarding' sudah tepat." },
+                    { text: "were", isCorrect: true, rationale: "Pilihan D salah. Subjek kalimat adalah 'the problem' (singular). 'To the newly appointed researchers' adalah Modifier di awal. Maka verb seharusnya 'was', bukan 'were'." },
+                    { text: "difficult to solve", isCorrect: false, rationale: "Adjective phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 18,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Although</u> (A) the lack <u>of</u> (B) sufficient financial backing, the young entrepreneur <u>launched</u> (C) his innovative tech startup <u>successfully</u> (D) <u>last month</u> (E).",
+                answerOptions: [
+                    { text: "Although", isCorrect: true, rationale: "Pilihan A salah. 'Although' adalah conjunction yang memerlukan S+V. Setelahnya adalah noun phrase 'the lack of sufficient financial backing'. Harus diganti dengan Preposition 'Despite' atau 'In spite of'." },
+                    { text: "of", isCorrect: false, rationale: "Preposisi 'of' setelah 'lack' sudah tepat." },
+                    { text: "launched", isCorrect: false, rationale: "Verb past tense sudah tepat." },
+                    { text: "successfully", isCorrect: false, rationale: "Adverb menerangkan launched sudah tepat." },
+                    { text: "last month", isCorrect: false, rationale: "Keterangan waktu sudah tepat." }
+                ]
+            },
+            // Sulit (2)
+            {
+                questionNumber: 19,
+                type: "Error Analysis",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>With regard to</u> (A) the findings published <u>in</u> (B) the report, none <u>of</u> (C) the proposed explanations <u>seems</u> (D) fully convincing <u>to the board</u> (E).",
+                answerOptions: [
+                    { text: "With regard to", isCorrect: false, rationale: "Compound preposition 'With regard to' sudah tepat." },
+                    { text: "in", isCorrect: false, rationale: "Preposisi 'in' untuk dokumen/laporan sudah tepat." },
+                    { text: "of", isCorrect: false, rationale: "Preposisi 'of' setelah 'none' sudah tepat." },
+                    { text: "seems", isCorrect: true, rationale: "Pilihan D salah. Ketika 'none of' diikuti oleh plural noun ('the proposed explanations'), kata kerja umumnya mengikuti bentuk plural dalam formal grammar TOEFL, yaitu 'seem' (bukan 'seems')." },
+                    { text: "to the board", isCorrect: false, rationale: "Prepositional phrase 'to the board' sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 20,
+                type: "Error Analysis",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Beside</u> (A) <u>conducting</u> (B) extensive archival research, the historian <u>interviewed</u> (C) several surviving witnesses <u>prior to</u> (D) publishing <u>the biography</u> (E).",
+                answerOptions: [
+                    { text: "Beside", isCorrect: true, rationale: "Pilihan A salah. 'Beside' berarti 'di samping/sebelah' (posisi fisik). Kata yang dimaksud di sini adalah 'Besides' yang berarti 'selain/di samping itu' (preposisi penambahan)." },
+                    { text: "conducting", isCorrect: false, rationale: "Gerund 'conducting' sebagai object of preposition 'besides' sudah tepat." },
+                    { text: "interviewed", isCorrect: false, rationale: "Verb past tense sudah tepat." },
+                    { text: "prior to", isCorrect: false, rationale: "Compound preposition 'prior to' diikuti gerund 'publishing' sudah tepat." },
+                    { text: "the biography", isCorrect: false, rationale: "Noun phrase sebagai objek gerund sudah tepat." }
+                ]
+            },
+
+            // --- SECTION 2: FILL IN THE BLANK (10 SOAL) ---
+            // Mudah (5)
+            {
+                questionNumber: 21,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ the severe weather conditions, the rescue operation continued throughout the night.",
+                answerOptions: [
+                    { text: "Although", isCorrect: false, rationale: "Salah. 'Although' adalah conjunction, sedangkan setelah titik-titik adalah Noun Phrase tanpa Verb." },
+                    { text: "In spite of", isCorrect: true, rationale: "Benar! 'In spite of' adalah preposisi yang tepat untuk diikuti oleh Noun Phrase 'the severe weather conditions'." },
+                    { text: "Because", isCorrect: false, rationale: "Salah. 'Because' membutuhkan klausa (S+V)." },
+                    { text: "Even though", isCorrect: false, rationale: "Salah. 'Even though' adalah conjunction yang membutuhkan S+V." },
+                    { text: "Whereas", isCorrect: false, rationale: "Salah. 'Whereas' adalah conjunction perbandingan." }
+                ]
+            },
+            {
+                questionNumber: 22,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ graduating from the university, she was immediately offered a position at a multinational corporation.",
+                answerOptions: [
+                    { text: "Upon", isCorrect: true, rationale: "Benar! Preposisi 'Upon' / 'On' diikuti oleh Gerund 'graduating' membentuk keterangan waktu (segera setelah)." },
+                    { text: "As soon as", isCorrect: false, rationale: "Salah. 'As soon as' adalah conjunction yang butuh S+V (misal: As soon as she graduated)." },
+                    { text: "While he", isCorrect: false, rationale: "Salah. Subjek tidak sesuai dan struktur merusak kalimat." },
+                    { text: "Because she", isCorrect: false, rationale: "Salah. Setelah 'she' harus ada finite verb." },
+                    { text: "In order to", isCorrect: false, rationale: "Salah. 'In order to' diikuti bare infinitive, bukan gerund." }
+                ]
+            },
+            {
+                questionNumber: 23,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The delegates expressed great concern _____ the rising levels of ocean pollution.",
+                answerOptions: [
+                    { text: "about", isCorrect: true, rationale: "Benar! Preposisi 'about' atau 'regarding' secara tepat mengekspresikan topik kekhawatiran setelah kata 'concern'." },
+                    { text: "between", isCorrect: false, rationale: "Salah. 'Between' digunakan untuk dua opsi." },
+                    { text: "along", isCorrect: false, rationale: "Salah. 'Along' menunjukkan arah/sepanjang." },
+                    { text: "throughout", isCorrect: false, rationale: "Salah." },
+                    { text: "into", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 24,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ the authority of the regional committee, the new guidelines will take effect next month.",
+                answerOptions: [
+                    { text: "Under", isCorrect: true, rationale: "Benar! 'Under the authority of' adalah frasa preposisi baku yang berfungsi sebagai keterangan modifier." },
+                    { text: "On top", isCorrect: false, rationale: "Salah. Membutuhkan 'of' jika ingin jadi preposisi." },
+                    { text: "In order", isCorrect: false, rationale: "Salah. Membutuhkan 'to'." },
+                    { text: "As if", isCorrect: false, rationale: "Salah. 'As if' adalah conjunction." },
+                    { text: "According", isCorrect: false, rationale: "Salah. Membutuhkan 'to'." }
+                ]
+            },
+            {
+                questionNumber: 25,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The flight was canceled _____ the dense fog covering the airport runway.",
+                answerOptions: [
+                    { text: "due to", isCorrect: true, rationale: "Benar! 'Due to' adalah preposisi yang menjelaskan alasan dan diikuti Noun Phrase 'the dense fog'." },
+                    { text: "because", isCorrect: false, rationale: "Salah. 'Because' membutuhkan S+V." },
+                    { text: "since", isCorrect: false, rationale: "Salah. 'Since' sebagai penyebab membutuhkan S+V." },
+                    { text: "as", isCorrect: false, rationale: "Salah. 'As' sebagai penyebab membutuhkan S+V." },
+                    { text: "for cause", isCorrect: false, rationale: "Salah. Bukan bentuk preposisi yang tepat." }
+                ]
+            },
+            // Sedang (4)
+            {
+                questionNumber: 26,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ the backdrop of a picturesque mountain range, the ancient temple attracted thousands of tourists.",
+                answerOptions: [
+                    { text: "Against", isCorrect: true, rationale: "Benar! Preposisi 'Against' digunakan untuk menggambarkan latar belakang fisik (against the backdrop of...)." },
+                    { text: "Opposite to", isCorrect: false, rationale: "Salah. Kurang tepat untuk penggunaan estetika latar belakang (backdrop)." },
+                    { text: "Across", isCorrect: false, rationale: "Salah." },
+                    { text: "In spite", isCorrect: false, rationale: "Salah. Membutuhkan 'of'." },
+                    { text: "Behind of", isCorrect: false, rationale: "Salah. 'Behind' tidak menggunakan 'of'." }
+                ]
+            },
+            {
+                questionNumber: 27,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ I entered the lecture hall, the professor had already begun demonstrating the experiment.",
+                answerOptions: [
+                    { text: "By the time", isCorrect: true, rationale: "Benar! 'By the time' berfungsi sebagai Conjunction yang diikuti klausa S+V ('I entered...')." },
+                    { text: "Prior to", isCorrect: false, rationale: "Salah. 'Prior to' adalah preposisi, harus diikuti Noun/Gerund." },
+                    { text: "In advance of", isCorrect: false, rationale: "Salah. Ini preposisi, butuh Noun/Gerund." },
+                    { text: "During", isCorrect: false, rationale: "Salah. 'During' adalah preposisi." },
+                    { text: "On account of", isCorrect: false, rationale: "Salah. Ini preposisi sebab-akibat." }
+                ]
+            },
+            {
+                questionNumber: 28,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The committee members were in full agreement _____ the proposal regarding student exchange programs.",
+                answerOptions: [
+                    { text: "with", isCorrect: true, rationale: "Benar! Idiom frasa 'in agreement with' adalah bentuk baku preposisi." },
+                    { text: "to", isCorrect: false, rationale: "Salah." },
+                    { text: "upon", isCorrect: false, rationale: "Salah." },
+                    { text: "for", isCorrect: false, rationale: "Salah." },
+                    { text: "at", isCorrect: false, rationale: "Salah." }
+                ]
+            },
+            {
+                questionNumber: 29,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ reviewing the financial statements thoroughly, the auditor discovered several minor discrepancies.",
+                answerOptions: [
+                    { text: "After", isCorrect: true, rationale: "Benar! 'After' di sini berfungsi sebagai preposisi yang diikuti gerund 'reviewing'." },
+                    { text: "As soon", isCorrect: false, rationale: "Salah. Kurang kata 'as'." },
+                    { text: "While he", isCorrect: false, rationale: "Salah. Merusak struktur gerund." },
+                    { text: "Because of he", isCorrect: false, rationale: "Salah. Preposisi tidak diikuti pronoun subjek." },
+                    { text: "In order that", isCorrect: false, rationale: "Salah. Butuh S+V + modal." }
+                ]
+            },
+            // Sulit (1)
+            {
+                questionNumber: 30,
+                type: "Fill in the Blank",
+                difficulty: "Sulit",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ of the initial difficulties encountered during the trial phase, the software proved highly reliable.",
+                answerOptions: [
+                    { text: "Regardless", isCorrect: true, rationale: "Benar! 'Regardless of' adalah compound preposition yang tepat diikuti Noun Phrase 'the initial difficulties...'." },
+                    { text: "In addition", isCorrect: false, rationale: "Salah. 'In addition of' tidak baku (harusnya 'In addition to')." },
+                    { text: "In terms", isCorrect: false, rationale: "Salah. Makna 'In terms of' (dalam hal) kurang tepat secara konteks pertentangan." },
+                    { text: "Even though", isCorrect: false, rationale: "Salah. Tidak berpasangan dengan 'of'." },
+                    { text: "Despite", isCorrect: false, rationale: "Salah. 'Despite' langsung diikuti Noun tanpa kata 'of'." }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let score = 0;
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        
+        const questionTextEl = document.getElementById('question-text');
+        const questionTypeTagEl = document.getElementById('question-type-tag');
+        const difficultyBadgeEl = document.getElementById('difficulty-badge');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTextEl = document.getElementById('explanation-text');
+        
+        const currentQNumEl = document.getElementById('current-q-num');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const scoreBadge = document.getElementById('score-badge');
+        const finalScoreText = document.getElementById('final-score-text');
+        const finalScoreDisplay = document.getElementById('final-score-display');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            scoreBadge.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            currentQNumEl.textContent = q.questionNumber;
+            progressBarEl.style.width = `${((currentQuestionIndex + 1) / questionsData.length) * 100}%`;
+
+            questionTypeTagEl.textContent = q.type;
+            
+            // Set Difficulty Badge Color
+            difficultyBadgeEl.textContent = q.difficulty;
+            if (q.difficulty === "Mudah") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 text-emerald-800";
+            } else if (q.difficulty === "Sedang") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-amber-100 text-amber-800";
+            } else {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-rose-100 text-rose-800";
+            }
+
+            questionTextEl.innerHTML = q.question;
+            optionsContainerEl.innerHTML = '';
+            explanationBoxEl.classList.add('hidden');
+
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                let baseClasses = "w-full text-left p-4 rounded-xl border transition flex items-start gap-3 text-sm md:text-base ";
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (opt.isCorrect) {
+                        baseClasses += "bg-emerald-50 border-emerald-300 text-emerald-900 font-medium";
+                    } else if (isSelected && !opt.isCorrect) {
+                        baseClasses += "bg-rose-50 border-rose-300 text-rose-900";
+                    } else {
+                        baseClasses += "bg-white border-slate-200 text-slate-700 opacity-60";
+                    }
+                    btn.disabled = true;
+                } else {
+                    baseClasses += "bg-white border-slate-200 hover:border-indigo-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="font-bold bg-slate-100 text-slate-700 w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs">${optionLetters[idx]}</span>
+                    <span class="mt-0.5">${opt.text}</span>
+                `;
+
+                if (userAnswers[currentQuestionIndex] === null) {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optionsContainerEl.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                showExplanation();
+            }
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questionsData.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+
+        function selectAnswer(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const q = questionsData[currentQuestionIndex];
+            
+            if (q.answerOptions[optionIndex].isCorrect) {
+                score++;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation() {
+            const q = questionsData[currentQuestionIndex];
+            const selectedOpt = q.answerOptions[userAnswers[currentQuestionIndex]];
+            explanationTextEl.innerHTML = selectedOpt.rationale;
+            explanationBoxEl.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            finalScoreText.textContent = `${score} / 30`;
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            score = 0;
+            resultScreen.classList.add('hidden');
+            scoreBadge.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+    
+</body>
+</html>
+
+
+

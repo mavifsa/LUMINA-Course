@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis TOEFL Interaktif: Skill 7 - Subordinating Conjunction (30 Soal)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white shadow-md py-6 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-indigo-700 text-indigo-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">TOEFL Grammar Mastery</span>
+                <h1 class="text-2xl font-bold mt-1">Skill 7: Subordinating Conjunction Analysis</h1>
+                <p class="text-indigo-200 text-sm">30 Soal Interaktif (20 Error Analysis & 10 Fill in the Blank)</p>
+            </div>
+            <div id="score-badge" class="hidden bg-indigo-800 border border-indigo-600 px-4 py-2 rounded-xl text-center">
+                <span class="block text-xs text-indigo-300">Skor Akhir</span>
+                <span id="final-score-text" class="text-xl font-bold text-white">0 / 30</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+            <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">⚙️</div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Simulasi TOEFL Structure: Skill 7</h2>
+            <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                Uji pemahaman Anda tentang <em>Subordinating Conjunction</em>, posisi Adverbial Clause (Initial, Middle, Final), aturan koma, serta pola variasi pangkasan (<em>Reducing / Omitting</em>) seperti <em>Conj + Participle/Adj/Gerund</em> dan <em>Total Omitting</em>.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-md mx-auto mb-8 text-left text-sm text-slate-700">
+                <p class="font-semibold text-slate-900 mb-2">Komposisi Soal (Total 30 Soal):</p>
+                <ul class="space-y-1 list-disc list-inside">
+                    <li>20 Soal Error Analysis / Structure Error</li>
+                    <li>10 Soal Fill in the Blank</li>
+                    <li>Pilihan Jawaban: A, B, C, D, E</li>
+                </ul>
+            </div>
+            <button onclick="startQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-sm">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden space-y-6">
+            <!-- Progress Bar & Info -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sm font-semibold text-slate-600">
+                    Soal <span id="current-q-num" class="text-indigo-600 font-bold">1</span> dari <span id="total-q-num">30</span>
+                    <span id="difficulty-badge" class="ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium"></span>
+                </div>
+                <div class="w-1/3 md:w-1/2 bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full transition-all duration-300" style="width: 3.33%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+                <!-- Question Type Tag -->
+                <div>
+                    <span id="question-type-tag" class="text-xs font-semibold px-3 py-1 rounded-md bg-slate-100 text-slate-600 uppercase tracking-wide"></span>
+                </div>
+
+                <div id="question-text" class="text-lg md:text-xl font-medium text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Rationale Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+                    <div class="font-bold text-slate-900 flex items-center gap-2">
+                        <span>💡 Pembahasan Tata Bahasa</span>
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2.5 rounded-xl transition shadow-sm">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center space-y-6">
+            <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🏆</div>
+            <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">
+                Selamat, Anda telah menyelesaikan simulasi 30 Soal TOEFL Skill 7: Subordinating Conjunction Analysis.
+            </p>
+            <div class="inline-block bg-indigo-50 border border-indigo-200 rounded-2xl px-8 py-4">
+                <span id="final-score-display" class="text-4xl font-extrabold text-indigo-600">0</span>
+                <span class="text-xl text-slate-500 font-semibold"> / 30</span>
+            </div>
+            <div>
+                <button onclick="restartQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-sm">
+                    Ulangi Kuis
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
+        &copy; LUMINA PROJECT 2026 • TOEFL Preparation • Skill 7: Subordinating Conjunction Analysis
+    </footer>
+
+    <!-- Script Quiz Logic -->
+    <script>
+        const questionsData = [
+            // --- SECTION 1: ERROR ANALYSIS (20 SOAL) ---
+            // Mudah (10)
+            {
+                questionNumber: 1,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Because</u> (A) you <u>goes</u> (B) to the conference, I <u>will stay</u> (C) at the office <u>to finish</u> (D) the monthly report (E).",
+                answerOptions: [
+                    { text: "Because", isCorrect: false, rationale: "Subordinating conjunction 'Because' di awal Adverbial Clause sudah tepat." },
+                    { text: "goes", isCorrect: true, rationale: "Benar! Pilihan B salah. Subjek klausa dependen adalah 'you', sehingga kata kerja bentuk present harus berupa 'go', bukan 'goes'." },
+                    { text: "will stay", isCorrect: false, rationale: "Verb future 'will stay' pada main clause sudah tepat." },
+                    { text: "to finish", isCorrect: false, rationale: "To-infinitive of purpose sudah tepat." },
+                    { text: "the monthly report", isCorrect: false, rationale: "Noun phrase objek sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 2,
+                type: "Error Analysis (Dari Materi)",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Before</u> (A) <u>stabilize</u> (B) the rupiah, Habibie <u>analyzed</u> (C) the <u>monetary</u> (D) data (E).",
+                answerOptions: [
+                    { text: "Before", isCorrect: false, rationale: "Subordinating conjunction of time 'Before' sudah tepat." },
+                    { text: "stabilize", isCorrect: true, rationale: "Benar! Pilihan B salah. Pada contoh pola reduksi materi (Conj + Ving), setelah konjungsi 'Before' harus menggunakan Gerund/V-ing 'stabilizing', bukan bare verb 'stabilize'." },
+                    { text: "analyzed", isCorrect: false, rationale: "Verb past tense utama 'analyzed' sudah tepat." },
+                    { text: "monetary", isCorrect: false, rationale: "Adjective modifier 'monetary' sudah tepat." },
+                    { text: "data", isCorrect: false, rationale: "Noun 'data' sebagai objek sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 3,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>While <u>lead</u> (A) the labor strike, Munir <u>protected</u> (B) the workers <u>from</u> (C) military <u>intimidation</u> (D) in 1998 (E).",
+                answerOptions: [
+                    { text: "lead", isCorrect: true, rationale: "Benar! Pilihan A salah. Dalam pola reduksi Adverbial Clause bermakna aktif (Reduced AVC of Time), konjungsi 'While' harus diikuti Present Participle 'leading' (While leading...), bukan bare verb 'lead'." },
+                    { text: "protected", isCorrect: false, rationale: "Verb past tense utama sudah tepat." },
+                    { text: "from", isCorrect: false, rationale: "Preposisi 'from' setelah verb protect sudah tepat." },
+                    { text: "intimidation", isCorrect: false, rationale: "Object of preposition sudah tepat." },
+                    { text: "in 1998", isCorrect: false, rationale: "Prepositional phrase waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 4,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Marsinah <u>did not stop</u> (A), <u>although</u> (B) <u>threaten</u> (C) <u>by</u> (D) the military forces (E).",
+                answerOptions: [
+                    { text: "did not stop", isCorrect: false, rationale: "Verb negatif past tense sudah tepat." },
+                    { text: "although", isCorrect: false, rationale: "Subordinating conjunction of contrast sudah tepat." },
+                    { text: "threaten", isCorrect: true, rationale: "Benar! Pilihan C salah. Marsinah bermakna pasif (diancam oleh militer). Pada pola reduced clause, setelah 'although' harus diikuti Past Participle V3 'threatened' (although threatened by...), bukan bare verb 'threaten'." },
+                    { text: "by", isCorrect: false, rationale: "Preposisi penunjuk pelaku pasif sudah tepat." },
+                    { text: "the military forces", isCorrect: false, rationale: "Noun phrase objek preposisi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 5,
+                type: "Error Analysis (Dari Materi)",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Unless <u>studying</u> (A) economics, you <u>will not</u> (B) understand <u>how</u> (C) inflation <u>work</u> (D) in a developing country (E).",
+                answerOptions: [
+                    { text: "studying", isCorrect: false, rationale: "Pola reduksi Conj + Ving 'Unless studying' sudah tepat." },
+                    { text: "will not", isCorrect: false, rationale: "Modal future negatif pada main clause sudah tepat." },
+                    { text: "how", isCorrect: false, rationale: "Question word pengenal Noun Clause sudah tepat." },
+                    { text: "work", isCorrect: true, rationale: "Benar! Pilihan D salah. Subjek dalam noun clause 'how inflation...' adalah 'inflation' (uncountable/singular), sehingga kata kerja bentuk present harus berupa 'works', bukan 'work'." },
+                    { text: "in a developing country", isCorrect: false, rationale: "Prepositional phrase pelengkap sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 6,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>When <u>the student</u> (A) <u>arrived</u> (B) at the venue, the professor <u>is</u> (C) already <u>delivering</u> (D) his keynote speech (E).",
+                answerOptions: [
+                    { text: "the student", isCorrect: false, rationale: "Subjek klausa dependen sudah tepat." },
+                    { text: "arrived", isCorrect: false, rationale: "Verb past tense 'arrived' sudah tepat." },
+                    { text: "is", isCorrect: true, rationale: "Benar! Pilihan C salah. Karena klausa dependen menggunakan past tense ('arrived'), kata kerja pembantu di main clause harus berupa past continuous 'was', bukan present 'is'." },
+                    { text: "delivering", isCorrect: false, rationale: "Present participle penanda continuous tense sudah tepat." },
+                    { text: "his keynote speech", isCorrect: false, rationale: "Noun phrase objek sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 7,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>After</u> (A) the manager <u>reviewed</u> (B) the financial report, he <u>discovers</u> (C) several <u>unexplained</u> (D) accounting errors (E).",
+                answerOptions: [
+                    { text: "After", isCorrect: false, rationale: "Subordinating conjunction of time sudah tepat." },
+                    { text: "reviewed", isCorrect: false, rationale: "Verb past tense sudah tepat." },
+                    { text: "discovers", isCorrect: true, rationale: "Benar! Pilihan C salah. Urutan waktu dalam konteks lampau memerlukan konsistensi tenses. Kata kerja utama harus menggunakan Simple Past 'discovered', bukan Simple Present 'discovers'." },
+                    { text: "unexplained", isCorrect: false, rationale: "Past participle modifier sudah tepat." },
+                    { text: "accounting errors", isCorrect: false, rationale: "Noun phrase objek sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 8,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Although <u>the weather</u> (A) <u>was bad</u> (B), <u>so</u> (C) the plane <u>landed</u> (D) safely at the airport (E).",
+                answerOptions: [
+                    { text: "the weather", isCorrect: false, rationale: "Subjek klausa dependen sudah tepat." },
+                    { text: "was bad", isCorrect: false, rationale: "Predikat klausa dependen sudah tepat." },
+                    { text: "so", isCorrect: true, rationale: "Benar! Pilihan C salah. Penggunaan subordinating conjunction 'Although' bersamaan dengan coordinating conjunction 'so' membuat pemborosan konjungsi ganda (double conjunction). Kata 'so' harus dihilangkan." },
+                    { text: "landed", isCorrect: false, rationale: "Verb past tense utama sudah tepat." },
+                    { text: "safely at the airport", isCorrect: false, rationale: "Adverb dan prepositional phrase tempat sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 9,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Because <u>he worked</u> (A) hard all week, <u>and</u> (B) he <u>managed to complete</u> (C) the project <u>before the deadline</u> (D) on Friday (E).",
+                answerOptions: [
+                    { text: "he worked", isCorrect: false, rationale: "Klausa dependen utuh sudah tepat." },
+                    { text: "and", isCorrect: true, rationale: "Benar! Pilihan B salah. Penggunaan 'Because' di awal klausa dependen tidak boleh diikuti oleh 'and' di awal klausa utama. Kata 'and' harus dihapus agar klausa utama berdiri mandiri." },
+                    { text: "managed to complete", isCorrect: false, rationale: "Verb past tense diikuti infinitive sudah tepat." },
+                    { text: "before the deadline", isCorrect: false, rationale: "Prepositional phrase waktu sudah tepat." },
+                    { text: "on Friday", isCorrect: false, rationale: "Keterangan hari sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 10,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The students <u>will fail</u> (A) the exam <u>unless</u> (B) they <u>do not study</u> (C) the assigned chapters <u>thoroughly</u> (D) tonight (E).",
+                answerOptions: [
+                    { text: "will fail", isCorrect: false, rationale: "Predikat klausa utama sudah tepat." },
+                    { text: "unless", isCorrect: false, rationale: "Subordinating conjunction of condition sudah tepat." },
+                    { text: "do not study", isCorrect: true, rationale: "Benar! Pilihan C salah. Kata 'unless' sudah bermakna negatif ('if... not'). Menambahkan bentuk negatif 'do not study' setelah 'unless' menciptakan bentuk ganda negatif yang keliru. Seharusnya berupa kalimat positif 'unless they study'." },
+                    { text: "thoroughly", isCorrect: false, rationale: "Adverb menerangkan study sudah tepat." },
+                    { text: "tonight", isCorrect: false, rationale: "Adverb of time sudah tepat." }
+                ]
+            },
+            // Sedang (8)
+            {
+                questionNumber: 11,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Although <u>he was busy</u> (A) <u>with</u> (B) the 1998 economic crisis, <u>but</u> (C) President Habibie <u>stayed focused</u> (D) on financial reform (E).",
+                answerOptions: [
+                    { text: "he was busy", isCorrect: false, rationale: "Klausa dependen utuh sudah tepat." },
+                    { text: "with", isCorrect: false, rationale: "Preposisi pelengkap dari busy sudah tepat." },
+                    { text: "but", isCorrect: true, rationale: "Benar! Pilihan C salah. Penggunaan subordinating conjunction 'Although' dan coordinating conjunction 'but' secara bersamaan dalam satu kalimat kompleks adalah redundan ganda (double conjunction). Kata 'but' harus dihilangkan." },
+                    { text: "stayed focused", isCorrect: false, rationale: "Verb + adjective complement pada main clause sudah tepat." },
+                    { text: "on financial reform", isCorrect: false, rationale: "Prepositional phrase pelengkap sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 12,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Feared</u> (A) high inflation, <u>many people</u> (B) <u>rushed</u> (C) to buy basic logistics <u>during the crisis</u> (D) in 1998 (E).",
+                answerOptions: [
+                    { text: "Feared", isCorrect: true, rationale: "Benar! Pilihan A salah. Pola penghapusan total (Total Omitting) bermakna aktif (karena mereka takut -> Because they feared) harus menggunakan Present Participle 'Fearing', bukan Past Participle 'Feared' (yang bermakna ditakuti)." },
+                    { text: "many people", isCorrect: false, rationale: "Subjek utama kalimat sudah tepat." },
+                    { text: "rushed", isCorrect: false, rationale: "Verb past tense utama 'rushed' sudah tepat." },
+                    { text: "during the crisis", isCorrect: false, rationale: "Prepositional phrase waktu sudah tepat." },
+                    { text: "in 1998", isCorrect: false, rationale: "Prepositional phrase tahun sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 13,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>If <u>handle</u> (A) correctly, inflation <u>will not destroy</u> (B) the national economy <u>or cause</u> (C) severe social <u>unrest</u> (D) among citizens (E).",
+                answerOptions: [
+                    { text: "handle", isCorrect: true, rationale: "Benar! Pilihan A salah. Subjek implisit 'inflation' bermakna pasif (jika ditangani secara benar). Pada reduksi klausa syarat, konjungsi 'If' harus diikuti Past Participle V3 'handled' (If handled correctly...), bukan bare verb 'handle'." },
+                    { text: "will not destroy", isCorrect: false, rationale: "Modal future negatif pada main clause sudah tepat." },
+                    { text: "or cause", isCorrect: false, rationale: "Bentuk paralel bare verb setelah modal 'will not' sudah tepat." },
+                    { text: "unrest", isCorrect: false, rationale: "Noun 'unrest' sebagai objek sudah tepat." },
+                    { text: "among citizens", isCorrect: false, rationale: "Prepositional phrase pelengkap sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 14,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Munir, <u>when he a young activist</u> (A), <u>founded</u> (B) KontraS <u>to defend</u> (C) victims of human rights <u>violations</u> (D) in Indonesia (E).",
+                answerOptions: [
+                    { text: "when he a young activist", isCorrect: true, rationale: "Benar! Pilihan A salah. Klausa dependen kekurangan kata kerja (verb 'was') jika ingin menjadi klausa utuh ('when he was a young activist'), atau subjek 'he' harus dihilangkan jika ingin menjadi pangkasan tereduksi ('when a young activist')." },
+                    { text: "founded", isCorrect: false, rationale: "Verb past tense utama 'founded' sudah tepat." },
+                    { text: "to defend", isCorrect: false, rationale: "Infinitive of purpose 'to defend' sudah tepat." },
+                    { text: "violations", isCorrect: false, rationale: "Noun plural sebagai object of preposition sudah tepat." },
+                    { text: "in Indonesia", isCorrect: false, rationale: "Prepositional phrase lokasi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 15,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>While <u>conducting</u> (A) the market survey, <u>several issues</u> (B) <u>were identified</u> (C) by <u>the research team</u> (D) <u>this morning</u> (E).",
+                answerOptions: [
+                    { text: "conducting", isCorrect: true, rationale: "Benar! Pilihan A salah. Pola reduksi klausa mewajibkan subjek di klausa utama dan dependen sama. Karena subjek di klausa utama adalah 'several issues' (benda mati), 'issues' tidak bisa melakukan tindakan 'conducting' (mengoperasikan survey). Seharusnya klausa tidak di-reduksi ('While the research team was conducting...')." },
+                    { text: "several issues", isCorrect: false, rationale: "Subjek main clause sudah tepat." },
+                    { text: "were identified", isCorrect: false, rationale: "Verb pasif utama sudah tepat." },
+                    { text: "by the research team", isCorrect: false, rationale: "Prepositional phrase pelaku pasif sudah tepat." },
+                    { text: "this morning", isCorrect: false, rationale: "Adverb of time sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 16,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Although <u>experienced</u> (A) in international negotiations, <u>the proposal</u> (B) <u>was rejected</u> (C) by <u>the board members</u> (D) yesterday (E).",
+                answerOptions: [
+                    { text: "experienced", isCorrect: true, rationale: "Benar! Pilihan A salah. Misplaced modifier/dangling participle: Subjek utama 'the proposal' (benda mati) tidak bisa berstatus 'experienced' (berpengalaman dalam negosiasi). Subjek utama haruslah orang (misalnya 'the diplomat')." },
+                    { text: "the proposal", isCorrect: false, rationale: "Subjek klausa utama bermasalah dengan modifier." },
+                    { text: "was rejected", isCorrect: false, rationale: "Verb pasif utama sudah tepat." },
+                    { text: "by the board members", isCorrect: false, rationale: "Pelaku pasif sudah tepat." },
+                    { text: "yesterday", isCorrect: false, rationale: "Keterangan waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 17,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>When</u> (A) <u>interviews</u> (B) the candidate, the committee <u>evaluated</u> (C) both <u>technical competence</u> (D) and communication skills (E).",
+                answerOptions: [
+                    { text: "When", isCorrect: false, rationale: "Subordinating conjunction of time sudah tepat." },
+                    { text: "interviews", isCorrect: true, rationale: "Benar! Pilihan B salah. Pada pangkasan reduksi aktif setelah 'When', kata kerja harus berbentuk Present Participle 'interviewing' (When interviewing the candidate...), bukan bentuk present verb 'interviews'." },
+                    { text: "evaluated", isCorrect: false, rationale: "Verb past tense utama sudah tepat." },
+                    { text: "technical competence", isCorrect: false, rationale: "Noun phrase objek sudah tepat." },
+                    { text: "and communication skills", isCorrect: false, rationale: "Bentuk paralel objek kedua sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 18,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Before <u>to submit</u> (A) the final manuscript, the author <u>checked</u> (B) all citations <u>for accuracy</u> (C) <u>in accordance with</u> (D) guidelines (E).",
+                answerOptions: [
+                    { text: "to submit", isCorrect: true, rationale: "Benar! Pilihan A salah. Setelah subordinating conjunction 'Before' dalam pola pangkasan, kata kerja tidak boleh berupa To-Infinitive ('to submit'), melainkan harus berupa Gerund / V-ing 'submitting'." },
+                    { text: "checked", isCorrect: false, rationale: "Verb past tense utama sudah tepat." },
+                    { text: "for accuracy", isCorrect: false, rationale: "Prepositional phrase tujuan sudah tepat." },
+                    { text: "in accordance with", isCorrect: false, rationale: "Compound preposition baku sudah tepat." },
+                    { text: "guidelines", isCorrect: false, rationale: "Noun jamak sebagai objek preposisi sudah tepat." }
+                ]
+            },
+            // Sulit (2)
+            {
+                questionNumber: 19,
+                type: "Error Analysis",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Motivating</u> (A) by workers' rights, <u>Marsinah</u> (B) <u>fought</u> (C) bravely <u>against</u> (D) corporate injustice (E).",
+                answerOptions: [
+                    { text: "Motivating", isCorrect: true, rationale: "Benar! Pilihan A salah. Pada penghapusan total (Total Omitting) bermakna pasif (karena dia dimotivasi -> As she was motivated), frasa pembuka harus berupa Past Participle V3 'Motivated', bukan Present Participle V-ing 'Motivating'." },
+                    { text: "Marsinah", isCorrect: false, rationale: "Subjek utama kalimat sudah tepat." },
+                    { text: "fought", isCorrect: false, rationale: "Verb past tense dari fight 'fought' sudah tepat." },
+                    { text: "against", isCorrect: false, rationale: "Preposisi 'against' sudah tepat." },
+                    { text: "corporate injustice", isCorrect: false, rationale: "Noun phrase objek preposisi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 20,
+                type: "Error Analysis",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Since</u> (A) <u>establishing</u> (B) the new regulatory board, <u>several transparent policies</u> (C) <u>were introduced</u> (D) to prevent corrupt practices (E).",
+                answerOptions: [
+                    { text: "establishing", isCorrect: true, rationale: "Benar! Pilihan B salah. Terjadi kesalahan misplaced modifier pada pola reduksi: subjek utama 'several transparent policies' (benda mati) tidak bisa melakukan tindakan 'establishing' (mendirikan). Klausa harus ditulis utuh, atau subjek utama diubah menjadi lembaga/seseorang." },
+                    { text: "Since", isCorrect: false, rationale: "Conjunction penanda waktu/alasan." },
+                    { text: "several transparent policies", isCorrect: false, rationale: "Noun phrase subjek utama sudah tepat." },
+                    { text: "were introduced", isCorrect: false, rationale: "Verb pasif utama sudah tepat." },
+                    { text: "to prevent corrupt practices", isCorrect: false, rationale: "Infinitive phrase tujuan sudah tepat." }
+                ]
+            },
+
+            // --- SECTION 2: FILL IN THE BLANK (10 SOAL) ---
+            // Mudah (5)
+            {
+                questionNumber: 21,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ you go, I will also go.",
+                answerOptions: [
+                    { text: "Because", isCorrect: true, rationale: "Benar! 'Because' adalah Subordinating Conjunction yang menghubungkan klausa dependen 'you go' dengan klausa utama di posisi awal (Initial)." },
+                    { text: "Because of", isCorrect: false, rationale: "Salah. 'Because of' adalah preposisi yang harus diikuti kata benda, bukan klausa S+V." },
+                    { text: "Despite", isCorrect: false, rationale: "Salah. 'Despite' adalah preposisi." },
+                    { text: "In spite of", isCorrect: false, rationale: "Salah. 'In spite of' adalah preposisi." },
+                    { text: "Due to", isCorrect: false, rationale: "Salah. 'Due to' adalah preposisi." }
+                ]
+            },
+            {
+                questionNumber: 22,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>I was watching the pingpong match _____ you came here.",
+                answerOptions: [
+                    { text: "when", isCorrect: true, rationale: "Benar! 'when' adalah Subordinating Conjunction of Time yang menghubungkan main clause dengan adverbial clause di posisi akhir (Final)." },
+                    { text: "during", isCorrect: false, rationale: "Salah. 'during' adalah preposisi, harus diikuti noun phrase." },
+                    { text: "despite", isCorrect: false, rationale: "Salah. 'despite' adalah preposisi." },
+                    { text: "because of", isCorrect: false, rationale: "Salah. 'because of' adalah preposisi." },
+                    { text: "prior to", isCorrect: false, rationale: "Salah. 'prior to' adalah preposisi." }
+                ]
+            },
+            {
+                questionNumber: 23,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ leading the labor strike, Munir protected the workers from injustice.",
+                answerOptions: [
+                    { text: "While", isCorrect: true, rationale: "Benar! 'While' adalah Subordinating Conjunction yang tepat diikuti Present Participle V-ing ('leading') dalam pola tereduksi." },
+                    { text: "During", isCorrect: false, rationale: "Salah. 'During' adalah preposisi, tidak bisa diikuti gerund/participle yang memiliki objek klausa." },
+                    { text: "Although was", isCorrect: false, rationale: "Salah. Penambahan 'was' tanpa subjek merusak struktur." },
+                    { text: "Because of", isCorrect: false, rationale: "Salah. Preposisi tidak diikuti V-ing berobjek." },
+                    { text: "In spite of", isCorrect: false, rationale: "Salah. Makna kontras tidak sesuai." }
+                ]
+            },
+            {
+                questionNumber: 24,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>Marsinah did not stop _____ threatened by the military.",
+                answerOptions: [
+                    { text: "although", isCorrect: true, rationale: "Benar! 'although' adalah Subordinating Conjunction of Contrast yang diikuti Past Participle V3 ('threatened') dalam reduksi pasif." },
+                    { text: "despite", isCorrect: false, rationale: "Salah. 'despite' adalah preposisi, tidak langsung diikuti V3 tanpa kata 'being'." },
+                    { text: "because of", isCorrect: false, rationale: "Salah. 'because of' adalah preposisi." },
+                    { text: "unless", isCorrect: false, rationale: "Salah. Makna syarat tidak sesuai konteks sejarah." },
+                    { text: "whereas", isCorrect: false, rationale: "Salah. 'whereas' tidak biasa di-reduksi menjadi V3 langsung." }
+                ]
+            },
+            {
+                questionNumber: 25,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>You must save your money if _____.",
+                answerOptions: [
+                    { text: "possible", isCorrect: true, rationale: "Benar! 'if possible' adalah pola reduksi baku Subordinating Conjunction + Adjective (pangkasan dari 'if it is possible')." },
+                    { text: "possibly", isCorrect: false, rationale: "Salah. 'possibly' adalah Adverb, bukan Adjective." },
+                    { text: "it possible", isCorrect: false, rationale: "Salah. Kekurangan linking verb 'is'." },
+                    { text: "possibility", isCorrect: false, rationale: "Salah. 'possibility' adalah Noun." },
+                    { text: "was possible", isCorrect: false, rationale: "Salah. Kekurangan subjek 'it'." }
+                ]
+            },
+            // Sedang (4)
+            {
+                questionNumber: 26,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ busy with the 1998 economic crisis, President Habibie stayed focused on monetary stabilization.",
+                answerOptions: [
+                    { text: "Although", isCorrect: true, rationale: "Benar! 'Although' adalah Subordinating Conjunction yang diikuti Adjective ('busy') dalam pola pangkasan Conj + Adj." },
+                    { text: "In spite of", isCorrect: false, rationale: "Salah. 'In spite of' adalah preposisi." },
+                    { text: "Despite", isCorrect: false, rationale: "Salah. 'Despite' adalah preposisi." },
+                    { text: "Because of", isCorrect: false, rationale: "Salah. 'Because of' adalah preposisi." },
+                    { text: "However", isCorrect: false, rationale: "Salah. 'However' adalah conjunctive adverb/transition." }
+                ]
+            },
+            {
+                questionNumber: 27,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ stabilizing the rupiah, Habibie analyzed the monetary data thoroughly.",
+                answerOptions: [
+                    { text: "Before", isCorrect: true, rationale: "Benar! 'Before' adalah Subordinating Conjunction yang diikuti V-ing ('stabilizing') dalam pola pangkasan aktif." },
+                    { text: "Prior to", isCorrect: false, rationale: "Salah. 'Prior to' adalah preposisi." },
+                    { text: "In front of", isCorrect: false, rationale: "Salah. Preposisi lokasi tidak sesuai." },
+                    { text: "Because of", isCorrect: false, rationale: "Salah. Preposisi tidak cocok untuk durasi/urutan waktu aktif." },
+                    { text: "Ahead of", isCorrect: false, rationale: "Salah. Preposisi tidak tepat." }
+                ]
+            },
+            {
+                questionNumber: 28,
+                type: "Fill in the Blank (Dari Materi)",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ high inflation, people rushed to buy logistics in 1998.",
+                answerOptions: [
+                    { text: "Fearing", isCorrect: true, rationale: "Benar! 'Fearing' adalah bentuk Present Participle pada pola penghapusan total (Total Omitting) dari contoh materi yang mewakili 'Because they feared'." },
+                    { text: "Feared", isCorrect: false, rationale: "Salah. 'Feared' bermakna pasif (ditakuti)." },
+                    { text: "Because fearing", isCorrect: false, rationale: "Salah. Penumpukan konjungsi 'because' dengan V-ing tanpa subjek kurang baku." },
+                    { text: "They feared", isCorrect: false, rationale: "Salah. Menimbulkan dua klausa independen tanpa konjungsi (run-on sentence)." },
+                    { text: "Fear of", isCorrect: false, rationale: "Salah. Frasa noun butuh preposisi lengkap dan struktur berbeda." }
+                ]
+            },
+            {
+                questionNumber: 29,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ by workers' rights, Marsinah fought bravely against injustice.",
+                answerOptions: [
+                    { text: "Motivated", isCorrect: true, rationale: "Benar! 'Motivated' adalah Past Participle V3 pada pola penghapusan total (Total Omitting pasif) yang mewakili 'As she was motivated'." },
+                    { text: "Motivating", isCorrect: false, rationale: "Salah. 'Motivating' bermakna aktif (yang memotivasi orang lain)." },
+                    { text: "Because motivated", isCorrect: false, rationale: "Salah. Kombinasi 'because' langsung V3 kurang baku." },
+                    { text: "She was motivated", isCorrect: false, rationale: "Salah. Menimbulkan run-on sentence." },
+                    { text: "To motivate", isCorrect: false, rationale: "Salah. Context tujuan tidak sesuai dengan pemicu aksi." }
+                ]
+            },
+            // Sulit (1)
+            {
+                questionNumber: 30,
+                type: "Fill in the Blank",
+                difficulty: "Sulit",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>Munir, _____ a young activist, founded KontraS to assist victims of violence.",
+                answerOptions: [
+                    { text: "when", isCorrect: true, rationale: "Benar! 'when' adalah Subordinating Conjunction yang diapit koma di posisi tengah (Middle) dalam pola pangkasan Conj + Noun Phrase ('when a young activist')." },
+                    { text: "while he", isCorrect: false, rationale: "Salah. Kekurangan kata kerja 'was' (while he was)." },
+                    { text: "during", isCorrect: false, rationale: "Salah. 'during' adalah preposisi dan tidak cocok dengan Noun Phrase profesi/orang." },
+                    { text: "because he", isCorrect: false, rationale: "Salah. Kekurangan verb 'was'." },
+                    { text: "although was", isCorrect: false, rationale: "Salah. Struktur 'was' tanpa subjek merusak selipan." }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let score = 0;
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        
+        const questionTextEl = document.getElementById('question-text');
+        const questionTypeTagEl = document.getElementById('question-type-tag');
+        const difficultyBadgeEl = document.getElementById('difficulty-badge');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTextEl = document.getElementById('explanation-text');
+        
+        const currentQNumEl = document.getElementById('current-q-num');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const scoreBadge = document.getElementById('score-badge');
+        const finalScoreText = document.getElementById('final-score-text');
+        const finalScoreDisplay = document.getElementById('final-score-display');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            scoreBadge.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            currentQNumEl.textContent = q.questionNumber;
+            progressBarEl.style.width = `${((currentQuestionIndex + 1) / questionsData.length) * 100}%`;
+
+            questionTypeTagEl.textContent = q.type;
+            
+            // Set Difficulty Badge Color
+            difficultyBadgeEl.textContent = q.difficulty;
+            if (q.difficulty === "Mudah") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 text-emerald-800";
+            } else if (q.difficulty === "Sedang") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-amber-100 text-amber-800";
+            } else {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-rose-100 text-rose-800";
+            }
+
+            questionTextEl.innerHTML = q.question;
+            optionsContainerEl.innerHTML = '';
+            explanationBoxEl.classList.add('hidden');
+
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                let baseClasses = "w-full text-left p-4 rounded-xl border transition flex items-start gap-3 text-sm md:text-base ";
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (opt.isCorrect) {
+                        baseClasses += "bg-emerald-50 border-emerald-300 text-emerald-900 font-medium";
+                    } else if (isSelected && !opt.isCorrect) {
+                        baseClasses += "bg-rose-50 border-rose-300 text-rose-900";
+                    } else {
+                        baseClasses += "bg-white border-slate-200 text-slate-700 opacity-60";
+                    }
+                    btn.disabled = true;
+                } else {
+                    baseClasses += "bg-white border-slate-200 hover:border-indigo-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="font-bold bg-slate-100 text-slate-700 w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs">${optionLetters[idx]}</span>
+                    <span class="mt-0.5">${opt.text}</span>
+                `;
+
+                if (userAnswers[currentQuestionIndex] === null) {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optionsContainerEl.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                showExplanation();
+            }
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questionsData.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+
+        function selectAnswer(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const q = questionsData[currentQuestionIndex];
+            
+            if (q.answerOptions[optionIndex].isCorrect) {
+                score++;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation() {
+            const q = questionsData[currentQuestionIndex];
+            const selectedOpt = q.answerOptions[userAnswers[currentQuestionIndex]];
+            explanationTextEl.innerHTML = selectedOpt.rationale;
+            explanationBoxEl.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            finalScoreText.textContent = `${score} / 30`;
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            score = 0;
+            resultScreen.classList.add('hidden');
+            scoreBadge.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

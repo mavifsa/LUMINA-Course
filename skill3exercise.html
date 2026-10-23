@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis TOEFL Interaktif: Skill 3 - Appositive</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-purple-900 text-white shadow-md py-6 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-purple-700 text-purple-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">TOEFL Grammar Mastery</span>
+                <h1 class="text-2xl font-bold mt-1">Skill 3: Appositive Analysis</h1>
+                <p class="text-purple-200 text-sm">30 Soal Interaktif (20 Error Analysis & 10 Fill in the Blank)</p>
+            </div>
+            <div id="score-badge" class="hidden bg-purple-800 border border-purple-600 px-4 py-2 rounded-xl text-center">
+                <span class="block text-xs text-purple-300">Skor Akhir</span>
+                <span id="final-score-text" class="text-xl font-bold text-white">0 / 30</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+            <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">🎯</div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Simulasi TOEFL Structure: Appositive Rules</h2>
+            <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                Uji kemampuan Anda dalam mengidentifikasi Appositive (informasi penjelas noun) baik posisi mengikuti Subject, Object, maupun Object of Preposition, serta variasi bentuknya (Noun, Noun Phrase, Gerund Phrase, To-Infinitive Phrase) dan kecocokan Subject-Verb Agreement.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-md mx-auto mb-8 text-left text-sm text-slate-700">
+                <p class="font-semibold text-slate-900 mb-2">Komposisi Soal:</p>
+                <ul class="space-y-1 list-disc list-inside">
+                    <li>20 Soal Error Analysis / Structure Error</li>
+                    <li>10 Soal Fill in the Blank</li>
+                    <li>Tingkat Kesulitan: 50% Mudah, 40% Sedang, 10% Sulit</li>
+                    <li>Pilihan Jawaban: A, B, C, D, E</li>
+                </ul>
+            </div>
+            <button onclick="startQuiz()" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-sm">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden space-y-6">
+            <!-- Progress Bar & Info -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sm font-semibold text-slate-600">
+                    Soal <span id="current-q-num" class="text-purple-600 font-bold">1</span> dari <span id="total-q-num">30</span>
+                    <span id="difficulty-badge" class="ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium"></span>
+                </div>
+                <div class="w-1/3 md:w-1/2 bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-purple-600 h-2.5 rounded-full transition-all duration-300" style="width: 3.33%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+                <!-- Question Type Tag -->
+                <div>
+                    <span id="question-type-tag" class="text-xs font-semibold px-3 py-1 rounded-md bg-slate-100 text-slate-600 uppercase tracking-wide"></span>
+                </div>
+
+                <div id="question-text" class="text-lg md:text-xl font-medium text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Rationale Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+                    <div class="font-bold text-slate-900 flex items-center gap-2">
+                        <span>💡 Pembahasan Tata Bahasa</span>
+                    </div>
+                    <p id="explanation-text" class="text-slate-700 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-2.5 rounded-xl transition shadow-sm">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center space-y-6">
+            <div class="w-20 h-20 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🏆</div>
+            <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">
+                Selamat, Anda telah menguji pemahaman aturan Skill 3: Appositive dalam tes TOEFL.
+            </p>
+            <div class="inline-block bg-purple-50 border border-purple-200 rounded-2xl px-8 py-4">
+                <span id="final-score-display" class="text-4xl font-extrabold text-purple-600">0</span>
+                <span class="text-xl text-slate-500 font-semibold"> / 30</span>
+            </div>
+            <div>
+                <button onclick="restartQuiz()" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-sm">
+                    Ulangi Kuis
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
+        &copy; LUMINA PROJECT 2026 • TOEFL Preparation • Skill 3: Appositive Analysis
+    </footer>
+
+    <!-- Script Quiz Logic -->
+    <script>
+        const questionsData = [
+            // --- SECTION 1: ERROR ANALYSIS (20 SOAL) ---
+            // Mudah (10)
+            {
+                questionNumber: 1,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Qofa</u> (A), <u>a student</u> (B) from Tirto, <u>have</u> (C) <u>a pair</u> (D) of glasses <u>for reading</u> (E).",
+                answerOptions: [
+                    { text: "Qofa", isCorrect: false, rationale: "Qofa adalah subjek tunggal yang tepat." },
+                    { text: "a student", isCorrect: false, rationale: "Appositive noun phrase penjelas Qofa sudah tepat." },
+                    { text: "have", isCorrect: true, rationale: "Pilihan C salah. Subjek kalimat adalah 'Qofa' (tunggal), sedangkan 'a student from Tirto' adalah Appositive penjelas. Maka kata kerja harus berbentuk tunggal 'has', bukan 'have'." },
+                    { text: "a pair", isCorrect: false, rationale: "Noun phrase objek sudah tepat." },
+                    { text: "for reading", isCorrect: false, rationale: "Prepositional phrase penunjuk fungsi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 2,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>My idol</u> (A), Nurcholis Madjid, <u>write</u> (B) <u>many articles</u> (C) about <u>social criticism</u> (D) <u>in Indonesia</u> (E).",
+                answerOptions: [
+                    { text: "My idol", isCorrect: false, rationale: "Subjek kalimat 'My idol' (tunggal) sudah tepat." },
+                    { text: "write", isCorrect: true, rationale: "Pilihan B salah. Subjeknya adalah 'My idol' (tunggal), sedangkan Nurcholis Madjid adalah Appositive. Untuk kejadian masa lalu/present singular, kata kerja harus berupa 'wrote' atau 'writes'." },
+                    { text: "many articles", isCorrect: false, rationale: "Objek jamak sudah tepat." },
+                    { text: "social criticism", isCorrect: false, rationale: "Object of preposition 'about' sudah tepat." },
+                    { text: "in Indonesia", isCorrect: false, rationale: "Prepositional phrase lokasi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 3,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>She <u>spoke</u> (A) with <u>Mr. Muhandis</u> (B), <u>is</u> (C) the Head <u>of the</u> (D) Language Development <u>Unit</u> (E).",
+                answerOptions: [
+                    { text: "spoke", isCorrect: false, rationale: "Verb past tense sudah tepat." },
+                    { text: "Mr. Muhandis", isCorrect: false, rationale: "Object of preposition 'with' sudah tepat." },
+                    { text: "is", isCorrect: true, rationale: "Pilihan C salah. 'the Head of the Language Development Unit' berfungsi sebagai Appositive (keterangan tambahan). Penambahan kata kerja 'is' di sini salah karena Appositive tidak boleh diawali kata kerja finite tanpa relatif pronoun." },
+                    { text: "of the", isCorrect: false, rationale: "Preposisi penyambung sudah tepat." },
+                    { text: "Unit", isCorrect: false, rationale: "Bagian dari nama institusi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 4,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>I am <u>interested</u> (A) <u>to join</u> (B) BEC, <u>was</u> (C) the <u>first English course</u> (D) <u>in Pare</u> (E).",
+                answerOptions: [
+                    { text: "interested", isCorrect: false, rationale: "Adjective complement sudah tepat." },
+                    { text: "to join", isCorrect: false, rationale: "To-infinitive complement sudah tepat." },
+                    { text: "was", isCorrect: true, rationale: "Pilihan C salah. 'the first English course in Pare' adalah Appositive penjelas kata 'BEC'. Kehadiran verb 'was' merusak struktur appositive dan membuat kalimat memiliki double verb tanpa conjunction." },
+                    { text: "first English course", isCorrect: false, rationale: "Noun phrase sudah tepat." },
+                    { text: "in Pare", isCorrect: false, rationale: "Prepositional phrase lokasi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 5,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>My hobby</u> (A), <u>write</u> (B) a journal article, <u>has developed</u> (C) my academic writing <u>skill</u> (D) <u>significantly</u> (E).",
+                answerOptions: [
+                    { text: "My hobby", isCorrect: false, rationale: "Subjek tunggal sudah tepat." },
+                    { text: "write", isCorrect: true, rationale: "Pilihan B salah. Appositive yang menerangkan 'My hobby' harus berupa Gerund Phrase ('writing a journal article') atau To-Infinitive Phrase ('to write...'), bukan bare verb 'write'." },
+                    { text: "has developed", isCorrect: false, rationale: "Verb singular 'has developed' cocok dengan subjek 'My hobby'." },
+                    { text: "skill", isCorrect: false, rationale: "Noun sebagai objek sudah tepat." },
+                    { text: "significantly", isCorrect: false, rationale: "Adverb menerangkan verb sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 6,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>His dream, <u>get</u> (A) <u>high TOEFL score</u> (B), <u>comes true</u> (C) <u>after</u> (D) months of <u>diligent study</u> (E).",
+                answerOptions: [
+                    { text: "get", isCorrect: true, rationale: "Pilihan A salah. Appositive penjelas noun 'His dream' harus berupa To-Infinitive Phrase ('to get high TOEFL score') atau Gerund Phrase, bukan bare verb 'get'." },
+                    { text: "high TOEFL score", isCorrect: false, rationale: "Noun phrase sebagai objek infinitive sudah tepat." },
+                    { text: "comes true", isCorrect: false, rationale: "Verb singular 'comes' sesuai dengan subjek 'His dream'." },
+                    { text: "after", isCorrect: false, rationale: "Preposisi waktu sudah tepat." },
+                    { text: "diligent study", isCorrect: false, rationale: "Noun phrase setelah preposisi 'of' sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 7,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>We</u> (A) <u>students</u> (B) <u>must to study</u> (C) hard <u>to pass</u> (D) <u>the final exam</u> (E).",
+                answerOptions: [
+                    { text: "We", isCorrect: false, rationale: "Pronoun sebagai subjek utama sudah tepat." },
+                    { text: "students", isCorrect: false, rationale: "Appositive berupa noun jamak tanpa koma penjelas 'We' sudah tepat." },
+                    { text: "must to study", isCorrect: true, rationale: "Pilihan C salah. Modal auxiliary 'must' harus diikuti Bare Verb (V1) tanpa 'to', sehingga yang benar adalah 'must study'." },
+                    { text: "to pass", isCorrect: false, rationale: "Infinitive of purpose sudah tepat." },
+                    { text: "the final exam", isCorrect: false, rationale: "Noun phrase objek sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 8,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>A famous linguist</u> (A), <u>Noam Chomsky</u> (B), <u>have published</u> (C) <u>numerous books</u> (D) on <u>syntax</u> (E).",
+                answerOptions: [
+                    { text: "A famous linguist", isCorrect: false, rationale: "Subjek kalimat (tunggal) sudah tepat." },
+                    { text: "Noam Chomsky", isCorrect: false, rationale: "Appositive nama diri penjelas subjek sudah tepat." },
+                    { text: "have published", isCorrect: true, rationale: "Pilihan C salah. Subjek kalimat adalah 'A famous linguist' (tunggal), sedangkan 'Noam Chomsky' adalah Appositive. Kata kerja harus menggunakan 'has published'." },
+                    { text: "numerous books", isCorrect: false, rationale: "Objek jamak sudah tepat." },
+                    { text: "syntax", isCorrect: false, rationale: "Object of preposition 'on' sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 9,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Borobudur, <u>a massive Buddhist temple</u> (A) <u>in Central Java</u> (B), <u>are visited</u> (C) <u>by thousands of</u> (D) international tourists <u>every year</u> (E).",
+                answerOptions: [
+                    { text: "a massive Buddhist temple", isCorrect: false, rationale: "Appositive noun phrase penjelas Borobudur sudah tepat." },
+                    { text: "in Central Java", isCorrect: false, rationale: "Prepositional phrase penunjuk lokasi sudah tepat." },
+                    { text: "are visited", isCorrect: true, rationale: "Pilihan C salah. Subjek utama adalah 'Borobudur' (tunggal). Frasa di antara dua koma adalah Appositive. Maka kata kerja pasif harus berupa 'is visited'." },
+                    { text: "by thousands of", isCorrect: false, rationale: "Preposisi pelaku pasif sudah tepat." },
+                    { text: "every year", isCorrect: false, rationale: "Keterangan waktu rutin sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 10,
+                type: "Error Analysis",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Dr. Ahmad, <u>the chief research officer</u> (A), <u>he presented</u> (B) <u>the breakthrough findings</u> (C) <u>at the international conference</u> (D) <u>yesterday</u> (E).",
+                answerOptions: [
+                    { text: "the chief research officer", isCorrect: false, rationale: "Appositive noun phrase penjelas Dr. Ahmad sudah tepat." },
+                    { text: "he presented", isCorrect: true, rationale: "Pilihan B salah. Kehadiran pronoun 'he' setelah appositive menghasilkan pengulangan subjek ganda (double subject). Harusnya langsung 'presented'." },
+                    { text: "the breakthrough findings", isCorrect: false, rationale: "Noun phrase sebagai objek sudah tepat." },
+                    { text: "at the international conference", isCorrect: false, rationale: "Prepositional phrase lokasi sudah tepat." },
+                    { text: "yesterday", isCorrect: false, rationale: "Adverb of time past tense sudah tepat." }
+                ]
+            },
+            // Sedang (8)
+            {
+                questionNumber: 11,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The capital <u>of Indonesia</u> (A), <u>Jakarta</u> (B), <u>face</u> (C) <u>severe flooding issues</u> (D) during <u>the rainy season</u> (E).",
+                answerOptions: [
+                    { text: "of Indonesia", isCorrect: false, rationale: "Prepositional phrase modifier penjelas capital sudah tepat." },
+                    { text: "Jakarta", isCorrect: false, rationale: "Appositive penjelas subjek sudah tepat." },
+                    { text: "face", isCorrect: true, rationale: "Pilihan C salah. Subjek kalimat adalah 'The capital' (tunggal). 'Jakarta' adalah appositive. Kata kerja bentuk present harus menggunakan 'faces'." },
+                    { text: "severe flooding issues", isCorrect: false, rationale: "Noun phrase objek jamak sudah tepat." },
+                    { text: "the rainy season", isCorrect: false, rationale: "Object of preposition 'during' sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 12,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>A fierce opponent</u> (A) <u>of the new tax policy</u> (B), <u>the local senator</u> (C) <u>vote</u> (D) against the bill <u>in the parliament</u> (E).",
+                answerOptions: [
+                    { text: "A fierce opponent", isCorrect: false, rationale: "Appositive noun phrase yang terletak di awal kalimat (sebelum subjek) sudah tepat." },
+                    { text: "of the new tax policy", isCorrect: false, rationale: "Prepositional phrase penjelas opponent sudah tepat." },
+                    { text: "the local senator", isCorrect: false, rationale: "Subjek utama kalimat (tunggal) sudah tepat." },
+                    { text: "vote", isCorrect: true, rationale: "Pilihan D salah. Subjeknya adalah 'the local senator' (tunggal). Kata kerja bentuk past/present singular harus berupa 'voted' atau 'votes'." },
+                    { text: "in the parliament", isCorrect: false, rationale: "Prepositional phrase lokasi sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 13,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Her ultimate ambition, <u>to become</u> (A) a certified translator, <u>require</u> (B) <u>years of</u> (C) intensive practice <u>and dedication</u> (D) <u>to language study</u> (E).",
+                answerOptions: [
+                    { text: "to become", isCorrect: false, rationale: "Appositive berupa To-Infinitive Phrase sudah tepat menjelaskan 'ambition'." },
+                    { text: "require", isCorrect: true, rationale: "Pilihan B salah. Subjek kalimat adalah 'Her ultimate ambition' (tunggal). Frasa 'to become a certified translator' adalah Appositive. Kata kerja harus berbentuk 'requires'." },
+                    { text: "years of", isCorrect: false, rationale: "Quantifier phrase sudah tepat." },
+                    { text: "and dedication", isCorrect: false, rationale: "Bentuk paralel noun sudah tepat." },
+                    { text: "to language study", isCorrect: false, rationale: "Prepositional phrase pelengkap sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 14,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The committee <u>honored</u> (A) Professor Sarah, <u>an expert</u> (B) <u>in sociolinguistics</u> (C), <u>who she</u> (D) delivered the inspiring <u>keynote address</u> (E).",
+                answerOptions: [
+                    { text: "honored", isCorrect: false, rationale: "Verb past tense utama sudah tepat." },
+                    { text: "an expert", isCorrect: false, rationale: "Appositive noun phrase penjelas Professor Sarah sudah tepat." },
+                    { text: "in sociolinguistics", isCorrect: false, rationale: "Prepositional phrase modifier penjelas expert sudah tepat." },
+                    { text: "who she", isCorrect: true, rationale: "Pilihan D salah. Kehadiran pronoun 'she' setelah relative pronoun 'who' salah karena 'who' sendiri sudah berfungsi sebagai subjek klausa relatif." },
+                    { text: "keynote address", isCorrect: false, rationale: "Noun phrase objek sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 15,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>Analyzing historical manuscripts</u> (A), <u>a meticulous process</u> (B), <u>demand</u> (C) high concentration <u>from</u> (D) <u>the research assistants</u> (E).",
+                answerOptions: [
+                    { text: "Analyzing historical manuscripts", isCorrect: false, rationale: "Gerund phrase bertindak sebagai subjek tunggal sudah tepat." },
+                    { text: "a meticulous process", isCorrect: false, rationale: "Appositive noun phrase penjelas gerund subjek sudah tepat." },
+                    { text: "demand", isCorrect: true, rationale: "Pilihan C salah. Gerund phrase sebagai subjek bernilai tunggal (singular). 'a meticulous process' adalah appositive. Kata kerja harus berbentuk 'demands'." },
+                    { text: "from", isCorrect: false, rationale: "Preposisi pelengkap sudah tepat." },
+                    { text: "the research assistants", isCorrect: false, rationale: "Object of preposition sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 16,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>The new policy</u> (A), <u>a major shift</u> (B) <u>in environmental regulations</u> (C), <u>were approved</u> (D) by <u>the cabinet minister</u> (E).",
+                answerOptions: [
+                    { text: "The new policy", isCorrect: false, rationale: "Subjek utama (tunggal) sudah tepat." },
+                    { text: "a major shift", isCorrect: false, rationale: "Appositive noun phrase penjelas subjek sudah tepat." },
+                    { text: "in environmental regulations", isCorrect: false, rationale: "Prepositional phrase penjelas shift sudah tepat." },
+                    { text: "were approved", isCorrect: true, rationale: "Pilihan D salah. Subjek kalimat adalah 'The new policy' (tunggal). Frasa di antara dua koma adalah Appositive. Kata kerja pasif seharusnya 'was approved'." },
+                    { text: "the cabinet minister", isCorrect: false, rationale: "Object of preposition 'by' sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 17,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>A passionate advocate</u> (A) <u>for educational reform</u> (B), <u>the principal</u> (C) <u>have introduced</u> (D) several digital learning initiatives <u>this semester</u> (E).",
+                answerOptions: [
+                    { text: "A passionate advocate", isCorrect: false, rationale: "Appositive phrase di awal kalimat penjelas principal sudah tepat." },
+                    { text: "for educational reform", isCorrect: false, rationale: "Prepositional phrase modifier penjelas advocate sudah tepat." },
+                    { text: "the principal", isCorrect: false, rationale: "Subjek utama kalimat (tunggal) sudah tepat." },
+                    { text: "have introduced", isCorrect: true, rationale: "Pilihan D salah. Subjek utama adalah 'the principal' (tunggal). Appositive di awal kalimat tidak mengubah subjek. Kata kerja bantu harus menggunakan 'has introduced'." },
+                    { text: "this semester", isCorrect: false, rationale: "Keterangan waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 18,
+                type: "Error Analysis",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>We <u>scholars</u> (A) <u>must to maintain</u> (B) <u>academic integrity</u> (C) <u>when conducting</u> (D) <u>original research</u> (E).",
+                answerOptions: [
+                    { text: "scholars", isCorrect: false, rationale: "Appositive noun jamak penjelas 'We' sudah tepat." },
+                    { text: "must to maintain", isCorrect: true, rationale: "Pilihan B salah. Modal 'must' tidak boleh diikuti 'to'. Penulisan yang benar adalah 'must maintain'." },
+                    { text: "academic integrity", isCorrect: false, rationale: "Noun phrase objek sudah tepat." },
+                    { text: "when conducting", isCorrect: false, rationale: "Reduced adverbial clause sudah tepat." },
+                    { text: "original research", isCorrect: false, rationale: "Noun phrase objek gerund sudah tepat." }
+                ]
+            },
+            // Sulit (2)
+            {
+                questionNumber: 19,
+                type: "Error Analysis",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>The decision to expand</u> (A) the department, <u>a controversial move</u> (B) among senior faculty members, <u>have been postponed</u> (C) <u>until further review</u> (D) <u>by the board</u> (E).",
+                answerOptions: [
+                    { text: "The decision to expand", isCorrect: false, rationale: "Subjek tunggal dengan infinitive modifier sudah tepat." },
+                    { text: "a controversial move", isCorrect: false, rationale: "Appositive noun phrase penjelas decision sudah tepat." },
+                    { text: "have been postponed", isCorrect: true, rationale: "Pilihan C salah. Subjek inti kalimat adalah 'The decision' (tunggal). Seluruh frasa 'a controversial move among senior faculty members' adalah Appositive. Kata kerja bantu pasif harusnya 'has been postponed'." },
+                    { text: "until further review", isCorrect: false, rationale: "Prepositional phrase penunjuk batas waktu sudah tepat." },
+                    { text: "by the board", isCorrect: false, rationale: "Prepositional phrase pelaku pasif sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 20,
+                type: "Error Analysis",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br><u>One of the most effective strategies</u> (A), <u>conducting peer reviews</u> (B), <u>help</u> (C) students <u>identify structural weaknesses</u> (D) <u>in their essays</u> (E).",
+                answerOptions: [
+                    { text: "One of the most effective strategies", isCorrect: false, rationale: "Subjek inti adalah 'One' (tunggal) dengan modifier 'of the most effective strategies'." },
+                    { text: "conducting peer reviews", isCorrect: false, rationale: "Appositive berupa Gerund Phrase penjelas strategi sudah tepat." },
+                    { text: "help", isCorrect: true, rationale: "Pilihan C salah. Subjek inti kalimat adalah 'One' (tunggal), sedangkan 'conducting peer reviews' adalah Appositive. Maka kata kerja harus berbentuk singular 'helps'." },
+                    { text: "identify structural weaknesses", isCorrect: false, rationale: "Bare infinitive setelah verb 'help' sudah tepat." },
+                    { text: "in their essays", isCorrect: false, rationale: "Prepositional phrase lokasi sudah tepat." }
+                ]
+            },
+
+            // --- SECTION 2: FILL IN THE BLANK (10 SOAL) ---
+            // Mudah (5)
+            {
+                questionNumber: 21,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>Mr. Muhandis, _____, gave a speech at the opening ceremony.",
+                answerOptions: [
+                    { text: "the Head of the Language Development Unit", isCorrect: true, rationale: "Benar! Ini adalah Appositive Noun Phrase yang diapit koma untuk menjelaskan Mr. Muhandis tanpa kata kerja tambahan." },
+                    { text: "is the Head of the Language Development Unit", isCorrect: false, rationale: "Salah. Memasukkan verb 'is' merusak struktur appositive dan membuat double verb." },
+                    { text: "who he is the Head of the Language Unit", isCorrect: false, rationale: "Salah. Penggunaan 'who he is' redundan." },
+                    { text: "was heading the Language Unit", isCorrect: false, rationale: "Salah. Memasukkan verb tanpa relative pronoun." },
+                    { text: "he is the Head of the Unit", isCorrect: false, rationale: "Salah. Penggunaan double subject 'he'." }
+                ]
+            },
+            {
+                questionNumber: 22,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____, Nurcholis Madjid, wrote many influential articles on social reform.",
+                answerOptions: [
+                    { text: "My idol", isCorrect: true, rationale: "Benar! 'My idol' bertindak sebagai Subjek utama, diikuti oleh appositive nama 'Nurcholis Madjid' di antara koma." },
+                    { text: "He was my idol", isCorrect: false, rationale: "Salah. Membentuk klausa independen berlebihan." },
+                    { text: "Being my idol", isCorrect: false, rationale: "Salah. Bentuk participle phrase kurang sesuai sebagai subjek noun." },
+                    { text: "That my idol", isCorrect: false, rationale: "Salah. Penggunaan 'That' tidak tepat di posisi subjek sederhana." },
+                    { text: "Because my idol", isCorrect: false, rationale: "Salah. Conjunction membuat klausa menggantung." }
+                ]
+            },
+            {
+                questionNumber: 23,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>His ultimate goal, _____, inspires all his classmates.",
+                answerOptions: [
+                    { text: "to get a high TOEFL score", isCorrect: true, rationale: "Benar! Appositive berupa To-Infinitive Phrase ('to get a high TOEFL score') menjelaskan noun 'goal'." },
+                    { text: "get a high TOEFL score", isCorrect: false, rationale: "Salah. Appositive tidak boleh berupa bare verb." },
+                    { text: "is getting a high TOEFL score", isCorrect: false, rationale: "Salah. Memasukkan verb 'is' merusak appositive." },
+                    { text: "he gets a high TOEFL score", isCorrect: false, rationale: "Salah. Merupakan klausa utuh tanpa konjungsi." },
+                    { text: "should get a high TOEFL score", isCorrect: false, rationale: "Salah. Memasukkan modal verb." }
+                ]
+            },
+            {
+                questionNumber: 24,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>We _____ must uphold high ethical standards during exams.",
+                answerOptions: [
+                    { text: "students", isCorrect: true, rationale: "Benar! 'students' adalah Noun Appositive tanpa koma yang menjelaskan pronoun subjek 'We'." },
+                    { text: "are students", isCorrect: false, rationale: "Salah. Penambahan 'are' merusak kalimat karena sudah ada predikat 'must uphold'." },
+                    { text: "who students", isCorrect: false, rationale: "Salah. Struktur relative pronoun tidak lengkap." },
+                    { text: "being students", isCorrect: false, rationale: "Salah. Participle 'being' tidak diperlukan." },
+                    { text: "they are students", isCorrect: false, rationale: "Salah. Membentuk gandaan pronoun." }
+                ]
+            },
+            {
+                questionNumber: 25,
+                type: "Fill in the Blank",
+                difficulty: "Mudah",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>My hobby, _____, has improved my analytical thinking skills.",
+                answerOptions: [
+                    { text: "writing journal articles", isCorrect: true, rationale: "Benar! Appositive berupa Gerund Phrase ('writing journal articles') menjelaskan noun 'hobby'." },
+                    { text: "write journal articles", isCorrect: false, rationale: "Salah. Bare verb tidak bisa menjadi appositive." },
+                    { text: "is writing journal articles", isCorrect: false, rationale: "Salah. Memasukkan verb 'is' menyebabkan double verb." },
+                    { text: "wrote journal articles", isCorrect: false, rationale: "Salah. Past verb tidak bisa menjadi appositive." },
+                    { text: "to writing journal articles", isCorrect: false, rationale: "Salah. 'to' tidak boleh diikuti V-ing untuk infinitive phrase." }
+                ]
+            },
+            // Sedang (4)
+            {
+                questionNumber: 26,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____, George Washington served as the first president of the United States.",
+                answerOptions: [
+                    { text: "A military commander during the Revolutionary War", isCorrect: true, rationale: "Benar! Noun Phrase di awal kalimat bertindak sebagai Appositive penjelas subjek 'George Washington'." },
+                    { text: "He was a military commander", isCorrect: false, rationale: "Salah. Menimbulkan dua klausa tanpa konjungsi (run-on sentence)." },
+                    { text: "Was a military commander", isCorrect: false, rationale: "Salah. Memasukkan verb 'Was' di awal kalimat tanpa subjek." },
+                    { text: "Because a military commander", isCorrect: false, rationale: "Salah. Conjunction 'Because' butuh S+V." },
+                    { text: "That a military commander", isCorrect: false, rationale: "Salah. 'That' tidak tepat membentuk appositive awal." }
+                ]
+            },
+            {
+                questionNumber: 27,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The researchers visited BEC, _____ in Pare.",
+                answerOptions: [
+                    { text: "the first English course", isCorrect: true, rationale: "Benar! Noun Phrase 'the first English course' adalah Appositive yang menerangkan objek 'BEC'." },
+                    { text: "which it is the first English course", isCorrect: false, rationale: "Salah. Penggunaan 'which it is' salah karena pronoun 'it' redundan." },
+                    { text: "was the first English course", isCorrect: false, rationale: "Salah. Memasukkan verb 'was' membuat double verb tanpa conjunction." },
+                    { text: "is the first English course", isCorrect: false, rationale: "Salah. Memasukkan verb 'is' merusak appositive." },
+                    { text: "it was the first English course", isCorrect: false, rationale: "Salah. Membentuk klausa baru tanpa konjungsi." }
+                ]
+            },
+            {
+                questionNumber: 28,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____ of the university, Professor Wijaya delivered an inspiring commencement speech.",
+                answerOptions: [
+                    { text: "The newly elected rector", isCorrect: true, rationale: "Benar! Appositive Noun Phrase 'The newly elected rector' menerangkan subjek 'Professor Wijaya'." },
+                    { text: "He is the newly elected rector", isCorrect: false, rationale: "Salah. Membentuk klausa ganda." },
+                    { text: "Was the newly elected rector", isCorrect: false, rationale: "Salah. Menggunakan kata kerja di posisi appositive." },
+                    { text: "Because the newly elected rector", isCorrect: false, rationale: "Salah. Konjungsi tanpa verb lengkap." },
+                    { text: "Since he was the newly elected rector", isCorrect: false, rationale: "Salah. Mengubah jenis struktur." }
+                ]
+            },
+            {
+                questionNumber: 29,
+                type: "Fill in the Blank",
+                difficulty: "Sedang",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>The team completed the survey in Pekalongan, _____ in Central Java.",
+                answerOptions: [
+                    { text: "a historic coastal city", isCorrect: true, rationale: "Benar! Noun Phrase 'a historic coastal city' bertindak sebagai Appositive penerang kata 'Pekalongan'." },
+                    { text: "is a historic coastal city", isCorrect: false, rationale: "Salah. Memasukkan verb 'is' merusak struktur." },
+                    { text: "which it is a historic coastal city", isCorrect: false, rationale: "Salah. Redundansi pronoun 'it'." },
+                    { text: "it is a historic coastal city", isCorrect: false, rationale: "Salah. Menimbulkan koma splice." },
+                    { text: "being a historic coastal city", isCorrect: false, rationale: "Salah. Participle tidak diperlukan." }
+                ]
+            },
+            // Sulit (1)
+            {
+                questionNumber: 30,
+                type: "Fill in the Blank",
+                difficulty: "Sulit",
+                question: "Lengkapilah bagian kosong pada kalimat berikut:<br><br>_____, the strategy proposed by the consultant was accepted by the board.",
+                answerOptions: [
+                    { text: "A comprehensive solution to the company's financial crisis", isCorrect: true, rationale: "Benar! Frasa Appositive panjang di awal kalimat menerangkan noun subjek 'the strategy'." },
+                    { text: "It was a comprehensive solution to the crisis", isCorrect: false, rationale: "Salah. Membentuk run-on sentence dengan klausa utama." },
+                    { text: "That it was a comprehensive solution to the crisis", isCorrect: false, rationale: "Salah. Noun clause yang tidak berfungsi sebagai subjek." },
+                    { text: "Because of a comprehensive solution to the crisis", isCorrect: false, rationale: "Salah. Mengubah makna menjadi alasan preposisi." },
+                    { text: "Being that a comprehensive solution to the crisis", isCorrect: false, rationale: "Salah. Struktur tidak baku." }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let score = 0;
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        
+        const questionTextEl = document.getElementById('question-text');
+        const questionTypeTagEl = document.getElementById('question-type-tag');
+        const difficultyBadgeEl = document.getElementById('difficulty-badge');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTextEl = document.getElementById('explanation-text');
+        
+        const currentQNumEl = document.getElementById('current-q-num');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const scoreBadge = document.getElementById('score-badge');
+        const finalScoreText = document.getElementById('final-score-text');
+        const finalScoreDisplay = document.getElementById('final-score-display');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            scoreBadge.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            currentQNumEl.textContent = q.questionNumber;
+            progressBarEl.style.width = `${((currentQuestionIndex + 1) / questionsData.length) * 100}%`;
+
+            questionTypeTagEl.textContent = q.type;
+            
+            // Set Difficulty Badge Color
+            difficultyBadgeEl.textContent = q.difficulty;
+            if (q.difficulty === "Mudah") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 text-emerald-800";
+            } else if (q.difficulty === "Sedang") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-amber-100 text-amber-800";
+            } else {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-rose-100 text-rose-800";
+            }
+
+            questionTextEl.innerHTML = q.question;
+            optionsContainerEl.innerHTML = '';
+            explanationBoxEl.classList.add('hidden');
+
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                let baseClasses = "w-full text-left p-4 rounded-xl border transition flex items-start gap-3 text-sm md:text-base ";
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (opt.isCorrect) {
+                        baseClasses += "bg-emerald-50 border-emerald-300 text-emerald-900 font-medium";
+                    } else if (isSelected && !opt.isCorrect) {
+                        baseClasses += "bg-rose-50 border-rose-300 text-rose-900";
+                    } else {
+                        baseClasses += "bg-white border-slate-200 text-slate-700 opacity-60";
+                    }
+                    btn.disabled = true;
+                } else {
+                    baseClasses += "bg-white border-slate-200 hover:border-purple-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="font-bold bg-slate-100 text-slate-700 w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs">${optionLetters[idx]}</span>
+                    <span class="mt-0.5">${opt.text}</span>
+                `;
+
+                if (userAnswers[currentQuestionIndex] === null) {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optionsContainerEl.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                showExplanation();
+            }
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questionsData.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+
+        function selectAnswer(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const q = questionsData[currentQuestionIndex];
+            
+            if (q.answerOptions[optionIndex].isCorrect) {
+                score++;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation() {
+            const q = questionsData[currentQuestionIndex];
+            const selectedOpt = q.answerOptions[userAnswers[currentQuestionIndex]];
+            explanationTextEl.innerHTML = selectedOpt.rationale;
+            explanationBoxEl.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            finalScoreText.textContent = `${score} / 30`;
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            score = 0;
+            resultScreen.classList.add('hidden');
+            scoreBadge.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
