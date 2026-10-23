@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuis Interaktif: Analisis Frasa & Noun Phrase (LA + DA + N)</title>
+    <title>Kuis Interaktif: Analisis Phrase & Noun Phrase (LA + DA + N)</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -18,7 +18,7 @@
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
                 <span class="bg-emerald-700 text-emerald-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">Linguistic & Grammar Mastery</span>
-                <h1 class="text-2xl font-bold mt-1">Konsep Frasa & Pembentukan Noun Phrase</h1>
+                <h1 class="text-2xl font-bold mt-1">Konsep Phrase & Pembentukan Noun Phrase</h1>
                 <p class="text-emerald-200 text-sm">20 Soal Konseptual & Analisis Struktur (Head, Modifier, LA + DA + N)</p>
             </div>
             <div id="score-badge" class="hidden bg-emerald-800 border border-emerald-600 px-4 py-2 rounded-xl text-center">
@@ -34,7 +34,7 @@
         <!-- Welcome Screen -->
         <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
             <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">📚</div>
-            <h2 class="text-2xl font-bold text-slate-900 mb-2">Simulasi Interaktif Pemahaman Frasa (Phrase)</h2>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Simulasi Interaktif Pemahaman Phrase (Phrase)</h2>
             <p class="text-slate-600 max-w-xl mx-auto mb-6">
                 Uji pemahaman mengenai susunan <em>Head (H) & Modifier (M)</em> dalam pembentukan Noun Phrase, urutan <em>(LA)</em> & <em>(DA)</em>.
             </p>
@@ -87,7 +87,7 @@
                 <!-- Rationale Box (Hidden initially) -->
                 <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
                     <div class="font-bold text-slate-900 flex items-center gap-2">
-                        <span>💡 Pembahasan & Analisis Frasa</span>
+                        <span>💡 Pembahasan & Analisis Phrase</span>
                     </div>
                     <p id="explanation-text" class="text-slate-700 leading-relaxed"></p>
                 </div>
@@ -109,7 +109,7 @@
             <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🏆</div>
             <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
             <p class="text-slate-600 max-w-md mx-auto">
-                Selamat, Anda telah menyelesaikan simulasi 20 Soal Analisis Frasa & Noun Phrase.
+                Selamat, Anda telah menyelesaikan simulasi 20 Soal Analisis Phrase & Noun Phrase.
             </p>
             <div class="inline-block bg-emerald-50 border border-emerald-200 rounded-2xl px-8 py-4">
                 <span id="final-score-display" class="text-4xl font-extrabold text-emerald-600">0</span>
@@ -126,7 +126,7 @@
 
     <!-- Footer -->
     <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
-        &copy; LUMINA PROJECT 2026 • Kuis Pemahaman Frasa & Noun Phrase
+        &copy; LUMINA PROJECT 2026 • Kuis Pemahaman Phrase & Noun Phrase
     </footer>
 
     <!-- Script Quiz Logic -->
@@ -135,14 +135,14 @@
             // --- KELOMPOK 1: KONSEP HEAD & MODIFIER ---
             {
                 questionNumber: 1,
-                type: "Konsep Dasar Frasa",
+                type: "Konsep Dasar Phrase",
                 category: "Head & Modifier",
-                question: "Di dalam sebuah struktur frasa (phrase), manakah pernyataan yang paling tepat mengenai ketentuan <em>Head (H)</em> dan <em>Modifier (M)</em>?",
+                question: "Di dalam sebuah struktur Phrase (phrase), manakah pernyataan yang paling tepat mengenai ketentuan <em>Head (H)</em> dan <em>Modifier (M)</em>?",
                 answerOptions: [
-                    { text: "Setiap frasa boleh memiliki lebih dari satu Head, tetapi hanya boleh memiliki satu Modifier.", isCorrect: false },
-                    { text: "Setiap frasa hanya memiliki tepat satu Head (elemen yang dijelaskan), sedangkan Modifier (elemen yang menjelaskan) boleh lebih dari satu.", isCorrect: true, rationale: "Benar! Prinsip utama frasa adalah hanya terdiri dari 1 Head (inti frasa), sementara Modifier dapat berada di sebelum (Pre-M) atau sesudah Head (Post-M) dalam jumlah lebih dari satu." },
-                    { text: "Head harus selalu terletak di awal frasa sebelum semua Modifier.", isCorrect: false },
-                    { text: "Penamaan jenis frasa ditentukan oleh kata pertama yang muncul dalam frasa tersebut, bukan jenis Head-nya.", isCorrect: false },
+                    { text: "Setiap Phrase boleh memiliki lebih dari satu Head, tetapi hanya boleh memiliki satu Modifier.", isCorrect: false },
+                    { text: "Setiap Phrase hanya memiliki tepat satu Head (elemen yang dijelaskan), sedangkan Modifier (elemen yang menjelaskan) boleh lebih dari satu.", isCorrect: true, rationale: "Benar! Prinsip utama Phrase adalah hanya terdiri dari 1 Head (inti Phrase), sementara Modifier dapat berada di sebelum (Pre-M) atau sesudah Head (Post-M) dalam jumlah lebih dari satu." },
+                    { text: "Head harus selalu terletak di awal Phrase sebelum semua Modifier.", isCorrect: false },
+                    { text: "Penamaan jenis Phrase ditentukan oleh kata pertama yang muncul dalam Phrase tersebut, bukan jenis Head-nya.", isCorrect: false },
                     { text: "Modifier adalah elemen yang dijelaskan, sedangkan Head adalah kata sifat yang menjelaskan.", isCorrect: false }
                 ]
             },
@@ -150,7 +150,7 @@
                 questionNumber: 2,
                 type: "Analisis Struktur Subjek",
                 category: "Head & Modifier",
-                question: "Perhatikan frasa subjek berikut dari contoh materi:<br><br><strong>'The sudden illness afterward'</strong><br><br>Manakah analisis susunan <em>Head</em> dan <em>Modifier</em> yang benar dari subjek di atas?",
+                question: "Perhatikan Phrase subjek berikut:<br><br><strong>'The sudden illness afterward'</strong><br><br>Manakah analisis susunan <em>Head</em> dan <em>Modifier</em> yang benar dari subjek di atas?",
                 answerOptions: [
                     { text: "Head: 'illness'; Pre-Modifier: 'The' & 'sudden'; Post-Modifier: 'afterward'", isCorrect: true, rationale: "Benar! Inti kata benda yang dijelaskan adalah 'illness' (Head). Kata 'The' (article) dan 'sudden' (adjective) bertindak sebagai Pre-Modifier, sedangkan 'afterward' (adverb of time) bertindak sebagai Post-Modifier." },
                     { text: "Head: 'sudden'; Pre-Modifier: 'The'; Post-Modifier: 'illness' & 'afterward'", isCorrect: false },
@@ -165,9 +165,9 @@
                 questionNumber: 3,
                 type: "Noun Adjunct",
                 category: "Pre-Modifier",
-                question: "Pada frasa <strong>'Grammar book'</strong>, <strong>'car key'</strong>, dan <strong>'MBG menu'</strong>, kata <em>'Grammar'</em>, <em>'car'</em>, dan <em>'MBG'</em> bertindak sebagai apa?",
+                question: "Pada Phrase <strong>'Grammar book'</strong>, <strong>'car key'</strong>, dan <strong>'MBG menu'</strong>, kata <em>'Grammar'</em>, <em>'car'</em>, dan <em>'MBG'</em> bertindak sebagai apa?",
                 answerOptions: [
-                    { text: "Head dari frasa tersebut karena terletak di posisi depan.", isCorrect: false },
+                    { text: "Head dari Phrase tersebut karena terletak di posisi depan.", isCorrect: false },
                     { text: "Noun Adjunct, yaitu kata benda yang difungsikan sebagai penjelas (Pre-Modifier) bagi Noun utama setelahnya.", isCorrect: true, rationale: "Benar! Setiap kata benda pertama dalam susunan dua noun berurutan berfungsi sebagai 'Noun Adjunct' (elemen penjelas tambahan) yang menjelaskan Head noun di belakangnya." },
                     { text: "Adverb of Place yang menerangkan tempat benda berada.", isCorrect: false },
                     { text: "Possessive Pronoun yang menyatakan kepemilikan mutlak.", isCorrect: false },
@@ -178,7 +178,7 @@
                 questionNumber: 4,
                 type: "Participle Modifier",
                 category: "Pre-Modifier",
-                question: "Pada frasa <strong>'crying boy'</strong> dan <strong>'broken glass'</strong>, kata <em>'crying'</em> (V-ing) dan <em>'broken'</em> (V3) berfungsi sebagai:",
+                question: "Pada Phrase <strong>'crying boy'</strong> dan <strong>'broken glass'</strong>, kata <em>'crying'</em> (V-ing) dan <em>'broken'</em> (V3) berfungsi sebagai:",
                 answerOptions: [
                     { text: "Verb utama (Finite Verb) yang membentuk klausa verbal.", isCorrect: false },
                     { text: "Adjective (Participle Modifier) yang menjelaskan kata benda setelahnya dengan makna aktif (V-ing) dan pasif (V3).", isCorrect: true, rationale: "Benar! Participle (V-ing sebagai Present Participle bermakna aktif 'yang menangis' dan V3 sebagai Past Participle bermakna pasif 'yang pecah') yang mendahului noun berfungsi sebagai Adjective (Pre-Modifier)." },
@@ -193,7 +193,7 @@
                 questionNumber: 5,
                 type: "Reduced Adjective Clause",
                 category: "Post-Modifier",
-                question: "Perhatikan dua kalimat berikut dari materi:<br>1. <em>'The boy moshing in the class is your friend.'</em><br>2. <em>'The man splashed with acid by the TNI is Andrie Yunus...'</em><br><br>Manakah asal bentuk klausa penuh (Adjective Clause utuh) sebelum dilakukan pangkasan (*reduction*) pada frasa penjelas di atas?",
+                question: "Perhatikan dua kalimat berikut:<br>1. <em>'The boy moshing in the class is your friend.'</em><br>2. <em>'The man splashed with acid by the TNI is Andrie Yunus...'</em><br><br>Manakah asal bentuk klausa penuh (Adjective Clause utuh) sebelum dilakukan pangkasan (*reduction*) pada Phrase penjelas di atas?",
                 answerOptions: [
                     { text: "'who is moshing' dan 'who was splashed'", isCorrect: true, rationale: "Benar! Kata 'moshing' berasal dari Adjective Clause aktif 'who is moshing', sedangkan 'splashed' berasal dari Adjective Clause pasif 'who was splashed' yang telah dihapus conjunction dan to be-nya." },
                     { text: "'who mosh' dan 'who splashes'", isCorrect: false },
@@ -208,7 +208,7 @@
                 questionNumber: 6,
                 type: "To-Infinitive Modifier",
                 category: "Post-Modifier",
-                question: "Jika frasa <strong>'The boy moshing in the class'</strong> diubah menjadi <strong>'The boy to mosh in the class'</strong>, bagaimana perubahan makna yang terjadi pada penjelas kata benda tersebut?",
+                question: "Jika Phrase <strong>'The boy moshing in the class'</strong> diubah menjadi <strong>'The boy to mosh in the class'</strong>, bagaimana perubahan makna yang terjadi pada penjelas kata benda tersebut?",
                 answerOptions: [
                     { text: "Makna berubah dari 'yang telah selesai moshing' menjadi 'yang sedang moshing'.", isCorrect: false },
                     { text: "Makna berubah dari 'yang sedang moshing' (tindakan berlangsung) menjadi 'yang akan moshing' (tindakan personal yang akan dilakukan).", isCorrect: true, rationale: "Benar! Penggunaan To-Infinitive (to + V1) sebagai modifier noun personal mengubah makna penjelas dari tindakan yang sedang terjadi (V-ing) menjadi tindakan yang 'akan dilakukan' di masa depan." },
@@ -236,7 +236,7 @@
                 questionNumber: 8,
                 type: "Adverb Modifier of Noun",
                 category: "Post-Modifier",
-                question: "Pada frasa-frasa berikut:<br>- <em>'the room downstairs'</em><br>- <em>'the 12th May commemoration yesterday'</em><br>- <em>'the labor protest there'</em><br><br>Kata <em>'downstairs'</em>, <em>'yesterday'</em>, dan <em>'there'</em> tergolong ke dalam kelas kata apa dan apa fungsinya?",
+                question: "Pada Phrase-Phrase berikut:<br>- <em>'the room downstairs'</em><br>- <em>'the 12th May commemoration yesterday'</em><br>- <em>'the labor protest there'</em><br><br>Kata <em>'downstairs'</em>, <em>'yesterday'</em>, dan <em>'there'</em> tergolong ke dalam kelas kata apa dan apa fungsinya?",
                 answerOptions: [
                     { text: "Descriptive Adjective yang menerangkan warna dan bentuk benda.", isCorrect: false },
                     { text: "Adverb (Adverb of Place & Time) yang berfungsi sebagai Post-Modifier (penjelas setelah noun) bagi kata benda sebelumnya.", isCorrect: true, rationale: "Benar! Kata 'downstairs' (tempat), 'yesterday' (waktu), dan 'there' (tempat) adalah Adverb yang berposisi di belakang kata benda (Post-Modifier) untuk menjelaskan lokasi/waktu benda tersebut." },
@@ -282,10 +282,10 @@
                 question: "Bagaimanakah pembedaan pembentukan kepemilikan (*Possessive Genitive*) antara orang (*person*) dan bukan orang (*non-person*)?",
                 answerOptions: [
                     { text: "Person menggunakan pola <em>n of n</em> (misal: <em>books of Nanang</em>); Non-person menggunakan 's (misal: <em>car's key</em>).", isCorrect: false },
-                    { text: "Person menggunakan penambahan apostrof 's (misal: <em>Nanang's books, Aris' books</em>); sedangkan Non-person menggunakan pola Noun Adjunct / <em>n of n</em> (misal: <em>car key / key of car</em>).", isCorrect: true, rationale: "Benar! Untuk manusia (person) menggunakan apostrof 's (atau ' setelah s jamak). Sedangkan benda mati (non-person) menggunakan pola inversi Noun Adjunct (<em>car key</em>) atau frasa preposisi <em>n of n</em> (<em>key of car</em>)." },
+                    { text: "Person menggunakan penambahan apostrof 's (misal: <em>Nanang's books, Aris' books</em>); sedangkan Non-person menggunakan pola Noun Adjunct / <em>n of n</em> (misal: <em>car key / key of car</em>).", isCorrect: true, rationale: "Benar! Untuk manusia (person) menggunakan apostrof 's (atau ' setelah s jamak). Sedangkan benda mati (non-person) menggunakan pola inversi Noun Adjunct (<em>car key</em>) atau Phrase preposisi <em>n of n</em> (<em>key of car</em>)." },
                     { text: "Person dan Non-person keduanya wajib menggunakan apostrof 's.", isCorrect: false },
                     { text: "Person menggunakan <em>This/That</em>; Non-person menggunakan <em>My/Your</em>.", isCorrect: false },
-                    { text: "Non-person tidak bisa dibuat menjadi frasa kepemilikan.", isCorrect: false }
+                    { text: "Non-person tidak bisa dibuat menjadi Phrase kepemilikan.", isCorrect: false }
                 ]
             },
             {
@@ -320,7 +320,7 @@
                 questionNumber: 14,
                 type: "Numeral (Cardinal vs Ordinal)",
                 category: "LA Sub-types",
-                question: "Perhatikan analisis contoh dari materi:<br><br>Mengapa kalimat <strong>'My third wife goes to market'</strong> bernilai BENAR (menggunakan verb <em>goes</em>), sedangkan <strong>'My third wife go to market'</strong> SALAH?",
+                question: "Perhatikan analisis:<br><br>Mengapa kalimat <strong>'My third wife goes to market'</strong> bernilai BENAR (menggunakan verb <em>goes</em>), sedangkan <strong>'My third wife go to market'</strong> SALAH?",
                 answerOptions: [
                     { text: "Karena 'third' adalah Ordinal Numeral yang menunjuk pada individu tunggal (istri yang ke-3, bukan 3 orang istri), sehingga subjeknya tunggal dan butuh verb Vs/es (goes).", isCorrect: true, rationale: "Benar! 'third' (ke-3) menunjukkan urutan/posisi tunggal satu orang istri, bukan jumlah 3 orang. Subjeknya singular, sehingga verb-nya harus 'goes'. Jika jumlahnya 3 orang, kalimatnya menjadi <em>'My three wives go...'</em>." },
                     { text: "Karena 'third' artinya 'tiga orang istri', sehingga seharusnya memakai verb plural.", isCorrect: false },
@@ -363,7 +363,7 @@
                 questionNumber: 17,
                 type: "Merangkai Noun Phrase",
                 category: "Penerapan Rumus",
-                question: "Mari kita analisis contoh dari materi berikut:<br><br>Frasa Bahasa Indonesia: <strong>'Buku kunoku yang ke sembilan'</strong><br><br>Komponen:<br>- Head (H): <em>book</em><br>- Ancient: <em>Age (DA4)</em><br>- My: <em>Possessive (LA3)</em><br>- Ninth: <em>Ordinal Numeral (LA5)</em><br><br>Manakah hasil susunan Noun Phrase Bahasa Inggris yang TEPAT sesuai rumus LA + DA + N?",
+                question: "Mari kita analisis contoh berikut:<br><br>Phrase Bahasa Indonesia: <strong>'Buku kunoku yang ke sembilan'</strong><br><br>Komponen:<br>- Head (H): <em>book</em><br>- Ancient: <em>Age (DA4)</em><br>- My: <em>Possessive (LA3)</em><br>- Ninth: <em>Ordinal Numeral (LA5)</em><br><br>Manakah hasil susunan Noun Phrase Bahasa Inggris yang TEPAT sesuai rumus LA + DA + N?",
                 answerOptions: [
                     { text: "Book ancient my ninth", isCorrect: false },
                     { text: "My ninth ancient book", isCorrect: true, rationale: "Benar! Urutan LA dari atas ke bawah: My (LA3 Possessive) $\\rightarrow$ ninth (LA5 Numeral Ordinal). Kemudian DA: ancient (DA4 Age). Lalu diakhiri Head Noun: book. Hasilnya: 'My ninth ancient book'." },
@@ -376,7 +376,7 @@
                 questionNumber: 18,
                 type: "Merangkai Noun Phrase Kompleks",
                 category: "Penerapan Rumus",
-                question: "Mari kita analisis contoh kompleks dari materi berikut:<br><br>Frasa Bahasa Indonesia: <strong>'20 siswa Malaysianya pak Dr. Najih yang rajin dan rendah hati'</strong><br><br>Komponen:<br>- Head (H): <em>students</em><br>- 20: <em>Numeral Cardinal (LA5)</em><br>- Mr. Dr. Najih's: <em>Possessive Genitive (LA3)</em><br>- Malaysian: <em>Nationality (DA8)</em><br>- Diligent & Humble: <em>Character/Quality (DA1/DA2)</em><br><br>Manakah hasil susunan Noun Phrase Bahasa Inggris yang TEPAT sesuai rumus LA + DA + N?",
+                question: "Mari kita analisis contoh kompleks berikut:<br><br>Phrase Bahasa Indonesia: <strong>'20 siswa Malaysianya pak Dr. Najih yang rajin dan rendah hati'</strong><br><br>Komponen:<br>- Head (H): <em>students</em><br>- 20: <em>Numeral Cardinal (LA5)</em><br>- Mr. Dr. Najih's: <em>Possessive Genitive (LA3)</em><br>- Malaysian: <em>Nationality (DA8)</em><br>- Diligent & Humble: <em>Character/Quality (DA1/DA2)</em><br><br>Manakah hasil susunan Noun Phrase Bahasa Inggris yang TEPAT sesuai rumus LA + DA + N?",
                 answerOptions: [
                     { text: "20 students Malaysian Mr. Dr. Najih's diligent and humble", isCorrect: false },
                     { text: "20 Mr. Dr. Najih's Malaysian diligent and humble students", isCorrect: true, rationale: "Benar! Susunan LA (atas ke bawah): 20 (LA5) dan Mr. Dr. Najih's (LA3). Susunan DA (bawah ke atas): Malaysian (DA8 Nationality) $\\rightarrow$ diligent and humble (DA1/2 Character). Ditutup Head: students. Hasil: '20 Mr. Dr. Najih's Malaysian diligent and humble students'." },
@@ -401,7 +401,7 @@
             {
                 questionNumber: 20,
                 type: "Rangkuman Fungsi Pre vs Post Modifier",
-                category: "Kesimpulan Frasa",
+                category: "Kesimpulan Phrase",
                 question: "Berdasarkan seluruh pembahasan Head & Modifier pada Noun Phrase, manakah kesimpulan kelas kata penjelas (*Modifier*) yang BENAR untuk posisi **Pre-Modifier** dan **Post-Modifier**?",
                 answerOptions: [
                     { text: "Pre-Modifier: Prepositional Phrase & Adjective Clause; Post-Modifier: Limiting Adjective saja.", isCorrect: false },
