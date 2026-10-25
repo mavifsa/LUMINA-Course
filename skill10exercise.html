@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis TOEFL Interaktif: Skill 10 - Adjective Clause (30 Soal)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white shadow-md py-6 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-indigo-700 text-indigo-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">TOEFL Grammar Mastery</span>
+                <h1 class="text-2xl font-bold mt-1">Skill 10: Adjective Clause Analysis</h1>
+                <p class="text-indigo-200 text-sm">30 Soal Interaktif (Conceptual Analysis, Error Analysis, & Complete the Blank)</p>
+            </div>
+            <div id="score-badge" class="hidden bg-indigo-800 border border-indigo-600 px-4 py-2 rounded-xl text-center">
+                <span class="block text-xs text-indigo-300">Skor Akhir</span>
+                <span id="final-score-text" class="text-xl font-bold text-white">0 / 30</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+            <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">📖</div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Simulasi TOEFL Structure: Skill 10 (Adjective Clause)</h2>
+            <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                Uji pemahaman mendalam mengenai Adjective Clause, pemilahan Main Clause dan Sub Clause, pola Relative Pronoun, Relative Adverb, serta format soal TOEFL (Error Analysis & Complete the Blank).
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-md mx-auto mb-8 text-left text-sm text-slate-700">
+                <p class="font-semibold text-slate-900 mb-2">Komposisi Soal (Total 30 Soal):</p>
+                <ul class="space-y-1 list-disc list-inside">
+                    <li>6 Soal Konceptual</li>
+                    <li>12 Soal Error Analysis</li>
+                    <li>12 Soal Complete the Blank</li>
+                    <li>Tingkat: Mudah, Sedang, Sulit</li>
+                    <li>Pilihan Jawaban: A, B, C, D, E dengan Pembahasan</li>
+                </ul>
+            </div>
+            <button onclick="startQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-sm">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden space-y-6">
+            <!-- Progress Bar & Info -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sm font-semibold text-slate-600">
+                    Soal <span id="current-q-num" class="text-indigo-600 font-bold">1</span> dari <span id="total-q-num">30</span>
+                    <span id="difficulty-badge" class="ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium"></span>
+                    <span id="category-badge" class="ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-indigo-100 text-indigo-800"></span>
+                </div>
+                <div class="w-1/3 md:w-1/2 bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full transition-all duration-300" style="width: 3.3%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+                <!-- Question Type Tag -->
+                <div>
+                    <span id="question-type-tag" class="text-xs font-semibold px-3 py-1 rounded-md bg-slate-100 text-slate-600 uppercase tracking-wide"></span>
+                </div>
+
+                <div id="question-text" class="text-lg md:text-xl font-medium text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Rationale Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+                    <div class="font-bold text-slate-900 flex items-center gap-2">
+                        <span>💡 Pembahasan Lengkap Pilihan Jawaban</span>
+                    </div>
+                    <div id="explanation-text" class="text-slate-700 space-y-1.5 leading-relaxed"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2.5 rounded-xl transition shadow-sm">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center space-y-6">
+            <div class="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🏆</div>
+            <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">
+                Selamat, Anda telah menyelesaikan simulasi 30 Soal Skill 10: Adjective Clause Analysis.
+            </p>
+            <div class="inline-block bg-indigo-50 border border-indigo-200 rounded-2xl px-8 py-4">
+                <span id="final-score-display" class="text-4xl font-extrabold text-indigo-600">0</span>
+                <span class="text-xl text-slate-500 font-semibold"> / 30</span>
+            </div>
+            <div>
+                <button onclick="restartQuiz()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-sm">
+                    Ulangi Kuis
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
+        &copy; LUMINA PROJECT 2026 • TOEFL Preparation • Skill 10: Adjective Clause Analysis
+    </footer>
+
+    <!-- Script Quiz Logic -->
+    <script>
+        const questionsData = [
+            // --- BAGIAN 1: 6 SOAL CONCEPTUAL ANALYSIS ---
+            {
+                questionNumber: 1,
+                type: "Conceptual Analysis",
+                category: "Main Clause vs Sub Clause",
+                difficulty: "Mudah",
+                question: "Perhatikan kalimat berikut:<br><br><em>'The student who studies syntax passed the exam.'</em><br><br>Manakah pemilahan clause yang tepat?",
+                answerOptions: [
+                    { text: "Main Clause: 'who studies syntax' & Sub Clause: 'The student passed the exam'", isCorrect: false, explanation: "Salah. Posisi clause terbalik." },
+                    { text: "Main Clause: 'The student passed the exam' & Sub Clause: 'who studies syntax'", isCorrect: true, explanation: "Benar! 'The student passed the exam' adalah Main Clause, sedangkan 'who studies syntax' adalah Sub Clause yang menerangkan subject 'student'." },
+                    { text: "Keduanya merupakan Main Clause independen.", isCorrect: false, explanation: "Salah. Sub Clause bergantung pada Main Clause." },
+                    { text: "Keduanya merupakan Sub Clause dependen.", isCorrect: false, explanation: "Salah. Main Clause dapat berdiri sendiri." },
+                    { text: "Tidak ada pembedaan clause dalam kalimat tersebut.", isCorrect: false, explanation: "Salah. Kalimat ini adalah kalimat majemuk bertingkat." }
+                ]
+            },
+            {
+                questionNumber: 2,
+                type: "Conceptual Analysis",
+                category: "Head Modifier",
+                difficulty: "Mudah",
+                question: "Dalam kalimat <em>'The student who studies syntax passed the exam.'</em>, apakah kata yang berfungsi sebagai Head yang diterangkan oleh Adjective Clause?",
+                answerOptions: [
+                    { text: "exam", isCorrect: false, explanation: "Salah. 'exam' adalah object dari Main Clause." },
+                    { text: "syntax", isCorrect: false, explanation: "Salah. 'syntax' adalah object di dalam Sub Clause." },
+                    { text: "student", isCorrect: true, explanation: "Benar! Head yang diterangkan oleh Sub Clause 'who studies syntax' adalah noun 'student'." },
+                    { text: "passed", isCorrect: false, explanation: "Salah. 'passed' adalah verb utama." },
+                    { text: "The", isCorrect: false, explanation: "Salah. 'The' adalah article." }
+                ]
+            },
+            {
+                questionNumber: 3,
+                type: "Conceptual Analysis",
+                category: "Subject Structure",
+                difficulty: "Sedang",
+                question: "Perhatikan frasa subjek berikut:<br><br><em>'The book which explains semantics...'</em><br><br>Mengapa conjunction <em>'which'</em> langsung diikuti oleh verb <em>'explains'</em> tanpa diselipi pronoun lain?",
+                answerOptions: [
+                    { text: "Karena conjunction 'which' merangkap sebagai subject bagi verb 'explains'.", isCorrect: true, explanation: "Benar! Pola Subject Adjective Clause adalah n + conj + V karena conjunction langsung menggantikan posisi subject." },
+                    { text: "Karena 'which' adalah relative adverb tempat.", isCorrect: false, explanation: "Salah. 'which' adalah relative pronoun untuk benda." },
+                    { text: "Karena kalimat ini merupakan kalimat tanya.", isCorrect: false, explanation: "Salah. Ini adalah kalimat pernyataan." },
+                    { text: "Karena noun 'book' bernilai jamak.", isCorrect: false, explanation: "Salah. Tidak memengaruhi fungsi conjunction." },
+                    { text: "Karena conjunction tidak boleh diikuti verb.", isCorrect: false, explanation: "Salah. Subject Adjective Clause wajib langsung diikuti verb." }
+                ]
+            },
+            {
+                questionNumber: 4,
+                type: "Conceptual Analysis",
+                category: "Object Structure",
+                difficulty: "Sedang",
+                question: "Perhatikan frasa berikut:<br><br><em>'The book which I bought yesterday...'</em><br><br>Mengapa setelah conjunction <em>'which'</em> langsung diikuti oleh subject <em>'I'</em> dan verb <em>'bought'</em>?",
+                answerOptions: [
+                    { text: "Karena conjunction 'which' berfungsi sebagai subject tunggal.", isCorrect: false, explanation: "Salah. Jika subject, conjunction langsung diikuti verb." },
+                    { text: "Karena Adjective Clause tersebut berposisi sebagai object, di mana subject clause sudah diisi oleh pronoun 'I'.", isCorrect: true, explanation: "Benar! Pola Object Adjective Clause adalah n + conj + S + V." },
+                    { text: "Karena kata 'yesterday' mewajibkan kehadiran subject baru.", isCorrect: false, explanation: "Salah. Keterangan waktu tidak mengubah struktur clause." },
+                    { text: "Karena terjadi kesalahan penulisan struktur.", isCorrect: false, explanation: "Salah. Struktur tersebut sudah sempurna." },
+                    { text: "Karena conjunction 'which' hanya bisa menerangkan waktu.", isCorrect: false, explanation: "Salah. 'which' menerangkan benda." }
+                ]
+            },
+            {
+                questionNumber: 5,
+                type: "Conceptual Analysis",
+                category: "Possessive Pronoun",
+                difficulty: "Sulit",
+                question: "Perhatikan kalimat berikut:<br><br><em>'She is the lecturer whose books are widely cited.'</em><br><br>Apa fungsi dari conjunction <em>'whose'</em> dalam struktur di atas?",
+                answerOptions: [
+                    { text: "Menyatakan subject orang yang melakukan tindakan.", isCorrect: false, explanation: "Salah. Subject orang menggunakan 'who'." },
+                    { text: "Menunjukkan hubungan kepemilikan antara dosen dan buku-bukunya.", isCorrect: true, explanation: "Benar! 'whose' adalah relative pronoun possessive yang menghubungkan possessor dan noun yang dimiliki." },
+                    { text: "Menyatakan keterangan tempat sitasi.", isCorrect: false, explanation: "Salah. Tempat menggunakan 'where'." },
+                    { text: "Menyatakan object langsung dari dosen.", isCorrect: false, explanation: "Salah. Object orang menggunakan 'whom'." },
+                    { text: "Menyatakan keterangan waktu.", isCorrect: false, explanation: "Salah. Waktu menggunakan 'when'." }
+                ]
+            },
+            {
+                questionNumber: 6,
+                type: "Conceptual Analysis",
+                category: "Relative Adverb",
+                difficulty: "Sulit",
+                question: "Perhatikan kalimat berikut:<br><br><em>'This is the laboratory where we conduct linguistic experiments.'</em><br><br>Mengapa conjunction <em>'where'</em> digunakan pada kalimat tersebut?",
+                answerOptions: [
+                    { text: "Karena Head noun yang diterangkan ('laboratory') merujuk pada indikasi tempat.", isCorrect: true, explanation: "Benar! 'where' adalah Relative Adverb untuk indikasi tempat." },
+                    { text: "Karena menerangkan waktu eksperimen.", isCorrect: false, explanation: "Salah. Waktu menggunakan 'when'." },
+                    { text: "Karena menerangkan alasan penelitian.", isCorrect: false, explanation: "Salah. Alasan menggunakan 'why'." },
+                    { text: "Karena menunjukkan kepemilikan laboratorium.", isCorrect: false, explanation: "Salah. Kepemilikan menggunakan 'whose'." },
+                    { text: "Karena menggantikan subject eksperimen.", isCorrect: false, explanation: "Salah. Subject eksperimen adalah 'we'." }
+                ]
+            },
+
+            // --- BAGIAN 2: 12 SOAL ERROR ANALYSIS ---
+            {
+                questionNumber: 7,
+                type: "Error Analysis",
+                category: "Relative Pronoun",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The student <u>whom</u> (A) <u>submitted</u> (B) the thesis <u>yesterday</u> (C) is <u>my best friend</u> (D) from university (E).",
+                answerOptions: [
+                    { text: "whom", isCorrect: true, explanation: "Benar! Pilihan A salah. Conjunction 'whom' untuk object, sedangkan clause diikuti verb 'submitted' (butuh subject). Seharusnya 'who'." },
+                    { text: "submitted", isCorrect: false, explanation: "Salah. Verb sudah tepat." },
+                    { text: "yesterday", isCorrect: false, explanation: "Salah. Keterangan waktu sudah tepat." },
+                    { text: "my best friend", isCorrect: false, explanation: "Salah. Complement sudah tepat." },
+                    { text: "from university", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 8,
+                type: "Error Analysis",
+                category: "Relative Pronoun",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The book <u>who</u> (A) <u>I borrowed</u> (B) from the library <u>contains</u> (C) <u>valuable insights</u> (D) on semantics (E).",
+                answerOptions: [
+                    { text: "who", isCorrect: true, explanation: "Benar! Pilihan A salah. Conjunction 'who' khusus orang, sedangkan 'book' adalah benda. Seharusnya 'which' atau 'that'." },
+                    { text: "I borrowed", isCorrect: false, explanation: "Salah. Subject + verb sudah tepat." },
+                    { text: "contains", isCorrect: false, explanation: "Salah. Verb sudah tepat." },
+                    { text: "valuable insights", isCorrect: false, explanation: "Salah. Object sudah tepat." },
+                    { text: "on semantics", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 9,
+                type: "Error Analysis",
+                category: "Relative Pronoun",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>She is <u>the professor</u> (A) <u>which</u> (B) taught me <u>advanced syntax</u> (C) during my <u>undergraduate studies</u> (D) in Pekalongan (E).",
+                answerOptions: [
+                    { text: "the professor", isCorrect: false, explanation: "Salah. Noun orang sudah tepat." },
+                    { text: "which", isCorrect: true, explanation: "Benar! Pilihan B salah. 'which' untuk benda, sedangkan 'professor' adalah manusia. Seharusnya 'who'." },
+                    { text: "advanced syntax", isCorrect: false, explanation: "Salah. Object sudah tepat." },
+                    { text: "undergraduate studies", isCorrect: false, explanation: "Salah. Noun phrase sudah tepat." },
+                    { text: "in Pekalongan", isCorrect: false, explanation: "Salah. Keterangan tempat sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 10,
+                type: "Error Analysis",
+                category: "Relative Pronoun",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The man <u>whom speaks</u> (A) on the stage <u>is</u> (B) a prominent <u>linguist</u> (C) from <u>Oxford University</u> (D) today (E).",
+                answerOptions: [
+                    { text: "whom speaks", isCorrect: true, explanation: "Benar! Pilihan A salah. Clause diikuti langsung oleh verb 'speaks', sehingga memerlukan subject relative pronoun 'who', bukan 'whom'." },
+                    { text: "is", isCorrect: false, explanation: "Salah. Linking verb utama sudah tepat." },
+                    { text: "linguist", isCorrect: false, explanation: "Salah. Noun complement sudah tepat." },
+                    { text: "Oxford University", isCorrect: false, explanation: "Salah. Proper noun sudah tepat." },
+                    { text: "today", isCorrect: false, explanation: "Salah. Keterangan waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 11,
+                type: "Error Analysis",
+                category: "Possessive Pronoun",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The students <u>whose</u> (A) submit <u>their assignments</u> (B) on time <u>will receive</u> (C) extra credit <u>from the professor</u> (D) at the end of the semester (E).",
+                answerOptions: [
+                    { text: "whose", isCorrect: true, explanation: "Benar! Pilihan A salah. 'whose' harus diikuti noun kepemilikan. Karena diikuti verb 'submit', seharusnya 'who'." },
+                    { text: "their assignments", isCorrect: false, explanation: "Salah. Object sudah tepat." },
+                    { text: "will receive", isCorrect: false, explanation: "Salah. Predikat sudah tepat." },
+                    { text: "from the professor", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." },
+                    { text: "at the end", isCorrect: false, explanation: "Salah. Keterangan waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 12,
+                type: "Error Analysis",
+                category: "Relative Adverb",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The city <u>where</u> (A) <u>was founded</u> (B) centuries ago <u>is</u> (C) now a major <u>cultural hub</u> (D) in Central Java (E).",
+                answerOptions: [
+                    { text: "where", isCorrect: true, explanation: "Benar! Pilihan A salah. 'where' tidak dapat langsung berfungsi sebagai subject clause. Seharusnya menggunakan 'which' atau 'that'." },
+                    { text: "was founded", isCorrect: false, explanation: "Salah. Bentuk pasif sudah tepat jika subject-nya ada." },
+                    { text: "is", isCorrect: false, explanation: "Salah. Linking verb utama sudah tepat." },
+                    { text: "cultural hub", isCorrect: false, explanation: "Salah. Noun phrase sudah tepat." },
+                    { text: "in Central Java", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 13,
+                type: "Error Analysis",
+                category: "Possessive Pronoun",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The author <u>book</u> (A) <u>was published</u> (B) last month <u>will give</u> (C) a public lecture <u>this weekend</u> (D) in Semarang (E).",
+                answerOptions: [
+                    { text: "book", isCorrect: true, explanation: "Benar! Pilihan A salah. Terjadi kesalahan struktur kepemilikan Adjective Clause. Seharusnya menggunakan possessive conjunction 'whose' (The author whose book...)." },
+                    { text: "was published", isCorrect: false, explanation: "Salah. Verb pasif sudah tepat." },
+                    { text: "will give", isCorrect: false, explanation: "Salah. Predikat utama sudah tepat." },
+                    { text: "this weekend", isCorrect: false, explanation: "Salah. Keterangan waktu sudah tepat." },
+                    { text: "in Semarang", isCorrect: false, explanation: "Salah. Keterangan tempat sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 14,
+                type: "Error Analysis",
+                category: "Relative Pronoun Structure",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The report <u>which</u> (A) <u>the committee discussed it</u> (B) yesterday <u>contained</u> (C) <u>vital data</u> (D) on urban poverty (E).",
+                answerOptions: [
+                    { text: "which", isCorrect: false, explanation: "Salah. Conjunction benda sudah tepat." },
+                    { text: "the committee discussed it", isCorrect: true, explanation: "Benar! Pilihan B salah. Terjadi redundansi pronoun 'it' padahal kata 'which' sudah menggantikan object tersebut di dalam clause. Seharusnya 'the committee discussed'." },
+                    { text: "contained", isCorrect: false, explanation: "Salah. Verb utama lampau sudah tepat." },
+                    { text: "vital data", isCorrect: false, explanation: "Salah. Object noun phrase sudah tepat." },
+                    { text: "on urban poverty", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 15,
+                type: "Error Analysis",
+                category: "Relative Adverb Structure",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>This is the hotel <u>where</u> (A) <u>we stayed</u> (B) in it <u>during</u> (C) our vacation <u>last year</u> (D) in Bali (E).",
+                answerOptions: [
+                    { text: "where", isCorrect: false, explanation: "Salah. Relative adverb tempat sudah tepat." },
+                    { text: "we stayed", isCorrect: false, explanation: "Salah. Subject + verb sudah tepat." },
+                    { text: "in it", isCorrect: true, explanation: "Benar! Pilihan C salah. Kata 'where' sudah merangkum makna preposisi tempat, sehingga penambahan 'in it' di belakang menyebabkan redundansi gramatikal." },
+                    { text: "during", isCorrect: false, explanation: "Salah. Preposisi sudah tepat." },
+                    { text: "last year", isCorrect: false, explanation: "Salah. Keterangan waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 16,
+                type: "Error Analysis",
+                category: "Relative Pronoun Agreement",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Anyone <u>whom</u> (A) <u>wants to apply</u> (B) for the scholarship <u>must submit</u> (C) <u>all documents</u> (D) by tomorrow (E).",
+                answerOptions: [
+                    { text: "whom", isCorrect: true, explanation: "Benar! Pilihan A salah. Clause diikuti verb 'wants', sehingga memerlukan subject relative pronoun 'who', bukan 'whom'." },
+                    { text: "wants to apply", isCorrect: false, explanation: "Salah. Verb clause sudah tepat." },
+                    { text: "must submit", isCorrect: false, explanation: "Salah. Modal + verb utama sudah tepat." },
+                    { text: "all documents", isCorrect: false, explanation: "Salah. Object noun phrase sudah tepat." },
+                    { text: "by tomorrow", isCorrect: false, explanation: "Salah. Keterangan waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 17,
+                type: "Error Analysis",
+                category: "Relative Pronoun Object",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The paintings <u>who</u> (A) <u>the gallery exhibited</u> (B) last week <u>attracted</u> (C) <u>many art collectors</u> (D) from abroad (E).",
+                answerOptions: [
+                    { text: "who", isCorrect: true, explanation: "Benar! Pilihan A salah. 'who' khusus orang, sedangkan 'paintings' adalah benda. Seharusnya 'which' atau 'that'." },
+                    { text: "the gallery exhibited", isCorrect: false, explanation: "Salah. Subject + verb clause sudah tepat." },
+                    { text: "attracted", isCorrect: false, explanation: "Salah. Verb utama sudah tepat." },
+                    { text: "many art collectors", isCorrect: false, explanation: "Salah. Object sudah tepat." },
+                    { text: "from abroad", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 18,
+                type: "Error Analysis",
+                category: "Relative Adverb Usage",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The year <u>where</u> (A) <u>the economic crisis</u> (B) occurred <u>marked</u> (C) a major turning point <u>in modern history</u> (D) of the nation (E).",
+                answerOptions: [
+                    { text: "where", isCorrect: true, explanation: "Benar! Pilihan A salah. Head noun 'year' merujuk pada waktu, sehingga relative adverb yang tepat adalah 'when', bukan 'where'." },
+                    { text: "the economic crisis", isCorrect: false, explanation: "Salah. Subject clause sudah tepat." },
+                    { text: "marked", isCorrect: false, explanation: "Salah. Verb utama sudah tepat." },
+                    { text: "in modern history", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." },
+                    { text: "of the nation", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." }
+                ]
+            },
+
+            // --- BAGIAN 3: 12 SOAL COMPLETE THE BLANK ---
+            {
+                questionNumber: 19,
+                type: "Complete the Blank",
+                category: "Relative Pronoun",
+                difficulty: "Mudah",
+                question: "Lengkapilah kalimat berikut:<br><br>The man _____ speaks is Ferry Irwandi.",
+                answerOptions: [
+                    { text: "whom", isCorrect: false, explanation: "Salah. Clause diikuti verb 'speaks', butuh subject pronoun." },
+                    { text: "who", isCorrect: true, explanation: "Benar! 'who' digunakan untuk menggantikan subject orang dan langsung diikuti verb 'speaks'." },
+                    { text: "which", isCorrect: false, explanation: "Salah. Khusus benda." },
+                    { text: "whose", isCorrect: false, explanation: "Salah. Kepemilikan." },
+                    { text: "where", isCorrect: false, explanation: "Salah. Tempat." }
+                ]
+            },
+            {
+                questionNumber: 20,
+                type: "Complete the Blank",
+                category: "Relative Pronoun",
+                difficulty: "Mudah",
+                question: "Lengkapilah kalimat berikut:<br><br>The man _____ I met is Ferry Irwandi.",
+                answerOptions: [
+                    { text: "who", isCorrect: false, explanation: "Bentuk object formal lebih tepat menggunakan 'whom'." },
+                    { text: "whom", isCorrect: true, explanation: "Benar! 'whom' digunakan untuk object orang karena diikuti subject 'I' dan verb 'met'." },
+                    { text: "which", isCorrect: false, explanation: "Salah. Benda." },
+                    { text: "whose", isCorrect: false, explanation: "Salah. Kepemilikan." },
+                    { text: "when", isCorrect: false, explanation: "Salah. Waktu." }
+                ]
+            },
+            {
+                questionNumber: 21,
+                type: "Complete the Blank",
+                category: "Relative Pronoun",
+                difficulty: "Mudah",
+                question: "Lengkapilah kalimat berikut:<br><br>The scientist _____ discovered the new vaccine received international recognition.",
+                answerOptions: [
+                    { text: "whom", isCorrect: false, explanation: "Salah. Diikuti verb 'discovered'." },
+                    { text: "who", isCorrect: true, explanation: "Benar! 'who' adalah subject relative pronoun untuk orang." },
+                    { text: "which", isCorrect: false, explanation: "Salah. Benda." },
+                    { text: "whose", isCorrect: false, explanation: "Salah. Kepemilikan." },
+                    { text: "where", isCorrect: false, explanation: "Salah. Tempat." }
+                ]
+            },
+            {
+                questionNumber: 22,
+                type: "Complete the Blank",
+                category: "Relative Pronoun",
+                difficulty: "Mudah",
+                question: "Lengkapilah kalimat berikut:<br><br>I have something _____ you like.",
+                answerOptions: [
+                    { text: "who", isCorrect: false, explanation: "Salah. 'something' adalah benda." },
+                    { text: "which", isCorrect: true, explanation: "Benar! 'which' digunakan untuk benda non-person." },
+                    { text: "whom", isCorrect: false, explanation: "Salah. Untuk orang." },
+                    { text: "whose", isCorrect: false, explanation: "Salah. Untuk kepemilikan." },
+                    { text: "where", isCorrect: false, explanation: "Salah. Untuk tempat." }
+                ]
+            },
+            {
+                questionNumber: 23,
+                type: "Complete the Blank",
+                category: "Relative Pronoun",
+                difficulty: "Mudah",
+                question: "Lengkapilah kalimat berikut:<br><br>The book _____ I read is Madilog.",
+                answerOptions: [
+                    { text: "who", isCorrect: false, explanation: "Salah. Buku adalah benda." },
+                    { text: "that", isCorrect: true, explanation: "Benar! 'that' digunakan secara netral/informal untuk menggantikan benda sebagai object." },
+                    { text: "whose", isCorrect: false, explanation: "Salah. Kepemilikan." },
+                    { text: "where", isCorrect: false, explanation: "Salah. Tempat." },
+                    { text: "when", isCorrect: false, explanation: "Salah. Waktu." }
+                ]
+            },
+            {
+                questionNumber: 24,
+                type: "Complete the Blank",
+                category: "Relative Adverb",
+                difficulty: "Sedang",
+                question: "Lengkapilah kalimat berikut:<br><br>Demak is the city _____ Raden Patah established the first Javanese Islamic sultanate.",
+                answerOptions: [
+                    { text: "when", isCorrect: false, explanation: "Salah. Waktu." },
+                    { text: "where", isCorrect: true, explanation: "Benar! 'where' digunakan untuk Head noun yang merujuk pada indikasi tempat ('city')." },
+                    { text: "why", isCorrect: false, explanation: "Salah. Alasan." },
+                    { text: "which", isCorrect: false, explanation: "Kurang tepat dibanding 'where'." },
+                    { text: "whose", isCorrect: false, explanation: "Salah. Kepemilikan." }
+                ]
+            },
+            {
+                questionNumber: 25,
+                type: "Complete the Blank",
+                category: "Relative Adverb",
+                difficulty: "Sedang",
+                question: "Lengkapilah kalimat berikut:<br><br>I remember the moment _____ Gus Dur was impeached by the MPR.",
+                answerOptions: [
+                    { text: "where", isCorrect: false, explanation: "Salah. Tempat." },
+                    { text: "when", isCorrect: true, explanation: "Benar! 'when' digunakan untuk Head noun yang merujuk pada indikasi waktu ('moment')." },
+                    { text: "why", isCorrect: false, explanation: "Salah. Alasan." },
+                    { text: "whose", isCorrect: false, explanation: "Salah. Kepemilikan." },
+                    { text: "which", isCorrect: false, explanation: "Salah. Benda." }
+                ]
+            },
+            {
+                questionNumber: 26,
+                type: "Complete the Blank",
+                category: "Indefinite Pronoun",
+                difficulty: "Sulit",
+                question: "Lengkapilah kalimat berikut:<br><br>Is there anything _____ I can do to help you?",
+                answerOptions: [
+                    { text: "someone", isCorrect: false, explanation: "Salah. Konteks benda." },
+                    { text: "anything which", isCorrect: false, explanation: "Kurang lazim dibanding 'that'." },
+                    { text: "anything that", isCorrect: true, explanation: "Benar! Indefinite pronoun seperti anything lazim diikuti conjunction 'that'." },
+                    { text: "anyone who", isCorrect: false, explanation: "Salah. Konteks orang." },
+                    { text: "anywhere where", isCorrect: false, explanation: "Salah. Struktur salah." }
+                ]
+            },
+            {
+                questionNumber: 27,
+                type: "Complete the Blank",
+                category: "Demonstrative Pronoun",
+                difficulty: "Sulit",
+                question: "Lengkapilah kalimat berikut:<br><br>Those _____ arrive late will not be permitted to enter.",
+                answerOptions: [
+                    { text: "which", isCorrect: false, explanation: "Salah. 'Those' merujuk pada orang." },
+                    { text: "who", isCorrect: true, explanation: "Benar! Adjective clause dapat menerangkan demonstrative pronoun 'Those' (orang-orang yang...) menggunakan 'who'." },
+                    { text: "whose", isCorrect: false, explanation: "Salah. Kepemilikan." },
+                    { text: "where", isCorrect: false, explanation: "Salah. Tempat." },
+                    { text: "what", isCorrect: false, explanation: "Salah. Tidak sesuai." }
+                ]
+            },
+            {
+                questionNumber: 28,
+                type: "Complete the Blank",
+                category: "Relative Pronoun Selection",
+                difficulty: "Sulit",
+                question: "Lengkapilah kalimat berikut:<br><br>The committee members _____ were selected are meeting behind closed doors.",
+                answerOptions: [
+                    { text: "whom", isCorrect: false, explanation: "Salah. Clause membutuhkan subject bagi verb 'were selected'." },
+                    { text: "who", isCorrect: true, explanation: "Benar! 'who' bertindak sebagai subject bagi kata kerja pasif di dalam clause penjelas." },
+                    { text: "whose", isCorrect: false, explanation: "Salah. Kepemilikan." },
+                    { text: "which", isCorrect: false, explanation: "Salah. Benda." },
+                    { text: "where", isCorrect: false, explanation: "Salah. Tempat." }
+                ]
+            },
+            {
+                questionNumber: 29,
+                type: "Complete the Blank",
+                category: "Relative Adverb vs Preposition",
+                difficulty: "Sulit",
+                question: "Pilih struktur yang setara dengan: <em>'The house in which I live is very old.'</em>",
+                answerOptions: [
+                    { text: "The house where I live in is very old.", isCorrect: false, explanation: "Salah. Penggunaan 'where' bersamaan dengan preposisi 'in' redundan." },
+                    { text: "The house where I live is very old.", isCorrect: true, explanation: "Benar! 'where' sudah merangkum makna 'in which'." },
+                    { text: "The house which I live is very old.", isCorrect: false, explanation: "Salah. Kurang preposisi 'in'." },
+                    { text: "The house when I live is very old.", isCorrect: false, explanation: "Salah. 'when' untuk waktu." },
+                    { text: "The house whose I live is very old.", isCorrect: false, explanation: "Salah. Kepemilikan." }
+                ]
+            },
+            {
+                questionNumber: 30,
+                type: "Complete the Blank",
+                category: "Complex AC Structure",
+                difficulty: "Sulit",
+                question: "Lengkapilah kalimat berikut:<br><br>The conference _____ I attended last month focused heavily on artificial intelligence.",
+                answerOptions: [
+                    { text: "where", isCorrect: false, explanation: "Salah. 'attended' adalah verb transitif yang membutuhkan object langsung." },
+                    { text: "which", isCorrect: true, explanation: "Benar! 'which' berfungsi sebagai object dari kata kerja 'attended'." },
+                    { text: "when", isCorrect: false, explanation: "Salah. Waktu." },
+                    { text: "who", isCorrect: false, explanation: "Salah. Orang." },
+                    { text: "whose", isCorrect: false, explanation: "Salah. Kepemilikan." }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let score = 0;
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        
+        const questionTextEl = document.getElementById('question-text');
+        const questionTypeTagEl = document.getElementById('question-type-tag');
+        const categoryBadgeEl = document.getElementById('category-badge');
+        const difficultyBadgeEl = document.getElementById('difficulty-badge');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTextEl = document.getElementById('explanation-text');
+        
+        const currentQNumEl = document.getElementById('current-q-num');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const scoreBadge = document.getElementById('score-badge');
+        const finalScoreText = document.getElementById('final-score-text');
+        const finalScoreDisplay = document.getElementById('final-score-display');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            scoreBadge.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            currentQNumEl.textContent = q.questionNumber;
+            progressBarEl.style.width = `${((currentQuestionIndex + 1) / questionsData.length) * 100}%`;
+
+            questionTypeTagEl.textContent = q.type;
+            categoryBadgeEl.textContent = q.category;
+            
+            // Set Difficulty Badge Color
+            difficultyBadgeEl.textContent = q.difficulty;
+            if (q.difficulty === "Mudah") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 text-emerald-800";
+            } else if (q.difficulty === "Sedang") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-amber-100 text-amber-800";
+            } else {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-rose-100 text-rose-800";
+            }
+
+            questionTextEl.innerHTML = q.question;
+            optionsContainerEl.innerHTML = '';
+            explanationBoxEl.classList.add('hidden');
+
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                let baseClasses = "w-full text-left p-4 rounded-xl border transition flex items-start gap-3 text-sm md:text-base ";
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (opt.isCorrect) {
+                        baseClasses += "bg-indigo-50 border-indigo-300 text-indigo-900 font-medium";
+                    } else if (isSelected && !opt.isCorrect) {
+                        baseClasses += "bg-rose-50 border-rose-300 text-rose-900";
+                    } else {
+                        baseClasses += "bg-white border-slate-200 text-slate-700 opacity-60";
+                    }
+                    btn.disabled = true;
+                } else {
+                    baseClasses += "bg-white border-slate-200 hover:border-indigo-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="font-bold bg-slate-100 text-slate-700 w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs">${optionLetters[idx]}</span>
+                    <span class="mt-0.5">${opt.text}</span>
+                `;
+
+                if (userAnswers[currentQuestionIndex] === null) {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optionsContainerEl.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                showExplanation();
+            }
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questionsData.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+
+        function selectAnswer(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const q = questionsData[currentQuestionIndex];
+            
+            if (q.answerOptions[optionIndex].isCorrect) {
+                score++;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation() {
+            const q = questionsData[currentQuestionIndex];
+            let explanationHTML = "";
+            q.answerOptions.forEach((opt, idx) => {
+                const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+                let badgeColor = opt.isCorrect ? "text-indigo-700 font-bold" : "text-slate-600";
+                explanationHTML += `<div class="p-1.5 rounded bg-white border border-slate-100"><span class="${badgeColor}">Pilihan ${optionLetters[idx]}:</span> ${opt.explanation}</div>`;
+            });
+            explanationTextEl.innerHTML = explanationHTML;
+            explanationBoxEl.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            finalScoreText.textContent = `${score} / 30`;
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            score = 0;
+            resultScreen.classList.add('hidden');
+            scoreBadge.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
