@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis TOEFL Interaktif: Skill 11 - Adjective Clause Reduction (25 Soal)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-blue-900 text-white shadow-md py-6 px-4">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-blue-700 text-blue-100 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">TOEFL Grammar Mastery</span>
+                <h1 class="text-2xl font-bold mt-1">Skill 11: Adjective Clause Reduction</h1>
+                <p class="text-blue-200 text-sm">25 Soal Interaktif (Conceptual Analysis, Error Analysis, & Complete the Blank)</p>
+            </div>
+            <div id="score-badge" class="hidden bg-blue-800 border border-blue-600 px-4 py-2 rounded-xl text-center">
+                <span class="block text-xs text-blue-300">Skor Akhir</span>
+                <span id="final-score-text" class="text-xl font-bold text-white">0 / 25</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+        
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
+            <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">⚡</div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Simulasi TOEFL Structure: Skill 11 (Reduced Adjective Clause)</h2>
+            <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                Uji pemahaman tentang reduksi Adjective Clause (penghapusan: conjunction, subject, objek), perubahan menjadi V-ing dan V3, Hasil peringkasan: Adj.P/Prep.P/To-Inf.P, Klausa yang tidak boleh direduksi.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 max-w-md mx-auto mb-8 text-left text-sm text-slate-700">
+                <p class="font-semibold text-slate-900 mb-2">Komposisi Soal (Total 25 Soal):</p>
+                <ul class="space-y-1 list-disc list-inside">
+                    <li>6 Soal Conceptual Analysis</li>
+                    <li>12 Soal Error Analysis</li>
+                    <li>7 Soal Complete the Blank</li>
+                    <li>Tingkat Kesulitan: Mudah, Sedang, Sulit</li>
+                    <li>Pilihan Jawaban: A, B, C, D, E dengan Pembahasan Rapat</li>
+                </ul>
+            </div>
+            <button onclick="startQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-xl transition duration-200 shadow-sm">
+                Mulai Kuis Sekarang
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden space-y-6">
+            <!-- Progress Bar & Info -->
+            <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sm font-semibold text-slate-600">
+                    Soal <span id="current-q-num" class="text-blue-600 font-bold">1</span> dari <span id="total-q-num">25</span>
+                    <span id="difficulty-badge" class="ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium"></span>
+                    <span id="category-badge" class="ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-blue-100 text-blue-800"></span>
+                </div>
+                <div class="w-1/3 md:w-1/2 bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style="width: 4%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+                <!-- Question Type Tag -->
+                <div>
+                    <span id="question-type-tag" class="text-xs font-semibold px-3 py-1 rounded-md bg-slate-100 text-slate-600 uppercase tracking-wide"></span>
+                </div>
+
+                <div id="question-text" class="text-lg md:text-xl font-medium text-slate-900 leading-relaxed">
+                    <!-- Dynamic Question Text -->
+                </div>
+
+                <!-- Options List -->
+                <div id="options-container" class="space-y-3">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Rationale Box (Hidden initially) -->
+                <div id="explanation-box" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm space-y-2">
+                    <div class="font-bold text-slate-900 flex items-center gap-2">
+                        <span>💡 Pembahasan Lengkap Pilihan Jawaban</span>
+                    </div>
+                    <div id="explanation-text" class="text-slate-700 space-y-1.5 leading-relaxed"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="flex justify-between items-center">
+                <button id="prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-xl transition shadow-sm">
+                    Selanjutnya
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center space-y-6">
+            <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">🏆</div>
+            <h2 class="text-2xl font-bold text-slate-900">Kuis Selesai!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">
+                Selamat, Anda telah menyelesaikan simulasi 25 Soal Skill 11: Adjective Clause Reduction.
+            </p>
+            <div class="inline-block bg-blue-50 border border-blue-200 rounded-2xl px-8 py-4">
+                <span id="final-score-display" class="text-4xl font-extrabold text-blue-600">0</span>
+                <span class="text-xl text-slate-500 font-semibold"> / 25</span>
+            </div>
+            <div>
+                <button onclick="restartQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-xl transition shadow-sm">
+                    Ulangi Kuis
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 bg-white mt-12">
+        &copy; LUMINA PROJECT 2026 • TOEFL Preparation • Skill 11: Adjective Clause Reduction
+    </footer>
+
+    <!-- Script Quiz Logic -->
+    <script>
+        const questionsData = [
+            // --- BAGIAN 1: 6 SOAL CONCEPTUAL ANALYSIS ---
+            {
+                questionNumber: 1,
+                type: "Conceptual Analysis",
+                category: "Object Reduction",
+                difficulty: "Mudah",
+                question: "Perhatikan kalimat berikut:<br><br><em>'The official whom the activists criticize is defensive.'</em><br><br>Mengapa conjunction <em>'whom'</em> pada kalimat tersebut dapat dihapus (reduced)?",
+                answerOptions: [
+                    { text: "Karena conjunction tersebut merepresentasikan subject dalam clause.", isCorrect: false, explanation: "Salah. Conjunction tersebut berkedudukan sebagai object." },
+                    { text: "Karena conjunction tersebut merepresentasikan object dalam clause.", isCorrect: true, explanation: "Benar! Conjunction seperti who, whom, which, that dapat dihapus jika merepresentasikan object dalam clause." },
+                    { text: "Karena kalimat tersebut adalah kalimat pasif.", isCorrect: false, explanation: "Salah. Kalimat ini aktif." },
+                    { text: "Karena terletak di antara dua tanda koma.", isCorrect: false, explanation: "Salah. Bukan non-defining clause." },
+                    { text: "Karena menggunakan conjunction whose.", isCorrect: false, explanation: "Salah. Conjunction di sini adalah whom." }
+                ]
+            },
+            {
+                questionNumber: 2,
+                type: "Conceptual Analysis",
+                category: "Active Reduction",
+                difficulty: "Mudah",
+                question: "Perhatikan reduksi kalimat berikut:<br><br><em>'The boy who speaks syntax is Yusuf.'</em> ➔ <em>'The boy speaking syntax is Yusuf.'</em><br><br>Bagaimana perubahan bentuk verb yang terjadi pada reduksi active clause tersebut?",
+                answerOptions: [
+                    { text: "Berubah menjadi Past Participle (V3).", isCorrect: false, explanation: "Salah. V3 digunakan untuk kalimat pasif." },
+                    { text: "Berubah menjadi Present Participle (Ving).", isCorrect: true, explanation: "Benar! Jika conjunction merepresentasikan subject pada kalimat aktif, clause direduksi menjadi Present Participle (Ving)." },
+                    { text: "Berubah menjadi To-Infinitive.", isCorrect: false, explanation: "Salah. To-infinitive digunakan setelah superlative/ordinal number." },
+                    { text: "Berubah menjadi Noun Clause.", isCorrect: false, explanation: "Salah. Tetap berfungsi sebagai penjelas noun." },
+                    { text: "Dihilangkan total tanpa menyisakan verb.", isCorrect: false, explanation: "Salah. Verb berubah menjadi participle." }
+                ]
+            },
+            {
+                questionNumber: 3,
+                type: "Conceptual Analysis",
+                category: "Passive Reduction",
+                difficulty: "Sedang",
+                question: "Perhatikan reduksi kalimat berikut:<br><br><em>'The letter which is written by Qofa is sent.'</em> ➔ <em>'The letter written by Qofa is sent.'</em><br><br>Apa yang tersisa dari clause setelah dilakukan reduksi pada kalimat pasif tersebut?",
+                answerOptions: [
+                    { text: "Menyisakan Present Participle (Ving).", isCorrect: false, explanation: "Salah. Ving untuk kalimat aktif." },
+                    { text: "Menyisakan Past Participle (V3).", isCorrect: true, explanation: "Benar! Pada kalimat pasif yang direduksi, conjunction dan to be dihilangkan, menyisakan Past Participle (V3)." },
+                    { text: "Menyisakan To-Infinitive.", isCorrect: false, explanation: "Salah. Bukan to-infinitive." },
+                    { text: "Menyisakan Adjective tunggal.", isCorrect: false, explanation: "Salah. Ini adalah participle phrase." },
+                    { text: "Menyisakan Prepositional phrase.", isCorrect: false, explanation: "Salah. Bukan prep.p." }
+                ]
+            },
+            {
+                questionNumber: 4,
+                type: "Conceptual Analysis",
+                category: "Superlative To-Inf",
+                difficulty: "Sedang",
+                question: "Perhatikan kalimat berikut:<br><br><em>'Nicolas Tesla is the smartest man who won the admiration.'</em> ➔ <em>'Nicolas Tesla is the smartest man to win the admiration.'</em><br><br>Mengapa clause tersebut berubah menjadi bentuk <em>To-Infinitive</em>?",
+                answerOptions: [
+                    { text: "Karena didahului oleh superlative adjective (smartest).", isCorrect: true, explanation: "Benar! Adjective clause berubah menjadi To-Infinitive jika mendahului ordinal number, superlative, next, last, atau only." },
+                    { text: "Karena kalimat tersebut adalah kalimat pasif.", isCorrect: false, explanation: "Salah. Kalimat ini aktif." },
+                    { text: "Karena menggunakan conjunction whose.", isCorrect: false, explanation: "Salah. Conjunction awal adalah who." },
+                    { text: "Karena berupa non-defining clause.", isCorrect: false, explanation: "Salah. Ini defining clause." },
+                    { text: "Karena verb utama berbentuk lampau.", isCorrect: false, explanation: "Salah. Tidak dipengaruhi tenses utama." }
+                ]
+            },
+            {
+                questionNumber: 5,
+                type: "Conceptual Analysis",
+                category: "Non-Defining Prohibition",
+                difficulty: "Sulit",
+                question: "Mengapa kalimat <em>'My mother, who is cooking in the kitchen, is 50 years old.'</em> TIDAK BOLEH direduksi menjadi <em>'My mother, cooking in the kitchen, is 50 years old'</em>?",
+                answerOptions: [
+                    { text: "Karena kalimat tersebut menggunakan tenses Present Continuous.", isCorrect: false, explanation: "Salah. Tenses tidak melarang reduksi." },
+                    { text: "Karena klausa tersebut adalah Non-Defining Clause (Appositive) di antara tanda koma yang memberikan informasi tambahan non-esensial.", isCorrect: true, explanation: "Benar! Non-Defining Clause (di antara koma) tidak boleh direduksi dengan menghilangkan koma dan konjungsinya secara sembarangan." },
+                    { text: "Karena konjungsi who tidak pernah bisa dihapus dalam kondisi apapun.", isCorrect: false, explanation: "Salah. Who sebagai subject aktif biasa direduksi." },
+                    { text: "Karena Mother adalah noun tak terhitung.", isCorrect: false, explanation: "Salah. Mother adalah countable noun." },
+                    { text: "Karena kalimat ini memiliki dua verb utama.", isCorrect: false, explanation: "Salah. Struktur klausa sudah benar." }
+                ]
+            },
+            {
+                questionNumber: 6,
+                type: "Conceptual Analysis",
+                category: "Whose Prohibition",
+                difficulty: "Sulit",
+                question: "Mengapa conjunction <em>'whose'</em> pada kalimat <em>'I know the man whose car was stolen'</em> TIDAK PERNAH bisa dihapus dalam reduksi?",
+                answerOptions: [
+                    { text: "Karena whose berfungsi menunjukkan kepemilikan yang esensial dan tidak dapat digantikan participle biasa.", isCorrect: true, explanation: "Benar! Conjunction whose menyatakan kepemilikan sehingga penghapusannya akan merusak struktur makna." },
+                    { text: "Karena whose selalu berada di awal kalimat.", isCorrect: false, explanation: "Salah. Whose berada di tengah." },
+                    { text: "Karena whose hanya untuk benda mati.", isCorrect: false, explanation: "Salah. Whose untuk orang dan benda." },
+                    { text: "Karena kalimat tersebut berbentuk pasif.", isCorrect: false, explanation: "Salah. Kalimat pasif tetap bisa direduksi." },
+                    { text: "Karena whose adalah relative adverb.", isCorrect: false, explanation: "Salah. Whose adalah possessive relative pronoun." }
+                ]
+            },
+
+            // --- BAGIAN 2: 12 SOAL ERROR ANALYSIS ---
+            {
+                questionNumber: 7,
+                type: "Error Analysis",
+                category: "Object Reduction",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The official <u>whom</u> (A) <u>the activists</u> (B) criticize <u>is</u> (C) highly <u>defensive</u> (D) today (E).",
+                answerOptions: [
+                    { text: "whom", isCorrect: false, explanation: "Salah. Conjunction object boleh dipertahankan." },
+                    { text: "the activists", isCorrect: false, explanation: "Salah. Subject clause sudah tepat." },
+                    { text: "is", isCorrect: false, explanation: "Salah. Linking verb sudah tepat." },
+                    { text: "defensive", isCorrect: false, explanation: "Salah. Adjective complement sudah tepat." },
+                    { text: "TIDAK ADA KESALAHAN (All correct)", isCorrect: true, explanation: "Benar! Kalimat ini sudah benar (conjunction whom sebagai object boleh ditulis atau direduksi)." }
+                ]
+            },
+            {
+                questionNumber: 8,
+                type: "Error Analysis",
+                category: "Active Reduction",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The boy <u>speak</u> (A) maqoli innaka syududu <u>is</u> (B) Yusuf, <u>our</u> (C) brilliant <u>colleague</u> (D) from Pekalongan (E).",
+                answerOptions: [
+                    { text: "speak", isCorrect: true, explanation: "Benar! Pilihan A salah. Reduksi active clause wajib menggunakan Present Participle (Ving), sehingga 'speak' harus menjadi 'speaking'." },
+                    { text: "is", isCorrect: false, explanation: "Salah. Linking verb utama sudah tepat." },
+                    { text: "our", isCorrect: false, explanation: "Salah. Possessive adjective sudah tepat." },
+                    { text: "colleague", isCorrect: false, explanation: "Salah. Noun complement sudah tepat." },
+                    { text: "from Pekalongan", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 9,
+                type: "Error Analysis",
+                category: "Passive Reduction",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The letter <u>which write</u> (A) by Qofa <u>is sent</u> (B) to Naeli <u>via</u> (C) express <u>mail service</u> (D) yesterday (E).",
+                answerOptions: [
+                    { text: "which write", isCorrect: true, explanation: "Benar! Pilihan A salah. Kalimat pasif yang direduksi menyisakan Past Participle (V3), sehingga harusnya 'written' (tanpa which is)." },
+                    { text: "is sent", isCorrect: false, explanation: "Salah. Verb utama sudah tepat." },
+                    { text: "via", isCorrect: false, explanation: "Salah. Preposisi sudah tepat." },
+                    { text: "mail service", isCorrect: false, explanation: "Salah. Noun phrase sudah tepat." },
+                    { text: "yesterday", isCorrect: false, explanation: "Salah. Keterangan waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 10,
+                type: "Error Analysis",
+                category: "Adjective Reduction",
+                difficulty: "Mudah",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The boy <u>responsible</u> (A) for this project <u>are</u> (B) Nanang, <u>our</u> (C) senior <u>researcher</u> (D) in Jakarta (E).",
+                answerOptions: [
+                    { text: "responsible", isCorrect: false, explanation: "Salah. Adjective sisa reduksi sudah tepat." },
+                    { text: "are", isCorrect: true, explanation: "Benar! Pilihan B salah. Subject utama adalah 'The boy' (tunggal), sehingga linking verb-nya harus 'is', bukan 'are'." },
+                    { text: "our", isCorrect: false, explanation: "Salah. Possessive adjective sudah tepat." },
+                    { text: "researcher", isCorrect: false, explanation: "Salah. Noun sudah tepat." },
+                    { text: "in Jakarta", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 11,
+                type: "Error Analysis",
+                category: "Non-Defining Prohibition",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>My mother, <u>cooking</u> (A) in the kitchen, <u>is</u> (B) 50 years <u>old</u> (C) and always <u>makes</u> (D) delicious meals (E).",
+                answerOptions: [
+                    { text: "cooking", isCorrect: true, explanation: "Benar! Pilihan A salah. Non-defining clause (di antara koma) tidak boleh direduksi dengan menghilangkan konjungsi dan to be secara sembarangan. Seharusnya 'who is cooking'." },
+                    { text: "is", isCorrect: false, explanation: "Salah. Linking verb sudah tepat." },
+                    { text: "old", isCorrect: false, explanation: "Salah. Adjective sudah tepat." },
+                    { text: "makes", isCorrect: false, explanation: "Salah. Verb utama sudah tepat." },
+                    { text: "delicious meals", isCorrect: false, explanation: "Salah. Object noun phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 12,
+                type: "Error Analysis",
+                category: "Whose Prohibition",
+                difficulty: "Sedang",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>I know <u>the man</u> (A) <u>car was stolen</u> (B) last night <u>near</u> (C) the central <u>railway station</u> (D) in town (E).",
+                answerOptions: [
+                    { text: "the man", isCorrect: false, explanation: "Salah. Noun sudah tepat." },
+                    { text: "car was stolen", isCorrect: true, explanation: "Benar! Pilihan B salah. Conjunction 'whose' untuk kepemilikan tidak boleh dihapus. Seharusnya 'whose car was stolen'." },
+                    { text: "near", isCorrect: false, explanation: "Salah. Preposisi sudah tepat." },
+                    { text: "railway station", isCorrect: false, explanation: "Salah. Noun phrase sudah tepat." },
+                    { text: "in town", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 13,
+                type: "Error Analysis",
+                category: "Superlative To-Inf",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Nicolas Tesla is <u>the smartest man</u> (A) <u>winning</u> (B) the admiration <u>of scientists</u> (C) <u>worldwide</u> (D) in history (E).",
+                answerOptions: [
+                    { text: "the smartest man", isCorrect: false, explanation: "Salah. Superlative phrase sudah tepat." },
+                    { text: "winning", isCorrect: true, explanation: "Benar! Pilihan B salah. Setelah superlative adjective, reduksi adjective clause wajib menggunakan To-Infinitive ('to win'), bukan participle ('winning')." },
+                    { text: "of scientists", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." },
+                    { text: "worldwide", isCorrect: false, explanation: "Salah. Adverb sudah tepat." },
+                    { text: "in history", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 14,
+                type: "Error Analysis",
+                category: "Active Reduction",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The students <u>study</u> (A) linguistics <u>at the university</u> (B) <u>exhibit</u> (C) <u>high enthusiasm</u> (D) this semester (E).",
+                answerOptions: [
+                    { text: "study", isCorrect: true, explanation: "Benar! Pilihan A salah. Ini adalah active clause yang direduksi, sehingga harus menggunakan Present Participle 'studying', bukan 'study'." },
+                    { text: "at the university", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." },
+                    { text: "exhibit", isCorrect: false, explanation: "Salah. Verb utama jamak sudah tepat." },
+                    { text: "high enthusiasm", isCorrect: false, explanation: "Salah. Object sudah tepat." },
+                    { text: "this semester", isCorrect: false, explanation: "Salah. Keterangan waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 15,
+                type: "Error Analysis",
+                category: "Passive Reduction",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The proposal <u>submit</u> (A) by the research team <u>was approved</u> (B) <u>by the board</u> (C) <u>of directors</u> (D) yesterday (E).",
+                answerOptions: [
+                    { text: "submit", isCorrect: true, explanation: "Benar! Pilihan A salah. Kalimat pasif yang direduksi wajib menggunakan Past Participle V3 'submitted', bukan bentuk dasar 'submit'." },
+                    { text: "was approved", isCorrect: false, explanation: "Salah. Verb pasif utama sudah tepat." },
+                    { text: "by the board", isCorrect: false, explanation: "Salah. Agent phrase sudah tepat." },
+                    { text: "of directors", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." },
+                    { text: "yesterday", isCorrect: false, explanation: "Salah. Keterangan waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 16,
+                type: "Error Analysis",
+                category: "Ordinal To-Inf",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>Bilal bin Rabah is <u>the first man</u> (A) <u>performed</u> (B) the adzan <u>in early</u> (C) <u>Islamic history</u> (D) in Medina (E).",
+                answerOptions: [
+                    { text: "the first man", isCorrect: false, explanation: "Salah. Ordinal number phrase sudah tepat." },
+                    { text: "performed", isCorrect: true, explanation: "Benar! Pilihan B salah. Setelah ordinal number ('the first'), reduksi clause wajib berbentuk To-Infinitive ('to perform')." },
+                    { text: "in early", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." },
+                    { text: "Islamic history", isCorrect: false, explanation: "Salah. Noun phrase sudah tepat." },
+                    { text: "in Medina", isCorrect: false, explanation: "Salah. Keterangan tempat sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 17,
+                type: "Error Analysis",
+                category: "Prep.P Reduction",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>The committee <u>was</u> (A) in the contest <u>blamed</u> (B) the participant's <u>articulation</u> (C) during <u>the finals</u> (D) last night (E).",
+                answerOptions: [
+                    { text: "was", isCorrect: true, explanation: "Benar! Pilihan A salah. Dalam reduksi prepositional phrase, konjungsi dan to be dihilangkan langsung menyisakan prepositional phrase ('The committee in the contest...'). Penggunaan 'was' keliru." },
+                    { text: "blamed", isCorrect: false, explanation: "Salah. Verb utama kalimat sudah tepat." },
+                    { text: "articulation", isCorrect: false, explanation: "Salah. Object noun sudah tepat." },
+                    { text: "the finals", isCorrect: false, explanation: "Salah. Noun phrase sudah tepat." },
+                    { text: "last night", isCorrect: false, explanation: "Salah. Keterangan waktu sudah tepat." }
+                ]
+            },
+            {
+                questionNumber: 18,
+                type: "Error Analysis",
+                category: "Only To-Inf",
+                difficulty: "Sulit",
+                question: "Pilihlah bagian kalimat yang memiliki kesalahan tata bahasa:<br><br>You are <u>the only person</u> (A) <u>understand</u> (B) my complex <u>linguistic theory</u> (C) presented <u>at the conference</u> (D) today (E).",
+                answerOptions: [
+                    { text: "the only person", isCorrect: false, explanation: "Salah. 'the only' phrase sudah tepat." },
+                    { text: "understand", isCorrect: true, explanation: "Benar! Pilihan B salah. Setelah kata 'only', reduksi adjective clause wajib menggunakan To-Infinitive ('to understand')." },
+                    { text: "linguistic theory", isCorrect: false, explanation: "Salah. Object sudah tepat." },
+                    { text: "at the conference", isCorrect: false, explanation: "Salah. Prepositional phrase sudah tepat." },
+                    { text: "today", isCorrect: false, explanation: "Salah. Keterangan waktu sudah tepat." }
+                ]
+            },
+
+            // --- BAGIAN 3: 7 SOAL COMPLETE THE BLANK ---
+            {
+                questionNumber: 19,
+                type: "Complete the Blank",
+                category: "Active Reduction",
+                difficulty: "Mudah",
+                question: "Lengkapilah kalimat berikut dengan bentuk reduksi yang tepat:<br><br>The boy _____ maqoli innaka syududu is Yusuf.",
+                answerOptions: [
+                    { text: "speak", isCorrect: false, explanation: "Salah. Verb dasar tidak tepat." },
+                    { text: "speaking", isCorrect: true, explanation: "Benar! Reduksi clause aktif menyisakan Present Participle (Ving) 'speaking'." },
+                    { text: "spoken", isCorrect: false, explanation: "Salah. V3 untuk pasif." },
+                    { text: "to speak", isCorrect: false, explanation: "Salah. Bukan superlative." },
+                    { text: "spoke", isCorrect: false, explanation: "Salah. Bentuk lampau." }
+                ]
+            },
+            {
+                questionNumber: 20,
+                type: "Complete the Blank",
+                category: "Passive Reduction",
+                difficulty: "Mudah",
+                question: "Lengkapilah kalimat berikut dengan bentuk reduksi yang tepat:<br><br>The letter _____ by Qofa is sent to Naeli.",
+                answerOptions: [
+                    { text: "writing", isCorrect: false, explanation: "Salah. Ving untuk aktif." },
+                    { text: "written", isCorrect: true, explanation: "Benar! Reduksi clause pasif menyisakan Past Participle (V3) 'written'." },
+                    { text: "write", isCorrect: false, explanation: "Salah. Bentuk dasar." },
+                    { text: "to write", isCorrect: false, explanation: "Salah. Bukan to-infinitive." },
+                    { text: "wrote", isCorrect: false, explanation: "Salah. V2." }
+                ]
+            },
+            {
+                questionNumber: 21,
+                type: "Complete the Blank",
+                category: "Ordinal To-Inf",
+                difficulty: "Sedang",
+                question: "Lengkapilah kalimat berikut:<br><br>Bilal bin Rabah is the first man _____ the adzan.",
+                answerOptions: [
+                    { text: "performing", isCorrect: false, explanation: "Salah. Setelah first harus to-infinitive." },
+                    { text: "to perform", isCorrect: true, explanation: "Benar! Setelah ordinal number (first), clause direduksi menjadi To-Infinitive 'to perform'." },
+                    { text: "performed", isCorrect: false, explanation: "Salah. V3." },
+                    { text: "perform", isCorrect: false, explanation: "Salah. Verb dasar." },
+                    { text: "performs", isCorrect: false, explanation: "Salah. Verb +s." }
+                ]
+            },
+            {
+                questionNumber: 22,
+                type: "Complete the Blank",
+                category: "Superlative To-Inf",
+                difficulty: "Sedang",
+                question: "Lengkapilah kalimat berikut:<br><br>Nicolas Tesla is the smartest man _____ the admiration of scientists worldwide.",
+                answerOptions: [
+                    { text: "winning", isCorrect: false, explanation: "Salah. Setelah superlative harus to-infinitive." },
+                    { text: "to win", isCorrect: true, explanation: "Benar! Setelah superlative adjective (smartest), clause direduksi menjadi To-Infinitive 'to win'." },
+                    { text: "won", isCorrect: false, explanation: "Salah. V2." },
+                    { text: "win", isCorrect: false, explanation: "Salah. Verb dasar." },
+                    { text: "winner", isCorrect: false, explanation: "Salah. Noun."}
+                ]
+            },
+            {
+                questionNumber: 23,
+                type: "Complete the Blank",
+                category: "Object Reduction",
+                difficulty: "Sulit",
+                question: "Lengkapilah kalimat berikut:<br><br>Every official _____ the activists criticize is highly defensive.",
+                answerOptions: [
+                    { text: "whom", isCorrect: true, explanation: "Benar! Conjunction object 'whom' boleh ditulis atau dikosongkan (reduksi)." },
+                    { text: "criticizing", isCorrect: false, explanation: "Salah. Subject clause adalah activists, bukan official." },
+                    { text: "criticized", isCorrect: false, explanation: "Salah. Bentuk pasif keliru konteks." },
+                    { text: "who is", isCorrect: false, explanation: "Kurang ringkas dibanding pilihan kosong atau whom." },
+                    { text: "whose", isCorrect: false, explanation: "Salah. Kepemilikan." }
+                ]
+            },
+            {
+                questionNumber: 24,
+                type: "Complete the Blank",
+                category: "Only To-Inf",
+                difficulty: "Sulit",
+                question: "Lengkapilah kalimat berikut:<br><br>You are the only person _____ me.",
+                answerOptions: [
+                    { text: "understand", isCorrect: false, explanation: "Salah. Setelah only harus to-infinitive." },
+                    { text: "understanding", isCorrect: false, explanation: "Salah. Participle tidak tepat setelah only." },
+                    { text: "to understand", isCorrect: true, explanation: "Benar! Setelah kata 'only', clause direduksi menjadi To-Infinitive 'to understand'." },
+                    { text: "understood", isCorrect: false, explanation: "Salah. V3." },
+                    { text: "understands", isCorrect: false, explanation: "Salah. Verb +s." }
+                ]
+            },
+            {
+                questionNumber: 25,
+                type: "Complete the Blank",
+                category: "Prep.P Reduction",
+                difficulty: "Sulit",
+                question: "Lengkapilah kalimat berikut:<br><br>The committee _____ the contest blamed the participant's articulation.",
+                answerOptions: [
+                    { text: "who was in", isCorrect: false, explanation: "Kurang ringkas." },
+                    { text: "in", isCorrect: true, explanation: "Benar! Reduksi prepositional phrase menyisakan preposisi langsung 'in' (The committee in the contest)." },
+                    { text: "was in", isCorrect: false, explanation: "Salah. To be tidak boleh disisakan." },
+                    { text: "who in", isCorrect: false, explanation: "Salah. Conjunction tidak boleh disisakan." },
+                    { text: "is in", isCorrect: false, explanation: "Salah. Tenses tidak tepat." }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let score = 0;
+
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        
+        const questionTextEl = document.getElementById('question-text');
+        const questionTypeTagEl = document.getElementById('question-type-tag');
+        const categoryBadgeEl = document.getElementById('category-badge');
+        const difficultyBadgeEl = document.getElementById('difficulty-badge');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTextEl = document.getElementById('explanation-text');
+        
+        const currentQNumEl = document.getElementById('current-q-num');
+        const progressBarEl = document.getElementById('progress-bar');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        const scoreBadge = document.getElementById('score-badge');
+        const finalScoreText = document.getElementById('final-score-text');
+        const finalScoreDisplay = document.getElementById('final-score-display');
+
+        function startQuiz() {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            scoreBadge.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questionsData[currentQuestionIndex];
+            currentQNumEl.textContent = q.questionNumber;
+            progressBarEl.style.width = `${((currentQuestionIndex + 1) / questionsData.length) * 100}%`;
+
+            questionTypeTagEl.textContent = q.type;
+            categoryBadgeEl.textContent = q.category;
+            
+            // Set Difficulty Badge Color
+            difficultyBadgeEl.textContent = q.difficulty;
+            if (q.difficulty === "Mudah") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 text-emerald-800";
+            } else if (q.difficulty === "Sedang") {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-amber-100 text-amber-800";
+            } else {
+                difficultyBadgeEl.className = "ml-2 text-xs px-2.5 py-0.5 rounded-full font-medium bg-rose-100 text-rose-800";
+            }
+
+            questionTextEl.innerHTML = q.question;
+            optionsContainerEl.innerHTML = '';
+            explanationBoxEl.classList.add('hidden');
+
+            const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+
+            q.answerOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                const isSelected = userAnswers[currentQuestionIndex] === idx;
+                
+                let baseClasses = "w-full text-left p-4 rounded-xl border transition flex items-start gap-3 text-sm md:text-base ";
+                if (userAnswers[currentQuestionIndex] !== null) {
+                    if (opt.isCorrect) {
+                        baseClasses += "bg-blue-50 border-blue-300 text-blue-900 font-medium";
+                    } else if (isSelected && !opt.isCorrect) {
+                        baseClasses += "bg-rose-50 border-rose-300 text-rose-900";
+                    } else {
+                        baseClasses += "bg-white border-slate-200 text-slate-700 opacity-60";
+                    }
+                    btn.disabled = true;
+                } else {
+                    baseClasses += "bg-white border-slate-200 hover:border-blue-300 hover:bg-slate-50 text-slate-700 cursor-pointer";
+                }
+
+                btn.className = baseClasses;
+                btn.innerHTML = `
+                    <span class="font-bold bg-slate-100 text-slate-700 w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs">${optionLetters[idx]}</span>
+                    <span class="mt-0.5">${opt.text}</span>
+                `;
+
+                if (userAnswers[currentQuestionIndex] === null) {
+                    btn.onclick = () => selectAnswer(idx);
+                }
+
+                optionsContainerEl.appendChild(btn);
+            });
+
+            if (userAnswers[currentQuestionIndex] !== null) {
+                showExplanation();
+            }
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === questionsData.length - 1 ? 'Selesai' : 'Selanjutnya';
+        }
+
+        function selectAnswer(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            const q = questionsData[currentQuestionIndex];
+            
+            if (q.answerOptions[optionIndex].isCorrect) {
+                score++;
+            }
+
+            loadQuestion();
+        }
+
+        function showExplanation() {
+            const q = questionsData[currentQuestionIndex];
+            let explanationHTML = "";
+            q.answerOptions.forEach((opt, idx) => {
+                const optionLetters = ['A', 'B', 'C', 'D', 'E'];
+                let badgeColor = opt.isCorrect ? "text-blue-700 font-bold" : "text-slate-600";
+                explanationHTML += `<div class="p-1.5 rounded bg-white border border-slate-100"><span class="${badgeColor}">Pilihan ${optionLetters[idx]}:</span> ${opt.explanation}</div>`;
+            });
+            explanationTextEl.innerHTML = explanationHTML;
+            explanationBoxEl.classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            finalScoreText.textContent = `${score} / 25`;
+            finalScoreDisplay.textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            score = 0;
+            resultScreen.classList.add('hidden');
+            scoreBadge.classList.add('hidden');
+            welcomeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
