@@ -22,7 +22,7 @@ button{cursor:pointer}
 .eyebrow{font-size:9px;letter-spacing:2px;color:#ffdce2;font-weight:700}
 h1{font-size:clamp(23px,3.2vw,34px);margin:4px 0 3px;letter-spacing:.5px}
 .hero p{margin:0;max-width:650px;color:#ffe9ed;line-height:1.35;font-size:11px}
-.brand{width:54px;height:54px;flex:0 0 54px;border-radius:19px;background:#fff;color:var(--red);display:grid;place-content:center;text-align:center;box-shadow:0 8px 25px #4b071b55}
+.brand{width:auto;height:54px;border-radius:0px;background:transparent; display:grid;place-content: center;text-align:center;}
 .brand b{font-size:25px;line-height:1}.brand small{font-size:9px;letter-spacing:1.5px;font-weight:800;margin-top:5px}
 .shell{max-width:1180px;margin:26px auto 50px;padding:0 22px;display:grid;grid-template-columns:245px minmax(0,1fr);gap:22px}
 .sidebar,.panel{background:white;border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 22px #26334b08}
@@ -78,8 +78,11 @@ footer{position:fixed;left:0;bottom:0;width:100%;height:45px;z-index:1000;text-a
 footer strong{font-size:9px;letter-spacing:1.2px}footer p{font-size:8px;color:#aeb8cc;margin:1px 0 0}
 .hidden{display:none!important}
 @media(max-width:760px){body{padding-top:88px;padding-bottom:29px}.shell{grid-template-columns:1fr;margin-top:16px}.sidebar{position:static;padding:12px}.nav{display:grid;grid-template-columns:repeat(2,1fr)}.sidebar-note{display:none}.cards{grid-template-columns:1fr}.panel{padding:18px}.hero{padding:10px 22px}}
-@media(max-width:420px){body{padding-top:82px;padding-bottom:28px}.brand{width:46px;height:46px;flex-basis:46px;border-radius:14px}.brand b{font-size:22px}.brand small{font-size:7px}.hero p{font-size:9px}.hero h1{font-size:22px;margin:3px 0}.eyebrow{font-size:9px;letter-spacing:2px}.nav button{font-size:11px;padding:10px 7px}}
+@media(max-width:420px){body{padding-top:82px;padding-bottom:28px}.brand{width:46px;height:46px;flex-basis:46px;border-radius:0px}.brand b{font-size:22px}.brand small{font-size:7px}.hero p{font-size:9px}.hero h1{font-size:22px;margin:3px 0}.eyebrow{font-size:9px;letter-spacing:2px}.nav button{font-size:11px;padding:10px 7px}}
 </style>
+<style>
+  .brand {display: flex; align-items: center;}
+  .logo-img {height: 60px; width: auto; object-fit: contain; opacity: 100; background: transparent !important}</style>
 </head>
 <body>
 <header class="hero">
@@ -88,7 +91,7 @@ footer strong{font-size:9px;letter-spacing:1.2px}footer p{font-size:8px;color:#a
    <p>Build your English proficiency through focused materials and practice. Learn the strategies, test your understanding, and track your progress — one session at a time.</p>
   </div>
   <!-- Replace this sample mark with your official business logo if available. -->
-  <div class="brand" aria-label="Lumina logo"><img src="https://lh3.googleusercontent.com/d/11aSSiMxkKC0PBAU_5T1PBoKyUNMbacFe" alt="Lumina Logo" class="logo-img"></div>
+  <div class="brand" aria-label="Lumina logo"><img src="https://lh3.googleusercontent.com/d/1U26hTpT6d_27zg5OYJl9fq6j3oztgN5w" alt="Lumina Logo" class="logo-img"></div>
  </div>
 </header>
 
