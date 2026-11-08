@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 1 - Subject & Verb</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+        .font-mono-code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Glassmorphism subtle effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-4 gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-xl shadow-md">
+                        S1
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-teal-500/20 text-teal-300 text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                            <span class="text-slate-400 text-xs hidden sm:inline">• Core Skill</span>
+                        </div>
+                        <h1 class="text-xl md:text-2xl font-bold tracking-tight text-white mt-0.5">Skill 1: Subject & Verb Architecture</h1>
+                    </div>
+                </div>
+
+                <!-- Global Stats / Quick Status -->
+                <div class="flex items-center gap-2 bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700/60 text-xs">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>5 Subject Elements</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="flex items-center gap-1.5 text-indigo-400 font-medium">
+                        <span>Finite vs Infinite Verbs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Bar -->
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-2 pb-1 no-scrollbar">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30">
+                    🔍 1. Overview & Pitfalls
+                </button>
+                <button onclick="switchTab('subjects')" id="tab-subjects" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    📗 2. Subject Blueprint
+                </button>
+                <button onclick="switchTab('long-subject')" id="tab-long-subject" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🔬 3. Long Subject Lab
+                </button>
+                <button onclick="switchTab('verbs')" id="tab-verbs" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    📘 4. Verb Architecture
+                </button>
+                <button onclick="switchTab('decomposition')" id="tab-decomposition" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🧪 5. Clause Reduction Lab
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🎯 6. Diagnostic Practice
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW & PITFALLS ==================== -->
+        <section id="content-overview" class="tab-content space-y-8">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-6 md:p-10 text-white border border-slate-800 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-semibold border border-teal-500/40">
+                        <span>Fundamental Grammar Axiom</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Setiap Kalimat Bahasa Inggris Wajib Memiliki Minimal Satu Subject & Satu Finite Verb Utama.</h2>
+                    <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+                        Dalam tes TOEFL Structure, pertanyaan sering disamarkan dengan memperpanjang subjek memakai modifier kompleks atau memanipulasi participle dan clause untuk mengecoh peserta.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Essential Learning Objectives -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:border-teal-400 transition duration-200">
+                    <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-lg mb-3">01</div>
+                    <h3 class="font-bold text-slate-900 text-base mb-1">Identifikasi Subject Utama</h3>
+                    <p class="text-xs text-slate-600">Menemukan Inti Subjek (Head Noun) di tengah tumpukan kata keterangan dan modifikasi tambahan.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:border-indigo-400 transition duration-200">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-lg mb-3">02</div>
+                    <h3 class="font-bold text-slate-900 text-base mb-1">Subject-Verb Agreement</h3>
+                    <p class="text-xs text-slate-600">Menyelaraskan singular/plural subject dengan finite verb utama secara presisi.</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:border-amber-400 transition duration-200">
+                    <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-lg mb-3">03</div>
+                    <h3 class="font-bold text-slate-900 text-base mb-1">Phrase vs Clause</h3>
+                    <p class="text-xs text-slate-600">Membedakan kelompok kata tanpa predikat (Phrase) dengan struktur utuh berklausa (Clause).</p>
+                </div>
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:border-emerald-400 transition duration-200">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-lg mb-3">04</div>
+                    <h3 class="font-bold text-slate-900 text-base mb-1">Finite vs Infinite Verb</h3>
+                    <p class="text-xs text-slate-600">Membedakan kata kerja utama penentu klausa dengan kata kerja bayangan (Participle/Infinitive).</p>
+                </div>
+            </div>
+
+            <!-- Critical Pitfalls Cards Section -->
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span class="text-rose-500">⚠️</span> Kesalahan Terbesar Peserta TOEFL (Common Pitfalls)
+                    </h3>
+                    <span class="text-xs text-slate-500 font-medium">Klik kartu untuk simulasi analisis kesalahan</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Pitfall 1 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-2xl p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-xs font-bold px-2.5 py-1 rounded-md uppercase">Pitfall #1</span>
+                            <span class="text-xs font-semibold text-rose-600">Salah Menentukan Subject Utama</span>
+                        </div>
+                        <p class="text-sm font-semibold text-slate-900">Mengira Noun Panjang atau Prepositional Object sebagai Subject Berbeda.</p>
+                        <div class="bg-white p-3.5 rounded-xl border border-rose-200 text-xs font-mono-code space-y-1">
+                            <p class="text-slate-400">❌ Salah: <span class="text-slate-800">The key <span class="text-rose-600 underline">to the doors</span> <span class="text-rose-600 font-bold">are</span> missing.</span></p>
+                            <p class="text-emerald-700">✓ Benar: <span class="text-slate-800">The key <span class="text-slate-400">[to the doors]</span> <span class="text-emerald-600 font-bold">is</span> missing.</span></p>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Kata <em>doors</em> adalah objek dari preposisi <em>to</em>, bukan subjek utama. Subjek tunggal yang sebenarnya adalah <strong>The key</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Pitfall 2 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-2xl p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-xs font-bold px-2.5 py-1 rounded-md uppercase">Pitfall #2</span>
+                            <span class="text-xs font-semibold text-rose-600">Terkecoh Verb Tambahan</span>
+                        </div>
+                        <p class="text-sm font-semibold text-slate-900">Mengira V-ing / V3 Berdiri Sendiri sebagai Verb Utama Kalimat.</p>
+                        <div class="bg-white p-3.5 rounded-xl border border-rose-200 text-xs font-mono-code space-y-1">
+                            <p class="text-slate-400">❌ Salah: <span class="text-slate-800">The man <span class="text-rose-600 underline">standing</span> there <span class="text-rose-600 font-bold">is</span> my uncle. (Mengira standing = Verb Utama)</span></p>
+                            <p class="text-emerald-700">✓ Benar: <span class="text-slate-800">The man <span class="text-slate-400">[standing there]</span> <span class="text-emerald-600 font-bold">is</span> my uncle.</span></p>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            <em>Standing</em> adalah Participle (Modifier penjelas subjek), sedangkan Finite Verb utamanya adalah <strong>is</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Pitfall 3 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-2xl p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-xs font-bold px-2.5 py-1 rounded-md uppercase">Pitfall #3</span>
+                            <span class="text-xs font-semibold text-rose-600">Kebingungan Gerund & Infinitive</span>
+                        </div>
+                        <p class="text-sm font-semibold text-slate-900">Bingung Membedakan Gerund/Infinitive sebagai Subjek vs Verb.</p>
+                        <div class="bg-white p-3.5 rounded-xl border border-rose-200 text-xs font-mono-code space-y-1">
+                            <p class="text-slate-400">📌 Struktur: <span class="text-teal-700 font-bold">Reading books</span> <span class="text-indigo-600 font-bold">improves</span> knowledge.</p>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Frasa <em>Reading books</em> di awal kalimat adalah <strong>Gerund Phrase</strong> yang bertindak sebagai <em>Subject Tunggal</em>, bukan verb.
+                        </p>
+                    </div>
+
+                    <!-- Pitfall 4 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-2xl p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-xs font-bold px-2.5 py-1 rounded-md uppercase">Pitfall #4</span>
+                            <span class="text-xs font-semibold text-rose-600">Terkecoh Noun Clause</span>
+                        </div>
+                        <p class="text-sm font-semibold text-slate-900">Mengira Noun Clause Memiliki Dua Subjek yang Terpisah.</p>
+                        <div class="bg-white p-3.5 rounded-xl border border-rose-200 text-xs font-mono-code space-y-1">
+                            <p class="text-slate-400">📌 Struktur: <span class="text-teal-700 font-bold">[What he said]</span> <span class="text-indigo-600 font-bold">shocked</span> everyone.</p>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Keseluruhan klausa <em>What he said</em> adalah <strong>Satu Noun Clause tunggal</strong> yang menduduki posisi Subject untuk verb <em>shocked</em>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: SUBJECT BLUEPRINT ==================== -->
+        <section id="content-subjects" class="tab-content hidden space-y-8">
+            <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Definisi Utama</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-2">Apa itu Subject?</h2>
+                    <p class="text-slate-600 text-sm md:text-base mt-1">
+                        Bagian kalimat yang melakukan tindakan, mengalami keadaan, atau menjadi topik utama dalam sebuah klausa.
+                    </p>
+                </div>
+
+                <div class="border-t border-slate-100 pt-6">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4">5 Elemen yang Ditingkatkan Menjadi Subject dalam Kalimat:</h3>
+                    
+                    <div class="space-y-4">
+                        <!-- Element 1: Noun -->
+                        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 hover:border-emerald-400 transition">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs">1</span>
+                                    <h4 class="font-bold text-slate-900 text-base">Noun (Kata Benda)</h4>
+                                </div>
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-0.5 rounded-full w-max">Standar / Most Common</span>
+                            </div>
+                            <div class="space-y-2 text-xs md:text-sm">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">Pekalongan</span> <span class="text-indigo-600 font-bold">is</span> a city in Central Java.
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">Communism</span> <span class="text-indigo-600 font-bold">is</span> a political and economic ideology.
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">Love</span> <span class="text-indigo-600 font-bold">builds</span> a bridge between two hearts that once felt worlds apart.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Element 2: Pronoun -->
+                        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 hover:border-emerald-400 transition">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs">2</span>
+                                    <h4 class="font-bold text-slate-900 text-base">Pronoun (Kata Ganti)</h4>
+                                </div>
+                                <span class="bg-slate-200 text-slate-700 text-xs font-semibold px-2.5 py-0.5 rounded-full w-max">She, He, It, They, We, You, I</span>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs md:text-sm">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">She</span> <span class="text-indigo-600 font-bold">is</span> intelligent.
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">They</span> <span class="text-indigo-600 font-bold">arrived</span> late.
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">It</span> <span class="text-indigo-600 font-bold">seems</span> difficult.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Element 3: Gerund / Gerund Phrase -->
+                        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 hover:border-emerald-400 transition">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs">3</span>
+                                    <h4 class="font-bold text-slate-900 text-base">Gerund / Gerund Phrase (V-ing sebagai Noun)</h4>
+                                </div>
+                                <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded-full w-max">Verb-ing functioning as Singular Noun</span>
+                            </div>
+                            <div class="space-y-2 text-xs md:text-sm">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">Reading</span> <span class="text-indigo-600 font-bold">improves</span> vocabulary. <span class="text-slate-400 text-xs">(Single Gerund)</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">Listening, Analyzing, and Reading</span> <span class="text-indigo-600 font-bold">are</span> the sections of TOEFL. <span class="text-slate-400 text-xs">(Compound Gerund = Plural Verb)</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">Analyzing adjective clause part</span> <span class="text-indigo-600 font-bold">is</span> the hardest part in TOEFL. <span class="text-slate-400 text-xs">(Gerund Phrase = Singular Verb)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Element 4: To-Infinitive / To-Infinitive Phrase -->
+                        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 hover:border-emerald-400 transition">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs">4</span>
+                                    <h4 class="font-bold text-slate-900 text-base">To-Infinitive / To-Infinitive Phrase</h4>
+                                </div>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded-full w-max">To + V1 as Singular Subject</span>
+                            </div>
+                            <div class="space-y-2 text-xs md:text-sm">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">To understand syntax</span> <span class="text-indigo-600 font-bold">is</span> difficult.
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">To travel around the world</span> <span class="text-indigo-600 font-bold">is</span> my biggest dream. <span class="text-slate-400 text-xs">(To-Infinitive Phrase)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Element 5: Noun Clause -->
+                        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 hover:border-emerald-400 transition space-y-3">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-7 h-7 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs">5</span>
+                                    <h4 class="font-bold text-slate-900 text-base">Noun Clause (Klausa Kata Benda)</h4>
+                                </div>
+                                <span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-0.5 rounded-full w-max">Conj + S + V / Conj + V</span>
+                            </div>
+                            <p class="text-xs text-slate-600">
+                                Klausa utuh yang berfungsi sebagai sebuah kata benda. Biasanya diawali oleh kata hubung: <em>what, that, whether, why, how, who</em>.
+                            </p>
+                            <div class="bg-slate-900 text-slate-200 p-3 rounded-xl text-xs font-mono-code flex items-center gap-2">
+                                <span class="text-teal-400 font-bold">📌 Rumus Noun Clause Subject:</span>
+                                <span>[ Conjunction + Subject + Verb ] + Main Finite Verb</span>
+                            </div>
+                            <div class="space-y-2 text-xs md:text-sm">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">[What he said]</span> <span class="text-indigo-600 font-bold">shocked</span> everyone.
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    • <span class="text-emerald-700 font-bold">[Whether they agree]</span> <span class="text-indigo-600 font-bold">is</span> uncertain.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: LONG SUBJECT LAB ==================== -->
+        <section id="content-long-subject" class="tab-content hidden space-y-8">
+            <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Visual Breakdown</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-2">Example of Long Subject Breakdown</h2>
+                    <p class="text-slate-600 text-sm">
+                        Soal TOEFL sering menyamarkan subjek utama dengan menambahkan modifier yang sangat panjang. Bedah struktur kalimat berikut untuk menemukan <strong>Head Noun</strong> sejati.
+                    </p>
+                </div>
+
+                <!-- Interactive Breakdown Showcase Cards -->
+                <div class="space-y-6">
+
+                    <!-- Case 1 -->
+                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/50">
+                        <div class="bg-slate-900 text-white p-4 font-mono-code text-sm md:text-base flex items-center justify-between">
+                            <div>
+                                <span class="text-slate-400 text-xs block mb-1">Case #1: Prepositional Modifier</span>
+                                <span>"The development of modern communication technologies has changed education."</span>
+                            </div>
+                        </div>
+                        <div class="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 text-xs">
+                            <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+                                <span class="text-emerald-600 font-bold block uppercase tracking-wider text-[10px]">Subject Lengkap</span>
+                                <span class="font-semibold text-slate-900 text-sm">The development of modern communication technologies</span>
+                            </div>
+                            <div class="bg-teal-50 p-3 rounded-xl border border-teal-200">
+                                <span class="text-teal-600 font-bold block uppercase tracking-wider text-[10px]">Head Noun (Inti)</span>
+                                <span class="font-extrabold text-teal-800 text-sm">development</span>
+                                <span class="block text-[10px] text-teal-600 mt-0.5">(Singular Subject)</span>
+                            </div>
+                            <div class="bg-amber-50 p-3 rounded-xl border border-amber-200">
+                                <span class="text-amber-600 font-bold block uppercase tracking-wider text-[10px]">Post Modifier</span>
+                                <span class="font-semibold text-slate-900 text-sm">of modern communication technologies</span>
+                            </div>
+                            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200">
+                                <span class="text-indigo-600 font-bold block uppercase tracking-wider text-[10px]">Verb Utama (Finite)</span>
+                                <span class="font-extrabold text-indigo-800 text-sm">has changed</span>
+                                <span class="block text-[10px] text-indigo-600 mt-0.5">(Singular Verb Agreement)</span>
+                            </div>
+                            <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
+                                <span class="text-slate-500 font-bold block uppercase tracking-wider text-[10px]">Object</span>
+                                <span class="font-semibold text-slate-900 text-sm">education</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 2 -->
+                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/50">
+                        <div class="bg-slate-900 text-white p-4 font-mono-code text-sm md:text-base flex items-center justify-between">
+                            <div>
+                                <span class="text-slate-400 text-xs block mb-1">Case #2: Adjective Clause Modifier</span>
+                                <span>"The students who study linguistics often perform well."</span>
+                            </div>
+                        </div>
+                        <div class="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 text-xs">
+                            <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+                                <span class="text-emerald-600 font-bold block uppercase tracking-wider text-[10px]">Subject Lengkap</span>
+                                <span class="font-semibold text-slate-900 text-sm">The students who study linguistics</span>
+                            </div>
+                            <div class="bg-teal-50 p-3 rounded-xl border border-teal-200">
+                                <span class="text-teal-600 font-bold block uppercase tracking-wider text-[10px]">Head Noun (Inti)</span>
+                                <span class="font-extrabold text-teal-800 text-sm">students</span>
+                                <span class="block text-[10px] text-teal-600 mt-0.5">(Plural Subject)</span>
+                            </div>
+                            <div class="bg-amber-50 p-3 rounded-xl border border-amber-200">
+                                <span class="text-amber-600 font-bold block uppercase tracking-wider text-[10px]">Post Modifier</span>
+                                <span class="font-semibold text-slate-900 text-sm">who study linguistics</span>
+                                <span class="block text-[10px] text-amber-700 mt-0.5">(Adjective Clause)</span>
+                            </div>
+                            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200">
+                                <span class="text-indigo-600 font-bold block uppercase tracking-wider text-[10px]">Verb Phrase</span>
+                                <span class="font-extrabold text-indigo-800 text-sm">often perform</span>
+                                <span class="block text-[10px] text-indigo-600 mt-0.5">(Plural Verb Agreement)</span>
+                            </div>
+                            <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
+                                <span class="text-slate-500 font-bold block uppercase tracking-wider text-[10px]">Adverb</span>
+                                <span class="font-semibold text-slate-900 text-sm">well</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 3 -->
+                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/50">
+                        <div class="bg-slate-900 text-white p-4 font-mono-code text-sm md:text-base flex items-center justify-between">
+                            <div>
+                                <span class="text-slate-400 text-xs block mb-1">Case #3: Gerund Phrase Subject</span>
+                                <span>"Learning multiple foreign languages at an early age improves cognitive flexibility."</span>
+                            </div>
+                        </div>
+                        <div class="p-5 grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                            <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+                                <span class="text-emerald-600 font-bold block uppercase tracking-wider text-[10px]">Subject Lengkap</span>
+                                <span class="font-semibold text-slate-900 text-sm">Learning multiple foreign languages at an early age</span>
+                                <span class="block text-[10px] text-emerald-600 mt-0.5">(Gerund Phrase = Always Singular)</span>
+                            </div>
+                            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200">
+                                <span class="text-indigo-600 font-bold block uppercase tracking-wider text-[10px]">Verb Utama (Finite)</span>
+                                <span class="font-extrabold text-indigo-800 text-sm">improves</span>
+                                <span class="block text-[10px] text-indigo-600 mt-0.5">(Singular Verb - V-es)</span>
+                            </div>
+                            <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
+                                <span class="text-slate-500 font-bold block uppercase tracking-wider text-[10px]">Object</span>
+                                <span class="font-semibold text-slate-900 text-sm">cognitive flexibility</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 4 -->
+                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/50">
+                        <div class="bg-slate-900 text-white p-4 font-mono-code text-sm md:text-base flex items-center justify-between">
+                            <div>
+                                <span class="text-slate-400 text-xs block mb-1">Case #4: Noun Clause Subject</span>
+                                <span>"What many researchers have discovered about language acquisition remains controversial."</span>
+                            </div>
+                        </div>
+                        <div class="p-5 grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                            <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+                                <span class="text-emerald-600 font-bold block uppercase tracking-wider text-[10px]">Subject Lengkap</span>
+                                <span class="font-semibold text-slate-900 text-sm">What many researchers have discovered about language acquisition</span>
+                                <span class="block text-[10px] text-emerald-600 mt-0.5">(Noun Clause = Singular Unit)</span>
+                            </div>
+                            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200">
+                                <span class="text-indigo-600 font-bold block uppercase tracking-wider text-[10px]">Main Finite Verb</span>
+                                <span class="font-extrabold text-indigo-800 text-sm">remains</span>
+                                <span class="block text-[10px] text-indigo-600 mt-0.5">(Singular Verb - V-s)</span>
+                            </div>
+                            <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
+                                <span class="text-slate-500 font-bold block uppercase tracking-wider text-[10px]">Complement</span>
+                                <span class="font-semibold text-slate-900 text-sm">controversial</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: VERB ARCHITECTURE ==================== -->
+        <section id="content-verbs" class="tab-content hidden space-y-8">
+            <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-8">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Arsitektur Verb</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-2">Klasifikasi Verb dalam TOEFL Structure</h2>
+                    <p class="text-slate-600 text-sm">
+                        Memahami kedudukan kata kerja (Ordinary vs Auxiliary) dan fungsinya (Finite vs Infinite) adalah kunci utama menjawab soal TOEFL tanpa terkecoh.
+                    </p>
+                </div>
+
+                <!-- Section 1: Berdasarkan Kedudukan -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-indigo-600"></span> 1. Berdasarkan Kedudukan (Ordinary vs Auxiliary)
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Ordinary Verb -->
+                        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-2">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-0.5 rounded">Ordinary Verb</span>
+                            <h4 class="font-bold text-slate-900 text-base">Kata Kerja Utama</h4>
+                            <p class="text-xs text-slate-600">
+                                Kata kerja utama yang memberikan makna substantif dalam sebuah klausa. Pasti ada dalam setiap klausa utuh.
+                            </p>
+                        </div>
+
+                        <!-- Auxiliary Verb -->
+                        <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-2">
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded">Auxiliary Verb</span>
+                            <h4 class="font-bold text-slate-900 text-base">Kata Kerja Bantu</h4>
+                            <p class="text-xs text-slate-600">
+                                Kata kerja yang membantu ordinary verb untuk membentuk tenses, aspek, modalitas, atau penekanan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 3 Types of Auxiliary Table -->
+                    <div class="bg-slate-900 text-white rounded-2xl p-5 space-y-4 font-mono-code text-xs">
+                        <h4 class="text-teal-400 font-bold text-sm">Variasi Auxiliary Verb:</h4>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- Primary Aux -->
+                            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-2">
+                                <span class="text-teal-300 font-bold">a. Primary Auxiliary</span>
+                                <p class="text-slate-400">be, do, have</p>
+                                <div class="text-[11px] text-slate-300 space-y-1 pt-1 border-t border-slate-700">
+                                    <p>• I <span class="text-amber-400">am</span> sleeping. <span class="text-slate-500">(am-aux; sleeping-ord)</span></p>
+                                    <p>• She <span class="text-amber-400">does</span> not know. <span class="text-slate-500">(does-aux; know-ord)</span></p>
+                                    <p>• Hana <span class="text-amber-400">has</span> eaten bakso. <span class="text-slate-500">(has-aux; eaten-ord)</span></p>
+                                </div>
+                            </div>
+
+                            <!-- Modal Aux -->
+                            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-2">
+                                <span class="text-indigo-300 font-bold">b. Modal Auxiliary</span>
+                                <p class="text-slate-400">can, could, shall, should, may, might, will, would, must</p>
+                                <p class="text-rose-400 font-bold text-[10px]">📌 Setelah modal HARUS V1 bare!</p>
+                                <div class="text-[11px] text-slate-300 space-y-1 pt-1 border-t border-slate-700">
+                                    <p>• She <span class="text-amber-400">would have been</span> eating for ten minutes.</p>
+                                </div>
+                            </div>
+
+                            <!-- Emphasize Aux -->
+                            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-2">
+                                <span class="text-amber-300 font-bold">c. Emphasize Auxiliary</span>
+                                <p class="text-slate-400">do / does / did</p>
+                                <p class="text-amber-400 text-[10px]">Berfungsi sebagai penekanan ("benar-benar")</p>
+                                <div class="text-[11px] text-slate-300 space-y-1 pt-1 border-t border-slate-700">
+                                    <p>• I <span class="text-amber-400">do</span> love you.</p>
+                                    <p>• She <span class="text-amber-400">did</span> go to Petungkriyono.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Berdasarkan Fungsi (Finite vs Infinite) -->
+                <div class="space-y-4 pt-4 border-t border-slate-100">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-teal-500"></span> 2. Berdasarkan Fungsi (Finite vs Infinite Verb Matrix)
+                    </h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-5 space-y-2">
+                            <span class="bg-emerald-600 text-white text-xs font-bold px-2 py-0.5 rounded uppercase">Finite Verb</span>
+                            <h4 class="font-bold text-slate-900 text-base">Verb Utama Kalimat</h4>
+                            <p class="text-xs text-slate-600">
+                                Verb yang bertindak sebagai kata kerja utama dalam sebuah klausa. Memiliki tenses dan dipengaruhi oleh subjek.
+                            </p>
+                        </div>
+                        <div class="bg-rose-50/60 border border-rose-200 rounded-2xl p-5 space-y-2">
+                            <span class="bg-rose-600 text-white text-xs font-bold px-2 py-0.5 rounded uppercase">Infinite Verb</span>
+                            <h4 class="font-bold text-slate-900 text-base">Verb Bukan Utama (Bayangan/Modifier)</h4>
+                            <p class="text-xs text-slate-600">
+                                Verb yang TIDAK BISA berdiri sendiri sebagai kata kerja utama klausa (berfungsi sebagai participle, adjective, noun).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Rule Matrix Table -->
+                    <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                        <table class="w-full text-left border-collapse text-xs md:text-sm">
+                            <thead>
+                                <tr class="bg-slate-900 text-white">
+                                    <th class="p-3.5 font-bold">Bentuk Verb</th>
+                                    <th class="p-3.5 font-bold">Status Finite (Verb Utama)</th>
+                                    <th class="p-3.5 font-bold">Syarat & Penjelasan Aturan</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 bg-white">
+                                <tr>
+                                    <td class="p-3.5 font-bold text-slate-900 font-mono-code">V1 (Bare)</td>
+                                    <td class="p-3.5"><span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">FINITE</span></td>
+                                    <td class="p-3.5 text-slate-600">Apabila berdiri sendiri (Present) atau jatuh setelah Modal Auxiliary.</td>
+                                </tr>
+                                <tr class="bg-slate-50">
+                                    <td class="p-3.5 font-bold text-slate-900 font-mono-code">Vs / es, V2</td>
+                                    <td class="p-3.5"><span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">ALWAYS FINITE</span></td>
+                                    <td class="p-3.5 text-slate-600">Selalu berfungsi sebagai Kata Kerja Utama Kalimat.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3.5 font-bold text-slate-900 font-mono-code">V-ing</td>
+                                    <td class="p-3.5">
+                                        <span class="bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">CONDITIONAL</span>
+                                    </td>
+                                    <td class="p-3.5 text-slate-600">
+                                        • <strong>FINITE:</strong> Jika berpasangan dengan anggota <em>be</em> (<code class="bg-slate-100 px-1 py-0.5 rounded">be + V-ing</code>).<br>
+                                        • <strong>INFINITE:</strong> Jika berdiri sendiri tanpa <em>be</em> (berfungsi sebagai Participle / Adjective / Gerund).
+                                    </td>
+                                </tr>
+                                <tr class="bg-slate-50">
+                                    <td class="p-3.5 font-bold text-slate-900 font-mono-code">V3 (Past Participle)</td>
+                                    <td class="p-3.5">
+                                        <span class="bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">CONDITIONAL</span>
+                                    </td>
+                                    <td class="p-3.5 text-slate-600">
+                                        • <strong>FINITE:</strong> Jika berpasangan dengan <em>be</em> (<code class="bg-slate-100 px-1 py-0.5 rounded">be + V3</code> - pasif) atau <em>have</em> (<code class="bg-slate-100 px-1 py-0.5 rounded">have/has/had + V3</code> - perfect).<br>
+                                        • <strong>INFINITE:</strong> Jika berdiri sendiri tanpa <em>be/have</em> (berfungsi sebagai Modifier Pasif).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3.5 font-bold text-slate-900 font-mono-code">To + Infinitive</td>
+                                    <td class="p-3.5"><span class="bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded">ALWAYS INFINITE</span></td>
+                                    <td class="p-3.5 text-slate-600">TIDAK PERNAH bisa menjadi Verb Utama Kalimat.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: CLAUSE REDUCTION LAB ==================== -->
+        <section id="content-decomposition" class="tab-content hidden space-y-8">
+            <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Laboratorium Analisis</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-2">Sentence Decomposition Lab (Bedah Struktur Klausa)</h2>
+                    <p class="text-slate-600 text-sm">
+                        Pelajari bagaimana kata kerja tampak (V-ing / V3) terbentuk akibat proses pemangkasan (<em>reducing / omitting</em>) klausa penjelas.
+                    </p>
+                </div>
+
+                <!-- Interactive Decomposition Cases -->
+                <div class="space-y-6">
+
+                    <!-- Lab Case 1: Reduced Adjective Clause (Active V-ing) -->
+                    <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                            <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">Case 1: Reduced Adjective Clause (V-ing)</span>
+                            <span class="text-xs text-slate-500 font-mono-code font-semibold">Active Reduction</span>
+                        </div>
+
+                        <div class="bg-slate-900 text-white p-4 rounded-xl font-mono-code text-sm">
+                            "The students <span class="text-amber-400 underline">studying</span> in the library <span class="text-teal-400 font-bold">are preparing</span> for the TOEFL test."
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                                <span class="font-bold text-slate-900 text-sm block">🔍 Identifikasi Verb:</span>
+                                <p>• <code class="text-amber-600 font-bold">studying</code> = <strong>Infinite Verb</strong> (Modifier Adjective)</p>
+                                <p>• <code class="text-teal-600 font-bold">are preparing</code> = <strong>Finite Verb Utama</strong></p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                                <span class="font-bold text-slate-900 text-sm block">💡 Penjelasan Asal-Usul:</span>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Kata <em>studying</em> bukanlah verb utama karena berdiri sendiri tanpa <em>be</em>. Ia berasal dari pemangkasan Adjective Clause utuh:
+                                </p>
+                                <p class="bg-slate-100 p-2 rounded text-slate-800 font-mono-code">
+                                    "The students <span class="text-rose-600 font-bold">[who are]</span> studying in the library..."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lab Case 2: Reduced Adverbial Clause (Having + V3) -->
+                    <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                            <span class="bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">Case 2: Reduced Adverbial Clause (Having + V3)</span>
+                            <span class="text-xs text-slate-500 font-mono-code font-semibold">Perfective Participle</span>
+                        </div>
+
+                        <div class="bg-slate-900 text-white p-4 rounded-xl font-mono-code text-sm">
+                            "<span class="text-amber-400 underline">Having completed</span> the research, the professor <span class="text-teal-400 font-bold">submitted</span> the article."
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                                <span class="font-bold text-slate-900 text-sm block">🔍 Identifikasi Verb:</span>
+                                <p>• <code class="text-amber-600 font-bold">Having completed</code> = <strong>Infinite Verb Phrase</strong></p>
+                                <p>• <code class="text-teal-600 font-bold">submitted</code> = <strong>Finite Verb Utama (V2)</strong></p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                                <span class="font-bold text-slate-900 text-sm block">💡 Penjelasan Asal-Usul:</span>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Frasa <em>Having completed</em> bukan bentuk perfect tense utama karena didahului V-ing. Ia merupakan pangkasan dari Adverbial Clause:
+                                </p>
+                                <p class="bg-slate-100 p-2 rounded text-slate-800 font-mono-code">
+                                    "<span class="text-rose-600 font-bold">[After the professor had]</span> completed the research, he submitted..."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lab Case 3: Reduced Passive Adjective Clause (V3 Modifier) -->
+                    <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                            <span class="bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full">Case 3: Reduced Passive Adjective Clause (V3)</span>
+                            <span class="text-xs text-slate-500 font-mono-code font-semibold">Passive Reduction</span>
+                        </div>
+
+                        <div class="bg-slate-900 text-white p-4 rounded-xl font-mono-code text-sm">
+                            "The book <span class="text-amber-400 underline">written</span> by the famous linguist <span class="text-teal-400 font-bold">has become</span> popular."
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                                <span class="font-bold text-slate-900 text-sm block">🔍 Identifikasi Verb:</span>
+                                <p>• <code class="text-amber-600 font-bold">written</code> = <strong>Infinite Verb</strong> (Past Participle Modifier)</p>
+                                <p>• <code class="text-teal-600 font-bold">has become</code> = <strong>Finite Verb Utama (Perfect)</strong></p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                                <span class="font-bold text-slate-900 text-sm block">💡 Penjelasan Asal-Usul:</span>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Kata <em>written</em> berdiri sendiri tanpa <em>be/have</em> sehingga menjadi modifier dari kata <em>book</em>. Asal-usulnya:
+                                </p>
+                                <p class="bg-slate-100 p-2 rounded text-slate-800 font-mono-code">
+                                    "The book <span class="text-rose-600 font-bold">[which was / which is]</span> written by the famous linguist..."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 6: PRACTICE QUIZ ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-8">
+            <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-2xl font-bold text-slate-900 mt-2">Diagnostic Practice Quiz: Skill 1</h2>
+                        <p class="text-slate-600 text-sm">
+                            Uji pemahaman Anda tentang penentuan Subject & Verb dengan pembahasan langsung.
+                        </p>
+                    </div>
+                    <div class="bg-slate-900 text-white px-4 py-2 rounded-xl text-center font-mono-code text-xs">
+                        <span>Score: </span>
+                        <span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 5</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Questions Container -->
+                <div id="quiz-container" class="space-y-6">
+                    <!-- Dynamic Questions generated by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-12">
+        <div class="max-w-7xl mx-auto px-4">
+            TOEFL Preparation Mastery • Skill 1: Subject & Verb Architecture
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Reset all tab button styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+            });
+
+            // Show selected tab content
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+
+            // Highlight active tab button
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) {
+                activeTabBtn.className = "tab-btn px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30";
+            }
+        }
+
+        // Quiz Data
+        const quizQuestions = [
+            {
+                id: 1,
+                question: "The result of the recent laboratory experiments _____ controversial among senior researchers.",
+                options: [
+                    { text: "remain", isCorrect: false },
+                    { text: "remains", isCorrect: true },
+                    { text: "remaining", isCorrect: false },
+                    { text: "to remain", isCorrect: false }
+                ],
+                explanation: "Subjek utama kalimat adalah 'The result' (Singular Head Noun), sedangkan 'of the recent laboratory experiments' adalah prepositional modifier. Maka verb yang dibutuhkan adalah singular finite verb 'remains'."
+            },
+            {
+                id: 2,
+                question: "Analyzing complex syntactic structures in ancient manuscripts _____ exceptional analytical skills.",
+                options: [
+                    { text: "require", isCorrect: false },
+                    { text: "requires", isCorrect: true },
+                    { text: "requiring", isCorrect: false },
+                    { text: "are required", isCorrect: false }
+                ],
+                explanation: "Subjek kalimat adalah Gerund Phrase 'Analyzing complex syntactic structures in ancient manuscripts'. Gerund phrase selalu dihitung sebagai subjek tunggal (singular), sehingga memerlukan singular finite verb 'requires'."
+            },
+            {
+                id: 3,
+                question: "The documents _____ by the legal team yesterday have been forwarded to the director.",
+                options: [
+                    { text: "reviewed", isCorrect: true },
+                    { text: "were reviewed", isCorrect: false },
+                    { text: "reviewing", isCorrect: false },
+                    { text: "are reviewing", isCorrect: false }
+                ],
+                explanation: "Kalimat sudah memiliki finite verb utama yaitu 'have been forwarded'. Kata kerja untuk mengisi sela antara subjek dan verb utama harus berupa Reduced Passive Adjective Clause (Past Participle V3 berdiri sendiri) yaitu 'reviewed' (berasal dari 'which were reviewed')."
+            },
+            {
+                id: 4,
+                question: "What the committee members decided during the emergency conference _____ not yet been disclosed.",
+                options: [
+                    { text: "have", isCorrect: false },
+                    { text: "has", isCorrect: true },
+                    { text: "having", isCorrect: false },
+                    { text: "were", isCorrect: false }
+                ],
+                explanation: "Subjek kalimat adalah Noun Clause utuh: '[What the committee members decided during the emergency conference]'. Noun Clause bertindak sebagai satu kesatuan subjek tunggal, sehingga memerlukan singular auxiliary verb 'has'."
+            },
+            {
+                id: 5,
+                question: "The professor, along with several outstanding graduate students, _____ attending the international linguistics summit.",
+                options: [
+                    { text: "are", isCorrect: false },
+                    { text: "is", isCorrect: true },
+                    { text: "were", isCorrect: false },
+                    { text: "be", isCorrect: false }
+                ],
+                explanation: "Frasa 'along with several outstanding graduate students' adalah prepositional modifier tambahan. Head Noun utama adalah 'The professor' (singular), sehingga finite verb yang selaras adalah 'is'."
+            }
+        ];
+
+        let userAnswers = {};
+        let score = 0;
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+
+            quizContainer.innerHTML = '';
+
+            quizQuestions.forEach((q, index) => {
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-2xl p-5 md:p-6 bg-slate-50 space-y-4";
+                
+                let optionsHTML = '';
+                const optionLetters = ['A', 'B', 'C', 'D'];
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) {
+                            btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        } else if (isSelected && !opt.isCorrect) {
+                            btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        } else {
+                            btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                        }
+                    }
+
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''} 
+                            class="w-full text-left p-3.5 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-6 h-6 rounded-md bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${optionLetters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-xl p-4 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>
+                    `;
+                }
+
+                qCard.innerHTML = `
+                    <div class="flex items-start justify-between gap-4">
+                        <span class="bg-slate-900 text-white text-xs font-bold px-2.5 py-1 rounded-md">Soal ${index + 1}</span>
+                    </div>
+                    <p class="font-mono-code text-sm md:text-base text-slate-900 font-medium leading-relaxed">${q.question}</p>
+                    <div class="space-y-2">
+                        ${optionsHTML}
+                    </div>
+                    ${explanationHTML}
+                `;
+
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            
+            // Calculate score
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) {
+                    score++;
+                }
+            });
+
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        // Initialize on Load
+        window.onload = function() {
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>

@@ -1,398 +1,432 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIBI EXCERCISE - Portal Latihan Soal TOEFL & Grammar</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#981f34">
+<title>TOEFL Exercise | Lumina Project</title>
+<style>
+:root{
+ --red:#981f34;--red-dark:#751629;--ink:#20283a;--muted:#697589;
+ --bg:#f4f6fa;--line:#e6eaf1;--white:#fff;--blue:#3979ce;
+ --green:#16866b;--amber:#bd7922;--purple:#7952b5;
+}
+*{box-sizing:border-box}
+body{margin:0;padding-top:98px;padding-bottom:32px;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif}
+button,a{font:inherit}
+button{cursor:pointer}
+.hero{position:fixed;top:0;left:0;width:100%;z-index:1000;overflow:hidden;background:linear-gradient(115deg,var(--red-dark),#b52b43 58%,#8c1b30);color:white;padding:12px max(5vw,22px)}
+.hero:before,.hero:after{content:"";position:absolute;width:370px;height:180px;border:1px solid #ffffff24;transform:rotate(45deg);pointer-events:none}
+.hero:before{right:16%;top:-300px}.hero:after{right:-170px;bottom:-300px}
+.hero-inner{position:relative;z-index:1;max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.eyebrow{font-size:9px;letter-spacing:2px;color:#ffdce2;font-weight:700}
+h1{font-size:clamp(23px,3.2vw,34px);margin:4px 0 3px;letter-spacing:.5px}
+.hero p{margin:0;max-width:650px;color:#ffe9ed;line-height:1.35;font-size:11px}
+.brand{width:54px;height:54px;flex:0 0 54px;border-radius:19px;background:#fff;color:var(--red);display:grid;place-content:center;text-align:center;box-shadow:0 8px 25px #4b071b55}
+.brand b{font-size:25px;line-height:1}.brand small{font-size:9px;letter-spacing:1.5px;font-weight:800;margin-top:5px}
+.shell{max-width:1180px;margin:26px auto 50px;padding:0 22px;display:grid;grid-template-columns:245px minmax(0,1fr);gap:22px}
+.sidebar,.panel{background:white;border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 22px #26334b08}
+.sidebar{padding:18px;height:max-content;position:sticky;top:18px}
+.side-label{font-size:10px;letter-spacing:1.7px;color:#98a1b1;font-weight:800;margin:4px 10px 12px}
+.nav{display:flex;flex-direction:column;gap:7px}
+.nav button{border:0;background:transparent;text-align:left;padding:12px;border-radius:11px;color:#536075;font-weight:650;font-size:13px;display:flex;align-items:center;gap:11px}
+.nav button:hover{background:#f5f6fa}.nav button.active{background:#fae9ed;color:var(--red)}
+.nav .ico{width:25px;text-align:center;font-size:18px}
+.sidebar-note{margin-top:20px;padding:13px;background:#fff5f6;border-radius:12px;color:#7b3542;font-size:11px;line-height:1.55}
+.content{min-width:0}
+.panel{padding:25px}
+.page-title{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:20px}
+.page-title h2{font-size:23px;margin:0 0 6px}.page-title p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.kicker{font-size:10px;letter-spacing:1.5px;color:var(--red);font-weight:800;margin-bottom:7px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.session-card{border:1px solid var(--line);border-top:4px solid var(--blue);border-radius:14px;padding:19px;background:#fff;transition:.2s}
+.session-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px #26334b12}
+.session-card.green{border-top-color:var(--green)}.session-card.amber{border-top-color:var(--amber)}.session-card.purple{border-top-color:var(--purple)}
+.session-card .icon{width:43px;height:43px;border-radius:12px;background:#eaf1fd;display:grid;place-items:center;font-size:21px;margin-bottom:13px}
+.session-card.green .icon{background:#e6f5f0}.session-card.amber .icon{background:#fff3e3}.session-card.purple .icon{background:#f1ebfb}
+.session-card h3{font-size:16px;margin:0 0 7px}.session-card p{font-size:12px;line-height:1.6;color:var(--muted);min-height:40px;margin:0 0 15px}
+.btn{border:0;border-radius:9px;padding:10px 15px;font-size:12px;font-weight:750;background:var(--red);color:white}
+.btn:hover{filter:brightness(.94)}.btn.secondary{background:#eef1f6;color:#435067}.btn.small{padding:8px 11px}
+.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.stat{padding:14px;border:1px solid var(--line);border-radius:12px}.stat b{display:block;font-size:21px}.stat span{font-size:11px;color:var(--muted)}
+.material-list{display:grid;gap:12px}.material{padding:16px;border:1px solid var(--line);border-radius:12px}.material h3{margin:0 0 7px;font-size:15px}.material p,.material li{font-size:13px;color:#596579;line-height:1.65}.material ul{padding-left:20px;margin:8px 0 0}
+.exercise-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:17px}
+.progress-wrap{height:7px;background:#edf0f5;border-radius:20px;overflow:hidden;margin:10px 0 20px}.progress{height:100%;width:0;background:var(--red);transition:width .2s}
+.timer{background:#fff4e6;color:#945b16;border-radius:9px;padding:9px 12px;font-size:12px;font-weight:800}
+.question{border:1px solid var(--line);border-radius:13px;padding:18px;margin-bottom:13px}
+.q-meta{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#8993a4;font-weight:800;margin-bottom:9px}
+.q-text{font-size:14px;line-height:1.65;font-weight:650;margin-bottom:13px}
+.options{display:grid;gap:8px}
+.option{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);padding:10px 12px;border-radius:9px;font-size:13px;line-height:1.5;cursor:pointer}
+.option:hover{background:#f8f9fc}.option input{margin-top:3px;accent-color:var(--red)}
+.option.correct{border-color:#83c9ad;background:#effaf5}.option.wrong{border-color:#e7a2a9;background:#fff3f4}
+.explanation{display:none;margin-top:12px;padding:11px 13px;border-radius:9px;background:#f4f6fa;color:#566176;font-size:12px;line-height:1.6}
+.explanation.show{display:block}.explanation strong{color:var(--ink)}
+.notice{padding:13px 15px;background:#f5f7fb;border-radius:11px;font-size:12px;line-height:1.6;color:#596579;margin-bottom:15px}
+.audio-box{background:#eef5ff;border:1px solid #dce9fb;border-radius:12px;padding:15px;margin-bottom:16px}
+.audio-box p{font-size:12px;color:#53657d;line-height:1.6;margin:8px 0 0}
+.result{display:none;text-align:center;padding:25px;border-radius:14px;background:#f5f8fc;margin-top:18px}
+.result.show{display:block}.result-score{font-size:38px;font-weight:850;color:var(--red)}
+.result p{color:var(--muted);font-size:13px;line-height:1.6}
+.empty{padding:20px;text-align:center;color:var(--muted);font-size:13px}
+.admin-form{display:grid;gap:12px}.admin-form label{display:grid;gap:6px;font-size:12px;font-weight:700;color:#536075}
+.admin-form input,.admin-form textarea,.admin-form select{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 11px;background:#fff;color:var(--ink);font:inherit;font-size:13px;outline-color:var(--red)}
+.admin-form textarea{resize:vertical;line-height:1.5}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.admin-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line);font-size:12px}.admin-item small{display: flex; flex-direction: column; justify-content: center; align-items: center; var: (--muted);margin: top 4px}.file-label{display:inline-flex;align-items:center;cursor:pointer}
+footer{position:fixed;left:0;bottom:0;width:100%;height:45px;z-index:1000;text-align:center;background:#2d254e;color:white;padding:5px 12px}
+footer strong{font-size:9px;letter-spacing:1.2px}footer p{font-size:8px;color:#aeb8cc;margin:1px 0 0}
+.hidden{display:none!important}
+@media(max-width:760px){body{padding-top:88px;padding-bottom:29px}.shell{grid-template-columns:1fr;margin-top:16px}.sidebar{position:static;padding:12px}.nav{display:grid;grid-template-columns:repeat(2,1fr)}.sidebar-note{display:none}.cards{grid-template-columns:1fr}.panel{padding:18px}.hero{padding:10px 22px}}
+@media(max-width:420px){body{padding-top:82px;padding-bottom:28px}.brand{width:46px;height:46px;flex-basis:46px;border-radius:14px}.brand b{font-size:22px}.brand small{font-size:7px}.hero p{font-size:9px}.hero h1{font-size:22px;margin:3px 0}.eyebrow{font-size:9px;letter-spacing:2px}.nav button{font-size:11px;padding:10px 7px}}
+</style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+<body>
+<header class="hero">
+ <div class="hero-inner">
+  <div><div class="eyebrow">LUMINA LEARNING PLATFORM</div><h1>TOEFL EXERCISE</h1>
+   <p>Build your English proficiency through focused materials and practice. Learn the strategies, test your understanding, and track your progress — one session at a time.</p>
+  </div>
+  <!-- Replace this sample mark with your official business logo if available. -->
+  <div class="brand" aria-label="Lumina logo"><b>L</b><small>LUMINA</small></div>
+ </div>
+</header>
 
-    <!-- Header Merah Ringkas (Compact for Mobile) -->
-<header class="bg-green-700 text-white shadow-md py-1.5 md:py-3 px-4 overflow-hidden border-b border-red-800">
-        <div class="max-w-6xl mx-auto flex flex-row justify-between items-center gap-2">
-            <!-- Teks Header -->
-            <div class="min-w-0">
-                <span class="inline-block bg-lime-800 text-red-100 text-[9px] md:text-[10px] font-bold px-2 py-0.2 rounded-full uppercase tracking-wider border border-lime-600">
-                    PIBI 2026 • Personal Learning Hub
-                </span>
-                <h1 class="text-sm sm:text-lg md:text-2xl font-extrabold mt-0.5 tracking-tight truncate">PIBI EXCERCISE</h1>
-                <p class="text-red-100 text-[10px] sm:text-[11px] md:text-xs opacity-90 truncate">Portal Latihan Soal TOEFL & Grammar Mastery</p>
-            </div>
+<div class="shell">
+ <aside class="sidebar">
+  <div class="side-label">MAIN MENU</div>
+  <nav class="nav" aria-label="Main navigation">
+   <button class="active" data-page="home"><span class="ico">⌂</span>Dashboard</button>
+   <button data-page="materials"><span class="ico">📚</span>TOEFL Materials</button>
+   <button data-page="listening"><span class="ico">🎧</span>Listening</button>
+   <button data-page="swo"><span class="ico">✍️</span>Structure &amp; Written Expression</button>
+   <button data-page="reading"><span class="ico">📖</span>Reading</button>
+   <button data-page="admin"><span class="ico">⚙️</span>Content Manager</button>
+  </nav>
+  <div class="sidebar-note"><b>Study tip</b><br>Try to answer independently before checking the explanations. Consistent practice is more valuable than rushing.</div>
+ </aside>
 
-            <!-- Logo Lumina Course (Tinggi Diperkecil 50% Proporsional) -->
-            <div class="shrink-0 flex items-center justify-center">
-                <img 
-                    src="https://lh3.googleusercontent.com/d/1FdxRwjOKPthKoM26f1WQLebir6cokSNj" 
-                    alt="Lumina Course Logo" 
-                    class="h-8 sm:h-12 md:h-20 w-auto object-contain max-w-[80px] sm:max-w-[120px] md:max-w-[180px] drop-shadow-md"
-                />
-            </div>
-        </div>
-    </header>
+ <main class="content">
+  <section id="home" class="panel page">
+   <div class="page-title"><div><div class="kicker">YOUR PRACTICE SPACE</div><h2>Learning Sessions</h2><p>Choose a session to begin your TOEFL preparation.</p></div></div>
+   <div class="cards">
+    <article class="session-card"><div class="icon">📚</div><h3>TOEFL Materials</h3><p>Review essential concepts, question types, and test-taking strategies.</p><button class="btn" data-go="materials">Explore materials →</button></article>
+    <article class="session-card green"><div class="icon">🎧</div><h3>Listening Comprehension</h3><p>Practice understanding short conversations and spoken English.</p><button class="btn" data-go="listening">Start listening →</button></article>
+    <article class="session-card amber"><div class="icon">✍️</div><h3>Structure &amp; Written Expression</h3><p>Strengthen grammar, sentence structure, and error recognition.</p><button class="btn" data-go="swo">Start practice →</button></article>
+    <article class="session-card purple"><div class="icon">📖</div><h3>Reading Comprehension</h3><p>Develop reading skills, vocabulary, and passage analysis.</p><button class="btn" data-go="reading">Start reading →</button></article>
+   </div>
+   <div class="stats">
+    <div class="stat"><b id="attempts">0</b><span>Completed sessions</span></div>
+    <div class="stat"><b id="average">—</b><span>Average score</span></div>
+    <div class="stat"><b>4</b><span>Learning areas</span></div>
+   </div>
+   <div class="notice">This starter version includes sample questions, instant scoring, answer explanations, a practice timer, and browser-based text-to-speech for the listening sample. Your results are stored locally in this browser.</div>
+  </section>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 py-6 md:py-10 w-full flex-grow space-y-6 md:space-y-8">
-        
-        <!-- Welcome Hero Section -->
-        <section class="bg-white rounded-2xl p-5 md:p-8 shadow-sm border border-slate-200 text-left flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6 relative overflow-hidden">
-            <div class="space-y-2 max-w-3xl z-10">
-                <h2 class="text-xl md:text-2xl font-bold text-slate-900">Selamat Datang di Portal Latihan Soal! 👋</h2>
-                <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                    Kuasai Grammar & TOEFL Structure secara sistematis. Urutan segment: 
-                    <span class="font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded border border-red-200">Word ➔ Phrase ➔ Clause</span>.
-                </p>
-                <p>Pilih modul di bawah untuk memulai latihan interaktif. Dilengkapi skor dan pembahasan instan.
-                </p>
-            </div>
-            <div class="shrink-0 bg-red-50 text-red-700 font-bold px-5 py-3 rounded-2xl border border-red-200 text-center self-start md:self-auto z-10">
-                <span class="block text-2xl md:text-3xl font-black">20</span>
-                <span class="text-[10px] md:text-xs uppercase tracking-wider font-semibold">Modul Kuis</span>
-            </div>
-        </section>
+<!-- MATERIALS -->
+<section id="materials" class="panel page hidden">
 
-        <!-- Daftar Modul Latihan Soal -->
-        <section class="space-y-4">
-            <div class="flex items-center justify-between">
-                <h3 class="text-lg md:text-xl font-bold text-slate-900 flex items-center gap-2">
-                    <span>📖</span> Modul Kuis TOEFL & Grammar Mastery
-                </h3>
-                <span class="text-xs font-semibold bg-slate-200 text-slate-700 px-3 py-1 rounded-full">Skill 1 – 17 + Extras</span>
-            </div>
+ <div class="page-title">
+  <div>
+   <div class="kicker">LEARNING LIBRARY</div>
+   <h2>TOEFL Materials</h2>
+   <p>
+    Quick notes to help you understand
+    the main TOEFL sections.
+   </p>
+  </div>
+ </div>
 
-            <!-- Grid Card Kuis -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+ <div class="material-list">
 
-                <!-- ===== KELOMPOK 1: BASIC SENTENCE STRUCTURE (BLUE) ===== -->
+  <!-- 1. Listening Comprehension -->
+  <article class="material">
+   <h3>1. Listening Comprehension</h3>
+   <p>
+    Focus on the main idea, speaker intention,
+    details, inference, and context clues.
+    Listen for meaning rather than trying to
+    translate every word.
+   </p>
 
-                <!-- Skill 1 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-blue-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-blue-100 text-blue-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 1</span>
-                            <span class="text-xs font-medium text-slate-500">Sentence Core</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 1: Subject & Verb Identification</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Memastikan kalimat memiliki Subject & Verb utama (Finite vs Infinite), menganalisis Long Subjects, Gerund, To-Infinitive, dan Noun Clause.
-                        </p>
-                    </div>
-                    <a href="skill1exercise.html" class="inline-flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 1 <span>→</span>
-                    </a>
-                </div>
+   <ul>
+    <li>Identify who is speaking and where the conversation takes place.</li>
+    <li>Notice paraphrases in the answer choices.</li>
+    <li>Pay attention to tone, contrast, and suggestions.</li>
+   </ul>
 
-                <!-- Skill 2 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-blue-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-blue-100 text-blue-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 2</span>
-                            <span class="text-xs font-medium text-slate-500">Prepositions</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 2: Preposition & Object of Preposition</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Membedakan Preposition vs Conjunction (misal: <em>after, before</em>) dan mencegah kecoh Object of Preposition sebagai Subjek utama.
-                        </p>
-                    </div>
-                    <a href="skill2exercise.html" class="inline-flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 2 <span>→</span>
-                    </a>
-                </div>
+   <!-- Tombol menuju halaman materi Listening -->
+   <div class="material-action" style="margin-top: 1.5rem;">
+    <a href="[MASUKKAN_LINK_LISTENING_DI_SINI]" class="btn-material" style="display: inline-block; background-color: #2563eb; color: #ffffff; padding: 0.5rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: background-color 0.2s;">
+      Buka Materi Listening →
+    </a>
+   </div>
+  </article>
 
-                <!-- Skill 3 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-blue-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-blue-100 text-blue-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 3</span>
-                            <span class="text-xs font-medium text-slate-500">Extra Information</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 3: Appositive Recognition</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Menganalisis keterangan tambahan (Appositive Phrase) yang mengapit Noun/Subjek dengan dua koma, satu koma, atau tanpa koma.
-                        </p>
-                    </div>
-                    <a href="skill3exercise.html" class="inline-flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 3 <span>→</span>
-                    </a>
-                </div>
+  <!-- 2. Structure & Written Expression (Dilengkapi akses Skill 1 - 8) -->
+  <article class="material">
+   <h3>2. Structure & Written Expression</h3>
+   <p>
+    This section tests your ability to recognize
+    grammatically correct sentences and identify errors.
+   </p>
 
-                <!-- ===== KELOMPOK 2: PARTICIPLES & CONNECTORS (EMERALD / TEAL) ===== -->
+   <ul>
+    <li>Check subject–verb agreement.</li>
+    <li>Recognize noun, adjective, and adverb clauses.</li>
+    <li>Check parallel structure, verb forms, and modifiers.</li>
+   </ul>
 
-                <!-- Skill 4 & 5 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-teal-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-teal-100 text-teal-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 4 & 5</span>
-                            <span class="text-xs font-medium text-slate-500">Participles</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 4 & 5: Present & Past Participles</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Menganalisis penggunaan Present Participle (V-ing / Aktif) dan Past Participle (V-3 / Pasif) sebagai Adjective Modifier.
-                        </p>
-                    </div>
-                    <a href="skill45exercise.html" class="inline-flex justify-center items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 4 & 5 <span>→</span>
-                    </a>
-                </div>
+   <!-- Tombol Navigasi Spesifik per Skill (Skill 1 - 8) -->
+   <div class="material-action" style="margin-top: 1.5rem;">
+    <a href="materiswoskill1.html" class="btn-material" style="display: inline-block; background-color: #2563eb; color: #ffffff; padding: 0.5rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.875rem;">
+      Buka Materi Structure →
+    </a>
+   </div>
+  </article>
 
-                <!-- Skill 6 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-emerald-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-emerald-100 text-emerald-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 6</span>
-                            <span class="text-xs font-medium text-slate-500">Coordinating</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 6: Coordinating Conjunctions (FANBOYS)</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Aturan Parallel Structure (For, And, Nor, But, Or, Yet, So), tanda koma antar klausa, dan pola inversi setelah kata <em>nor</em>.
-                        </p>
-                    </div>
-                    <a href="skill6exercise.html" class="inline-flex justify-center items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 6 <span>→</span>
-                    </a>
-                </div>
+  <!-- 3. Reading Comprehension -->
+  <article class="material">
+   <h3>3. Reading Comprehension</h3>
+   <p>
+    Read for the overall organization and locate
+    evidence for each answer.
+   </p>
 
-                <!-- Skill 7 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-emerald-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-emerald-100 text-emerald-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 7</span>
-                            <span class="text-xs font-medium text-slate-500">Subordinating</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 7: Subordinating Conjunctions</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Hubungan Adverbial Clause (Time, Cause, Condition, Contrast) posisi Initial, Middle, & Final, serta dasar variasi <em>Reducing</em>.
-                        </p>
-                    </div>
-                    <a href="skill7exercise.html" class="inline-flex justify-center items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 7 <span>→</span>
-                    </a>
-                </div>
+   <ul>
+    <li>Skim the passage to identify its topic.</li>
+    <li>Scan for names, dates, and key terms.</li>
+    <li>Use context to infer unfamiliar vocabulary.</li>
+   </ul>
 
-                <!-- Skill 8 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-emerald-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-emerald-100 text-emerald-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 8</span>
-                            <span class="text-xs font-medium text-slate-500">Correlative</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 8: Correlative Conjunctions</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Pasangan konjungsi berpasangan (<em>Both...and, Not only...but also, Either...or, Neither...nor</em>) dan penyesuaian Verb terdekat.
-                        </p>
-                    </div>
-                    <a href="skill8exercise.html" class="inline-flex justify-center items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 8 <span>→</span>
-                    </a>
-                </div>
+   <!-- Tombol menuju halaman materi Reading -->
+   <div class="material-action" style="margin-top: 1.5rem;">
+    <a href="[MASUKKAN_LINK_READING_DI_SINI]" class="btn-material" style="display: inline-block; background-color: #2563eb; color: #ffffff; padding: 0.5rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.875rem;">
+      Buka Materi Reading →
+    </a>
+   </div>
+  </article>
 
-                <!-- ===== KELOMPOK 3: CLAUSES & REDUCTION (VIOLET / PURPLE) ===== -->
+  <!-- 4. Suggested Practice Routine -->
+  <article class="material">
+   <h3>4. Suggested Practice Routine</h3>
+   <p>
+    Study one topic, complete a short exercise,
+    review every explanation, and record recurring
+    errors. Repeat the topic after a few days.
+   </p>
 
-                <!-- Skill 9 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-violet-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-violet-100 text-violet-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 9</span>
-                            <span class="text-xs font-medium text-slate-500">Noun Clauses</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 9: Noun Clause Structure</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Penggunaan 5W1H, <em>That</em>, dan <em>If/Whether</em> sebagai Subject, Object, Complement, & Obj of Prep, serta aturan <em>Subjunctive</em>.
-                        </p>
-                    </div>
-                    <a href="skill9exercise.html" class="inline-flex justify-center items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 9 <span>→</span>
-                    </a>
-                </div>
+   <!-- Tombol menuju panduan strategi belajar -->
+   <div class="material-action" style="margin-top: 1.5rem;">
+    <a href="[MASUKKAN_LINK_ROUTINE_DI_SINI]" class="btn-material" style="display: inline-block; background-color: #0f172a; color: #ffffff; padding: 0.5rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.875rem;">
+      Lihat Panduan Belajar →
+    </a>
+   </div>
+  </article>
 
-                <!-- Skill 10 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-violet-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-violet-100 text-violet-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 10</span>
-                            <span class="text-xs font-medium text-slate-500">Adjective Clauses</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 10: Adjective Clause Connectors</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Aplikasi Relative Pronouns (<em>Who, Whom, Which, That, Whose</em>) dan Relative Adverbs (<em>Where, When, Why</em>) menerangkan Head.
-                        </p>
-                    </div>
-                    <a href="skill10exercise.html" class="inline-flex justify-center items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 10 <span>→</span>
-                    </a>
-                </div>
+ </div>
 
-                <!-- Skill 11 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-purple-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 11</span>
-                            <span class="text-xs font-medium text-slate-500">AC Reduction</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 11: Reduced Adjective Clauses</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Pemangkasan AC menjadi Present Participle (V-ing), Past Participle (V-3), Prep Phrase, dan To-Infinitive setelah Superlative/Ordinal.
-                        </p>
-                    </div>
-                    <a href="skill11exercise.html" class="inline-flex justify-center items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 11 <span>→</span>
-                    </a>
-                </div>
+</section>
 
-                <!-- Skill 12 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-purple-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 12</span>
-                            <span class="text-xs font-medium text-slate-500">AVC Reduction</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 12: Reduced Adverb Clauses</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Aturan Subject Reduction vs Conj+Subj Reduction, posisi Initial/Middle/Final, serta kaidah khusus AVC of Reason (<em>Because/Since</em>).
-                        </p>
-                    </div>
-                    <a href="skill12exercise.html" class="inline-flex justify-center items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 12 <span>→</span>
-                    </a>
-                </div>
+  <section id="listening" class="panel page hidden">
+   <div class="page-title"><div><div class="kicker">PRACTICE SESSION 01</div><h2>Listening Comprehension</h2><p>Listen to the short conversation and answer the questions.</p></div><span class="timer" id="timer-listening">10:00</span></div>
+   <div class="audio-box"><div class="row"><b style="font-size:13px">Audio practice</b><button class="btn small" id="play-audio">▶ Play conversation</button><button class="btn secondary small" id="stop-audio">■ Stop</button></div><p>Use the play button to hear the conversation. You may replay it before submitting your answers. Your browser must support speech synthesis.</p></div>
+   <div id="listening-questions"></div><div class="row"><button class="btn" data-submit="listening">Submit answers</button><button class="btn secondary" data-reset="listening">Reset session</button></div><div id="result-listening" class="result"></div>
+  </section>
 
-                <!-- ===== KELOMPOK 4: ADVANCED INVERSIONS (ROSE / RED) ===== -->
+  <section id="swo" class="panel page hidden">
+   <div class="page-title"><div><div class="kicker">PRACTICE SESSION 02</div><h2>Structure &amp; Written Expression</h2><p>Choose the best answer to complete or correct each sentence.</p></div><span class="timer" id="timer-swo">10:00</span></div>
+   <div id="swo-questions"></div><div class="row"><button class="btn" data-submit="swo">Submit answers</button><button class="btn secondary" data-reset="swo">Reset session</button></div><div id="result-swo" class="result"></div>
+  </section>
 
-                <!-- Skill 13 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-rose-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-rose-100 text-rose-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 13</span>
-                            <span class="text-xs font-medium text-slate-500">Questions</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 13: Inversion in Questions & Embedded Clauses</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Inversi Auxiliary pada kalimat tanya langsung (Direct Questions) dan pembatalan Inversi saat menjadi Noun Sub-Clause.
-                        </p>
-                    </div>
-                    <a href="skill13exercise.html" class="inline-flex justify-center items-center gap-2 bg-rose-600 hover:bg-rose-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 13 <span>→</span>
-                    </a>
-                </div>
+  <section id="reading" class="panel page hidden">
+   <div class="page-title"><div><div class="kicker">PRACTICE SESSION 03</div><h2>Reading Comprehension</h2><p>Read the passage carefully, then answer the questions.</p></div><span class="timer" id="timer-reading">12:00</span></div>
+   <div class="material" style="margin-bottom:16px"><h3>Urban Trees and City Life</h3><p>Urban trees provide benefits that extend beyond their appearance. Their leaves can provide shade, reducing the amount of heat absorbed by streets and buildings. Trees also help manage rainwater: some water is intercepted by leaves, while roots can improve the soil's ability to absorb rainfall. In addition, urban vegetation creates habitats for birds and insects. However, planting trees in cities requires careful planning. Species must be selected according to local climate, available space, and maintenance needs. A tree that grows well in a park may not be suitable for a narrow sidewalk where roots could damage pavement or underground pipes. Therefore, successful urban forestry depends not simply on planting more trees, but on choosing appropriate species and caring for them over time.</p></div>
+   <div id="reading-questions"></div><div class="row"><button class="btn" data-submit="reading">Submit answers</button><button class="btn secondary" data-reset="reading">Reset session</button></div><div id="result-reading" class="result"></div>
+  </section>
 
-                <!-- Skill 14 & 15 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-rose-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-rose-100 text-rose-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 14 & 15</span>
-                            <span class="text-xs font-medium text-slate-500">Place & Negative</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 14 & 15: Inversion after Place & Negative Expressions</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Inversi tempat (Place + Main Verb + S) vs Inversi negatif penekanan (<em>Never, Seldom, Rarely, Not only</em> + Aux + S + V).
-                        </p>
-                    </div>
-                    <a href="skill14exercise.html" class="inline-flex justify-center items-center gap-2 bg-rose-600 hover:bg-rose-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 14 & 15 <span>→</span>
-                    </a>
-                </div>
+  <section id="admin" class="panel page hidden">
+   <div class="page-title"><div><div class="kicker">ADMINISTRATION</div><h2>Content Manager</h2><p>Add questions and learning materials without editing the source code.</p></div></div>
+   <div class="notice"><b>Local storage:</b> content added here is saved in this browser only. Export a backup regularly. It will not automatically appear on another device or browser.</div>
+   <div class="material" style="margin-bottom:16px">
+    <h3 style="margin-bottom:12px">Add a TOEFL question</h3>
+    <form id="question-form" class="admin-form">
+     <label>Session<select id="q-category" required><option value="listening">Listening Comprehension</option><option value="swo">Structure &amp; Written Expression</option><option value="reading">Reading Comprehension</option></select></label>
+     <label>Question / prompt<textarea id="q-text-input" rows="2" required placeholder="Type the question here..."></textarea></label>
+     <div class="form-grid"><label>Option A<input id="opt-a" required></label><label>Option B<input id="opt-b" required></label><label>Option C<input id="opt-c" required></label><label>Option D<input id="opt-d" required></label></div>
+     <div class="form-grid"><label>Correct answer<select id="q-answer"><option value="0">A</option><option value="1">B</option><option value="2">C</option><option value="3">D</option></select></label><label>Lesson / topic (optional)<input id="q-topic" placeholder="e.g. Subject-Verb Agreement"></label></div>
+     <label>Explanation<textarea id="q-explanation" rows="2" required placeholder="Explain why the answer is correct..."></textarea></label>
+     <button class="btn" type="submit">＋ Save question</button>
+    </form>
+   </div>
+   <div class="material" style="margin-bottom:16px">
+    <h3 style="margin-bottom:12px">Add learning material</h3>
+    <form id="material-form" class="admin-form">
+     <label>Material title<input id="m-title" required placeholder="e.g. Subject-Verb Agreement"></label>
+     <label>Category<select id="m-category"><option>General TOEFL</option><option>Listening</option><option>Structure &amp; Written Expression</option><option>Reading</option></select></label>
+     <label>Material content<textarea id="m-content" rows="5" required placeholder="Write notes, explanations, examples, or study tips..."></textarea></label>
+     <button class="btn" type="submit">＋ Save material</button>
+    </form>
+   </div>
+   <div class="material">
+    <div class="row" style="justify-content:space-between"><h3>Manage saved content</h3><div class="row"><button class="btn secondary small" id="export-data" type="button">Export backup</button><label class="btn secondary small file-label">Import backup<input id="import-data" type="file" accept="application/json" hidden></label></div></div>
+    <div id="content-count" class="notice" style="margin-top:12px">No additional content yet.</div>
+    <div id="admin-content-list"></div>
+   </div>
+  </section>
+ </main>
+</div>
+<footer><strong>LUMINA PROJECT 2026</strong><p>Learn • Practice • Improve</p></footer>
 
-                <!-- Skill 16 -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-red-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 16</span>
-                            <span class="text-xs font-medium text-slate-500">Conditionals</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 16: Inversion in Conditionals (Omitting 'If')</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Inversi kalimat pengandaian dengan menghapus 'If': <em>Should</em> (Type 1), <em>Were / Were...to</em> (Type 2), dan <em>Had</em> (Type 3).
-                        </p>
-                    </div>
-                    <a href="skill16exercise.html" class="inline-flex justify-center items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 16 <span>→</span>
-                    </a>
-                </div>
+<script>
+const listeningScript = "Woman: Have you finished the report for Professor Allen? Man: Almost. I still need to check the figures in the final section. Woman: The professor said he would like to receive it before noon tomorrow. Man: That should be fine. I will review it tonight and send it first thing in the morning. Woman: Great. Let me know if you need me to check anything.";
+const data = {
+ listening:[
+  {q:"What are the speakers mainly discussing?",o:["A class schedule","A report that needs to be completed","A meeting with Professor Allen","A change in research topic"],a:1,e:"They discuss checking the figures and submitting the report before the deadline."},
+  {q:"What does the man still need to do?",o:["Write the introduction","Meet the professor","Check the figures","Print the report"],a:2,e:"He says he still needs to check the figures in the final section."},
+  {q:"When does the professor want to receive the report?",o:["Tonight","Tomorrow before noon","Tomorrow evening","Next week"],a:1,e:"The woman says the professor wants it before noon tomorrow."}
+ ],
+ swo:[
+  {q:"The committee _____ the final decision yesterday.",o:["make","makes","made","making"],a:2,e:"The time expression 'yesterday' requires the simple past: made."},
+  {q:"The new library, _____ last year, is already popular with students.",o:["complete","completed","was completing","which completing"],a:1,e:"The past participle 'completed' works as a reduced passive adjective clause."},
+  {q:"Neither the students nor the teacher _____ aware of the schedule change.",o:["were","are","have","was"],a:3,e:"With neither...nor, the verb agrees with the nearer subject. 'Teacher' is singular, so use was."},
+  {q:"The researcher collected the data carefully, _____ the results were reliable.",o:["because","so","although","unless"],a:1,e:"'So' introduces the result: careful collection led to reliable results."}
+ ],
+ reading:[
+  {q:"What is the main idea of the passage?",o:["Why cities should remove old trees","The benefits of urban trees and the need for careful planning","How birds migrate through cities","Why all tree species grow well on sidewalks"],a:1,e:"The passage describes several benefits and explains why tree selection and maintenance matter."},
+  {q:"According to the passage, how can trees help manage rainwater?",o:["By preventing all rainfall","By making streets wider","By intercepting water and improving soil absorption","By directing water into buildings"],a:2,e:"The passage states that leaves intercept some water and roots can improve soil absorption."},
+  {q:"The word 'intercepted' is closest in meaning to _____.",o:["collected or caught","heated","destroyed","measured"],a:0,e:"In context, leaves catch or hold some of the rainwater."},
+  {q:"Why might a tree be unsuitable for a narrow sidewalk?",o:["It may attract too many birds","Its roots may damage pavement or pipes","It cannot receive sunlight","It may stop all traffic"],a:1,e:"The passage specifically mentions possible damage from roots."}
+ ]
+};
+let customQuestions=JSON.parse(localStorage.getItem("luminaQuestions")||'{"listening":[],"swo":[],"reading":[]}');
+let customMaterials=JSON.parse(localStorage.getItem("luminaMaterials")||"[]");
+const timers={listening:600,swo:600,reading:720}, remaining={...timers}, intervals={};
+let completed=JSON.parse(localStorage.getItem("luminaCompleted")||"[]");
+let scores=JSON.parse(localStorage.getItem("luminaScores")||"[]");
+function updateStats(){
+ document.getElementById("attempts").textContent=completed.length;
+ document.getElementById("average").textContent=scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length)+"%":"—";
+}
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.toggle("hidden",p.id!==id));
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.go)));
+function escapeHTML(value){return String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
+function allQuestions(type){return [...data[type],...(customQuestions[type]||[])];}
+function renderQuestions(type){
+ const questions=allQuestions(type);
+ const target=document.getElementById(type+"-questions");
+ target.innerHTML=questions.map((item,i)=>`
+ <article class="question" data-q="${i}">
+  <div class="q-meta">Question ${i+1} of ${questions.length}${item.topic?" · "+escapeHTML(item.topic):""}</div>
+  <div class="q-text">${escapeHTML(item.q)}</div>
+  <div class="options">${item.o.map((opt,j)=>`<label class="option"><input type="radio" name="${type}-${i}" value="${j}"><span>${String.fromCharCode(65+j)}. ${escapeHTML(opt)}</span></label>`).join("")}</div>
+  <div class="explanation" id="exp-${type}-${i}"></div>
+ </article>`).join("");
+}
+["listening","swo","reading"].forEach(renderQuestions);
+function formatTime(sec){return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0")}
+function startTimer(type){
+ if(intervals[type])clearInterval(intervals[type]);
+ remaining[type]=timers[type];
+ const el=document.getElementById("timer-"+type);el.textContent=formatTime(remaining[type]);
+ intervals[type]=setInterval(()=>{
+  if(remaining[type]>0){remaining[type]--;el.textContent=formatTime(remaining[type]);}
+  else{clearInterval(intervals[type]);el.textContent="Time is up";}
+ },1000);
+}
+["listening","swo","reading"].forEach(startTimer);
+function submit(type){
+ const questions=allQuestions(type);let score=0,answered=0;
+ if(!questions.length){alert("There are no questions in this session yet.");return;}
+ questions.forEach((item,i)=>{
+  const chosen=document.querySelector(`input[name="${type}-${i}"]:checked`);
+  const labels=document.querySelectorAll(`#${type}-questions [data-q="${i}"] .option`);
+  labels.forEach((label,j)=>{
+   label.classList.remove("correct","wrong");
+   if(j===item.a)label.classList.add("correct");
+   if(chosen&&Number(chosen.value)===j&&j!==item.a)label.classList.add("wrong");
+  });
+  if(chosen){answered++;if(Number(chosen.value)===item.a)score++;}
+  const exp=document.getElementById(`exp-${type}-${i}`);
+  exp.innerHTML=`<strong>${chosen&&Number(chosen.value)===item.a?"Correct.":"Review this answer."}</strong> ${item.e}`;
+  exp.classList.add("show");
+ });
+ const pct=Math.round(score/questions.length*100);
+ const result=document.getElementById("result-"+type);
+ result.classList.add("show");
+ result.innerHTML=`<div class="kicker">SESSION RESULT</div><div class="result-score">${score}/${questions.length}</div><b>${pct}% correct</b><p>You answered ${answered} of ${questions.length} questions. Review the explanations above to understand each answer.</p><button class="btn small" onclick="resetSession('${type}')">Try again</button>`;
+ clearInterval(intervals[type]);
+ if(!completed.includes(type))completed.push(type);
+ scores.push(pct);
+ localStorage.setItem("luminaCompleted",JSON.stringify(completed));
+ localStorage.setItem("luminaScores",JSON.stringify(scores));
+ updateStats();
+ result.scrollIntoView({behavior:"smooth",block:"center"});
+}
+function resetSession(type){
+ document.querySelectorAll(`#${type}-questions input`).forEach(x=>x.checked=false);
+ document.querySelectorAll(`#${type}-questions .option`).forEach(x=>x.classList.remove("correct","wrong"));
+ document.querySelectorAll(`#${type}-questions .explanation`).forEach(x=>{x.classList.remove("show");x.innerHTML=""});
+ const result=document.getElementById("result-"+type);result.classList.remove("show");result.innerHTML="";
+ startTimer(type);
+}
+document.querySelectorAll("[data-submit]").forEach(b=>b.addEventListener("click",()=>submit(b.dataset.submit)));
+document.querySelectorAll("[data-reset]").forEach(b=>b.addEventListener("click",()=>resetSession(b.dataset.reset)));
+document.getElementById("play-audio").addEventListener("click",()=>{
+ if(!("speechSynthesis" in window)){alert("Speech synthesis is not supported by this browser.");return;}
+ speechSynthesis.cancel();
+ const utterance=new SpeechSynthesisUtterance(listeningScript);
+ utterance.lang="en-US";utterance.rate=.88;speechSynthesis.speak(utterance);
+});
+document.getElementById("stop-audio").addEventListener("click",()=>{if("speechSynthesis" in window)speechSynthesis.cancel()});
 
-                <!-- Skill 17 (Tambahan Materi) -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-red-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-red-100 text-red-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Skill 17</span>
-                            <span class="text-xs font-medium text-slate-500">Comparisons</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Skill 17: Inversion in Comparisons</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Inversi opsional setelah pembanding <em>than</em> atau <em>as</em>, kesesuaian kata bantu (Aux/Be), dan larangan inversi jika subjek berupa Pronoun.
-                        </p>
-                    </div>
-                    <a href="skill17exercise.html" class="inline-flex justify-center items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Skill 17 <span>→</span>
-                    </a>
-                </div>
-
-                <!-- ===== KELOMPOK 5: MATERI KHUSUS & GRAMMAR LINGUISTIK (AMBER & CYAN) ===== -->
-
-                <!-- Subject-Verb Agreement (-s/-es) -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-amber-500">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-amber-100 text-amber-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">General Grammar</span>
-                            <span class="text-xs font-medium text-slate-500">20 Soal</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Subject-Verb Agreement: Suffix -s/-es</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Aturan suffix <em>-s/-es</em> Present Tense (berakhiran <em>-sh, -ch, -x, -o, -z, konsonan+y</em>), perubahan <em>have $\rightarrow$ has</em>, dan pembatalan setelah Modal.
-                        </p>
-                    </div>
-                    <a href="s_es_exercise.html" class="inline-flex justify-center items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Agreement <span>→</span>
-                    </a>
-                </div>
-
-                <!-- Phrase & Noun Phrase -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-cyan-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-cyan-100 text-cyan-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Linguistics & Syntax</span>
-                            <span class="text-xs font-medium text-slate-500">20 Soal Konseptual</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Phrase & Noun Phrase Structure</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Analisis struktur frasa: <em>Head (H) & Modifier (M)</em>, urutan <em>Limiting Adjective (LA) & Descriptive Adjective (DA)</em>, Noun Adjunct, & Participle Modifier.
-                        </p>
-                    </div>
-                    <a href="np_exercise.html" class="inline-flex justify-center items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Analisis NP<span>→</span>
-                    </a>
-                </div>
-
-                 <!-- Basic Excercise -->
-                <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm hover:shadow-md transition duration-200 flex flex-col justify-between space-y-4 border-l-4 border-l-cyan-600">
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="bg-cyan-100 text-cyan-800 text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-md uppercase">Linguistics</span>
-                            <span class="text-xs font-medium text-slate-500">20 Soal Konseptual</span>
-                        </div>
-                        <h4 class="text-base md:text-lg font-bold text-slate-900">Part of Speech</h4>
-                        <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                            Analisis jenis-janis: <em>noun (n) & pronoun (pron), verb (v), adjective (adj), adverb (adv), dll</em>
-                        </p>
-                    </div>
-                    <a href="basic_excercise.html" class="inline-flex justify-center items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-2.5 px-4 rounded-xl text-xs md:text-sm transition shadow-sm">
-                        Mulai Latihan Dasar<span>→</span>
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-4 text-center text-[10px] md:text-xs text-slate-500">
-        &copy; 2026 <span class="font-bold text-red-700">LUMINA PROJECT</span> • A Space for Knowledge, Creativity, and Expression
-    </footer>
-
+function saveQuestions(){localStorage.setItem("luminaQuestions",JSON.stringify(customQuestions));}
+function saveMaterials(){localStorage.setItem("luminaMaterials",JSON.stringify(customMaterials));}
+function renderCustomMaterials(){
+ const target=document.getElementById("custom-materials");
+ target.innerHTML=customMaterials.map((m,i)=>`<article class="material"><div class="q-meta">${escapeHTML(m.category||"General TOEFL")}</div><h3>${escapeHTML(m.title)}</h3><p style="white-space:pre-wrap">${escapeHTML(m.content)}</p></article>`).join("");
+}
+function renderAdminList(){
+ const entries=Object.entries(customQuestions).flatMap(([type,items])=>items.map((q,index)=>({type,index,title:q.q,kind:"question"}))).concat(customMaterials.map((m,index)=>({type:m.category,index,title:m.title,kind:"material"})));
+ document.getElementById("content-count").textContent=`${Object.values(customQuestions).reduce((n,a)=>n+a.length,0)} added questions · ${customMaterials.length} added materials`;
+ const list=document.getElementById("admin-content-list");
+ list.innerHTML=entries.length?entries.map(item=>`<div class="admin-item"><div><b>${escapeHTML(item.title)}</b><small>${item.kind==="question"?"Question · "+item.type:"Material · "+item.type}</small></div><button class="btn secondary small" type="button" data-delete-kind="${item.kind}" data-delete-type="${item.type}" data-delete-index="${item.index}">Delete</button></div>`).join(""):'<div class="empty">No added content. Use the forms above to add your first item.</div>';
+ list.querySelectorAll("[data-delete-kind]").forEach(btn=>btn.addEventListener("click",()=>{
+  const kind=btn.dataset.deleteKind,index=Number(btn.dataset.deleteIndex);
+  if(!confirm("Delete this content?"))return;
+  if(kind==="question"){customQuestions[btn.dataset.deleteType].splice(index,1);saveQuestions();renderQuestions(btn.dataset.deleteType);}
+  else{customMaterials.splice(index,1);saveMaterials();renderCustomMaterials();}
+  renderAdminList();
+ }));
+}
+document.getElementById("question-form").addEventListener("submit",event=>{
+ event.preventDefault();const type=document.getElementById("q-category").value;
+ const item={q:document.getElementById("q-text-input").value.trim(),o:["opt-a","opt-b","opt-c","opt-d"].map(id=>document.getElementById(id).value.trim()),a:Number(document.getElementById("q-answer").value),e:document.getElementById("q-explanation").value.trim(),topic:document.getElementById("q-topic").value.trim()};
+ if(!item.q||item.o.some(x=>!x)||!item.e){alert("Please complete the question, all four options, and explanation.");return;}
+ customQuestions[type].push(item);saveQuestions();renderQuestions(type);event.target.reset();renderAdminList();alert("Question saved to this browser.");
+});
+document.getElementById("material-form").addEventListener("submit",event=>{
+ event.preventDefault();customMaterials.push({title:document.getElementById("m-title").value.trim(),category:document.getElementById("m-category").value,content:document.getElementById("m-content").value.trim()});saveMaterials();renderCustomMaterials();event.target.reset();renderAdminList();alert("Material saved to this browser.");
+});
+document.getElementById("export-data").addEventListener("click",()=>{
+ const payload={version:1,questions:customQuestions,materials:customMaterials};
+ const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="lumina-toefl-backup.json";a.click();URL.revokeObjectURL(url);
+});
+document.getElementById("import-data").addEventListener("change",async event=>{
+ const file=event.target.files[0];if(!file)return;
+ try{const payload=JSON.parse(await file.text());if(!payload.questions||!payload.materials)throw new Error("Invalid backup");
+  if(!confirm("Import this backup and replace the currently saved added content?"))return;
+  customQuestions=payload.questions;customMaterials=payload.materials;saveQuestions();saveMaterials();["listening","swo","reading"].forEach(renderQuestions);renderCustomMaterials();renderAdminList();alert("Backup imported successfully.");
+ }catch(error){alert("Could not import this file. Please choose a valid Lumina backup JSON.");}
+ event.target.value="";
+});
+renderCustomMaterials();renderAdminList();
+updateStats();
+</script>
 </body>
 </html>
