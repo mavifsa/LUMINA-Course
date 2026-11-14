@@ -83,14 +83,46 @@ footer strong{font-size:9px;letter-spacing:1.2px}footer p{font-size:8px;color:#a
 <style>
   .brand {display: flex; align-items: center;}
   .logo-img {height: 60px; width: auto; object-fit: contain; opacity: 100; background: transparent !important}</style>
+<style>
+body.loading .shell{visibility:hidden}
+.link-btn{display:inline-block;background:#2563eb;color:#fff;padding:.5rem 1rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.875rem;margin:.4rem .5rem 0 0}
+.link-btn:hover{filter:brightness(.93)}
+.material-action{margin-top:1rem}.material-action:empty{display:none}
+details.cm{border:1px solid var(--line);border-left:5px solid var(--c,#cbd5e1);border-radius:10px;padding:10px 14px;margin-top:12px;background:#fff}
+details.cm summary{cursor:pointer;font-weight:700;font-size:14px}
+.cm-body{font-size:13.5px;line-height:1.75;color:#434e62;margin-top:10px}
+.cm-body p,.cm-body li{font-size:13.5px;color:inherit}
+.cm-body ul,.cm-body ol{padding-left:22px}.cm-body h3{font-size:15px;margin:12px 0 6px}.cm-body a{color:var(--blue)}
+.audio-item{background:#fff;border:1px solid #dce9fb;border-radius:10px;padding:12px;margin-top:10px;display:grid;gap:8px}
+.audio-item audio{width:100%;max-width:420px}.audio-open{font-size:12px;color:var(--blue)}
+.gate{position:fixed;inset:0;z-index:3000;background:linear-gradient(115deg,var(--red-dark),#b52b43 58%,#8c1b30);display:grid;place-items:center;padding:20px}
+.gate-card{background:#fff;border-radius:18px;padding:26px;width:100%;max-width:400px;box-shadow:0 20px 60px #0004}
+.gate-error{display:none;color:#b3261e;background:#fff3f4;border:1px solid #e7a2a9;border-radius:9px;padding:9px 11px;font-size:12px;line-height:1.5}
+.user-chip{margin-top:14px;padding:11px 13px;border:1px solid var(--line);border-radius:12px;font-size:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+</style>
 </head>
-<body>
+<body class="loading">
+
+<!-- LOGIN GATE (aktif jika "Wajibkan login" dinyalakan di Content Manager) -->
+<div id="gate" class="gate hidden">
+ <div class="gate-card">
+  <div class="eyebrow" style="color:var(--red)">LUMINA LEARNING PLATFORM</div>
+  <h2 style="margin:6px 0 4px;font-size:21px">Log in</h2>
+  <p style="margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.5">Please enter your username and password to access the TOEFL exercises.</p>
+  <form id="gate-form" class="admin-form" autocomplete="off">
+   <label>Username<input id="gate-user" required autocomplete="username"></label>
+   <label>Password<input id="gate-pass" type="password" required autocomplete="current-password"></label>
+   <div id="gate-error" class="gate-error"></div>
+   <button class="btn" type="submit">Log in</button>
+  </form>
+ </div>
+</div>
+
 <header class="hero">
  <div class="hero-inner">
   <div><div class="eyebrow">LUMINA LEARNING PLATFORM</div><h1>TOEFL EXERCISE</h1>
    <p>Build your English proficiency through focused materials and practice. Learn the strategies, test your understanding, and track your progress — one session at a time.</p>
   </div>
-  <!-- Replace this sample mark with your official business logo if available. -->
   <div class="brand" aria-label="Lumina logo"><img src="https://lh3.googleusercontent.com/d/1U26hTpT6d_27zg5OYJl9fq6j3oztgN5w" alt="Lumina Logo" class="logo-img"></div>
  </div>
 </header>
@@ -104,9 +136,10 @@ footer strong{font-size:9px;letter-spacing:1.2px}footer p{font-size:8px;color:#a
    <button data-page="listening"><span class="ico">🎧</span>Listening</button>
    <button data-page="swo"><span class="ico">✍️</span>Structure &amp; Written Expression</button>
    <button data-page="reading"><span class="ico">📖</span>Reading</button>
-   <button data-page="admin"><span class="ico">⚙️</span>Content Manager</button>
+   <button id="open-cms" type="button"><span class="ico">⚙️</span>Content Manager</button>
   </nav>
   <div class="sidebar-note"><b>Study tip</b><br>Try to answer independently before checking the explanations. Consistent practice is more valuable than rushing.</div>
+  <div id="user-chip" class="user-chip hidden"><span>👤 <b id="user-name"></b></span><button class="btn secondary small" id="user-logout" type="button">Log out</button></div>
  </aside>
 
  <main class="content">
@@ -123,117 +156,67 @@ footer strong{font-size:9px;letter-spacing:1.2px}footer p{font-size:8px;color:#a
     <div class="stat"><b id="average">—</b><span>Average score</span></div>
     <div class="stat"><b>4</b><span>Learning areas</span></div>
    </div>
-   <div class="notice">This starter version includes sample questions, instant scoring, answer explanations, a practice timer, and browser-based text-to-speech for the listening sample. Your results are stored locally in this browser.</div>
+   <div class="notice">This version includes instant scoring, answer explanations, a practice timer, and audio for the listening practice. Your results are stored locally in this browser.</div>
   </section>
 
-<!-- MATERIALS -->
-<section id="materials" class="panel page hidden">
+  <!-- MATERIALS -->
+  <section id="materials" class="panel page hidden">
+   <div class="page-title"><div><div class="kicker">LEARNING LIBRARY</div><h2>TOEFL Materials</h2><p>Quick notes to help you understand the main TOEFL sections.</p></div></div>
+   <div class="material-list">
 
- <div class="page-title">
-  <div>
-   <div class="kicker">LEARNING LIBRARY</div>
-   <h2>TOEFL Materials</h2>
-   <p>
-    Quick notes to help you understand
-    the main TOEFL sections.
-   </p>
-  </div>
- </div>
+    <article class="material">
+     <h3>1. Listening Comprehension</h3>
+     <p>Focus on the main idea, speaker intention, details, inference, and context clues. Listen for meaning rather than trying to translate every word.</p>
+     <ul>
+      <li>Identify who is speaking and where the conversation takes place.</li>
+      <li>Notice paraphrases in the answer choices.</li>
+      <li>Pay attention to tone, contrast, and suggestions.</li>
+     </ul>
+     <div class="custom-materials" data-custom="listening"></div>
+     <div class="material-action" data-links="listening"></div>
+    </article>
 
- <div class="material-list">
+    <article class="material">
+     <h3>2. Structure &amp; Written Expression</h3>
+     <p>This section tests your ability to recognize grammatically correct sentences and identify errors.</p>
+     <ul>
+      <li>Check subject–verb agreement.</li>
+      <li>Recognize noun, adjective, and adverb clauses.</li>
+      <li>Check parallel structure, verb forms, and modifiers.</li>
+     </ul>
+     <div class="custom-materials" data-custom="swo"></div>
+     <div class="material-action" data-links="swo"></div>
+    </article>
 
-  <!-- 1. Listening Comprehension -->
-  <article class="material">
-   <h3>1. Listening Comprehension</h3>
-   <p>
-    Focus on the main idea, speaker intention,
-    details, inference, and context clues.
-    Listen for meaning rather than trying to
-    translate every word.
-   </p>
+    <article class="material">
+     <h3>3. Reading Comprehension</h3>
+     <p>Read for the overall organization and locate evidence for each answer.</p>
+     <ul>
+      <li>Skim the passage to identify its topic.</li>
+      <li>Scan for names, dates, and key terms.</li>
+      <li>Use context to infer unfamiliar vocabulary.</li>
+     </ul>
+     <div class="custom-materials" data-custom="reading"></div>
+     <div class="material-action" data-links="reading"></div>
+    </article>
 
-   <ul>
-    <li>Identify who is speaking and where the conversation takes place.</li>
-    <li>Notice paraphrases in the answer choices.</li>
-    <li>Pay attention to tone, contrast, and suggestions.</li>
-   </ul>
+    <article class="material">
+     <h3>4. Suggested Practice Routine</h3>
+     <p>Study one topic, complete a short exercise, review every explanation, and record recurring errors. Repeat the topic after a few days.</p>
+     <div class="material-action" data-links="routine"></div>
+    </article>
 
-   <!-- Tombol menuju halaman materi Listening -->
-   <div class="material-action" style="margin-top: 1.5rem;">
-    <a href="[MASUKKAN_LINK_LISTENING_DI_SINI]" class="btn-material" style="display: inline-block; background-color: #2563eb; color: #ffffff; padding: 0.5rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: background-color 0.2s;">
-      Buka Materi Listening →
-    </a>
+    <article class="material hidden" id="general-materials">
+     <h3>Additional Materials</h3>
+     <div class="custom-materials" data-custom="general"></div>
+    </article>
+
    </div>
-  </article>
-
-  <!-- 2. Structure & Written Expression (Dilengkapi akses Skill 1 - 8) -->
-  <article class="material">
-   <h3>2. Structure & Written Expression</h3>
-   <p>
-    This section tests your ability to recognize
-    grammatically correct sentences and identify errors.
-   </p>
-
-   <ul>
-    <li>Check subject–verb agreement.</li>
-    <li>Recognize noun, adjective, and adverb clauses.</li>
-    <li>Check parallel structure, verb forms, and modifiers.</li>
-   </ul>
-
-   <!-- Tombol Navigasi Spesifik per Skill (Skill 1 - 8) -->
-   <div class="material-action" style="margin-top: 1.5rem;">
-    <a href="materiswoskill1.html" class="btn-material" style="display: inline-block; background-color: #2563eb; color: #ffffff; padding: 0.5rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.875rem;">
-      Buka Materi Structure →
-    </a>
-   </div>
-  </article>
-
-  <!-- 3. Reading Comprehension -->
-  <article class="material">
-   <h3>3. Reading Comprehension</h3>
-   <p>
-    Read for the overall organization and locate
-    evidence for each answer.
-   </p>
-
-   <ul>
-    <li>Skim the passage to identify its topic.</li>
-    <li>Scan for names, dates, and key terms.</li>
-    <li>Use context to infer unfamiliar vocabulary.</li>
-   </ul>
-
-   <!-- Tombol menuju halaman materi Reading -->
-   <div class="material-action" style="margin-top: 1.5rem;">
-    <a href="[MASUKKAN_LINK_READING_DI_SINI]" class="btn-material" style="display: inline-block; background-color: #2563eb; color: #ffffff; padding: 0.5rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.875rem;">
-      Buka Materi Reading →
-    </a>
-   </div>
-  </article>
-
-  <!-- 4. Suggested Practice Routine -->
-  <article class="material">
-   <h3>4. Suggested Practice Routine</h3>
-   <p>
-    Study one topic, complete a short exercise,
-    review every explanation, and record recurring
-    errors. Repeat the topic after a few days.
-   </p>
-
-   <!-- Tombol menuju panduan strategi belajar -->
-   <div class="material-action" style="margin-top: 1.5rem;">
-    <a href="[MASUKKAN_LINK_ROUTINE_DI_SINI]" class="btn-material" style="display: inline-block; background-color: #0f172a; color: #ffffff; padding: 0.5rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.875rem;">
-      Lihat Panduan Belajar →
-    </a>
-   </div>
-  </article>
-
- </div>
-
-</section>
+  </section>
 
   <section id="listening" class="panel page hidden">
-   <div class="page-title"><div><div class="kicker">PRACTICE SESSION 01</div><h2>Listening Comprehension</h2><p>Listen to the short conversation and answer the questions.</p></div><span class="timer" id="timer-listening">10:00</span></div>
-   <div class="audio-box"><div class="row"><b style="font-size:13px">Audio practice</b><button class="btn small" id="play-audio">▶ Play conversation</button><button class="btn secondary small" id="stop-audio">■ Stop</button></div><p>Use the play button to hear the conversation. You may replay it before submitting your answers. Your browser must support speech synthesis.</p></div>
+   <div class="page-title"><div><div class="kicker">PRACTICE SESSION 01</div><h2>Listening Comprehension</h2><p>Listen to the audio and answer the questions.</p></div><span class="timer" id="timer-listening">10:00</span></div>
+   <div class="audio-box"><b style="font-size:13px">Audio practice</b><p>Use the player to hear the audio. You may replay it before submitting your answers.</p><div id="audio-list"></div></div>
    <div id="listening-questions"></div><div class="row"><button class="btn" data-submit="listening">Submit answers</button><button class="btn secondary" data-reset="listening">Reset session</button></div><div id="result-listening" class="result"></div>
   </section>
 
@@ -244,94 +227,50 @@ footer strong{font-size:9px;letter-spacing:1.2px}footer p{font-size:8px;color:#a
 
   <section id="reading" class="panel page hidden">
    <div class="page-title"><div><div class="kicker">PRACTICE SESSION 03</div><h2>Reading Comprehension</h2><p>Read the passage carefully, then answer the questions.</p></div><span class="timer" id="timer-reading">12:00</span></div>
-   <div class="material" style="margin-bottom:16px"><h3>Urban Trees and City Life</h3><p>Urban trees provide benefits that extend beyond their appearance. Their leaves can provide shade, reducing the amount of heat absorbed by streets and buildings. Trees also help manage rainwater: some water is intercepted by leaves, while roots can improve the soil's ability to absorb rainfall. In addition, urban vegetation creates habitats for birds and insects. However, planting trees in cities requires careful planning. Species must be selected according to local climate, available space, and maintenance needs. A tree that grows well in a park may not be suitable for a narrow sidewalk where roots could damage pavement or underground pipes. Therefore, successful urban forestry depends not simply on planting more trees, but on choosing appropriate species and caring for them over time.</p></div>
+   <div class="material" style="margin-bottom:16px"><h3 id="passage-title"></h3><div id="passage-body" class="cm-body" style="margin-top:0"></div></div>
    <div id="reading-questions"></div><div class="row"><button class="btn" data-submit="reading">Submit answers</button><button class="btn secondary" data-reset="reading">Reset session</button></div><div id="result-reading" class="result"></div>
-  </section>
-
-  <section id="admin" class="panel page hidden">
-   <div class="page-title"><div><div class="kicker">ADMINISTRATION</div><h2>Content Manager</h2><p>Add questions and learning materials without editing the source code.</p></div></div>
-   <div class="notice"><b>Local storage:</b> content added here is saved in this browser only. Export a backup regularly. It will not automatically appear on another device or browser.</div>
-   <div class="material" style="margin-bottom:16px">
-    <h3 style="margin-bottom:12px">Add a TOEFL question</h3>
-    <form id="question-form" class="admin-form">
-     <label>Session<select id="q-category" required><option value="listening">Listening Comprehension</option><option value="swo">Structure &amp; Written Expression</option><option value="reading">Reading Comprehension</option></select></label>
-     <label>Question / prompt<textarea id="q-text-input" rows="2" required placeholder="Type the question here..."></textarea></label>
-     <div class="form-grid"><label>Option A<input id="opt-a" required></label><label>Option B<input id="opt-b" required></label><label>Option C<input id="opt-c" required></label><label>Option D<input id="opt-d" required></label></div>
-     <div class="form-grid"><label>Correct answer<select id="q-answer"><option value="0">A</option><option value="1">B</option><option value="2">C</option><option value="3">D</option></select></label><label>Lesson / topic (optional)<input id="q-topic" placeholder="e.g. Subject-Verb Agreement"></label></div>
-     <label>Explanation<textarea id="q-explanation" rows="2" required placeholder="Explain why the answer is correct..."></textarea></label>
-     <button class="btn" type="submit">＋ Save question</button>
-    </form>
-   </div>
-   <div class="material" style="margin-bottom:16px">
-    <h3 style="margin-bottom:12px">Add learning material</h3>
-    <form id="material-form" class="admin-form">
-     <label>Material title<input id="m-title" required placeholder="e.g. Subject-Verb Agreement"></label>
-     <label>Category<select id="m-category"><option>General TOEFL</option><option>Listening</option><option>Structure &amp; Written Expression</option><option>Reading</option></select></label>
-     <label>Material content<textarea id="m-content" rows="5" required placeholder="Write notes, explanations, examples, or study tips..."></textarea></label>
-     <button class="btn" type="submit">＋ Save material</button>
-    </form>
-   </div>
-   <div class="material">
-    <div class="row" style="justify-content:space-between"><h3>Manage saved content</h3><div class="row"><button class="btn secondary small" id="export-data" type="button">Export backup</button><label class="btn secondary small file-label">Import backup<input id="import-data" type="file" accept="application/json" hidden></label></div></div>
-    <div id="content-count" class="notice" style="margin-top:12px">No additional content yet.</div>
-    <div id="admin-content-list"></div>
-   </div>
   </section>
  </main>
 </div>
 <footer><strong>LUMINA PROJECT 2026</strong><p>Learn • Practice • Improve</p></footer>
 
+<script src="lumina-core.js"></script>
 <script>
-const listeningScript = "Woman: Have you finished the report for Professor Allen? Man: Almost. I still need to check the figures in the final section. Woman: The professor said he would like to receive it before noon tomorrow. Man: That should be fine. I will review it tonight and send it first thing in the morning. Woman: Great. Let me know if you need me to check anything.";
-const data = {
- listening:[
-  {q:"What are the speakers mainly discussing?",o:["A class schedule","A report that needs to be completed","A meeting with Professor Allen","A change in research topic"],a:1,e:"They discuss checking the figures and submitting the report before the deadline."},
-  {q:"What does the man still need to do?",o:["Write the introduction","Meet the professor","Check the figures","Print the report"],a:2,e:"He says he still needs to check the figures in the final section."},
-  {q:"When does the professor want to receive the report?",o:["Tonight","Tomorrow before noon","Tomorrow evening","Next week"],a:1,e:"The woman says the professor wants it before noon tomorrow."}
- ],
- swo:[
-  {q:"The committee _____ the final decision yesterday.",o:["make","makes","made","making"],a:2,e:"The time expression 'yesterday' requires the simple past: made."},
-  {q:"The new library, _____ last year, is already popular with students.",o:["complete","completed","was completing","which completing"],a:1,e:"The past participle 'completed' works as a reduced passive adjective clause."},
-  {q:"Neither the students nor the teacher _____ aware of the schedule change.",o:["were","are","have","was"],a:3,e:"With neither...nor, the verb agrees with the nearer subject. 'Teacher' is singular, so use was."},
-  {q:"The researcher collected the data carefully, _____ the results were reliable.",o:["because","so","although","unless"],a:1,e:"'So' introduces the result: careful collection led to reliable results."}
- ],
- reading:[
-  {q:"What is the main idea of the passage?",o:["Why cities should remove old trees","The benefits of urban trees and the need for careful planning","How birds migrate through cities","Why all tree species grow well on sidewalks"],a:1,e:"The passage describes several benefits and explains why tree selection and maintenance matter."},
-  {q:"According to the passage, how can trees help manage rainwater?",o:["By preventing all rainfall","By making streets wider","By intercepting water and improving soil absorption","By directing water into buildings"],a:2,e:"The passage states that leaves intercept some water and roots can improve soil absorption."},
-  {q:"The word 'intercepted' is closest in meaning to _____.",o:["collected or caught","heated","destroyed","measured"],a:0,e:"In context, leaves catch or hold some of the rainwater."},
-  {q:"Why might a tree be unsuitable for a narrow sidewalk?",o:["It may attract too many birds","Its roots may damage pavement or pipes","It cannot receive sunlight","It may stop all traffic"],a:1,e:"The passage specifically mentions possible damage from roots."}
- ]
-};
-let customQuestions=JSON.parse(localStorage.getItem("luminaQuestions")||'{"listening":[],"swo":[],"reading":[]}');
-let customMaterials=JSON.parse(localStorage.getItem("luminaMaterials")||"[]");
+const L=window.Lumina, esc=L.esc;
+let cms=null;
 const timers={listening:600,swo:600,reading:720}, remaining={...timers}, intervals={};
-let completed=JSON.parse(localStorage.getItem("luminaCompleted")||"[]");
-let scores=JSON.parse(localStorage.getItem("luminaScores")||"[]");
+function lsGet(k,fb){try{return JSON.parse(localStorage.getItem(k)||fb);}catch(e){return JSON.parse(fb);}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+let completed=lsGet("luminaCompleted","[]");
+let scores=lsGet("luminaScores","[]");
+
 function updateStats(){
  document.getElementById("attempts").textContent=completed.length;
  document.getElementById("average").textContent=scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length)+"%":"—";
 }
 function showPage(id){
  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("hidden",p.id!==id));
- document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+ document.querySelectorAll(".nav button[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
  window.scrollTo({top:0,behavior:"smooth"});
 }
 document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
 document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.go)));
-function escapeHTML(value){return String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
-function allQuestions(type){return [...data[type],...(customQuestions[type]||[])];}
+document.getElementById("open-cms").addEventListener("click",()=>{location.href="content-manager.html";});
+
+/* ---------- soal ---------- */
+function allQuestions(type){return (cms&&cms.questions[type])||[];}
 function renderQuestions(type){
  const questions=allQuestions(type);
  const target=document.getElementById(type+"-questions");
+ if(!questions.length){target.innerHTML='<div class="empty">No questions have been added to this session yet.</div>';return;}
  target.innerHTML=questions.map((item,i)=>`
  <article class="question" data-q="${i}">
-  <div class="q-meta">Question ${i+1} of ${questions.length}${item.topic?" · "+escapeHTML(item.topic):""}</div>
-  <div class="q-text">${escapeHTML(item.q)}</div>
-  <div class="options">${item.o.map((opt,j)=>`<label class="option"><input type="radio" name="${type}-${i}" value="${j}"><span>${String.fromCharCode(65+j)}. ${escapeHTML(opt)}</span></label>`).join("")}</div>
+  <div class="q-meta">Question ${i+1} of ${questions.length}${item.topic?" · "+esc(item.topic):""}</div>
+  <div class="q-text">${esc(item.q)}</div>
+  <div class="options">${item.o.map((opt,j)=>`<label class="option"><input type="radio" name="${type}-${i}" value="${j}"><span>${String.fromCharCode(65+j)}. ${esc(opt)}</span></label>`).join("")}</div>
   <div class="explanation" id="exp-${type}-${i}"></div>
  </article>`).join("");
 }
-["listening","swo","reading"].forEach(renderQuestions);
 function formatTime(sec){return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0")}
 function startTimer(type){
  if(intervals[type])clearInterval(intervals[type]);
@@ -342,7 +281,6 @@ function startTimer(type){
   else{clearInterval(intervals[type]);el.textContent="Time is up";}
  },1000);
 }
-["listening","swo","reading"].forEach(startTimer);
 function submit(type){
  const questions=allQuestions(type);let score=0,answered=0;
  if(!questions.length){alert("There are no questions in this session yet.");return;}
@@ -356,7 +294,7 @@ function submit(type){
   });
   if(chosen){answered++;if(Number(chosen.value)===item.a)score++;}
   const exp=document.getElementById(`exp-${type}-${i}`);
-  exp.innerHTML=`<strong>${chosen&&Number(chosen.value)===item.a?"Correct.":"Review this answer."}</strong> ${item.e}`;
+  exp.innerHTML=`<strong>${chosen&&Number(chosen.value)===item.a?"Correct.":"Review this answer."}</strong> ${esc(item.e)}`;
   exp.classList.add("show");
  });
  const pct=Math.round(score/questions.length*100);
@@ -366,8 +304,7 @@ function submit(type){
  clearInterval(intervals[type]);
  if(!completed.includes(type))completed.push(type);
  scores.push(pct);
- localStorage.setItem("luminaCompleted",JSON.stringify(completed));
- localStorage.setItem("luminaScores",JSON.stringify(scores));
+ lsSet("luminaCompleted",completed);lsSet("luminaScores",scores);
  updateStats();
  result.scrollIntoView({behavior:"smooth",block:"center"});
 }
@@ -380,56 +317,89 @@ function resetSession(type){
 }
 document.querySelectorAll("[data-submit]").forEach(b=>b.addEventListener("click",()=>submit(b.dataset.submit)));
 document.querySelectorAll("[data-reset]").forEach(b=>b.addEventListener("click",()=>resetSession(b.dataset.reset)));
-document.getElementById("play-audio").addEventListener("click",()=>{
- if(!("speechSynthesis" in window)){alert("Speech synthesis is not supported by this browser.");return;}
- speechSynthesis.cancel();
- const utterance=new SpeechSynthesisUtterance(listeningScript);
- utterance.lang="en-US";utterance.rate=.88;speechSynthesis.speak(utterance);
-});
-document.getElementById("stop-audio").addEventListener("click",()=>{if("speechSynthesis" in window)speechSynthesis.cancel()});
 
-function saveQuestions(){localStorage.setItem("luminaQuestions",JSON.stringify(customQuestions));}
-function saveMaterials(){localStorage.setItem("luminaMaterials",JSON.stringify(customMaterials));}
-function renderCustomMaterials(){
- const target=document.getElementById("custom-materials");
- target.innerHTML=customMaterials.map((m,i)=>`<article class="material"><div class="q-meta">${escapeHTML(m.category||"General TOEFL")}</div><h3>${escapeHTML(m.title)}</h3><p style="white-space:pre-wrap">${escapeHTML(m.content)}</p></article>`).join("");
+/* ---------- audio ---------- */
+function stopAllAudio(){
+ if("speechSynthesis" in window)speechSynthesis.cancel();
+ document.querySelectorAll("#audio-list audio").forEach(a=>a.pause());
 }
-function renderAdminList(){
- const entries=Object.entries(customQuestions).flatMap(([type,items])=>items.map((q,index)=>({type,index,title:q.q,kind:"question"}))).concat(customMaterials.map((m,index)=>({type:m.category,index,title:m.title,kind:"material"})));
- document.getElementById("content-count").textContent=`${Object.values(customQuestions).reduce((n,a)=>n+a.length,0)} added questions · ${customMaterials.length} added materials`;
- const list=document.getElementById("admin-content-list");
- list.innerHTML=entries.length?entries.map(item=>`<div class="admin-item"><div><b>${escapeHTML(item.title)}</b><small>${item.kind==="question"?"Question · "+item.type:"Material · "+item.type}</small></div><button class="btn secondary small" type="button" data-delete-kind="${item.kind}" data-delete-type="${item.type}" data-delete-index="${item.index}">Delete</button></div>`).join(""):'<div class="empty">No added content. Use the forms above to add your first item.</div>';
- list.querySelectorAll("[data-delete-kind]").forEach(btn=>btn.addEventListener("click",()=>{
-  const kind=btn.dataset.deleteKind,index=Number(btn.dataset.deleteIndex);
-  if(!confirm("Delete this content?"))return;
-  if(kind==="question"){customQuestions[btn.dataset.deleteType].splice(index,1);saveQuestions();renderQuestions(btn.dataset.deleteType);}
-  else{customMaterials.splice(index,1);saveMaterials();renderCustomMaterials();}
-  renderAdminList();
+function renderAudio(){
+ const box=document.getElementById("audio-list");
+ if(!cms.audio.length){box.innerHTML='<p>No audio has been added for this session yet.</p>';return;}
+ box.innerHTML=cms.audio.map((a,i)=>{
+  const url=L.safeUrl(a.url);let body="";
+  if(url)body=`<audio controls preload="none" src="${esc(url)}"></audio><a class="audio-open" href="${esc(url)}" target="_blank" rel="noopener">Open audio link</a>`;
+  else if(a.script)body=`<div class="row"><button class="btn small" data-tts="${i}">▶ Play conversation</button><button class="btn secondary small" data-tts-stop>■ Stop</button></div>`;
+  return `<div class="audio-item"><b>${esc(a.title)}</b>${body}</div>`;
+ }).join("");
+ box.querySelectorAll("audio").forEach(a=>a.addEventListener("play",()=>{
+  if("speechSynthesis" in window)speechSynthesis.cancel();
+  box.querySelectorAll("audio").forEach(o=>{if(o!==a)o.pause();});
  }));
+ box.querySelectorAll("[data-tts]").forEach(b=>b.addEventListener("click",()=>{
+  if(!("speechSynthesis" in window)){alert("Speech synthesis is not supported by this browser.");return;}
+  stopAllAudio();
+  const u=new SpeechSynthesisUtterance(cms.audio[Number(b.dataset.tts)].script);
+  u.lang="en-US";u.rate=.88;speechSynthesis.speak(u);
+ }));
+ box.querySelectorAll("[data-tts-stop]").forEach(b=>b.addEventListener("click",stopAllAudio));
 }
-document.getElementById("question-form").addEventListener("submit",event=>{
- event.preventDefault();const type=document.getElementById("q-category").value;
- const item={q:document.getElementById("q-text-input").value.trim(),o:["opt-a","opt-b","opt-c","opt-d"].map(id=>document.getElementById(id).value.trim()),a:Number(document.getElementById("q-answer").value),e:document.getElementById("q-explanation").value.trim(),topic:document.getElementById("q-topic").value.trim()};
- if(!item.q||item.o.some(x=>!x)||!item.e){alert("Please complete the question, all four options, and explanation.");return;}
- customQuestions[type].push(item);saveQuestions();renderQuestions(type);event.target.reset();renderAdminList();alert("Question saved to this browser.");
+
+/* ---------- materi, tautan, bacaan ---------- */
+function renderMaterials(){
+ document.querySelectorAll("[data-custom]").forEach(box=>{
+  const items=cms.materials.filter(m=>m.section===box.dataset.custom);
+  box.innerHTML=items.map(m=>`<details class="cm" style="--c:${esc(L.safeColor(m.color)||"#cbd5e1")}"><summary>${esc(m.title)}</summary><div class="cm-body">${L.sanitizeHTML(m.html)}</div></details>`).join("");
+ });
+ document.getElementById("general-materials").classList.toggle("hidden",!cms.materials.some(m=>m.section==="general"));
+ document.querySelectorAll("[data-links]").forEach(box=>{
+  box.innerHTML=(cms.links[box.dataset.links]||[]).map(l=>{
+   const u=L.safeUrl(l.url);if(!u)return "";
+   const ext=/^https?:/i.test(u);
+   return `<a class="link-btn" href="${esc(u)}"${ext?' target="_blank" rel="noopener"':""}>${esc(l.label)}</a>`;
+  }).join("");
+ });
+}
+function renderReading(){
+ document.getElementById("passage-title").textContent=cms.reading.title||"Reading passage";
+ document.getElementById("passage-body").innerHTML=L.sanitizeHTML(cms.reading.passage);
+}
+
+/* ---------- login web ---------- */
+let gateFails=0,gateLock=0;
+function refreshUser(){
+ let a=L.currentAccount(cms);
+ if(!a&&L.getSession())L.setSession(null);
+ document.getElementById("user-chip").classList.toggle("hidden",!a);
+ if(a)document.getElementById("user-name").textContent=a.name||a.user;
+ return a;
+}
+function gateCheck(){
+ const need=cms.settings.requireLogin&&!refreshUser();
+ document.getElementById("gate").classList.toggle("hidden",!need);
+ if(need)stopAllAudio();
+}
+function gateError(m){const el=document.getElementById("gate-error");el.textContent=m;el.style.display=m?"block":"none";}
+document.getElementById("gate-form").addEventListener("submit",e=>{
+ e.preventDefault();
+ if(Date.now()<gateLock){gateError("Too many failed attempts. Try again in "+Math.ceil((gateLock-Date.now())/1000)+" seconds.");return;}
+ const a=L.checkLogin(cms,document.getElementById("gate-user").value,document.getElementById("gate-pass").value);
+ if(!a){gateFails++;document.getElementById("gate-pass").value="";
+  if(gateFails>=5){gateFails=0;gateLock=Date.now()+30000;gateError("Too many failed attempts. Try again in 30 seconds.");}
+  else gateError("Incorrect username or password.");return;}
+ gateFails=0;gateError("");L.setSession(a);e.target.reset();gateCheck();refreshUser();
 });
-document.getElementById("material-form").addEventListener("submit",event=>{
- event.preventDefault();customMaterials.push({title:document.getElementById("m-title").value.trim(),category:document.getElementById("m-category").value,content:document.getElementById("m-content").value.trim()});saveMaterials();renderCustomMaterials();event.target.reset();renderAdminList();alert("Material saved to this browser.");
+document.getElementById("user-logout").addEventListener("click",()=>{L.setSession(null);refreshUser();gateCheck();});
+
+/* ---------- mulai ---------- */
+L.load().then(d=>{
+ cms=d;
+ ["listening","swo","reading"].forEach(renderQuestions);
+ renderAudio();renderMaterials();renderReading();updateStats();
+ ["listening","swo","reading"].forEach(startTimer);
+ gateCheck();refreshUser();
+ document.body.classList.remove("loading");
 });
-document.getElementById("export-data").addEventListener("click",()=>{
- const payload={version:1,questions:customQuestions,materials:customMaterials};
- const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="lumina-toefl-backup.json";a.click();URL.revokeObjectURL(url);
-});
-document.getElementById("import-data").addEventListener("change",async event=>{
- const file=event.target.files[0];if(!file)return;
- try{const payload=JSON.parse(await file.text());if(!payload.questions||!payload.materials)throw new Error("Invalid backup");
-  if(!confirm("Import this backup and replace the currently saved added content?"))return;
-  customQuestions=payload.questions;customMaterials=payload.materials;saveQuestions();saveMaterials();["listening","swo","reading"].forEach(renderQuestions);renderCustomMaterials();renderAdminList();alert("Backup imported successfully.");
- }catch(error){alert("Could not import this file. Please choose a valid Lumina backup JSON.");}
- event.target.value="";
-});
-renderCustomMaterials();renderAdminList();
-updateStats();
 </script>
 </body>
 </html>
