@@ -88,11 +88,28 @@ body.loading .shell{visibility:hidden}
 .link-btn{display:inline-block;background:#2563eb;color:#fff;padding:.5rem 1rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.875rem;margin:.4rem .5rem 0 0}
 .link-btn:hover{filter:brightness(.93)}
 .material-action{margin-top:1rem}.material-action:empty{display:none}
-/* daftar tombol skill (halaman Buka Materi ...) */
-.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
-.skill-btn{display:flex;align-items:center;gap:11px;padding:13px 14px;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;background:#fff;color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;line-height:1.4;transition:.15s}
-.skill-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px #26334b14;background:#f8faff}
-.skill-btn .ico{font-size:18px;flex:none}.skill-btn .lbl{flex:1;min-width:0;word-break:break-word}.skill-btn .arr{color:var(--blue);flex:none}
+
+/* ===== daftar skill: bullet + judul (link) + chevron (deskripsi) ===== */
+.skill-list{display:grid;gap:10px}
+.skill-item{border:1px solid var(--line);border-left:4px solid var(--bc,var(--blue));border-radius:11px;background:#fff;transition:.15s;overflow:hidden}
+.skill-item:hover{box-shadow:0 8px 20px #26334b14}
+.skill-item.open{background:#fbfcff}
+.skill-row{display:flex;align-items:center;gap:12px;padding:12px 12px 12px 14px}
+.bul{flex:none;width:12px;height:12px;border-radius:50%;background:var(--bc,var(--blue))}
+.bul.num{width:26px;height:26px;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:800}
+.skill-title{flex:1;min-width:0;color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:700;line-height:1.4;word-break:break-word}
+a.skill-title:hover{color:var(--bc,var(--blue));text-decoration:underline}
+.chev{flex:none;width:32px;height:32px;border:1px solid var(--line);background:#fff;border-radius:50%;display:grid;place-items:center;color:#536075;padding:0;transition:.2s}
+.chev:hover{background:#f0f2f7}
+.chev svg{width:16px;height:16px;transition:transform .2s}
+.skill-item.open .chev svg{transform:rotate(180deg)}
+.skill-desc{padding:0 16px 14px 52px;font-size:13px;line-height:1.7;color:#4d5a6f}
+.skill-desc p{margin:0 0 4px;font-size:13px;color:inherit}
+.skill-desc ul,.skill-desc ol{margin:0;padding-left:20px}
+.skill-desc li{font-size:13px;color:inherit;line-height:1.7}
+.skill-desc li::marker{color:var(--bc,var(--blue));font-weight:700}
+.skill-item:not(.hasnum) .skill-desc{padding-left:42px}
+
 .sub-title{font-size:15px;margin:24px 0 2px}
 details.cm{border:1px solid var(--line);border-left:5px solid var(--c,#cbd5e1);border-radius:10px;padding:10px 14px;margin-top:12px;background:#fff}
 details.cm summary{cursor:pointer;font-weight:700;font-size:14px}
@@ -219,22 +236,22 @@ details.cm summary{cursor:pointer;font-weight:700;font-size:14px}
 
   <!-- DAFTAR SKILL: Listening -->
   <section id="mat-listening" class="panel page hidden">
-   <div class="page-title"><div><div class="kicker">TOEFL MATERIALS</div><h2>Listening Comprehension</h2><p>Choose a lesson to open.</p></div><button class="btn secondary small" data-go="materials">← Back to materials</button></div>
-   <div class="skill-grid" data-skills="listening"></div>
+   <div class="page-title"><div><div class="kicker">TOEFL MATERIALS</div><h2>Listening Comprehension</h2><p>Click a title to open its lesson, or the arrow to read a short description.</p></div><button class="btn secondary small" data-go="materials">← Back to materials</button></div>
+   <div class="skill-list" data-skills="listening"></div>
    <div class="custom-materials" data-custom="listening"></div>
   </section>
 
   <!-- DAFTAR SKILL: Structure -->
   <section id="mat-swo" class="panel page hidden">
-   <div class="page-title"><div><div class="kicker">TOEFL MATERIALS</div><h2>Structure &amp; Written Expression</h2><p>Choose a skill to open its lesson.</p></div><button class="btn secondary small" data-go="materials">← Back to materials</button></div>
-   <div class="skill-grid" data-skills="swo"></div>
+   <div class="page-title"><div><div class="kicker">TOEFL MATERIALS</div><h2>Structure &amp; Written Expression</h2><p>Click a skill title to open its lesson, or the arrow to read a short description.</p></div><button class="btn secondary small" data-go="materials">← Back to materials</button></div>
+   <div class="skill-list" data-skills="swo"></div>
    <div class="custom-materials" data-custom="swo"></div>
   </section>
 
   <!-- DAFTAR SKILL: Reading -->
   <section id="mat-reading" class="panel page hidden">
-   <div class="page-title"><div><div class="kicker">TOEFL MATERIALS</div><h2>Reading Comprehension</h2><p>Choose a lesson to open.</p></div><button class="btn secondary small" data-go="materials">← Back to materials</button></div>
-   <div class="skill-grid" data-skills="reading"></div>
+   <div class="page-title"><div><div class="kicker">TOEFL MATERIALS</div><h2>Reading Comprehension</h2><p>Click a title to open its lesson, or the arrow to read a short description.</p></div><button class="btn secondary small" data-go="materials">← Back to materials</button></div>
+   <div class="skill-list" data-skills="reading"></div>
    <div class="custom-materials" data-custom="reading"></div>
   </section>
 
@@ -258,7 +275,7 @@ details.cm summary{cursor:pointer;font-weight:700;font-size:14px}
 </div>
 <footer><strong>LUMINA PROJECT 2026</strong><p>Learn • Practice • Improve</p></footer>
 
-<script src="lumina-core.js"></script>
+<script src="lumina-core.js?v=5"></script>
 <script>
 const L=window.Lumina, esc=L.esc;
 let cms=null;
@@ -372,15 +389,38 @@ function renderAudio(){
 }
 
 /* ---------- materi, daftar skill, tautan, bacaan ---------- */
+const CHEV='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+
+function skillItemHTML(p,i,sec){
+ const color=L.safeColor(p.color)||L.DEFAULT_BULLET, u=L.safeUrl(p.file);
+ const isNum=p.bullet==="num";
+ const bullet=isNum?`<span class="bul num">${i+1}</span>`:`<span class="bul"></span>`;
+ const title=u?`<a class="skill-title" href="${esc(u)}">${esc(p.label)}</a>`:`<span class="skill-title">${esc(p.label)}</span>`;
+ const descHTML=L.renderDesc(p.desc,p.descMode);
+ const did="sd-"+sec+"-"+i;
+ const chev=descHTML?`<button type="button" class="chev" aria-expanded="false" aria-controls="${did}" aria-label="Show description">${CHEV}</button>`:"";
+ const desc=descHTML?`<div class="skill-desc hidden" id="${did}">${descHTML}</div>`:"";
+ return `<div class="skill-item${isNum?" hasnum":""}" style="--bc:${esc(color)}"><div class="skill-row">${bullet}${title}${chev}</div>${desc}</div>`;
+}
+function bindSkillToggles(box){
+ box.querySelectorAll(".chev").forEach(btn=>btn.addEventListener("click",()=>{
+  const item=btn.closest(".skill-item"), desc=item.querySelector(".skill-desc");
+  const willOpen=desc.classList.contains("hidden");
+  /* hanya satu deskripsi terbuka pada satu waktu; klik lagi pada chevron yang sama = menutup */
+  box.querySelectorAll(".skill-item.open").forEach(o=>{
+   o.classList.remove("open");o.querySelector(".skill-desc").classList.add("hidden");
+   o.querySelector(".chev").setAttribute("aria-expanded","false");
+  });
+  if(willOpen){item.classList.add("open");desc.classList.remove("hidden");btn.setAttribute("aria-expanded","true");}
+ }));
+}
 function renderMaterials(){
- /* tombol-tombol skill pada halaman Buka Materi ... */
+ /* daftar skill pada halaman Buka Materi ... */
  document.querySelectorAll("[data-skills]").forEach(box=>{
-  const pages=(cms.materialPages&&cms.materialPages[box.dataset.skills])||[];
-  const html=pages.map(p=>{
-   const u=L.safeUrl(p.file);if(!u)return "";
-   return `<a class="skill-btn" href="${esc(u)}"><span class="ico">📄</span><span class="lbl">${esc(p.label)}</span><span class="arr">→</span></a>`;
-  }).join("");
-  box.innerHTML=html||'<div class="empty" style="grid-column:1/-1">No lessons have been added here yet.</div>';
+  const sec=box.dataset.skills;
+  const pages=(cms.materialPages&&cms.materialPages[sec])||[];
+  box.innerHTML=pages.length?pages.map((p,i)=>skillItemHTML(p,i,sec)).join(""):'<div class="empty">No lessons have been added here yet.</div>';
+  bindSkillToggles(box);
  });
  /* catatan teks tambahan (di bawah daftar skill; "general" di halaman TOEFL Materials) */
  document.querySelectorAll("[data-custom]").forEach(box=>{
@@ -429,13 +469,26 @@ document.getElementById("gate-form").addEventListener("submit",e=>{
 });
 document.getElementById("user-logout").addEventListener("click",()=>{L.setSession(null);refreshUser();gateCheck();});
 
+
+/* ---------- lencana diagnosa (hanya admin, atau tambahkan ?debug=1 pada alamat) ---------- */
+function showDebug(){
+ const me=L.currentAccount(cms), on=/[?&]debug=1/.test(location.search)||(me&&me.role==="admin");
+ if(!on)return;
+ const i=L.getLoadInfo(), f=t=>t?new Date(t).toLocaleString():"-";
+ const names={local:"LOKAL (browser ini, lebih baru dari server)",server:"SERVER (lumina-data.json)","local-only":"LOKAL saja (lumina-data.json tidak terbaca di server)",default:"DEFAULT (tidak ada data)"};
+ const n=((cms.materialPages||{}).swo||[]).map(p=>p.label).join(" | ");
+ const d=document.createElement("div");
+ d.style.cssText="position:fixed;left:10px;bottom:52px;z-index:2000;max-width:420px;background:#20283aee;color:#fff;font-size:11px;line-height:1.5;padding:9px 12px;border-radius:10px";
+ d.innerHTML="<b>Sumber data: "+esc(names[i.source]||i.source)+"</b><br>Lokal: "+f(i.localAt)+"<br>Server: "+(i.serverOk?f(i.serverAt):"tidak ditemukan")+"<br>Skill Structure: "+esc(n||"(kosong)")+"<br>core v"+esc(L.CORE_VERSION||"?")+" · "+esc(location.origin||location.protocol);
+ document.body.appendChild(d);
+}
 /* ---------- mulai ---------- */
 L.load().then(d=>{
  cms=d;
  ["listening","swo","reading"].forEach(renderQuestions);
  renderAudio();renderMaterials();renderReading();updateStats();
  ["listening","swo","reading"].forEach(startTimer);
- gateCheck();refreshUser();
+ gateCheck();refreshUser();showDebug();
  document.body.classList.remove("loading");
 });
 </script>

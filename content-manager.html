@@ -53,6 +53,7 @@ button{cursor:pointer}
 .form{display:grid;gap:12px}
 .form label{display:grid;gap:5px;font-size:12px;font-weight:700;color:#536075}
 .form input,.form textarea,.form select{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 11px;background:#fff;color:var(--ink);font-size:13px;outline-color:var(--red)}
+.form input[type=color]{padding:2px;height:34px;width:48px;cursor:pointer}
 .form textarea{resize:vertical;line-height:1.5}
 .form .fgroup{display:grid;gap:5px}.form .fl{font-size:12px;font-weight:700;color:#536075}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
@@ -63,6 +64,8 @@ button{cursor:pointer}
 .item .t{font-weight:700;font-size:13.5px;display:flex;align-items:center;gap:8px;word-break:break-word}
 .item .s{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5;word-break:break-word}
 .dot{width:12px;height:12px;border-radius:50%;display:inline-block;flex:none;border:1px solid #0002}
+.bul{width:22px;height:22px;border-radius:50%;flex:none;display:inline-grid;place-items:center;color:#fff;font-size:11px;font-weight:800;background:var(--blue)}
+.bul.dotonly{width:12px;height:12px}
 .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 .empty{padding:22px;text-align:center;color:var(--muted);font-size:13px}
 .tag{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:10px;background:#eef1f6;color:#536075;letter-spacing:.4px}
@@ -99,8 +102,9 @@ th{font-size:11px;letter-spacing:.8px;color:#8993a4;border-top:0}
 .login-card p{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.5}
 .err{display:none;color:var(--danger);background:#fff3f4;border:1px solid #e7a2a9;border-radius:9px;padding:9px 11px;font-size:12px;line-height:1.5}
 /* modal + toast */
-.modal{position:fixed;inset:0;background:#0008;display:grid;place-items:center;z-index:50;padding:20px}
+.modal{position:fixed;inset:0;background:#0008;display:grid;place-items:center;z-index:50;padding:20px;overflow:auto}
 .modal-card{background:#fff;border-radius:14px;padding:22px;width:100%;max-width:380px}
+.modal-card.wide{max-width:580px;max-height:92vh;overflow:auto}
 .modal-card h3{margin:0 0 12px}
 #toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:#20283a;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:60}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -147,7 +151,7 @@ footer{text-align:center;color:#8993a4;font-size:11px;padding:20px}
 <div id="modal" class="modal hidden"></div>
 <div id="toast"></div>
 
-<script src="lumina-core.js"></script>
+<script src="lumina-core.js?v=5"></script>
 <script>
 const L=window.Lumina, esc=L.esc, $=s=>document.querySelector(s);
 let D=null, tab="home";
@@ -157,6 +161,7 @@ const MAT_CHIPS=["listening","swo","reading","general"];   /* sub-menu pada tab 
 const TABS=[["home","⌂","Ringkasan"],["materials","📚","Materi"],["questions","❓","Soal latihan"],["audio","🎧","Audio"],["accounts","👥","Akun & login"],["backup","💾","Backup & publikasi"]];
 const HL=["#fff3a3","#c9f2d9","#ffd3de","#cfe3ff","#ffdcb0"], TC=["#c0192f","#1d6fd0","#15803d","#b45309","#6d28d9"];
 const TAG_COLORS=["","#c0192f","#3979ce","#16866b","#bd7922","#7952b5"];
+const BUL_COLORS=["#3979ce","#c0192f","#16866b","#bd7922","#7952b5","#e0457b","#20283a"];
 let matSection="swo", matEdit=null, matColor="";
 let qSection="listening", qEdit=null;
 let audioEdit=null;
@@ -170,7 +175,7 @@ function commit(msg,opts){
  toast(msg||"Tersimpan ✓");renderBanner();return true;
 }
 function move(arr,i,dir){const j=i+dir;if(j<0||j>=arr.length)return;[arr[i],arr[j]]=[arr[j],arr[i]];}
-function modal(html,onMount){const m=$("#modal");m.innerHTML=`<div class="modal-card">${html}</div>`;m.classList.remove("hidden");onMount&&onMount(m);}
+function modal(html,onMount,wide){const m=$("#modal");m.innerHTML=`<div class="modal-card${wide?" wide":""}">${html}</div>`;m.classList.remove("hidden");onMount&&onMount(m);}
 function closeModal(){$("#modal").classList.add("hidden");$("#modal").innerHTML="";}
 function askPassword(title,cb){
  modal(`<h3>${esc(title)}</h3><form class="form" id="pw-form"><label>Password baru (min. 6 karakter)<input id="pw-in" type="password" required minlength="6" autocomplete="new-password"></label><div class="row"><button class="btn" type="submit">Simpan</button><button class="btn secondary" type="button" id="pw-cancel">Batal</button></div></form>`,m=>{
@@ -224,7 +229,7 @@ function renderBanner(){
  const out=[];
  const me=L.currentAccount(D);
  if(me&&L.isDefaultPassword(me))out.push(`<div class="bad"><span>⚠️ Password default (<b>lumina2026</b>) masih dipakai. Segera ganti di tab <b>Akun & login</b>.</span><button class="btn small" data-go="accounts">Ganti sekarang</button></div>`);
- if(D.updatedAt>L.getExportedAt())out.push(`<div class="warn"><span>📤 Ada perubahan yang <b>belum dipublikasikan</b>. Siswa baru melihatnya setelah <b>lumina-data.json</b> diunggah ke hosting.</span><button class="btn small" data-act="export">Unduh lumina-data.json</button></div>`);
+ if(D.updatedAt>L.getExportedAt())out.push(`<div class="warn"><span>📤 Ada perubahan yang <b>belum dipublikasikan</b>. Perubahan baru terlihat di browser ini saja; siswa & perangkat lain baru melihatnya setelah <b>lumina-data.json</b> diunggah ke hosting.</span><button class="btn small" data-act="export">Unduh lumina-data.json</button></div>`);
  $("#banner").innerHTML=out.join("");
 }
 
@@ -252,31 +257,50 @@ function vHome(){
   <ol class="hint" style="font-size:13px;padding-left:20px;margin:0;line-height:1.8">
    <li>Semua konten materi diatur di menu <b>Materi</b>, dengan sub-menu <b>Listening</b>, <b>Structure</b>, dan <b>Reading</b>. Setiap perubahan tersimpan otomatis di browser ini.</li>
    <li>Klik <b>Lihat web ↗</b> di atas untuk memeriksa hasilnya (pratinjau di browser Anda).</li>
-   <li>Agar siswa ikut melihat perubahan: buka <b>Backup & publikasi</b>, unduh <code>lumina-data.json</code>, lalu unggah ke folder yang sama dengan <code>index.html</code>.</li>
+   <li><b>Penting:</b> agar siswa (dan browser/perangkat lain) ikut melihat perubahan, buka <b>Backup & publikasi</b>, unduh <code>lumina-data.json</code>, lalu unggah ke folder yang sama dengan <code>index.html</code> (timpa file lama).</li>
   </ol></div>
- <div class="note"><b>Tips pewarnaan:</b> di editor catatan materi, blok teks lalu klik lingkaran <b>Sorot</b> (penanda latar) atau <b>Warna</b> (warna huruf). Setiap catatan juga punya <b>warna label</b> untuk menandai kartunya.</div>`;
+ <div class="note"><b>Tips pewarnaan:</b> di editor catatan materi, blok teks lalu klik lingkaran <b>Sorot</b> (penanda latar) atau <b>Warna</b> (warna huruf). Setiap daftar skill juga punya <b>warna bullet</b>, <b>nomor otomatis</b>, dan <b>deskripsi singkat</b> yang muncul saat siswa mengeklik tanda panah.</div>`;
 }
 
 /* ---------- MATERI (sub-menu: Listening · Structure · Reading · Umum) ---------- */
 const skId=f=>String(f).replace(/\.html?$/i,"").split("/").pop();
+const opt=(v,cur,t)=>`<option value="${v}" ${v===cur?"selected":""}>${t}</option>`;
+
+/* kolom isian satu skill (dipakai form tambah & modal ubah). x = awalan id */
+function pageFields(p,x){
+ return `<div class="grid2"><label>Judul skill (teks tombol)<input id="${x}-label" required value="${esc(p.label)}" placeholder="mis. Skill 7: Object of Preposition"></label>
+  <label>Link halaman (nama file / alamat)<input id="${x}-file" required value="${esc(p.file)}" placeholder="mis. materiswoskill7.html"></label></div>
+  <div class="grid2"><div class="fgroup"><span class="fl">Warna bullet</span><div class="colorpick">${BUL_COLORS.map(c=>`<button type="button" data-act="pgSwatch" data-id="${c}" data-p="${x}" style="background:${c}" title="${c}"></button>`).join("")}<input type="color" id="${x}-color" value="${esc(p.color||L.DEFAULT_BULLET)}" title="Pilih warna lain"></div></div>
+  <label>Gaya bullet<select id="${x}-bullet">${opt("dot",p.bullet||"dot","● Titik")}${opt("num",p.bullet||"dot","① Nomor otomatis (sesuai urutan daftar)")}</select></label></div>
+  <label>Deskripsi singkat (opsional)<textarea id="${x}-desc" rows="4" placeholder="Satu baris = satu poin&#10;mis. Setiap kalimat harus punya subjek dan kata kerja&#10;Perhatikan kesesuaian subjek–kata kerja">${esc(p.desc||"")}</textarea><span class="hint">Tampil di halaman Structure saat siswa mengeklik tanda panah (chevron) di samping judul. Kosongkan jika tidak perlu.</span></label>
+  <label>Format deskripsi<select id="${x}-mode">${opt("plain",p.descMode||"plain","Teks biasa")}${opt("bullets",p.descMode||"plain","Poin (•)")}${opt("numbered",p.descMode||"plain","Nomor otomatis (1, 2, 3 …)")}</select></label>`;
+}
+function readPageFields(x){
+ const label=$("#"+x+"-label").value.trim(), file=$("#"+x+"-file").value.trim();
+ if(!label){alert("Judul skill wajib diisi.");return null;}
+ if(!validFile(file)){alert("Link harus berakhiran .html (mis. materiswoskill7.html) atau berupa alamat https://…");return null;}
+ return {label,file,color:L.safeColor($("#"+x+"-color").value)||L.DEFAULT_BULLET,bullet:$("#"+x+"-bullet").value==="num"?"num":"dot",desc:$("#"+x+"-desc").value.trim(),descMode:$("#"+x+"-mode").value};
+}
 
 function pagesBox(s){
  const arr=D.materialPages[s];
- return `<div class="box"><h3>Daftar halaman — ${SEC_FULL[s]}</h3>
-  <p class="sub">Inilah tombol-tombol yang muncul di halaman yang terbuka setelah siswa mengeklik <b>“Buka Materi ${SEC_LABEL[s]}”</b> (mis. Skill 1, Skill 2, …). Mengeklik salah satu tombol membuka file halamannya. Urutan tombol mengikuti daftar ini.</p>`+
+ return `<div class="box"><h3>Daftar skill — ${SEC_FULL[s]}</h3>
+  <p class="sub">Inilah daftar yang muncul setelah siswa mengeklik <b>“Buka Materi ${SEC_LABEL[s]}”</b>. Mengeklik <b>judul</b> membuka halaman materinya; mengeklik <b>tanda panah (chevron)</b> menampilkan deskripsi singkat. Urutan daftar mengikuti urutan di bawah ini.</p>`+
  (arr.length?arr.map((p,i)=>{
    const ed=!!D.skills[skId(p.file)], u=L.safeUrl(p.file);
-   return `<div class="item"><div class="main"><div class="t">📝 ${esc(p.label)} <span class="tag ${ed?"admin":""}">${ed?"SUDAH DIEDIT":"ASLI"}</span></div><div class="s">${esc(p.file)}</div></div>
+   const bul=p.bullet==="num"?`<span class="bul" style="background:${esc(p.color)}">${i+1}</span>`:`<span class="bul dotonly" style="background:${esc(p.color)}"></span>`;
+   const dtxt=p.desc?p.desc.replace(/\s*\n\s*/g," · "):"";
+   return `<div class="item"><div class="main"><div class="t">${bul} ${esc(p.label)} <span class="tag ${ed?"admin":""}">${ed?"SUDAH DIEDIT":"ASLI"}</span></div><div class="s">${esc(p.file)}${dtxt?`<br>📝 ${esc(dtxt.length>120?dtxt.slice(0,120)+"…":dtxt)}`:`<br><i>(belum ada deskripsi)</i>`}</div></div>
    <div class="acts"><button class="btn secondary small" data-act="pgUp" data-id="${p.id}" ${i===0?"disabled":""}>↑</button><button class="btn secondary small" data-act="pgDown" data-id="${p.id}" ${i===arr.length-1?"disabled":""}>↓</button>${u&&!/^(https?:|mailto:)/i.test(u)?`<a class="btn small" href="${esc(u)}?edit=1" target="_blank">Buka &amp; edit</a>`:""}<button class="btn secondary small" data-act="pgEdit" data-id="${p.id}">Ubah</button>${ed?`<button class="btn secondary small" data-act="pgReset" data-id="${p.id}">Kembalikan ke asli</button>`:""}<button class="btn danger small" data-act="pgDel" data-id="${p.id}">Hapus</button></div></div>`;
   }).join(""):`<div class="empty">Belum ada halaman di bagian ini.</div>`)+
  `</div>
- <div class="box"><h3>Tambah halaman</h3>
-  <form class="form" id="pg-form"><div class="grid2"><label>Nama tombol<input id="pg-label" required placeholder="mis. Skill 7: Object of Preposition"></label><label>Nama file<input id="pg-file" required placeholder="mis. materiswoskill7.html"></label></div>
+ <div class="box"><h3>Tambah skill</h3>
+  <form class="form" id="pg-form">${pageFields({label:"",file:"",color:L.DEFAULT_BULLET,bullet:"dot",desc:"",descMode:"plain"},"pg")}
   <div><button class="btn" type="submit">＋ Tambah</button></div></form>
   <details style="margin-top:14px"><summary style="cursor:pointer;font-size:12.5px;font-weight:700;color:#536075">Tambah banyak sekaligus</summary>
-   <form class="form" id="pgbulk-form" style="margin-top:10px"><label>Satu baris satu halaman, format: <code>Nama tombol | namafile.html</code><textarea id="pgbulk" rows="5" placeholder="Skill 7 | materiswoskill7.html&#10;Skill 8 | materiswoskill8.html"></textarea></label>
+   <form class="form" id="pgbulk-form" style="margin-top:10px"><label>Satu baris satu skill, format: <code>Judul | namafile.html | deskripsi (opsional)</code><textarea id="pgbulk" rows="5" placeholder="Skill 7 | materiswoskill7.html | Object of preposition&#10;Skill 8 | materiswoskill8.html"></textarea></label>
    <div><button class="btn" type="submit">＋ Tambah semua</button></div></form></details>
-  <p class="hint" style="margin-top:12px">Agar halaman bisa diedit lewat <b>Buka &amp; edit</b>, tambahkan dua baris ini sebelum <code>&lt;/body&gt;</code> pada file halamannya: <code>&lt;script src="lumina-core.js"&gt;&lt;/script&gt;</code> dan <code>&lt;script src="lumina-skill-editor.js"&gt;&lt;/script&gt;</code>. Untuk halaman di luar situs ini, isi nama file dengan alamat lengkap <code>https://…</code>.</p>
+  <p class="hint" style="margin-top:12px">Agar halaman bisa diedit lewat <b>Buka &amp; edit</b>, tambahkan dua baris ini sebelum <code>&lt;/body&gt;</code> pada file halamannya: <code>&lt;script src="lumina-core.js"&gt;&lt;/script&gt;</code> dan <code>&lt;script src="lumina-skill-editor.js"&gt;&lt;/script&gt;</code>. Untuk halaman di luar situs ini, isi link dengan alamat lengkap <code>https://…</code>.</p>
  </div>`;
 }
 function routineBox(){
@@ -291,7 +315,7 @@ function vMaterials(){
  syncSkills();
  const cnt=s=>(s==="general"?D.links.routine.length:D.materialPages[s].length)+D.materials.filter(m=>m.section===s).length;
  const chips=MAT_CHIPS.map(s=>`<button class="chip ${s===matSection?"active":""}" data-act="matSec" data-id="${s}">${SEC_LABEL[s]} (${cnt(s)})</button>`).join("");
- let h=title("MATERI","Materi pembelajaran","Pilih sub-menu Listening, Structure, atau Reading untuk mengatur daftar tombol skill dan catatan materinya. Semuanya tampil di halaman TOEFL Materials setelah tombol “Buka Materi …” diklik.");
+ let h=title("MATERI","Materi pembelajaran","Pilih sub-menu Listening, Structure, atau Reading untuk mengatur daftar skill (judul, link, warna bullet, deskripsi) dan catatan materinya. Semuanya tampil di halaman TOEFL Materials setelah tombol “Buka Materi …” diklik.");
  if(matEdit){
   const m=matEdit==="new"?{section:matSection,title:"",html:"",color:""}:D.materials.find(x=>x.id===matEdit);
   if(!m){matEdit=null;return vMaterials();}
@@ -307,7 +331,7 @@ function vMaterials(){
   h+=matSection==="general"?routineBox():pagesBox(matSection);
   const list=D.materials.filter(m=>m.section===matSection);
   h+=`<div class="box"><div class="boxhead"><h3>Catatan materi tambahan — ${SEC_LABEL[matSection]}</h3><button class="btn small" data-act="matNew">＋ Catatan baru</button></div>
-   <p class="sub">${matSection==="general"?"Tampil di kartu “Additional Materials” pada halaman TOEFL Materials.":"Teks/rangkuman opsional yang tampil di bawah daftar tombol skill."}</p>`+
+   <p class="sub">${matSection==="general"?"Tampil di kartu “Additional Materials” pada halaman TOEFL Materials.":"Teks/rangkuman opsional yang tampil di bawah daftar skill."}</p>`+
   (list.length?list.map((m,i)=>`<div class="item"><div class="main"><div class="t"><span class="dot" style="background:${esc(m.color||"#cbd5e1")}"></span>${esc(m.title)}</div><div class="s">${esc(L.sanitizeHTML(m.html).replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim().slice(0,110))}…</div></div>
    <div class="acts"><button class="btn secondary small" data-act="matUp" data-id="${m.id}" ${i===0?"disabled":""}>↑</button><button class="btn secondary small" data-act="matDown" data-id="${m.id}" ${i===list.length-1?"disabled":""}>↓</button><button class="btn secondary small" data-act="matEdit" data-id="${m.id}">Edit</button><button class="btn danger small" data-act="matDel" data-id="${m.id}">Hapus</button></div></div>`).join(""):`<div class="empty">Belum ada catatan di bagian ini.</div>`)+`</div>`;
  }
@@ -319,24 +343,25 @@ function validFile(f){return /^[\w\-.\/]+\.html?$/i.test(f)||/^https?:\/\/\S+$/i
 function bindMatForms(){
  const pf=$("#pg-form");
  if(pf)pf.onsubmit=e=>{
-  e.preventDefault();const f=$("#pg-file").value.trim();
-  if(!validFile(f)){alert("Nama file harus berakhiran .html (mis. materiswoskill7.html) atau berupa alamat https://…");return;}
-  D.materialPages[matSection].push({id:L.uid("p"),label:$("#pg-label").value.trim(),file:f});
-  if(commit("Halaman ditambahkan"))vMaterials();
+  e.preventDefault();
+  const v=readPageFields("pg");if(!v)return;
+  D.materialPages[matSection].push({id:L.uid("p"),...v});
+  if(commit("Skill ditambahkan"))vMaterials();
  };
  const bf=$("#pgbulk-form");
  if(bf)bf.onsubmit=e=>{
   e.preventDefault();
   const lines=$("#pgbulk").value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean), add=[], bad=[];
   lines.forEach(ln=>{
-   const k=ln.indexOf("|"); let label,file;
-   if(k<0){file=ln;label=skId(ln);}else{label=ln.slice(0,k).trim();file=ln.slice(k+1).trim();}
-   if(label&&validFile(file))add.push({id:L.uid("p"),label,file});else bad.push(ln);
+   const parts=ln.split("|").map(x=>x.trim()); let label,file,desc="";
+   if(parts.length===1){file=parts[0];label=skId(file);}
+   else{label=parts[0];file=parts[1];desc=parts.slice(2).join(" | ");}
+   if(label&&validFile(file))add.push({id:L.uid("p"),label,file,color:L.DEFAULT_BULLET,bullet:"dot",desc,descMode:"plain"});else bad.push(ln);
   });
-  if(bad.length){alert("Baris berikut tidak valid (format: Nama | namafile.html):\n\n"+bad.join("\n"));return;}
+  if(bad.length){alert("Baris berikut tidak valid (format: Judul | namafile.html | deskripsi):\n\n"+bad.join("\n"));return;}
   if(!add.length){alert("Belum ada baris yang diisi.");return;}
   D.materialPages[matSection].push(...add);
-  if(commit(add.length+" halaman ditambahkan"))vMaterials();
+  if(commit(add.length+" skill ditambahkan"))vMaterials();
  };
  const lf=$("#link-form");
  if(lf)lf.onsubmit=e=>{
@@ -423,10 +448,11 @@ function vAccounts(){
 /* ---------- BACKUP ---------- */
 function vBackup(){
  $("#view").innerHTML=title("BACKUP & PUBLIKASI","Backup & publikasi","Data tersimpan di browser ini. Unduh file data untuk mempublikasikan ke siswa atau untuk cadangan.")+
- `<div class="box"><h3>1. Publikasikan ke siswa</h3><p class="hint" style="font-size:13px">Unduh <code>lumina-data.json</code>, lalu unggah ke folder yang sama dengan <code>index.html</code> (timpa file lama). Semua pengunjung akan melihat materi, soal, audio, tautan, dan akun terbaru.</p><button class="btn" data-act="export">⬇ Unduh lumina-data.json</button></div>
+ `<div class="box"><h3>1. Publikasikan ke siswa</h3><p class="hint" style="font-size:13px">Unduh <code>lumina-data.json</code>, lalu unggah ke folder yang sama dengan <code>index.html</code> (timpa file lama). Semua pengunjung akan melihat materi, soal, audio, tautan, dan akun terbaru. <b>Tanpa langkah ini, perubahan hanya terlihat di browser Anda sendiri.</b></p><button class="btn" data-act="export">⬇ Unduh lumina-data.json</button></div>
  <div class="box"><h3>2. Pulihkan dari file</h3><p class="hint" style="font-size:13px">Ganti seluruh data di browser ini dengan isi file backup.</p><label class="btn secondary file-label" style="cursor:pointer">Pilih file backup (.json)<input id="imp" type="file" accept="application/json,.json" hidden></label></div>
  <div class="box"><h3>3. Ambil versi yang sudah dipublikasikan</h3><p class="hint" style="font-size:13px">Berguna jika Anda mengedit dari perangkat lain. Mengganti data di browser ini dengan <code>lumina-data.json</code> yang ada di server.</p><button class="btn secondary" data-act="pull">Ambil dari server</button></div>
  <div class="box"><h3>4. Kembalikan konten contoh</h3><p class="hint" style="font-size:13px">Mengembalikan daftar halaman materi, catatan materi, soal, audio, teks bacaan, dan tautan ke contoh awal. Akun dan pengaturan login tidak berubah.</p><button class="btn danger" data-act="reset">Kembalikan ke contoh awal</button></div>
+ <div class="box"><h3>5. Cek sinkronisasi dengan server</h3><p class="hint" style="font-size:13px">Membandingkan data di browser ini dengan <code>lumina-data.json</code> yang benar-benar terbaca dari server. Pakai ini setelah mengunggah, untuk memastikan siswa akan melihat perubahan Anda.</p><button class="btn secondary" data-act="check">Cek sekarang</button><div id="chk" class="note" style="margin:12px 0 0;display:none"></div></div>
  <div class="note"><b>Catatan keamanan:</b> login ini berjalan di browser dan file <code>lumina-data.json</code> dapat dibuka siapa pun yang tahu alamatnya (password tersimpan dalam bentuk hash, bukan teks biasa, tetapi password lemah tetap bisa ditebak). Gunakan password yang kuat, dan jangan menyimpan data rahasia di web ini.</div>`;
  $("#imp").onchange=async e=>{
   const f=e.target.files[0];if(!f)return;
@@ -458,7 +484,8 @@ const A={
  matUp(id){moveIn(D.materials,id,-1,m=>m.section===matSection);commit();vMaterials();},
  matDown(id){moveIn(D.materials,id,1,m=>m.section===matSection);commit();vMaterials();},
 
- /* daftar halaman skill per sub-menu */
+ /* daftar skill per sub-menu */
+ pgSwatch(c,el){const i=document.getElementById(el.dataset.p+"-color");if(i)i.value=c;},
  pgUp(id){moveIn(D.materialPages[matSection],id,-1);commit();vMaterials();},
  pgDown(id){moveIn(D.materialPages[matSection],id,1);commit();vMaterials();},
  pgDel(id){
@@ -468,10 +495,10 @@ const A={
  },
  pgEdit(id){
   const p=D.materialPages[matSection].find(x=>x.id===id);if(!p)return;
-  modal(`<h3>Ubah halaman</h3><form class="form" id="pe-form"><label>Nama tombol<input id="pe-label" value="${esc(p.label)}" required></label><label>Nama file / alamat<input id="pe-file" value="${esc(p.file)}" required></label><div class="row"><button class="btn" type="submit">Simpan</button><button class="btn secondary" type="button" id="pe-cancel">Batal</button></div></form>`,()=>{
+  modal(`<h3>Ubah skill</h3><form class="form" id="pe-form">${pageFields(p,"pe")}<div class="row"><button class="btn" type="submit">Simpan</button><button class="btn secondary" type="button" id="pe-cancel">Batal</button></div></form>`,()=>{
    $("#pe-cancel").onclick=closeModal;
-   $("#pe-form").onsubmit=e=>{e.preventDefault();const f=$("#pe-file").value.trim();if(!validFile(f)){alert("Nama file harus berakhiran .html atau berupa alamat https://…");return;}p.label=$("#pe-label").value.trim();p.file=f;closeModal();commit();vMaterials();};
-  });
+   $("#pe-form").onsubmit=e=>{e.preventDefault();const v=readPageFields("pe");if(!v)return;Object.assign(p,v);closeModal();commit("Skill diperbarui");vMaterials();};
+  },true);
  },
  pgReset(id){
   syncSkills();const p=D.materialPages[matSection].find(x=>x.id===id);if(!p)return;
@@ -540,6 +567,21 @@ const A={
   D.accounts=D.accounts.filter(x=>x.user!==user);commit("Akun dihapus");vAccounts();
  },
 
+
+ async check(){
+  const el=$("#chk");el.style.display="block";el.innerHTML="Memeriksa…";
+  const p=await L.fetchPublished(), f=t=>t?new Date(t).toLocaleString():"-";
+  const lab=x=>x.materialPages.swo.map(q=>q.label+"|"+q.file+"|"+q.color+"|"+q.bullet+"|"+q.desc).join("\n");
+  let h="<b>Origin halaman ini:</b> "+esc(location.origin||location.protocol)+"<br><b>Data di browser ini:</b> "+f(D.updatedAt)+" · "+D.materialPages.swo.length+" skill Structure<br>";
+  if(!p)h+="<b style='color:#b3261e'>❌ lumina-data.json TIDAK terbaca dari server.</b> Penyebab umum: file belum diunggah, salah folder (harus satu folder dengan index.html), nama file salah, atau halaman dibuka dari file lokal (file://). Siswa akan melihat konten contoh bawaan.";
+  else{
+   h+="<b>Data di server:</b> "+f(p.updatedAt)+" · "+p.materialPages.swo.length+" skill Structure<br>";
+   if(lab(p)===lab(D))h+="<b style='color:#16866b'>✅ Daftar skill Structure di server SAMA dengan di browser ini.</b>";
+   else if(p.updatedAt<D.updatedAt)h+="<b style='color:#b3261e'>⚠️ Server masih versi LAMA.</b> Unduh lumina-data.json lagi dan timpa file di hosting (pastikan benar-benar tertimpa, lalu coba muat ulang dengan Ctrl+F5).";
+   else h+="<b style='color:#bd7922'>⚠️ Server lebih baru dari browser ini.</b> Gunakan “Ambil dari server” bila ingin menyamakan.";
+  }
+  el.innerHTML=h;
+ },
  export(){L.download(D);renderBanner();toast("File diunduh — unggah ke hosting untuk mempublikasikan");},
  async pull(){
   const p=await L.fetchPublished();

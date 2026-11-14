@@ -4,6 +4,7 @@
 "use strict";
 var KEY="luminaCMS", EXPORT_KEY="luminaExportedAt", SESSION_KEY="luminaSession";
 var DEFAULT_ADMIN={user:"admin",pass:"lumina2026",name:"Administrator"};
+var DEFAULT_BULLET="#3979ce";
 var SECTIONS=["general","listening","swo","reading"];
 var QSECTIONS=["listening","swo","reading"];
 var MAT_SECTIONS=["listening","swo","reading"];   /* bagian yang punya halaman daftar skill sendiri */
@@ -24,6 +25,15 @@ function normalizeAudioUrl(u){
  var m=u.match(/drive\.google\.com\/file\/d\/([\w-]+)/)||u.match(/drive\.google\.com\/open\?(?:[^#]*&)?id=([\w-]+)/)||u.match(/drive\.google\.com\/uc\?(?:[^#]*&)?id=([\w-]+)/);
  if(m)return "https://drive.google.com/uc?export=download&id="+m[1];
  return u;
+}
+
+/* deskripsi singkat skill -> HTML aman. mode: plain | bullets | numbered (satu baris = satu poin) */
+function renderDesc(desc,mode){
+ var lines=String(desc||"").split(/\r?\n/).map(function(x){return x.trim();}).filter(Boolean);
+ if(!lines.length)return "";
+ if(mode==="numbered")return "<ol>"+lines.map(function(l){return "<li>"+esc(l)+"</li>";}).join("")+"</ol>";
+ if(mode==="bullets")return "<ul>"+lines.map(function(l){return "<li>"+esc(l)+"</li>";}).join("")+"</ul>";
+ return lines.map(function(l){return "<p>"+esc(l)+"</p>";}).join("");
 }
 
 /* ---------- SHA-256 (murni JS, tidak butuh HTTPS) ---------- */
@@ -119,7 +129,7 @@ function textToHTML(t){return String(t||"").split(/\n{2,}/).map(function(p){retu
 /* ---------- data bawaan ---------- */
 function defaults(){
  return {
-  version:3, updatedAt:0,
+  version:4, updatedAt:0,
   materials:[],
   questions:{
    listening:[
@@ -143,7 +153,9 @@ function defaults(){
   audio:[{id:"audio-sample",title:"Sample conversation (browser voice)",url:"",script:"Woman: Have you finished the report for Professor Allen? Man: Almost. I still need to check the figures in the final section. Woman: The professor said he would like to receive it before noon tomorrow. Man: That should be fine. I will review it tonight and send it first thing in the morning. Woman: Great. Let me know if you need me to check anything."}],
   reading:{title:"Urban Trees and City Life",passage:"<p>Urban trees provide benefits that extend beyond their appearance. Their leaves can provide shade, reducing the amount of heat absorbed by streets and buildings. Trees also help manage rainwater: some water is intercepted by leaves, while roots can improve the soil's ability to absorb rainfall. In addition, urban vegetation creates habitats for birds and insects. However, planting trees in cities requires careful planning. Species must be selected according to local climate, available space, and maintenance needs. A tree that grows well in a park may not be suitable for a narrow sidewalk where roots could damage pavement or underground pipes. Therefore, successful urban forestry depends not simply on planting more trees, but on choosing appropriate species and caring for them over time.</p>"},
   links:{routine:[]},
-  /* daftar tombol halaman skill untuk tiap bagian Materi (muncul setelah tombol "Buka Materi ..." diklik) */
+  /* daftar skill tiap bagian Materi. Tiap item: label (judul), file (tautan), color (warna bullet),
+     bullet ("dot" | "num" = nomor otomatis sesuai urutan), desc (deskripsi singkat, 1 baris = 1 poin),
+     descMode ("plain" | "bullets" | "numbered") */
   materialPages:{
    listening:[],
    swo:[
@@ -164,12 +176,22 @@ function defaults(){
 function seedAdmin(){return {user:DEFAULT_ADMIN.user,name:DEFAULT_ADMIN.name,role:"admin",hash:hashPassword(DEFAULT_ADMIN.user,DEFAULT_ADMIN.pass)};}
 function validQ(q){return q&&typeof q.q==="string"&&Array.isArray(q.o)&&q.o.length>=2&&typeof q.a==="number";}
 function cleanPages(arr){
- return (Array.isArray(arr)?arr:[]).filter(function(p){return p&&p.label&&p.file;}).map(function(p){return {id:p.id||uid("p"),label:String(p.label),file:String(p.file)};});
+ return (Array.isArray(arr)?arr:[]).filter(function(p){return p&&p.label&&p.file;}).map(function(p){
+  return {
+   id:p.id||uid("p"),
+   label:String(p.label),
+   file:String(p.file),
+   color:safeColor(p.color)||DEFAULT_BULLET,
+   bullet:p.bullet==="num"?"num":"dot",
+   desc:String(p.desc||""),
+   descMode:(p.descMode==="bullets"||p.descMode==="numbered")?p.descMode:"plain"
+  };
+ });
 }
 
 function normalize(d){
  var base=defaults(); d=(d&&typeof d==="object")?d:{};
- var out={version:3,updatedAt:Number(d.updatedAt)||0};
+ var out={version:4,updatedAt:Number(d.updatedAt)||0};
  out.materials=(Array.isArray(d.materials)?d.materials:[]).filter(function(m){return m&&m.title;}).map(function(m){
   return {id:m.id||uid("m"),section:SECTIONS.indexOf(m.section)>=0?m.section:"general",title:String(m.title),html:String(m.html||""),color:safeColor(m.color),updated:Number(m.updated)||0};
  });
@@ -196,7 +218,7 @@ function normalize(d){
   MAT_SECTIONS.forEach(function(s){
    var list=s==="swo"?cleanPages(Array.isArray(d.skillPages)?d.skillPages:base.materialPages.swo):[];
    (Array.isArray(oldLinks[s])?oldLinks[s]:[]).forEach(function(l){
-    if(l&&l.label&&l.url&&!list.some(function(x){return x.file===String(l.url);}))list.push({id:uid("p"),label:String(l.label),file:String(l.url)});
+    if(l&&l.label&&l.url&&!list.some(function(x){return x.file===String(l.url);}))list.push(cleanPages([{label:l.label,file:l.url}])[0]);
    });
    out.materialPages[s]=list;
   });
@@ -234,13 +256,22 @@ function hasLocal(){try{return !!localStorage.getItem(KEY);}catch(e){return fals
 function fetchPublished(){
  return fetch("lumina-data.json?v="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(j){return j?normalize(j):null;}).catch(function(){return null;});
 }
-function load(){
- var d=null;
- try{var raw=localStorage.getItem(KEY); if(raw)d=JSON.parse(raw);}catch(e){}
- if(d)return Promise.resolve(normalize(d));
- return fetchPublished().then(function(p){return p||normalize(migrateOld());});
-}
 function loadLocal(){try{var raw=localStorage.getItem(KEY);return raw?normalize(JSON.parse(raw)):null;}catch(e){return null;}}
+/* PERBAIKAN: dulu data lokal SELALU menang sehingga browser yang pernah menyimpan data tidak pernah
+   menerima lumina-data.json terbaru. Sekarang yang dipakai adalah versi dengan updatedAt paling baru. */
+var info={source:"?",localAt:0,serverAt:0,serverOk:false};
+function load(){
+ var local=loadLocal();
+ return fetchPublished().then(function(pub){
+  var d,src;
+  if(local&&pub){if(local.updatedAt>pub.updatedAt){d=local;src="local";}else{d=pub;src="server";}}
+  else if(local){d=local;src="local-only";}
+  else if(pub){d=pub;src="server";}
+  else{d=normalize(migrateOld());src="default";}
+  info={source:src,localAt:local?local.updatedAt:0,serverAt:pub?pub.updatedAt:0,serverOk:!!pub};
+  return d;
+ });
+}
 function save(d){d.updatedAt=Date.now();try{localStorage.setItem(KEY,JSON.stringify(d));return true;}catch(e){return false;}}
 function getExportedAt(){try{return Number(localStorage.getItem(EXPORT_KEY))||0;}catch(e){return 0;}}
 function download(d){
@@ -264,11 +295,11 @@ function currentAccount(d){var s=getSession();return s?findAccount(d,s.user):nul
 function isDefaultPassword(a){return !!a&&a.hash===hashPassword(a.user,DEFAULT_ADMIN.pass);}
 
 window.Lumina={
- KEY:KEY,EXPORT_KEY:EXPORT_KEY,DEFAULT_ADMIN:DEFAULT_ADMIN,SECTIONS:SECTIONS,QSECTIONS:QSECTIONS,MAT_SECTIONS:MAT_SECTIONS,LINK_GROUPS:LINK_GROUPS,
- esc:esc,uid:uid,safeUrl:safeUrl,safeColor:safeColor,normalizeAudioUrl:normalizeAudioUrl,
+ KEY:KEY,EXPORT_KEY:EXPORT_KEY,DEFAULT_ADMIN:DEFAULT_ADMIN,DEFAULT_BULLET:DEFAULT_BULLET,SECTIONS:SECTIONS,QSECTIONS:QSECTIONS,MAT_SECTIONS:MAT_SECTIONS,LINK_GROUPS:LINK_GROUPS,
+ esc:esc,uid:uid,safeUrl:safeUrl,safeColor:safeColor,normalizeAudioUrl:normalizeAudioUrl,renderDesc:renderDesc,
  sha256:sha256,hashPassword:hashPassword,sanitizeHTML:sanitizeHTML,sanitizeRich:sanitizeRich,textToHTML:textToHTML,
  defaults:defaults,normalize:normalize,load:load,loadLocal:loadLocal,save:save,hasLocal:hasLocal,fetchPublished:fetchPublished,
- getExportedAt:getExportedAt,download:download,
+ getExportedAt:getExportedAt,download:download,getLoadInfo:function(){return info;},CORE_VERSION:"5",
  findAccount:findAccount,checkLogin:checkLogin,getSession:getSession,setSession:setSession,currentAccount:currentAccount,isDefaultPassword:isDefaultPassword
 };
 })();

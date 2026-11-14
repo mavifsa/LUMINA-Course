@@ -1,32 +1,7 @@
 {
-  "version": 2,
-  "updatedAt": 1794663741427,
-  "materials": [
-    {
-      "id": "m-mwgg7ym27ioai",
-      "section": "swo",
-      "title": "Skill 1 : Subject & Verb",
-      "html": "<ul><li>&nbsp;Mengenali bentuk-bentuk subject dan kata kerja.</li></ul>",
-      "color": "#3979ce",
-      "updated": 1794663348987
-    },
-    {
-      "id": "m-mwggdu4169kzz",
-      "section": "swo",
-      "title": "Skill 2 :  Preposition",
-      "html": "<ul><li>&nbsp;Menerangkan fungsi preposisi beserta posisinya dalam kalimat.</li></ul>",
-      "color": "#3979ce",
-      "updated": 1794663633513
-    },
-    {
-      "id": "m-mwgggdf5q4uc2",
-      "section": "swo",
-      "title": "Skill 3 : Appositive",
-      "html": "<ul><li>&nbsp;Menerangkan fungsi Appositive, variasi bentuknya, dan posisinya dalam kalimat.</li></ul>",
-      "color": "#3979ce",
-      "updated": 1794663741425
-    }
-  ],
+  "version": 4,
+  "updatedAt": 1794671520995,
+  "materials": [],
   "questions": {
     "listening": [
       {
@@ -191,16 +166,49 @@
     "passage": "<p>Urban trees provide benefits that extend beyond their appearance. Their leaves can provide shade, reducing the amount of heat absorbed by streets and buildings. Trees also help manage rainwater: some water is intercepted by leaves, while roots can improve the soil's ability to absorb rainfall. In addition, urban vegetation creates habitats for birds and insects. However, planting trees in cities requires careful planning. Species must be selected according to local climate, available space, and maintenance needs. A tree that grows well in a park may not be suitable for a narrow sidewalk where roots could damage pavement or underground pipes. Therefore, successful urban forestry depends not simply on planting more trees, but on choosing appropriate species and caring for them over time.</p>"
   },
   "links": {
+    "routine": []
+  },
+  "materialPages": {
     "listening": [],
     "swo": [
       {
-        "id": "l-mwgg5n15codxo",
-        "label": "Buka Materi Structure →",
-        "url": "materiswoskill1.html"
+        "id": "p-mwgkrnyuzdrar",
+        "label": "Skill 1: Subject & Verb",
+        "file": "materiswoskill1.html",
+        "color": "#3979ce",
+        "bullet": "dot",
+        "desc": "Menerangkan variasi Subject, Verb, beserta kesesuaian keduanya.",
+        "descMode": "plain"
+      },
+      {
+        "id": "p-mwgkyq1vlackj",
+        "label": "Skill 2: Preposition",
+        "file": "materiswoskill2.html",
+        "color": "#3979ce",
+        "bullet": "dot",
+        "desc": "Menerangkan fungsi Preposisi serta posisi dalam kalimat.",
+        "descMode": "plain"
+      },
+      {
+        "id": "p-mwgl0r8wiyz8z",
+        "label": "Skill 3 : Appositive",
+        "file": "materiswoskill3.html",
+        "color": "#3979ce",
+        "bullet": "dot",
+        "desc": "Menerangkan fungsi Appositive beserta variasinya.",
+        "descMode": "plain"
+      },
+      {
+        "id": "p-mwgl3469krw6q",
+        "label": "Skill 4 & 5 : Participle",
+        "file": "materiswoskill45.html",
+        "color": "#3979ce",
+        "bullet": "dot",
+        "desc": "Bentuk Participle, fungsinya, serta perbedaan dengan Gerund",
+        "descMode": "plain"
       }
     ],
-    "reading": [],
-    "routine": []
+    "reading": []
   },
   "skillPages": [
     {
