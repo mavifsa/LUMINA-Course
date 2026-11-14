@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": 1794671520995,
+  "updatedAt": 1794672822223,
   "materials": [],
   "questions": {
     "listening": [
@@ -206,6 +206,15 @@
         "bullet": "dot",
         "desc": "Bentuk Participle, fungsinya, serta perbedaan dengan Gerund",
         "descMode": "plain"
+      },
+      {
+        "id": "p-mwgltdghoce5k",
+        "label": "Skill 6 :",
+        "file": "materiswoskill6.html",
+        "color": "#c0192f",
+        "bullet": "dot",
+        "desc": "",
+        "descMode": "plain"
       }
     ],
     "reading": []
@@ -214,6 +223,22 @@
     {
       "label": "Skill 1: Subject & Verb",
       "file": "materiswoskill1.html"
+    },
+    {
+      "label": "Skill 2: Preposition",
+      "file": "materiswoskill2.html"
+    },
+    {
+      "label": "Skill 3 : Appositive",
+      "file": "materiswoskill3.html"
+    },
+    {
+      "label": "Skill 4 & 5 : Participle",
+      "file": "materiswoskill45.html"
+    },
+    {
+      "label": "Skill 6 :",
+      "file": "materiswoskill6.html"
     }
   ],
   "skills": {},
@@ -222,7 +247,7 @@
       "user": "admin",
       "name": "Administrator",
       "role": "admin",
-      "hash": "76d7769dcb9ddf1f25db4690e97bd0520ef70a5a6e1214600e156b485a24e67c"
+      "hash": "5d2da627c4d2bf1ce45267500ab103da835698f270c08c3e7dce5c111b7eedd5"
     }
   ],
   "settings": {
