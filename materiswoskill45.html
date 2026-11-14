@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 4 & 5 - Participle Analysis</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+        .font-mono-code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-2 gap-2">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-sm shadow-sm">
+                        S4-5
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-teal-500/20 text-teal-300 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        </div>
+                        <h1 class="text-base md:text-lg font-bold tracking-tight text-white leading-tight mt-0.5">Skill 4 & 5: Participle Analysis</h1>
+                    </div>
+                </div>
+
+                <!-- Global Stats / Quick Status -->
+                <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-xs">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Present vs Past Participle</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="flex items-center gap-1.5 text-indigo-400 font-medium">
+                        <span>Pre-M & Post-M Analysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Bar -->
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-1.5 pb-1 no-scrollbar">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30">
+                    🔍 1. Overview & Pitfalls
+                </button>
+                <button onclick="switchTab('blueprint')" id="tab-blueprint" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    📗 2. Participle Blueprint
+                </button>
+                <button onclick="switchTab('positions')" id="tab-positions" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🔬 3. Pre-M vs Post-M Lab
+                </button>
+                <button onclick="switchTab('gerund')" id="tab-gerund" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    📘 4. Participle vs Gerund
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🎯 5. Practice Quiz (10 Soal)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW & PITFALLS ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">
+                        <span>Core Structure Axiom</span>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Participle Berfungsi Sebagai Adjective untuk Menjelaskan Noun.</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Participle (Present V-ing atau Past V3) dapat berfungsi sebagai kata sifat murni atau penanda klausa reduksi (*reduced relative clause*). Jangan terkecoh mengira participle berdiri sendiri sebagai finite verb utama kalimat.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Essential Learning Objectives -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-teal-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Finite vs Infinite</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Membedakan verb utuh dengan participle adj.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-indigo-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Present vs Past</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Makna aktif (V-ing) vs pasif (V3).</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-amber-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Pre-M & Post-M</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Posisi sebelum atau sesudah noun.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-emerald-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Participle vs Gerund</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Membedakan V-ing adj dengan V-ing noun.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Critical Pitfalls Cards Section -->
+            <div class="space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5">
+                        <span class="text-rose-500">⚠️</span> Kesalahan Terbesar Peserta TOEFL (Common Pitfalls)
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <!-- Pitfall 1 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Terjebak Participle sebagai Verb Utama</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Mengira participle (V-ing / V3) yang berdiri sendiri sebagai predikat kalimat.</p>
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5">
+                                <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Soal Jebakan:</span>
+                                <p class="text-slate-400">❌ Salah: <span class="text-slate-800">The activists <span class="text-rose-600 underline">murdered</span> in 2004 <span class="text-rose-600 font-bold">Munir</span>. (Tanpa verb utama)</span></p>
+                                <p class="text-emerald-700">✓ Benar: <span class="text-slate-800">The activists <span class="text-slate-400">[murdered in 2004]</span> <span class="text-emerald-600 font-bold">was</span> Munir.</span></p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Kata <span class="text-rose-600 underline">murdered</span> di sini adalah past participle sebagai post-modifier, bukan verb utama kalimat. Kalimat tetap memerlukan verb utama (<span class="text-emerald-600 font-bold">was</span> Munir.</span>).</p>
+                    </div>
+
+                    <!-- Pitfall 2 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Tertukar dengan Gerund</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Mengira V-ing yang berkedudukan sebagai noun (gerund) sebagai adjective participle.</p>
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-white p-2.5 rounded border border-rose-200 space-y-1">
+                                <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Perbandingan Gerund vs Participle:</span>
+                                <p class="text-emerald-700">✓ Gerund (Noun): <span class="text-slate-800"><span class="text-indigo-600 font-bold">Swimming</span> in deep water requires professional training. (Berfungsi sebagai subjek/benda)</span></p>
+                                <p class="text-emerald-700">✓ Participle (Adjective): <span class="text-slate-800">The <span class="text-teal-600 font-bold">swimming</span> instructor rescued the child. (Menjelaskan noun instructor)</span></p>
+                            </div>
+                         </div>
+                        <p class="text-[11px] text-slate-600">(<span class="text-indigo-600 font-bold">Swimming</span>) pertama: Gerund berfungsi sebagai benda, sedangkan kedua, (<span class="text-teal-600 font-bold">swimming</span>): present participle berfungsi sebagai kata sifat.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: PARTICIPLE BLUEPRINT ==================== -->
+        <section id="content-blueprint" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Blueprint & Jenis Participle</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Mengenal Present & Past Participle</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Participle adalah kata yang dibentuk dari kata kerja, namun kategori dan fungsinya berubah menjadi adjective (kata sifat) yang menjelaskan noun.
+                    </p>
+                </div>
+
+                <div class="border-t border-slate-100 pt-4">
+                    <h3 class="text-base font-bold text-slate-900 mb-3">2 Jenis Participle Utama:</h3>
+                    
+                    <div class="space-y-3">
+                        <!-- Element 1: Present Participle -->
+                        <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 hover:border-emerald-400 transition flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
+                            <div class="flex-grow space-y-1.5">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <h4 class="font-bold text-slate-900 text-xs md:text-sm">Present Participle (Pr.Pcp) -> V-ing</h4>
+                                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-2 py-0.5 rounded-full w-max">Active / Ongoing Meaning</span>
+                                </div>
+                                <div class="space-y-1.5 text-xs font-mono-code">
+                                    <div class="bg-white p-2.5 rounded-lg border border-slate-200">• The <span class="text-emerald-700 font-bold">protesting</span> students demanding policy changes. <span class="text-slate-400 text-[10px] font-sans">(Aktivis yang sedang protes - aktif)</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Element 2: Past Participle -->
+                        <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 hover:border-emerald-400 transition flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">2</span>
+                            <div class="flex-grow space-y-1.5">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <h4 class="font-bold text-slate-900 text-xs md:text-sm">Past Participle (Ps.Pcp) -> V3</h4>
+                                    <span class="bg-indigo-100 text-indigo-800 text-[10px] font-semibold px-2 py-0.5 rounded-full w-max">Passive / Completed Meaning</span>
+                                </div>
+                                <div class="space-y-1.5 text-xs font-mono-code">
+                                    <div class="bg-white p-2.5 rounded-lg border border-slate-200">• The <span class="text-indigo-700 font-bold">murdered</span> activists; The <span class="text-indigo-700 font-bold">hidden</span> evidence. <span class="text-slate-400 text-[10px] font-sans">(Pasif / selesai)</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2 text-xs">
+                    <span class="font-bold text-slate-900 block">📌 Catatan Penting (Finite vs Infinite):</span>
+                    <p class="text-slate-600 leading-relaxed">
+                        Participle berfungsi murni sebagai <strong>adjective</strong> saat berdiri sendiri atau membentuk frasa modifier. Participle baru akan berubah menjadi <strong>verb (Finite)</strong> apabila ia didampingi oleh *auxiliary verb* pasangannya, seperti <em>be + V-ing</em> (Continuous) atau <em>have/be + V3</em> (Perfect / Passive).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: PRE-M VS POST-M LAB ==================== -->
+        <section id="content-positions" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Positional Lab</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Pre-Modifier vs Post-Modifier (Reduced Relative Clause)</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Participle dapat diletakkan sebelum noun (Pre-Modifier) atau sesudah noun (Post-Modifier sebagai hasil reduksi klausa adjektiva).
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Case 1: Post-Modifier V-ing -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Post-Modifier (Present Participle)</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Reduced Adjective Clause</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                            "The man <span class="text-teal-400 underline">meeting me</span> was my friend."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Asal Klausa:</span>
+                                <p class="text-slate-600">The man <span class="text-indigo-600 font-bold">who met me</span> was my friend.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Hasil Reduksi:</span>
+                                <p class="text-slate-600">Konjungsi *who* dan *met* diubah menjadi *meeting* (Present Participle).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Bedah Struktur:</span>
+                                <p class="text-slate-600">Subject: The man meeting me | Head: man | Verb: was | Comp: my friend.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 2: Post-Modifier V3 -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Post-Modifier (Past Participle)</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Reduced Passive Clause</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                            "The activists <span class="text-teal-400 underline">murdered in 2004</span> was Munir."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Asal Klausa:</span>
+                                <p class="text-slate-600">The activists <span class="text-indigo-600 font-bold">who were murdered in 2004</span>...</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Hasil Reduksi:</span>
+                                <p class="text-slate-600">Penghapusan *who were* menyisakan past participle murdered in 2004*.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Bedah Struktur:</span>
+                                <p class="text-slate-600">Subject: The activists murdered in 2004 | Head: activists | Verb: was | Comp: Munir.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 3: Complex Subject -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">3. Complex Subject with Participle Phrase</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Advanced Subject Analysis</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                            "Experiments <span class="text-amber-400 underline">using gene therapy</span> represent a giant step into the future."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Subject Utama:</span>
+                                <p class="text-slate-600">Experiments using gene therapy</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Head & Modifier:</span>
+                                <p class="text-slate-600">Head: Experiments. Post-Modifier: using gene therapy (Present Participle Phrase).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Verb Utama:</span>
+                                <p class="text-slate-600">represent (Verb plural mengikuti head noun experiments).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: PARTICIPLE VS GERUND ==================== -->
+        <section id="content-gerund" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Comparative Lab</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Membedakan Participle V-ing vs Gerund V-ing</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Sama-sama berakhiran *-ing*, namun memiliki fungsi gramatikal yang sangat berbeda di dalam struktur kalimat.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="bg-emerald-50/60 rounded-xl p-4 border border-emerald-200 space-y-2">
+                        <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Present Participle (Adjective)</span>
+                        <h3 class="font-bold text-slate-900 text-sm">Berfungsi Menjelaskan Noun</h3>
+                        <p class="text-xs text-slate-600">Bertindak sebagai kata sifat (modifier) yang mendampingi atau menerangkan kata benda.</p>
+                        <div class="bg-white p-2.5 rounded-lg border border-emerald-200 text-xs font-mono-code">
+                            "The <span class="text-emerald-700 font-bold">protesting</span> students..." (Students yang sedang protes)
+                        </div>
+                    </div>
+
+                    <div class="bg-indigo-50/60 rounded-xl p-4 border border-indigo-200 space-y-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Gerund (Noun)</span>
+                        <h3 class="font-bold text-slate-900 text-sm">Berfungsi Sebagai Benda</h3>
+                        <p class="text-xs text-slate-600">Bertindak sebagai kata benda murni yang dapat menjadi subjek, objek, atau pelengkap.</p>
+                        <div class="bg-white p-2.5 rounded-lg border border-indigo-200 text-xs font-mono-code">
+                            "My hobby is <span class="text-indigo-700 font-bold">fishing</span>." (Fishing = hobi saya)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: PRACTICE QUIZ (10 SOAL) ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Quiz: Skill 4 & 5</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">
+                            Uji pemahaman Anda mengenai Present/Past Participle, Reduced Adjective Clause, dan Subject-Verb Agreement.
+                        </p>
+                    </div>
+                    <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                        <span>Score: </span>
+                        <span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 10</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Questions Container -->
+                <div id="quiz-container" class="space-y-4">
+                    <!-- Dynamic Questions generated by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-7xl mx-auto px-4">
+            LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 4 & 5: Participle Analysis
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+            });
+
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) {
+                activeTabBtn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30";
+            }
+        }
+
+        // 10 Practice Questions for Skill 4 & 5
+        const quizQuestions = [
+            {
+                id: 1,
+                question: "The manuscripts _____ in the ancient cave of Central Java date back to the 8th century.",
+                options: [
+                    { text: "discover", isCorrect: false },
+                    { text: "discovered", isCorrect: true },
+                    { text: "discovering", isCorrect: false },
+                    { text: "were discovered", isCorrect: false }
+                ],
+                explanation: "Kalimat sudah memiliki finite verb utama yaitu 'date back'. Bagian rumpang memerlukan past participle 'discovered' (hasil reduksi dari 'which were discovered') untuk berfungsi sebagai post-modifier yang menerangkan noun 'The manuscripts'."
+            },
+            {
+                id: 2,
+                question: "The students _____ outside the rectorate building are demanding immediate tuition fee reductions.",
+                options: [
+                    { text: "protest", isCorrect: false },
+                    { text: "protested", isCorrect: false },
+                    { text: "protesting", isCorrect: true },
+                    { text: "who protest is", isCorrect: false }
+                ],
+                explanation: "Participle yang menyatakan makna aktif (sedang berlangsung) adalah present participle 'protesting' (menggantikan 'who are protesting'). Kalimat ini sudah memiliki finite verb utama yaitu 'are demanding'."
+            },
+            {
+                id: 3,
+                question: "Experiments _____ gene therapy represent a major milestone in modern medical research.",
+                options: [
+                    { text: "use", isCorrect: false },
+                    { text: "used", isCorrect: false },
+                    { text: "using", isCorrect: true },
+                    { text: "are using", isCorrect: false }
+                ],
+                explanation: "Subjek kalimat adalah 'Experiments using gene therapy' dengan verb utama 'represent'. Kata 'using' adalah present participle yang berfungsi sebagai post-modifier aktif."
+            },
+            {
+                id: 4,
+                question: "The historical artifacts _____ by the archaeological team were exhibited at the National Museum.",
+                options: [
+                    { text: "uncover", isCorrect: false },
+                    { text: "uncovering", isCorrect: false },
+                    { text: "uncovered", isCorrect: true },
+                    { text: "were uncovered", isCorrect: false }
+                ],
+                explanation: "Artifacts bersifat pasif (ditemukan), sehingga memerlukan past participle 'uncovered' sebagai post-modifier untuk menerangkan subjek utama sebelum verb 'were exhibited'."
+            },
+            {
+                id: 5,
+                question: "The linguist _____ at the international conference is an expert in ethnopragmatics.",
+                options: [
+                    { text: "speak", isCorrect: false },
+                    { text: "speaking", isCorrect: true },
+                    { text: "spoke", isCorrect: false },
+                    { text: "was spoken", isCorrect: false }
+                ],
+                explanation: "Bagian rumpang memerlukan present participle 'speaking' untuk mereduksi klausa aktif 'who is speaking at the international conference', menerangkan noun 'The linguist'."
+            },
+            {
+                id: 6,
+                question: "All the reports _____ by the committee on academic standards must be reviewed thoroughly.",
+                options: [
+                    { text: "submit", isCorrect: false },
+                    { text: "submitting", isCorrect: false },
+                    { text: "submitted", isCorrect: true },
+                    { text: "were submitted", isCorrect: false }
+                ],
+                explanation: "Laporan dikumpulkan (pasif), maka past participle 'submitted' digunakan untuk mereduksi 'which were submitted by the committee'."
+            },
+            {
+                id: 7,
+                question: "The novel _____ by Pramoedya Ananta Toer portrays the struggles of colonial society.",
+                options: [
+                    { text: "write", isCorrect: false },
+                    { text: "writing", isCorrect: false },
+                    { text: "written", isCorrect: true },
+                    { text: "wrote", isCorrect: false }
+                ],
+                explanation: "Novel ditulis (pasif), sehingga memerlukan past participle 'written' sebagai post-modifier yang menerangkan 'The novel'."
+            },
+            {
+                id: 8,
+                question: "The delegates _____ in the seminar hall are waiting for the keynote speaker to arrive.",
+                options: [
+                    { text: "gather", isCorrect: false },
+                    { text: "gathered", isCorrect: false },
+                    { text: "gathering", isCorrect: true },
+                    { text: "who gather is", isCorrect: false }
+                ],
+                explanation: "Para delegasi berkumpul (aktif/sedang berlangsung), sehingga memerlukan present participle 'gathering'."
+            },
+            {
+                id: 9,
+                question: "Any application _____ after the official deadline will automatically be rejected.",
+                options: [
+                    { text: "submit", isCorrect: false },
+                    { text: "submitting", isCorrect: false },
+                    { text: "submitted", isCorrect: true },
+                    { text: "submission", isCorrect: false }
+                ],
+                explanation: "Aplikasi diserahkan (pasif), sehingga past participle 'submitted' adalah bentuk yang tepat untuk mereduksi 'which is submitted'."
+            },
+            {
+                id: 10,
+                question: "The policy _____ by the university rector aims to improve academic quality and research output.",
+                options: [
+                    { text: "propose", isCorrect: false },
+                    { text: "proposing", isCorrect: false },
+                    { text: "proposed", isCorrect: true },
+                    { text: "proposes", isCorrect: false }
+                ],
+                explanation: "Kebijakan diusulkan (pasif), sehingga past participle 'proposed' digunakan untuk menerangkan noun 'The policy'."
+            }
+        ];
+
+        let userAnswers = {};
+        let score = 0;
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+
+            quizContainer.innerHTML = '';
+
+            quizQuestions.forEach((q, index) => {
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                
+                let optionsHTML = '';
+                const optionLetters = ['A', 'B', 'C', 'D'];
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) {
+                            btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        } else if (isSelected && !opt.isCorrect) {
+                            btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        } else {
+                            btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                        }
+                    }
+
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''} 
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${optionLetters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>
+                    `;
+                }
+
+                qCard.innerHTML = `
+                    <div class="flex items-start justify-between gap-4">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-relaxed">${q.question}</p>
+                    <div class="space-y-1.5">
+                        ${optionsHTML}
+                    </div>
+                    ${explanationHTML}
+                `;
+
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) {
+                    score++;
+                }
+            });
+
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        window.onload = function() {
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>

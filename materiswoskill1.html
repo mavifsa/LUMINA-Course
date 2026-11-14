@@ -70,19 +70,19 @@
                     🔍 1. Overview & Pitfalls
                 </button>
                 <button onclick="switchTab('subjects')" id="tab-subjects" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
-                    📗 2. Subject Blueprint
+                    📗 2. Subject Types
                 </button>
                 <button onclick="switchTab('long-subject')" id="tab-long-subject" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
-                    🔬 3. Long Subject Lab
+                    🔬 3. Long Subject
                 </button>
                 <button onclick="switchTab('verbs')" id="tab-verbs" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
-                    📘 4. Verb Architecture
+                    📘 4. Verb 
                 </button>
                 <button onclick="switchTab('decomposition')" id="tab-decomposition" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
-                    🧪 5. Clause Reduction Lab
+                    🧪 5. Clause Reduction
                 </button>
                 <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
-                    🎯 6. Diagnostic Practice
+                    🎯 6. Practice
                 </button>
             </nav>
         </div>
@@ -220,7 +220,7 @@
                 </div>
 
                 <div class="border-t border-slate-100 pt-4">
-                    <h3 class="text-base font-bold text-slate-900 mb-3">5 Elemen yang Ditingkatkan Menjadi Subject dalam Kalimat:</h3>
+                    <h3 class="text-base font-bold text-slate-900 mb-3">5 Elemen yang Menjadi Subject dalam Kalimat:</h3>
                     
                     <div class="space-y-2.5">
                         <!-- Element 1: Noun -->
@@ -228,16 +228,18 @@
                             <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
                             <div class="flex-grow space-y-1.5">
                                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                                    <h4 class="font-bold text-slate-900 text-xs md:text-sm">Noun (Kata Benda)</h4>
+                                    <h4 class="font-bold text-slate-900 text-xs md:text-sm">Noun / Noun Phrase</h4>
                                     <span class="bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-2 py-0.5 rounded-full w-max">Standar / Most Common</span>
                                 </div>
                                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
                                     <div class="bg-white p-2 rounded-lg border border-slate-200">• <span class="text-emerald-700 font-bold">Pekalongan</span> <span class="text-indigo-600 font-bold">is</span> a city.</div>
-                                    <div class="bg-white p-2 rounded-lg border border-slate-200">• <span class="text-emerald-700 font-bold">Communism</span> <span class="text-indigo-600 font-bold">is</span> an ideology.</div>
                                     <div class="bg-white p-2 rounded-lg border border-slate-200">• <span class="text-emerald-700 font-bold">Love</span> <span class="text-indigo-600 font-bold">builds</span> a bridge.</div>
+                                    <div class="bg-white p-2 rounded-lg border border-slate-200">• <span class="text-emerald-700 font-bold">[The <span class="text-rose-600 font-bold">message</span> sent by Almas]</span> <span class="text-indigo-600 font-bold">was deleted</span> 5 minutes ago.</div>
+                                    <div class="bg-white p-2 rounded-lg border border-slate-200">• <span class="text-emerald-700 font-bold">[A <span class="text-rose-600 font-bold">number</span> of students in the class]</span> <span class="text-indigo-600 font-bold">join</span> an extra class for TOEFL.</div>
                                 </div>
                             </div>
                         </div>
+                        
 
                         <!-- Element 2: Pronoun -->
                         <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 hover:border-emerald-400 transition flex items-start gap-3">
@@ -265,8 +267,8 @@
                                 </div>
                                 <div class="space-y-1.5 text-xs">
                                     <div class="bg-white p-2 rounded-lg border border-slate-200">• <span class="text-emerald-700 font-bold">Reading</span> <span class="text-indigo-600 font-bold">improves</span> vocabulary.</div>
-                                    <div class="bg-white p-2 rounded-lg border border-slate-200">• <span class="text-emerald-700 font-bold">Listening, Analyzing, and Reading</span> <span class="text-indigo-600 font-bold">are</span> TOEFL sections. <span class="text-slate-400 text-[10px]">(Compound = Plural)</span></div>
                                     <div class="bg-white p-2 rounded-lg border border-slate-200">• <span class="text-emerald-700 font-bold">Analyzing adjective clause part</span> <span class="text-indigo-600 font-bold">is</span> hard.</div>
+                                    <div class="bg-white p-2 rounded-lg border border-slate-200">• <span class="text-emerald-700 font-bold">Listening, structures, and Reading </span> <span class="text-indigo-600 font-bold">are</span> TOEFL sections. <span class="text-slate-400 text-[10px]">(Compound = Plural)</span></div>
                                 </div>
                             </div>
                         </div>
@@ -440,6 +442,30 @@
                             </div>
                         </div>
                     </div>
+
+                     <!-- Case 5 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50/50">
+                        <div class="bg-slate-900 text-white p-3 font-mono-code text-xs md:text-sm leading-relaxed">
+                            <span class="text-slate-400 text-[10px] block mb-1">Case #5: To Infinitive Subject</span>
+                            <span class="text-blue-400 font-bold">To reduce <span class="text-emerald-400"> carbon emissions,</span> to promote <span class="text-emerald-400"> renewable energy,  and </span>to create <span class="text-emerald-400">green jobs</span> 
+                            <span class="text-rose-400 font-bold">are</span> 
+                            <span class="text-white">the main goals of the new environmental policy.</span>.
+                        </div>
+                        <div class="p-4 grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-emerald-50 p-2.5 rounded-lg border border-emerald-200">
+                                <span class="text-emerald-600 font-bold block uppercase tracking-wider text-[9px]">Subject Lengkap (To Infinitive)</span>
+                                <span class="font-semibold text-slate-900 text-xs">To reduce carbon emissions, to promote renewable energy, and to create green jobs</span>
+                            </div>
+                            <div class="bg-rose-50 p-2.5 rounded-lg border border-rose-200">
+                                <span class="text-rose-600 font-bold block uppercase tracking-wider text-[9px]">Main Finite Verb</span>
+                                <span class="font-extrabold text-rose-800 text-xs">are</span>
+                            </div>
+                            <div class="bg-slate-100 p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-slate-500 font-bold block uppercase tracking-wider text-[9px]">Complement</span>
+                                <span class="font-semibold text-slate-900 text-xs">the main goals of the new environmental policy</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -547,7 +573,7 @@
             <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
                 <div>
                     <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Laboratorium Analisis</span>
-                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Sentence Decomposition Lab</h2>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Sentence Decomposition</h2>
                     <p class="text-slate-600 text-xs md:text-sm">
                         Pelajari bagaimana kata kerja tampak (V-ing / V3) terbentuk akibat proses pemangkasan (<em>reducing</em>) klausa penjelas.
                     </p>
@@ -629,7 +655,7 @@
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                     <div>
                         <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
-                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz: Skill 1</h2>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Practice Quiz: Skill 1</h2>
                         <p class="text-slate-600 text-xs md:text-sm">
                             Uji pemahaman Anda tentang penentuan Subject & Verb dengan pembahasan langsung.
                         </p>
@@ -650,7 +676,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-2 text-center text-[10px] text-slate-2000 mt-8">
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-2000 mt-8">
         <div class="max-w-7xl mx-auto px-4">
            LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 1: Subject & Verb Architecture
         </div>

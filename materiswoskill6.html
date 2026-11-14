@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 6 - Coordinating Conjunction</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+        .font-mono-code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-2 gap-2">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-sm shadow-sm">
+                        S6
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-teal-500/20 text-teal-300 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        </div>
+                        <h1 class="text-base md:text-lg font-bold tracking-tight text-white leading-tight mt-0.5">Skill 6: Coordinating Conjunction</h1>
+                    </div>
+                </div>
+
+                <!-- Global Stats / Quick Status -->
+                <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-xs">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>FANBOYS Parallel Structure</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="flex items-center gap-1.5 text-indigo-400 font-medium">
+                        <span>Punctuation & Inversion Rules</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Bar -->
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-1.5 pb-1 no-scrollbar">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30">
+                    🔍 1. Overview & Pitfalls
+                </button>
+                <button onclick="switchTab('blueprint')" id="tab-blueprint" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    📗 2. FANBOYS Blueprint
+                </button>
+                <button onclick="switchTab('parallel')" id="tab-parallel" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🔬 3. Parallelism Lab
+                </button>
+                <button onclick="switchTab('inversion')" id="tab-inversion" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    📘 4. Nor Inversion & Subject-Verb Match
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🎯 5. Practice Quiz (10 Soal)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW & PITFALLS ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">
+                        <span>Core Structure Axiom</span>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Coordinating Conjunction Menghubungkan 2 Hal yang Setara (Parallel Structure).</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Dikenal dengan singkatan FANBOYS (For, And, Nor, But, Or, Yet, So). Unsur yang dihubungkan wajib memiliki kedudukan dan bentuk gramatikal yang setara, serta aturan tanda baca koma yang ketat saat menghubungkan klausa.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Essential Learning Objectives -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-teal-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Kaidah FANBOYS</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">For, And, Nor, But, Or, Yet, So.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-indigo-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Aturan Koma</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Wajib koma antar klausa, opsi koma untuk list.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-amber-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Parallelism Lab</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Variasi noun, adj, gerund, inf, dan clause.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-emerald-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Inversi & S-V Match</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Aturan nor inversion & kesesuaian verb.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Critical Pitfalls Cards Section -->
+            <div class="space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5">
+                        <span class="text-rose-500">⚠️</span> Kesalahan Terbesar Peserta TOEFL (Common Pitfalls)
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <!-- Pitfall 1 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Parallelism Mismatch Trap</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Menghubungkan dua unsur berbeda jenis (misalnya Gerund dengan To-Infinitive).</p>
+                        
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5">
+                                <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Jebakan:</span>
+                                <p class="text-slate-400">❌ Salah: <span class="text-slate-800">He wants <span class="text-rose-600 underline">to listen</span> or <span class="text-rose-600 underline">singing</span> on the stage.</span></p>
+                                <p class="text-emerald-700">✓ Benar: <span class="text-slate-800">He wants <span class="text-emerald-600 font-bold">to listen</span> or <span class="text-emerald-600 font-bold">to sing</span> on the stage.</span></p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Unsur sebelum dan sesudah konjungsi harus setara secara gramatikal (sama-sama to-infinitive atau gerund).</p>
+                    </div>
+
+                    <!-- Pitfall 2 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Nor Inversion Failure</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Gagal melakukan inversi (pembalikan posisi auxiliary dan subjek) setelah konjungsi <em>Nor</em>.</p>
+                        
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5">
+                                <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Jebakan:</span>
+                                <p class="text-slate-400">❌ Salah: <span class="text-slate-800">Motorola is not familiar anymore, nor <span class="text-rose-600 underline">Siemens is</span>.</span></p>
+                                <p class="text-emerald-700">✓ Benar: <span class="text-slate-800">Motorola is not familiar anymore, nor <span class="text-emerald-600 font-bold">is Siemens</span>.</span></p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Setelah <em>nor</em>, struktur kalimat wajib mengalami inversi (auxiliary <em>is</em> mendahului subjek <em>Siemens</em>).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: FANBOYS BLUEPRINT ==================== -->
+        <section id="content-blueprint" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Blueprint & Klasifikasi FANBOYS</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Aturan Penghubung Coordinating Conjunction</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        FANBOYS memiliki aturan spesifik terkait level gramatikal yang dihubungkan (Word, Phrase, Gerund, To-Infinitive, maupun Clause) beserta penanda strukturalnya.
+                    </p>
+                </div>
+
+                <div class="border-t border-slate-100 pt-4">
+                    <h3 class="text-base font-bold text-slate-900 mb-3">Klasifikasi Fungsi & Contoh Analisis TOEFL:</h3>
+                    
+                    <div class="space-y-3">
+                        <!-- Element 1: And, But, Or -->
+                        <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 hover:border-emerald-400 transition flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
+                            <div class="flex-grow space-y-2">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <h4 class="font-bold text-slate-900 text-xs md:text-sm">And, But, Or</h4>
+                                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-2 py-0.5 rounded-full w-max">Word, Phrase, Gerund, To-Inf, & Clause</span>
+                                </div>
+                                <p class="text-[11px] text-slate-600">Dapat menghubungkan kata tunggal, frasa benda, gerund, to-infinitive, maupun klausa utuh dengan struktur paralel:</p>
+                                
+                                <div class="space-y-1.5 text-xs font-mono-code">
+                                    <div class="bg-white p-2.5 rounded-lg border border-slate-200 space-y-1">
+                                        <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Word (Kata):</span>
+                                        <p class="text-slate-700">The committee evaluated <span class="text-indigo-600 font-bold underline">syntactic</span> <span class="text-emerald-700 font-bold">[and]</span> <span class="text-indigo-600 font-bold underline">semantic</span> patterns in the corpus.</p>
+                                    </div>
+                                    <div class="bg-white p-2.5 rounded-lg border border-slate-200 space-y-1">
+                                        <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Clause (Klausa Lengkap S + V):</span>
+                                        <p class="text-slate-700"><span class="text-indigo-600 font-bold underline">The historical archives were preserved digitally</span>, <span class="text-emerald-700 font-bold">[but]</span> <span class="text-indigo-600 font-bold underline">the original paper documents deteriorated</span>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Element 2: For, Nor, Yet, So -->
+                        <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 hover:border-indigo-400 transition flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-indigo-500 text-white font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">2</span>
+                            <div class="flex-grow space-y-2">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <h4 class="font-bold text-slate-900 text-xs md:text-sm">For, Nor, Yet, So</h4>
+                                    <span class="bg-indigo-100 text-indigo-800 text-[10px] font-semibold px-2 py-0.5 rounded-full w-max">Strict Clause Connectors</span>
+                                </div>
+                                <p class="text-[11px] text-slate-600">Wajib menghubungkan antar klausa utuh (memiliki Subjek dan Verb di kedua sisinya) dan diawali koma:</p>
+                                
+                                <div class="space-y-1.5 text-xs font-mono-code">
+                                    <div class="bg-white p-2.5 rounded-lg border border-slate-200 space-y-1">
+                                        <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Soal TOEFL (For / So / Yet):</span>
+                                        <p class="text-slate-700"><span class="text-indigo-600 font-bold underline">The TOEFL examinee studied rigorously for months</span>, <span class="text-indigo-700 font-bold">[so]</span> <span class="text-indigo-600 font-bold underline">she successfully achieved a score above 600</span>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2 text-xs">
+                    <span class="font-bold text-slate-900 block">📌 Aturan Tanda Baca Koma (Punctuation Rule):</span>
+                    <ul class="list-disc pl-4 space-y-1 text-slate-600">
+                        <li>Jika FANBOYS menghubungkan <strong>2 unsur setara</strong> (misal: 2 subjek, 2 gerund, atau 2 to-infinitive), <strong>tidak perlu koma</strong>. Contoh: <em>My father and I go.</em></li>
+                        <li>Jika FANBOYS menghubungkan <strong>lebih dari 2 unsur</strong> (list/rincian), gunakan koma pemisah. Contoh: <em>My father, Luna, and I go.</em></li>
+                        <li>Jika FANBOYS menghubungkan <strong>2 klausa utuh (S + V)</strong>, <strong>wajib diberi koma</strong> sebelum konjungsi. Contoh: <em>I am writing the letter, and you will send it.</em></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: PARALLELISM LAB ==================== -->
+        <section id="content-parallel" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Parallel Structure Lab</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Variasi Elemen Paralel & Analisis Warna</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Lab ini membedah berbagai variasi elemen gramatikal (Noun, Adjective, Gerund, To-Infinitive, hingga Auxiliary Verb) yang dihubungkan oleh Coordinating Conjunction dengan pembedaan warna khusus: <span class="text-indigo-600 font-semibold">Elemen 1 & 2 (Indigo)</span>, <span class="text-emerald-600 font-semibold">Conjunction (Emerald)</span>, serta <span class="text-amber-600 font-semibold">Verb / Penanda (Amber)</span>.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Case 1: Noun Phrase Parallelism -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Noun Phrase Parallelism</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Object Position</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                            "The researcher collected <span class="text-indigo-400 font-bold underline">phonological data</span> <span class="text-emerald-400 font-bold">and</span> <span class="text-indigo-400 font-bold underline">syntactic records</span>."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Elemen Pertama:</span>
+                                <p class="text-slate-600"><span class="text-indigo-600 font-semibold">phonological data</span> (Noun Phrase sebagai Objek).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Konjungsi Penghubung:</span>
+                                <p class="text-slate-600"><span class="text-emerald-600 font-semibold">and</span> (Coordinating Conjunction tanpa koma karena hanya 2 unsur).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Elemen Kedua:</span>
+                                <p class="text-slate-600"><span class="text-indigo-600 font-semibold">syntactic records</span> (Noun Phrase setara sebagai Objek).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 2: Adjective Parallelism -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Adjective Parallelism</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Complement Position</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                            "The linguistic theory was <span class="text-teal-300 font-bold underline">innovative</span>, <span class="text-amber-400 font-bold">yet</span> <span class="text-teal-300 font-bold underline">complex</span>."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Elemen Pertama:</span>
+                                <p class="text-slate-600"><span class="text-teal-700 font-semibold">innovative</span> (Adjective sebagai Subject Complement).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Konjungsi Penghubung:</span>
+                                <p class="text-slate-600"><span class="text-amber-600 font-semibold">yet</span> (Menghubungkan dua adjektiva berlawanan makna dengan koma).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Elemen Kedua:</span>
+                                <p class="text-slate-600"><span class="text-teal-700 font-semibold">complex</span> (Adjective setara sebagai Subject Complement).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 3: Gerund Phrase Parallelism -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">3. Gerund Phrase Parallelism</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Subject / Object Position</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                            "Prof. Muhandis enjoys <span class="text-amber-300 font-bold underline">analyzing manuscripts</span> <span class="text-emerald-400 font-bold">or</span> <span class="text-amber-300 font-bold underline">teaching semantics</span>."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Elemen Pertama:</span>
+                                <p class="text-slate-600"><span class="text-amber-700 font-semibold">analyzing manuscripts</span> (Gerund Phrase).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Konjungsi Penghubung:</span>
+                                <p class="text-slate-600"><span class="text-emerald-600 font-semibold">or</span> (Coordinating Conjunction).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Elemen Kedua:</span>
+                                <p class="text-slate-600"><span class="text-amber-700 font-semibold">teaching semantics</span> (Gerund Phrase setara).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 4: To-Infinitive Parallelism -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">4. To-Infinitive Parallelism</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Infinitive Phrase</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                            "The institute aims <span class="text-purple-300 font-bold underline">to preserve local dialects</span> <span class="text-emerald-400 font-bold">and</span> <span class="text-purple-300 font-bold underline">(to) publish dictionaries</span>."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Elemen Pertama:</span>
+                                <p class="text-slate-600"><span class="text-purple-700 font-semibold">to preserve local dialects</span> (To-Infinitive).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Konjungsi Penghubung:</span>
+                                <p class="text-slate-600"><span class="text-emerald-600 font-semibold">and</span> (Partikel 'to' pada elemen kedua boleh dihilangkan).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Elemen Kedua:</span>
+                                <p class="text-slate-600"><span class="text-purple-700 font-semibold">(to) publish dictionaries</span> (To-Infinitive setara).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 5: Shared Auxiliary Verb Parallelism -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">5. Shared Auxiliary Verb Parallelism</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Verb Phrase</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                            "He <span class="text-rose-300 font-bold">is</span> <span class="text-rose-300 font-bold underline">waving his arms</span> <span class="text-emerald-400 font-bold">and</span> <span class="text-rose-300 font-bold underline">(is) shouting</span> at us."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Verb Pertama:</span>
+                                <p class="text-slate-600"><span class="text-rose-700 font-semibold">is waving</span> (Auxiliary <em>is</em> + Present Participle).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Konjungsi & Penghilangan:</span>
+                                <p class="text-slate-600"><span class="text-emerald-600 font-semibold">and</span>. Auxiliary (<em>is</em>) pada verb kedua boleh ditiadakan.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Verb Kedua:</span>
+                                <p class="text-slate-600"><span class="text-rose-700 font-semibold">(is) shouting</span> (Setara bentuk V-ing).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: NOR INVERSION & SUBJECT-VERB MATCH (DIPERKUAT DENGAN CONTOH SALMA OR NADIA) ==================== -->
+        <section id="content-inversion" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Advanced Rules</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Nor Inversion & Subject-Verb Agreement (Proximity Rule)</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Memahami aturan inversi khusus setelah konjungsi <em>Nor</em> serta aturan kesesuaian verb dengan subjek terdekat (misalnya pada struktur <em>either... or</em> / <em>neither... nor</em> / <em>or</em>).
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <!-- Rule 1: Nor Inversion -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Aturan Inversi Nor</span>
+                        <h3 class="font-bold text-slate-900 text-sm">Nor + Auxiliary + Subject</h3>
+                        <p class="text-xs text-slate-600">Setelah konjungsi <em>nor</em>, klausa wajib dibalik (auxiliary verb mendahului subjek).</p>
+                        
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-emerald-50 p-2.5 rounded border border-emerald-200">
+                                <span class="text-[10px] font-sans font-bold text-emerald-800 block">✓ Benar (Inversi):</span>
+                                <p class="text-slate-800">Motorola is not familiar, nor <span class="text-emerald-700 font-bold">is Siemens</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rule 2: Proximity Rule (Salma or Nadia) -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Proximity Rule (Or / Nor)</span>
+                        <h3 class="font-bold text-slate-900 text-sm">Salma or Nadia <span class="text-emerald-600 font-bold">needs</span>...</h3>
+                        <p class="text-xs text-slate-600">Ketika dua subjek dihubungkan oleh <em>or</em> atau <em>nor</em>, verb disesuaikan dengan subjek yang berada <strong>paling dekat</strong> dengan verb.</p>
+                        
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-emerald-50 p-2.5 rounded border border-emerald-200 space-y-1">
+                                <span class="text-[10px] font-sans font-bold text-emerald-800 block">✓ Contoh 1 (Singular Closer):</span>
+                                <p class="text-slate-800">Salma or Nadia <span class="text-emerald-700 font-bold">needs</span> to go.</p>
+                                <span class="text-[10px] text-slate-500 font-sans block mt-0.5">Nadia (singular) dekat dengan verb -> needs.</span>
+                            </div>
+                            <div class="bg-emerald-50 p-2.5 rounded border border-emerald-200 space-y-1">
+                                <span class="text-[10px] font-sans font-bold text-emerald-800 block">✓ Contoh 2 (Plural Closer):</span>
+                                <p class="text-slate-800">Salma or her friends <span class="text-emerald-700 font-bold">need</span> to go.</p>
+                                <span class="text-[10px] text-slate-500 font-sans block mt-0.5">Friends (plural) dekat dengan verb -> need.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rule 3: Subject Closer to Verb (Neither... Nor) -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Correlative Proximity</span>
+                        <h3 class="font-bold text-slate-900 text-sm">Neither... Nor Agreement</h3>
+                        <p class="text-xs text-slate-600">Berlaku hal serupa pada struktur korelatif seperti <em>neither... nor</em>.</p>
+                        
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-emerald-50 p-2.5 rounded border border-emerald-200">
+                                <span class="text-[10px] font-sans font-bold text-emerald-800 block">✓ Contoh Sesuai:</span>
+                                <p class="text-slate-800">Neither the faculty members nor the department <span class="text-emerald-700 font-bold">head was</span> present.</p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Karena <em>head</em> (singular) berada paling dekat dengan verb, maka verb yang digunakan adalah <em>was</em>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: PRACTICE QUIZ (10 SOAL) ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz: Skill 6 (10 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">
+                            Uji pemahaman Anda mengenai FANBOYS, parallel structure (noun, adj, gerund, to-infinitive), aturan tanda baca koma, dan pola inversi Nor.
+                        </p>
+                    </div>
+                    <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                        <span>Score: </span>
+                        <span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 10</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Questions Container -->
+                <div id="quiz-container" class="space-y-4">
+                    <!-- Dynamic Questions generated by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-7xl mx-auto px-4">
+            LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 6: Coordinating Conjunction
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+            });
+
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) {
+                activeTabBtn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30";
+            }
+        }
+
+        // 10 Practice Questions for Skill 6
+        const quizQuestions = [
+            {
+                id: 1,
+                question: "The linguistics professor delivered an engaging lecture, _____ the students took detailed notes.",
+                options: [
+                    { text: "so", isCorrect: true },
+                    { text: "because", isCorrect: false },
+                    { text: "although", isCorrect: false },
+                    { text: "during", isCorrect: false }
+                ],
+                explanation: "Kalimat ini menghubungkan dua klausa lengkap yang menunjukkan hubungan sebab-akibat dengan menggunakan coordinating conjunction 'so' yang diawali tanda koma."
+            },
+            {
+                id: 2,
+                question: "He enjoys reading manuscripts, writing research articles, _____ analyzing linguistic data.",
+                options: [
+                    { text: "or", isCorrect: false },
+                    { text: "and", isCorrect: true },
+                    { text: "yet", isCorrect: false },
+                    { text: "nor", isCorrect: false }
+                ],
+                explanation: "Dalam rincian paralel gerund (reading, writing, analyzing), konjungsi penutup yang menyatukan keseluruhan daftar aktivitas adalah 'and'."
+            },
+            {
+                id: 3,
+                question: "The research laboratory does not allow unauthorized personnel inside, nor _____ access granted to the public.",
+                options: [
+                    { text: "is", isCorrect: true },
+                    { text: "access is", isCorrect: false },
+                    { text: "it is", isCorrect: false },
+                    { text: "was", isCorrect: false }
+                ],
+                explanation: "Setelah coordinating conjunction 'nor', klausa wajib mengalami inversi (pembalikan posisi). Auxiliary 'is' mendahului subjek 'access' untuk membentuk kalimat pasif yang terinversi."
+            },
+            {
+                id: 4,
+                question: "She wanted to pursue her graduate studies in Pare, _____ she lacked sufficient financial support.",
+                options: [
+                    { text: "but", isCorrect: true },
+                    { text: "and", isCorrect: false },
+                    { text: "so", isCorrect: false },
+                    { text: "or", isCorrect: false }
+                ],
+                explanation: "Menyatakan pertentangan (kontras) antara keinginan studi lanjut dan keterbatasan finansial pada dua klausa lengkap, maka coordinating conjunction yang tepat adalah 'but' dengan didahului koma."
+            },
+            {
+                id: 5,
+                question: "The committee reviewed the proposal carefully _____ approved the funding for the research project.",
+                options: [
+                    { text: "and", isCorrect: true },
+                    { text: "yet", isCorrect: false },
+                    { text: "for", isCorrect: false },
+                    { text: "nor", isCorrect: false }
+                ],
+                explanation: "Menghubungkan dua verb paralel ('reviewed' dan 'approved') dalam satu subjek tunggal ('The committee') tanpa tanda koma, sehingga 'and' adalah pilihan yang tepat."
+            },
+            {
+                id: 6,
+                question: "The primary objective of the workshop is to refine academic writing skills and _____ TOEFL structure strategies.",
+                options: [
+                    { text: "master", isCorrect: true },
+                    { text: "mastering", isCorrect: false },
+                    { text: "mastered", isCorrect: false },
+                    { text: "masters", isCorrect: false }
+                ],
+                explanation: "Struktur paralel pada to-infinitive: 'to refine ... and (to) master ...'. Partikel 'to' pada unsur kedua boleh dihilangkan karena sudah diwakili oleh 'to' pada unsur pertama, menyisakan bentuk dasar verb 'master'."
+            },
+            {
+                id: 7,
+                question: "Salma or her friends _____ going to attend the international seminar in Jakarta.",
+                options: [
+                    { text: "is", isCorrect: false },
+                    { text: "are", isCorrect: true },
+                    { text: "was", isCorrect: false },
+                    { text: "has", isCorrect: false }
+                ],
+                explanation: "Berdasarkan Subject-Verb Agreement dengan aturan Proximity (kedekatan), verb disesuaikan dengan subjek terdekat yaitu 'friends' (plural), sehingga verb yang tepat adalah 'are'."
+            },
+            {
+                id: 8,
+                question: "He decided to study late into the night, _____ he had an important TOEFL exam the next morning.",
+                options: [
+                    { text: "for", isCorrect: true },
+                    { text: "so", isCorrect: false },
+                    { text: "but", isCorrect: false },
+                    { text: "nor", isCorrect: false }
+                ],
+                explanation: "Coordinating conjunction 'for' berfungsi menghubungkan dua klausa untuk menjelaskan alasan atau penyebab (ia belajar hingga larut malam karena ada ujian penting keesokan harinya)."
+            },
+            {
+                id: 9,
+                question: "The university offers specialized courses in syntax, semantics, _____ sociolinguistics.",
+                options: [
+                    { text: "and", isCorrect: true },
+                    { text: "or", isCorrect: false },
+                    { text: "nor", isCorrect: false },
+                    { text: "yet", isCorrect: false }
+                ],
+                explanation: "Dalam merinci tiga kata benda setara (syntax, semantics, sociolinguistics), konjungsi koordinatif penutup yang tepat adalah 'and'."
+            },
+            {
+                id: 10,
+                question: "The results of the experiment were inconclusive, _____ the team decided to conduct further trials.",
+                options: [
+                    { text: "so", isCorrect: true },
+                    { text: "for", isCorrect: false },
+                    { text: "nor", isCorrect: false },
+                    { text: "yet", isCorrect: false }
+                ],
+                explanation: "Menyatakan hasil atau konsekuensi logis antara dua klausa lengkap, coordinating conjunction 'so' yang didahului tanda koma adalah pilihan yang paling akurat."
+            }
+        ];
+
+        let userAnswers = {};
+        let score = 0;
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+
+            quizContainer.innerHTML = '';
+
+            quizQuestions.forEach((q, index) => {
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                
+                let optionsHTML = '';
+                const optionLetters = ['A', 'B', 'C', 'D'];
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) {
+                            btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        } else if (isSelected && !opt.isCorrect) {
+                            btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        } else {
+                            btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                        }
+                    }
+
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''} 
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${optionLetters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>
+                    `;
+                }
+
+                qCard.innerHTML = `
+                    <div class="flex items-start justify-between gap-4">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-relaxed">${q.question}</p>
+                    <div class="space-y-1.5">
+                        ${optionsHTML}
+                    </div>
+                    ${explanationHTML}
+                `;
+
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) {
+                    score++;
+                }
+            });
+
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        window.onload = function() {
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#981f34">
+<title>Content Manager | Lumina Project</title>
+<style>
+:root{--red:#981f34;--red-dark:#751629;--ink:#20283a;--muted:#697589;--bg:#f4f6fa;--line:#e6eaf1;--blue:#3979ce;--green:#16866b;--amber:#bd7922;--purple:#7952b5;--danger:#b3261e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;padding-bottom:70px}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.hero{background:linear-gradient(115deg,var(--red-dark),#b52b43 58%,#8c1b30);color:#fff;padding:14px max(4vw,18px)}
+.hero-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.eyebrow{font-size:9px;letter-spacing:2px;color:#ffdce2;font-weight:700}
+.hero h1{font-size:clamp(20px,3vw,28px);margin:4px 0 2px}
+.hero p{margin:0;font-size:12px;color:#ffe9ed}
+.hero-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.who{font-size:12px;color:#ffe9ed;margin-right:4px}
+.logo-img{height:48px;width:auto;object-fit:contain}
+.btn{border:0;border-radius:9px;padding:10px 15px;font-size:12.5px;font-weight:750;background:var(--red);color:#fff;text-decoration:none;display:inline-block}
+.btn:hover{filter:brightness(.94)}
+.btn.secondary{background:#eef1f6;color:#435067}
+.btn.ghost{background:#ffffff26;color:#fff}
+.btn.danger{background:#fdecea;color:var(--danger)}
+.btn.small{padding:7px 10px;font-size:12px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.banner{max-width:1180px;margin:14px auto 0;padding:0 22px;display:grid;gap:8px}
+.banner div{padding:11px 14px;border-radius:11px;font-size:12.5px;line-height:1.5;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.banner .warn{background:#fff4e6;color:#8a5413;border:1px solid #f3d9b4}
+.banner .bad{background:#fff3f4;color:#8f2234;border:1px solid #e7a2a9}
+.shell{max-width:1180px;margin:18px auto 30px;padding:0 22px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:20px}
+.sidebar,.panel{background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 22px #26334b08}
+.sidebar{padding:14px;height:max-content;position:sticky;top:14px}
+.nav{display:flex;flex-direction:column;gap:6px}
+.nav button{border:0;background:transparent;text-align:left;padding:11px 12px;border-radius:11px;color:#536075;font-weight:650;font-size:13px;display:flex;align-items:center;gap:10px}
+.nav button:hover{background:#f5f6fa}.nav button.active{background:#fae9ed;color:var(--red)}
+.panel{padding:24px;min-width:0}
+.page-title{margin-bottom:18px}
+.page-title h2{font-size:22px;margin:0 0 5px}.page-title p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+.kicker{font-size:10px;letter-spacing:1.5px;color:var(--red);font-weight:800;margin-bottom:6px}
+.box{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px;background:#fff}
+.box h3{margin:0 0 10px;font-size:15px}
+.note{padding:12px 14px;background:#f5f7fb;border-radius:11px;font-size:12.5px;line-height:1.6;color:#596579;margin-bottom:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.stat{padding:14px;border:1px solid var(--line);border-radius:12px}.stat b{display:block;font-size:22px}.stat span{font-size:11.5px;color:var(--muted)}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:20px;padding:7px 13px;font-size:12.5px;font-weight:650;color:#536075}
+.chip.active{background:var(--red);border-color:var(--red);color:#fff}
+.form{display:grid;gap:12px}
+.form label{display:grid;gap:5px;font-size:12px;font-weight:700;color:#536075}
+.form input,.form textarea,.form select{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 11px;background:#fff;color:var(--ink);font-size:13px;outline-color:var(--red)}
+.form textarea{resize:vertical;line-height:1.5}
+.form .fgroup{display:grid;gap:5px}.form .fl{font-size:12px;font-weight:700;color:#536075}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.hint{font-size:11.5px;color:var(--muted);line-height:1.5;font-weight:400}
+.item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.item:first-child{border-top:0}
+.item .main{min-width:0;flex:1}
+.item .t{font-weight:700;font-size:13.5px;display:flex;align-items:center;gap:8px;word-break:break-word}
+.item .s{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5;word-break:break-word}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block;flex:none;border:1px solid #0002}
+.acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.empty{padding:22px;text-align:center;color:var(--muted);font-size:13px}
+.tag{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:10px;background:#eef1f6;color:#536075;letter-spacing:.4px}
+.tag.admin{background:#fae9ed;color:var(--red)}
+.opts{display:grid;gap:3px;margin-top:6px;font-size:12px}
+.opts .ok{color:var(--green);font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{text-align:left;padding:10px 8px;border-top:1px solid var(--line);vertical-align:middle}
+th{font-size:11px;letter-spacing:.8px;color:#8993a4;border-top:0}
+/* rich editor */
+.rte{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#fff}
+.rte-bar{display:flex;flex-wrap:wrap;align-items:center;gap:5px;padding:8px;background:#f7f8fb;border-bottom:1px solid var(--line)}
+.rte-bar button{border:1px solid var(--line);background:#fff;border-radius:7px;min-width:30px;height:30px;padding:0 8px;font-size:12px;color:#435067}
+.rte-bar button:hover{background:#f0f2f7}
+.rte-bar .sw{min-width:22px;width:22px;height:22px;padding:0;border-radius:50%}
+.rte-bar .sep{width:1px;height:22px;background:var(--line);margin:0 3px}
+.rte-bar .lbl{font-size:11px;font-weight:700;color:#8993a4}
+.rte-body{min-height:240px;max-height:520px;overflow:auto;padding:14px;font-size:14px;line-height:1.75;outline:none}
+.rte-body:empty:before{content:attr(data-placeholder);color:#a5adbb}
+.rte-body ul,.rte-body ol{padding-left:24px}
+.rte-body h3{font-size:16px;margin:12px 0 6px}
+.rte-body a{color:var(--blue)}
+.colorpick{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.colorpick button{width:26px;height:26px;border-radius:50%;border:2px solid #0002;padding:0}
+.colorpick button.on{outline:3px solid var(--ink);outline-offset:1px}
+.colorpick .none{background:repeating-linear-gradient(45deg,#fff,#fff 4px,#e6eaf1 4px,#e6eaf1 8px)}
+/* login */
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(115deg,var(--red-dark),#b52b43 58%,#8c1b30)}
+.login-card{background:#fff;border-radius:18px;padding:28px;width:100%;max-width:400px;box-shadow:0 20px 60px #0004}
+.login-card h1{font-size:21px;margin:0 0 4px}
+.login-card p{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.5}
+.err{display:none;color:var(--danger);background:#fff3f4;border:1px solid #e7a2a9;border-radius:9px;padding:9px 11px;font-size:12px;line-height:1.5}
+/* modal + toast */
+.modal{position:fixed;inset:0;background:#0008;display:grid;place-items:center;z-index:50;padding:20px}
+.modal-card{background:#fff;border-radius:14px;padding:22px;width:100%;max-width:380px}
+.modal-card h3{margin:0 0 12px}
+#toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:#20283a;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:60}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+footer{text-align:center;color:#8993a4;font-size:11px;padding:20px}
+@media(max-width:820px){.shell{grid-template-columns:1fr;padding:0 14px}.sidebar{position:static}.nav{display:grid;grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.panel{padding:16px}.banner{padding:0 14px}.item{flex-direction:column;align-items:stretch}.acts{justify-content:flex-start}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen" class="login-wrap hidden">
+ <div class="login-card">
+  <div class="eyebrow" style="color:var(--red);font-weight:800">LUMINA PROJECT</div>
+  <h1>🔒 Content Manager</h1>
+  <p>Masuk dengan akun admin untuk mengelola materi, soal, audio, dan akun.</p>
+  <form id="login-form" class="form" autocomplete="off">
+   <label>Username<input id="login-user" required autocomplete="username"></label>
+   <label>Password<input id="login-pass" type="password" required autocomplete="current-password"></label>
+   <div id="login-error" class="err"></div>
+   <button class="btn" type="submit">Masuk</button>
+   <a href="index.html" class="hint" style="text-align:center">← Kembali ke halaman latihan</a>
+  </form>
+ </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+ <header class="hero"><div class="hero-inner">
+  <div><div class="eyebrow">LUMINA LEARNING PLATFORM</div><h1>Content Manager</h1><p>Kelola materi, soal, audio, tautan, dan akun untuk web TOEFL Exercise.</p></div>
+  <div class="hero-actions">
+   <span class="who" id="who"></span>
+   <a class="btn ghost small" href="index.html" target="_blank" rel="noopener">Lihat web ↗</a>
+   <button class="btn ghost small" id="logout" type="button">Keluar</button>
+  </div>
+ </div></header>
+ <div class="banner" id="banner"></div>
+ <div class="shell">
+  <aside class="sidebar"><nav class="nav" id="tabs"></nav></aside>
+  <main><section class="panel" id="view"></section></main>
+ </div>
+ <footer>LUMINA PROJECT 2026 · Content Manager</footer>
+</div>
+
+<div id="modal" class="modal hidden"></div>
+<div id="toast"></div>
+
+<script src="lumina-core.js"></script>
+<script>
+const L=window.Lumina, esc=L.esc, $=s=>document.querySelector(s);
+let D=null, tab="home";
+const SEC_LABEL={general:"Umum",listening:"Listening",swo:"Structure",reading:"Reading"};
+const SEC_FULL={general:"Umum (TOEFL Materials)",listening:"Listening Comprehension",swo:"Structure & Written Expression",reading:"Reading Comprehension"};
+const LINK_LABEL={listening:"Listening",swo:"Structure & Written Expression",reading:"Reading",routine:"Suggested Practice Routine"};
+const TABS=[["home","⌂","Ringkasan"],["materials","📚","Materi"],["skills","📝","Halaman Skill"],["questions","❓","Soal latihan"],["audio","🎧","Audio"],["links","🔗","Tautan materi"],["accounts","👥","Akun & login"],["backup","💾","Backup & publikasi"]];
+const HL=["#fff3a3","#c9f2d9","#ffd3de","#cfe3ff","#ffdcb0"], TC=["#c0192f","#1d6fd0","#15803d","#b45309","#6d28d9"];
+const TAG_COLORS=["","#c0192f","#3979ce","#16866b","#bd7922","#7952b5"];
+let matSection="general", matEdit=null, matColor="";
+let qSection="listening", qEdit=null;
+let audioEdit=null;
+
+/* ---------- util ---------- */
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2200);}
+function syncSkills(){const l=L.loadLocal();if(l)D.skills=l.skills;}
+function commit(msg,opts){
+ if(!(opts&&opts.noSync))syncSkills();
+ if(!L.save(D)){alert("Gagal menyimpan: penyimpanan browser penuh atau diblokir.");return false;}
+ toast(msg||"Tersimpan ✓");renderBanner();return true;
+}
+function move(arr,i,dir){const j=i+dir;if(j<0||j>=arr.length)return;[arr[i],arr[j]]=[arr[j],arr[i]];}
+function modal(html,onMount){const m=$("#modal");m.innerHTML=`<div class="modal-card">${html}</div>`;m.classList.remove("hidden");onMount&&onMount(m);}
+function closeModal(){$("#modal").classList.add("hidden");$("#modal").innerHTML="";}
+function askPassword(title,cb){
+ modal(`<h3>${esc(title)}</h3><form class="form" id="pw-form"><label>Password baru (min. 6 karakter)<input id="pw-in" type="password" required minlength="6" autocomplete="new-password"></label><div class="row"><button class="btn" type="submit">Simpan</button><button class="btn secondary" type="button" id="pw-cancel">Batal</button></div></form>`,m=>{
+  $("#pw-in").focus();$("#pw-cancel").onclick=closeModal;
+  $("#pw-form").onsubmit=e=>{e.preventDefault();const v=$("#pw-in").value;if(v.length<6)return;closeModal();cb(v);};
+ });
+}
+
+/* ---------- editor teks (warna & sorotan) ---------- */
+function editorHTML(id,html){
+ const sw=(a,c)=>`<button type="button" class="sw" data-${a}="${c}" style="background:${c}" title="${a==='hl'?'Sorot':'Warna teks'}"></button>`;
+ return `<div class="rte" id="${id}"><div class="rte-bar">
+  <button type="button" data-cmd="bold" title="Tebal"><b>B</b></button>
+  <button type="button" data-cmd="italic" title="Miring"><i>I</i></button>
+  <button type="button" data-cmd="underline" title="Garis bawah"><u>U</u></button>
+  <span class="sep"></span>
+  <button type="button" data-cmd="h3" title="Judul kecil">H</button>
+  <button type="button" data-cmd="insertUnorderedList" title="Daftar poin">• Poin</button>
+  <button type="button" data-cmd="insertOrderedList" title="Daftar nomor">1. Nomor</button>
+  <span class="sep"></span>
+  <span class="lbl">Sorot</span>${HL.map(c=>sw("hl",c)).join("")}<button type="button" data-hl="transparent" title="Hapus sorotan">✕</button>
+  <span class="sep"></span>
+  <span class="lbl">Warna</span>${TC.map(c=>sw("fg",c)).join("")}<button type="button" data-fg="#434e62" title="Warna standar">✕</button>
+  <span class="sep"></span>
+  <button type="button" data-cmd="link" title="Sisipkan link">🔗 Link</button>
+  <button type="button" data-cmd="unlink" title="Hapus link">Hapus link</button>
+  <button type="button" data-cmd="removeFormat" title="Bersihkan format">Bersihkan</button>
+ </div><div class="rte-body" contenteditable="true" data-placeholder="Tulis di sini… pilih teks lalu klik warna/sorotan untuk menandai.">${L.sanitizeHTML(html||"")}</div></div>`;
+}
+function wireEditor(id){
+ const root=document.getElementById(id), body=root.querySelector(".rte-body"), bar=root.querySelector(".rte-bar");
+ bar.addEventListener("mousedown",e=>{if(e.target.closest("button"))e.preventDefault();});
+ bar.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  body.focus();document.execCommand("styleWithCSS",false,!!(b.dataset.hl||b.dataset.fg));
+  if(b.dataset.hl){if(!document.execCommand("hiliteColor",false,b.dataset.hl))document.execCommand("backColor",false,b.dataset.hl);}
+  else if(b.dataset.fg){document.execCommand("foreColor",false,b.dataset.fg);}
+  else{
+   const c=b.dataset.cmd;
+   if(c==="h3"){const cur=String(document.queryCommandValue("formatBlock")).toLowerCase();document.execCommand("formatBlock",false,cur==="h3"?"p":"h3");}
+   else if(c==="link"){const u=prompt("Alamat link (contoh: https://…)");if(u===null)return;const s=L.safeUrl(u);if(s)document.execCommand("createLink",false,s);else alert("Link tidak valid.");}
+   else document.execCommand(c,false,null);
+  }
+ });
+ body.addEventListener("paste",e=>{e.preventDefault();const t=(e.clipboardData||window.clipboardData).getData("text/plain");document.execCommand("insertText",false,t);});
+}
+function editorValue(id){const b=document.querySelector("#"+id+" .rte-body");return {html:L.sanitizeHTML(b.innerHTML),empty:!b.textContent.trim()};}
+
+/* ---------- banner ---------- */
+function renderBanner(){
+ const out=[];
+ const me=L.currentAccount(D);
+ if(me&&L.isDefaultPassword(me))out.push(`<div class="bad"><span>⚠️ Password default (<b>lumina2026</b>) masih dipakai. Segera ganti di tab <b>Akun & login</b>.</span><button class="btn small" data-go="accounts">Ganti sekarang</button></div>`);
+ if(D.updatedAt>L.getExportedAt())out.push(`<div class="warn"><span>📤 Ada perubahan yang <b>belum dipublikasikan</b>. Siswa baru melihatnya setelah <b>lumina-data.json</b> diunggah ke hosting.</span><button class="btn small" data-act="export">Unduh lumina-data.json</button></div>`);
+ $("#banner").innerHTML=out.join("");
+}
+
+/* ---------- tabs ---------- */
+function buildTabs(){$("#tabs").innerHTML=TABS.map(t=>`<button type="button" data-tab="${t[0]}" class="${t[0]===tab?"active":""}"><span>${t[1]}</span>${t[2]}</button>`).join("");}
+function go(t){tab=t;matEdit=null;qEdit=null;audioEdit=null;buildTabs();render();window.scrollTo({top:0,behavior:"smooth"});}
+function render(){
+ ({home:vHome,materials:vMaterials,skills:vSkills,questions:vQuestions,audio:vAudio,links:vLinks,accounts:vAccounts,backup:vBackup})[tab]();
+ renderBanner();
+}
+const title=(k,h,p)=>`<div class="page-title"><div class="kicker">${k}</div><h2>${h}</h2><p>${p}</p></div>`;
+
+/* ---------- RINGKASAN ---------- */
+function vHome(){
+ const qn=L.QSECTIONS.reduce((n,s)=>n+D.questions[s].length,0);
+ $("#view").innerHTML=title("RINGKASAN","Selamat datang","Pilih menu di sebelah kiri untuk mengisi atau memperbarui konten web.")+
+ `<div class="stats">
+  <div class="stat"><b>${D.materials.length}</b><span>Materi tambahan</span></div>
+  <div class="stat"><b>${qn}</b><span>Soal latihan</span></div>
+  <div class="stat"><b>${D.audio.length}</b><span>Audio</span></div>
+  <div class="stat"><b>${D.accounts.length}</b><span>Akun</span></div>
+ </div>
+ <div class="box"><h3>Cara kerja</h3>
+  <ol class="hint" style="font-size:13px;padding-left:20px;margin:0;line-height:1.8">
+   <li>Isi / ubah konten di menu <b>Materi</b>, <b>Soal latihan</b>, <b>Audio</b>, <b>Tautan materi</b>, atau <b>Akun & login</b>. Setiap perubahan tersimpan otomatis di browser ini.</li>
+   <li>Klik <b>Lihat web ↗</b> di atas untuk memeriksa hasilnya (pratinjau di browser Anda).</li>
+   <li>Agar siswa ikut melihat perubahan: buka <b>Backup & publikasi</b>, unduh <code>lumina-data.json</code>, lalu unggah ke folder yang sama dengan <code>index.html</code>.</li>
+  </ol></div>
+ <div class="note"><b>Tips pewarnaan:</b> di editor materi, blok teks lalu klik lingkaran <b>Sorot</b> (penanda latar) atau <b>Warna</b> (warna huruf). Setiap materi juga punya <b>warna label</b> untuk menandai kartunya.</div>`;
+}
+
+/* ---------- HALAMAN SKILL ---------- */
+const skId=f=>String(f).replace(/\.html?$/i,"").split("/").pop();
+function vSkills(){
+ syncSkills();
+ let h=title("HALAMAN SKILL","Halaman materi Structure (Skill 1–8)","Ubah tampilan halaman materi langsung di halamannya — tanpa menyentuh kode.")+
+ `<div class="note"><b>Cara mengedit:</b>
+  <ol style="margin:6px 0 0;padding-left:20px;line-height:1.8">
+   <li>Klik <b>Buka & edit</b> pada halaman yang diinginkan (login admin diminta bila perlu).</li>
+   <li>Klik teks lalu ketik. Blok teks, lalu klik warna <b>Sorot</b> (latar) atau <b>Warna</b> (huruf).</li>
+   <li>Klik sebuah kartu/baris (muncul garis merah putus-putus), lalu <b>⧉ Gandakan</b> untuk menambah, <b>↑ ↓</b> untuk memindah, <b>🗑 Hapus</b> untuk membuang. <b>＋ Catatan</b> menambah kotak catatan baru.</li>
+   <li><b>❓ Soal kuis</b> mengubah soal latihan. Klik <b>💾 Simpan</b> bila selesai.</li>
+  </ol></div>
+ <div class="box"><h3>Daftar halaman</h3>`+
+ (D.skillPages.length?D.skillPages.map((p,i)=>{const ed=!!D.skills[skId(p.file)];return `<div class="item"><div class="main"><div class="t">📝 ${esc(p.label)} <span class="tag ${ed?"admin":""}">${ed?"SUDAH DIEDIT":"ASLI"}</span></div><div class="s">${esc(p.file)}</div></div>
+  <div class="acts"><a class="btn small" href="${esc(p.file)}?edit=1" target="_blank">Buka &amp; edit</a>${ed?`<button class="btn secondary small" data-act="skReset" data-id="${i}">Kembalikan ke asli</button>`:""}<button class="btn danger small" data-act="skDel" data-id="${i}">Hapus dari daftar</button></div></div>`;}).join(""):`<div class="empty">Belum ada halaman.</div>`)+`</div>
+ <div class="box"><h3>Tambah halaman ke daftar</h3><form class="form" id="sk-form"><div class="grid2"><label>Nama<input id="sk-label" required placeholder="mis. Skill 2: Object of Preposition"></label><label>Nama file<input id="sk-file" required placeholder="mis. materiswoskill2.html"></label></div>
+ <p class="hint">Agar halaman bisa diedit, tambahkan dua baris ini sebelum <code>&lt;/body&gt;</code> pada file halaman tersebut: <code>&lt;script src="lumina-core.js"&gt;&lt;/script&gt;</code> dan <code>&lt;script src="lumina-skill-editor.js"&gt;&lt;/script&gt;</code>.</p>
+ <div><button class="btn" type="submit">＋ Tambah</button></div></form></div>`;
+ $("#view").innerHTML=h;
+ $("#sk-form").onsubmit=e=>{
+  e.preventDefault();const f=$("#sk-file").value.trim();
+  if(!/^[\w\-.\/]+\.html?$/i.test(f)){alert("Nama file harus berakhiran .html (mis. materiswoskill2.html).");return;}
+  D.skillPages.push({label:$("#sk-label").value.trim(),file:f});if(commit("Halaman ditambahkan"))vSkills();
+ };
+}
+
+/* ---------- MATERI ---------- */
+function vMaterials(){
+ const chips=L.SECTIONS.map(s=>`<button class="chip ${s===matSection?"active":""}" data-act="matSec" data-id="${s}">${SEC_LABEL[s]} (${D.materials.filter(m=>m.section===s).length})</button>`).join("");
+ let h=title("MATERI","Materi pembelajaran","Tambah dan ubah materi untuk halaman TOEFL Materials. Materi muncul di bagian yang sesuai.");
+ if(matEdit){
+  const m=matEdit==="new"?{section:matSection,title:"",html:"",color:""}:D.materials.find(x=>x.id===matEdit);
+  if(!m){matEdit=null;return vMaterials();}
+  if(matEdit!=="new"&&matColor===null)matColor=m.color||"";
+  h+=`<div class="box"><h3>${matEdit==="new"?"Materi baru":"Edit materi"}</h3><div class="form">
+   <div class="grid2"><label>Judul materi<input id="m-title" value="${esc(m.title)}" placeholder="mis. Subject–Verb Agreement"></label>
+   <label>Ditampilkan di bagian<select id="m-section">${L.SECTIONS.map(s=>`<option value="${s}" ${s===m.section?"selected":""}>${SEC_FULL[s]}</option>`).join("")}</select></label></div>
+   <div class="fgroup"><span class="fl">Warna label kartu (tanda)</span><div class="colorpick" id="m-colors">${TAG_COLORS.map(c=>`<button type="button" data-act="matColor" data-id="${c}" class="${c===(matColor||"")?"on":""} ${c?"":"none"}" ${c?`style="background:${c}"`:""} title="${c||"Tanpa warna"}"></button>`).join("")}</div></div>
+   <div class="fgroup"><span class="fl">Isi materi</span>${editorHTML("ed-mat",m.html)}</div>
+   <div class="row"><button class="btn" data-act="matSave">Simpan materi</button><button class="btn secondary" data-act="matCancel">Batal</button></div></div></div>`;
+ }else{
+  const list=D.materials.filter(m=>m.section===matSection);
+  h+=`<div class="chips">${chips}</div><div class="row" style="margin-bottom:10px"><button class="btn" data-act="matNew">＋ Materi baru di "${SEC_LABEL[matSection]}"</button></div><div class="box">`+
+  (list.length?list.map((m,i)=>`<div class="item"><div class="main"><div class="t"><span class="dot" style="background:${esc(m.color||"#cbd5e1")}"></span>${esc(m.title)}</div><div class="s">${esc(L.sanitizeHTML(m.html).replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim().slice(0,110))}…</div></div>
+   <div class="acts"><button class="btn secondary small" data-act="matUp" data-id="${m.id}" ${i===0?"disabled":""}>↑</button><button class="btn secondary small" data-act="matDown" data-id="${m.id}" ${i===list.length-1?"disabled":""}>↓</button><button class="btn secondary small" data-act="matEdit" data-id="${m.id}">Edit</button><button class="btn danger small" data-act="matDel" data-id="${m.id}">Hapus</button></div></div>`).join(""):`<div class="empty">Belum ada materi di bagian ini.</div>`)+`</div>`;
+ }
+ $("#view").innerHTML=h;
+ if(matEdit)wireEditor("ed-mat");
+}
+
+/* ---------- SOAL ---------- */
+function vQuestions(){
+ const chips=L.QSECTIONS.map(s=>`<button class="chip ${s===qSection?"active":""}" data-act="qSec" data-id="${s}">${SEC_LABEL[s]} (${D.questions[s].length})</button>`).join("");
+ let h=title("SOAL LATIHAN","Soal latihan","Tambah, ubah, urutkan, atau hapus soal pilihan ganda untuk tiap sesi.")+`<div class="chips">${chips}</div>`;
+ if(qSection==="listening")h+=`<div class="note">🎧 File/link audio untuk sesi Listening diatur di menu <b>Audio</b>.</div>`;
+ if(qSection==="reading"&&!qEdit){
+  h+=`<div class="box"><h3>Teks bacaan (passage)</h3><div class="form"><label>Judul<input id="r-title" value="${esc(D.reading.title)}"></label><div class="fgroup"><span class="fl">Isi teks</span>${editorHTML("ed-read",D.reading.passage)}</div><div class="row"><button class="btn" data-act="readSave">Simpan teks bacaan</button></div></div></div>`;
+ }
+ const list=D.questions[qSection];
+ if(qEdit){
+  const q=qEdit==="new"?{q:"",o:["","","",""],a:0,e:"",topic:""}:list.find(x=>x.id===qEdit);
+  if(!q){qEdit=null;return vQuestions();}
+  h+=`<div class="box"><h3>${qEdit==="new"?"Soal baru":"Edit soal"} — ${SEC_LABEL[qSection]}</h3><div class="form">
+   <label>Pertanyaan<textarea id="q-q" rows="2" placeholder="Tulis soal. Untuk Structure gunakan _____ sebagai bagian kosong.">${esc(q.q)}</textarea></label>
+   <div class="grid2">${[0,1,2,3].map(i=>`<label>Pilihan ${"ABCD"[i]}<input id="q-o${i}" value="${esc(q.o[i]||"")}"></label>`).join("")}</div>
+   <div class="grid2"><label>Jawaban benar<select id="q-a">${[0,1,2,3].map(i=>`<option value="${i}" ${i===q.a?"selected":""}>${"ABCD"[i]}</option>`).join("")}</select></label><label>Topik (opsional)<input id="q-topic" value="${esc(q.topic||"")}" placeholder="mis. Subject-Verb Agreement"></label></div>
+   <label>Penjelasan jawaban<textarea id="q-e" rows="2">${esc(q.e)}</textarea></label>
+   <div class="row"><button class="btn" data-act="qSave">Simpan soal</button><button class="btn secondary" data-act="qCancel">Batal</button></div></div></div>`;
+ }else{
+  h+=`<div class="row" style="margin-bottom:10px"><button class="btn" data-act="qNew">＋ Soal baru</button></div><div class="box">`+
+  (list.length?list.map((q,i)=>`<div class="item"><div class="main"><div class="t">${i+1}. ${esc(q.q)}${q.topic?` <span class="tag">${esc(q.topic)}</span>`:""}</div><div class="opts">${q.o.map((o,j)=>`<span class="${j===q.a?"ok":""}">${"ABCD"[j]}. ${esc(o)}${j===q.a?" ✓":""}</span>`).join("")}</div></div>
+   <div class="acts"><button class="btn secondary small" data-act="qUp" data-id="${q.id}" ${i===0?"disabled":""}>↑</button><button class="btn secondary small" data-act="qDown" data-id="${q.id}" ${i===list.length-1?"disabled":""}>↓</button><button class="btn secondary small" data-act="qEdit" data-id="${q.id}">Edit</button><button class="btn danger small" data-act="qDel" data-id="${q.id}">Hapus</button></div></div>`).join(""):`<div class="empty">Belum ada soal di sesi ini.</div>`)+`</div>`;
+ }
+ $("#view").innerHTML=h;
+ if(qSection==="reading"&&!qEdit)wireEditor("ed-read");
+}
+
+/* ---------- AUDIO ---------- */
+function vAudio(){
+ let h=title("AUDIO","Audio Listening","Tambahkan link audio (MP3, Google Drive, dll.) atau teks untuk dibacakan suara browser.");
+ if(audioEdit){
+  const a=audioEdit==="new"?{title:"",url:"",script:""}:D.audio.find(x=>x.id===audioEdit);
+  if(!a){audioEdit=null;return vAudio();}
+  h+=`<div class="box"><h3>${audioEdit==="new"?"Audio baru":"Edit audio"}</h3><div class="form">
+   <label>Judul audio<input id="a-title" value="${esc(a.title)}" placeholder="mis. Conversation 2 — Library"></label>
+   <label>Link audio<input id="a-url" value="${esc(a.url)}" placeholder="https://…/audio.mp3 atau link Google Drive"><span class="hint">Link langsung ke file audio (.mp3/.m4a/.wav). Untuk Google Drive: atur berbagi ke <b>“Siapa saja yang memiliki link”</b>, lalu tempel link-nya — otomatis diubah ke link unduhan. Jika tidak bisa diputar, unggah file ke hosting yang sama dengan web ini.</span></label>
+   <label>Teks untuk suara browser (opsional)<textarea id="a-script" rows="5" placeholder="Woman: … Man: …">${esc(a.script)}</textarea><span class="hint">Dipakai hanya jika <b>link audio kosong</b>. Teks ini tidak ditampilkan ke siswa.</span></label>
+   <div class="row"><button class="btn" data-act="aSave">Simpan audio</button><button class="btn secondary" data-act="aCancel">Batal</button></div></div></div>`;
+ }else{
+  h+=`<div class="row" style="margin-bottom:10px"><button class="btn" data-act="aNew">＋ Audio baru</button></div><div class="box">`+
+  (D.audio.length?D.audio.map((a,i)=>{const u=L.safeUrl(a.url);return `<div class="item"><div class="main"><div class="t">🎧 ${esc(a.title)} <span class="tag">${u?"LINK":"SUARA BROWSER"}</span></div><div class="s">${u?`<audio controls preload="none" src="${esc(u)}" style="width:100%;max-width:380px;margin-top:6px"></audio><br>${esc(u)}`:esc(a.script.slice(0,140))+(a.script.length>140?"…":"")}</div></div>
+   <div class="acts"><button class="btn secondary small" data-act="aUp" data-id="${a.id}" ${i===0?"disabled":""}>↑</button><button class="btn secondary small" data-act="aDown" data-id="${a.id}" ${i===D.audio.length-1?"disabled":""}>↓</button><button class="btn secondary small" data-act="aEdit" data-id="${a.id}">Edit</button><button class="btn danger small" data-act="aDel" data-id="${a.id}">Hapus</button></div></div>`;}).join(""):`<div class="empty">Belum ada audio.</div>`)+`</div>`;
+ }
+ $("#view").innerHTML=h;
+}
+
+/* ---------- TAUTAN ---------- */
+function vLinks(){
+ let h=title("TAUTAN MATERI","Tombol tautan materi","Atur tombol yang tampil di halaman TOEFL Materials (mis. ke halaman materi Skill 1–8, Google Drive, video, dll.).")+
+ `<div class="box"><h3>Tambah tautan</h3><form class="form" id="link-form">
+  <div class="grid2"><label>Bagian<select id="l-group">${L.LINK_GROUPS.map(g=>`<option value="${g}">${LINK_LABEL[g]}</option>`).join("")}</select></label><label>Teks tombol<input id="l-label" required placeholder="mis. Buka Materi Skill 2"></label></div>
+  <label>Alamat (URL)<input id="l-url" required placeholder="https://… atau materiswoskill2.html"></label>
+  <div><button class="btn" type="submit">＋ Tambah tautan</button></div></form></div>`;
+ L.LINK_GROUPS.forEach(g=>{
+  const arr=D.links[g];
+  h+=`<div class="box"><h3>${LINK_LABEL[g]}</h3>`+(arr.length?arr.map((l,i)=>`<div class="item"><div class="main"><div class="t">${esc(l.label)}</div><div class="s">${esc(l.url)}</div></div><div class="acts"><button class="btn secondary small" data-act="lUp" data-g="${g}" data-id="${l.id}" ${i===0?"disabled":""}>↑</button><button class="btn secondary small" data-act="lDown" data-g="${g}" data-id="${l.id}" ${i===arr.length-1?"disabled":""}>↓</button><button class="btn secondary small" data-act="lEdit" data-g="${g}" data-id="${l.id}">Edit</button><button class="btn danger small" data-act="lDel" data-g="${g}" data-id="${l.id}">Hapus</button></div></div>`).join(""):`<div class="empty" style="padding:8px">Belum ada tautan.</div>`)+`</div>`;
+ });
+ $("#view").innerHTML=h;
+ $("#link-form").onsubmit=e=>{
+  e.preventDefault();const url=L.safeUrl($("#l-url").value);
+  if(!url){alert("Alamat tidak valid. Gunakan https://… atau nama file seperti materi.html");return;}
+  D.links[$("#l-group").value].push({id:L.uid("l"),label:$("#l-label").value.trim(),url});
+  if(commit())vLinks();
+ };
+}
+
+/* ---------- AKUN ---------- */
+function vAccounts(){
+ const me=L.currentAccount(D);
+ let h=title("AKUN & LOGIN","Akun & login web","Buat akun admin (boleh membuka Content Manager) atau siswa (hanya halaman latihan).")+
+ `<div class="box"><h3>Pengaturan login halaman latihan</h3>
+  <label class="row" style="font-size:13px;cursor:pointer"><input type="checkbox" id="req-login" ${D.settings.requireLogin?"checked":""}> <span><b>Wajibkan login</b> untuk membuka halaman latihan (index.html)</span></label>
+  <p class="hint" style="margin:8px 0 0">Jika aktif, pengunjung harus memasukkan username & password dari daftar akun di bawah.</p></div>
+ <div class="box"><h3>Daftar akun</h3><div style="overflow:auto"><table><thead><tr><th>NAMA</th><th>USERNAME</th><th>PERAN</th><th></th></tr></thead><tbody>`+
+ D.accounts.map(a=>`<tr><td>${esc(a.name)}</td><td>${esc(a.user)}</td><td><span class="tag ${a.role==="admin"?"admin":""}">${a.role==="admin"?"ADMIN":"SISWA"}</span></td><td><div class="acts"><button class="btn secondary small" data-act="accPw" data-id="${esc(a.user)}">Ganti password</button>${me&&me.user===a.user?"":`<button class="btn danger small" data-act="accDel" data-id="${esc(a.user)}">Hapus</button>`}</div></td></tr>`).join("")+
+ `</tbody></table></div></div>
+ <div class="box"><h3>Tambah akun</h3><form class="form" id="acc-form" autocomplete="off">
+  <div class="grid2"><label>Nama lengkap<input id="ac-name" required></label><label>Peran<select id="ac-role"><option value="student">Siswa</option><option value="admin">Admin</option></select></label></div>
+  <div class="grid2"><label>Username<input id="ac-user" required placeholder="huruf kecil/angka, min. 3" autocomplete="off"></label><label>Password<input id="ac-pass" type="text" required minlength="6" placeholder="min. 6 karakter" autocomplete="off"></label></div>
+  <div><button class="btn" type="submit">＋ Tambah akun</button></div></form></div>`;
+ $("#view").innerHTML=h;
+ $("#req-login").onchange=e=>{D.settings.requireLogin=e.target.checked;commit(e.target.checked?"Login wajib diaktifkan":"Login wajib dimatikan");};
+ $("#acc-form").onsubmit=e=>{
+  e.preventDefault();
+  const user=$("#ac-user").value.trim().toLowerCase(), pass=$("#ac-pass").value;
+  if(!/^[a-z0-9._-]{3,30}$/.test(user)){alert("Username hanya boleh huruf kecil, angka, titik, strip, underscore (3–30 karakter).");return;}
+  if(pass.length<6){alert("Password minimal 6 karakter.");return;}
+  if(L.findAccount(D,user)){alert("Username sudah dipakai.");return;}
+  D.accounts.push({user,name:$("#ac-name").value.trim(),role:$("#ac-role").value,hash:L.hashPassword(user,pass)});
+  if(commit("Akun ditambahkan"))vAccounts();
+ };
+}
+
+/* ---------- BACKUP ---------- */
+function vBackup(){
+ $("#view").innerHTML=title("BACKUP & PUBLIKASI","Backup & publikasi","Data tersimpan di browser ini. Unduh file data untuk mempublikasikan ke siswa atau untuk cadangan.")+
+ `<div class="box"><h3>1. Publikasikan ke siswa</h3><p class="hint" style="font-size:13px">Unduh <code>lumina-data.json</code>, lalu unggah ke folder yang sama dengan <code>index.html</code> (timpa file lama). Semua pengunjung akan melihat materi, soal, audio, tautan, dan akun terbaru.</p><button class="btn" data-act="export">⬇ Unduh lumina-data.json</button></div>
+ <div class="box"><h3>2. Pulihkan dari file</h3><p class="hint" style="font-size:13px">Ganti seluruh data di browser ini dengan isi file backup.</p><label class="btn secondary file-label" style="cursor:pointer">Pilih file backup (.json)<input id="imp" type="file" accept="application/json,.json" hidden></label></div>
+ <div class="box"><h3>3. Ambil versi yang sudah dipublikasikan</h3><p class="hint" style="font-size:13px">Berguna jika Anda mengedit dari perangkat lain. Mengganti data di browser ini dengan <code>lumina-data.json</code> yang ada di server.</p><button class="btn secondary" data-act="pull">Ambil dari server</button></div>
+ <div class="box"><h3>4. Kembalikan konten contoh</h3><p class="hint" style="font-size:13px">Mengembalikan materi, soal, audio, teks bacaan, dan tautan ke contoh awal. Akun dan pengaturan login tidak berubah.</p><button class="btn danger" data-act="reset">Kembalikan ke contoh awal</button></div>
+ <div class="note"><b>Catatan keamanan:</b> login ini berjalan di browser dan file <code>lumina-data.json</code> dapat dibuka siapa pun yang tahu alamatnya (password tersimpan dalam bentuk hash, bukan teks biasa, tetapi password lemah tetap bisa ditebak). Gunakan password yang kuat, dan jangan menyimpan data rahasia di web ini.</div>`;
+ $("#imp").onchange=async e=>{
+  const f=e.target.files[0];if(!f)return;
+  try{const j=JSON.parse(await f.text());if(typeof j!=="object"||!j)throw 0;
+   if(!confirm("Ganti seluruh data di browser ini dengan isi file tersebut?"))return;
+   D=L.normalize(j);ensureSession();if(commit("Data dipulihkan",{noSync:true}))go("home");
+  }catch(err){alert("File tidak valid. Pilih file lumina-data.json.");}
+  e.target.value="";
+ };
+}
+function ensureSession(){ if(!L.currentAccount(D)||L.currentAccount(D).role!=="admin"){L.setSession(null);location.reload();} }
+
+/* ---------- aksi (delegasi klik) ---------- */
+const A={
+ matSec(id){matSection=id;vMaterials();},
+ matNew(){matEdit="new";matColor="";vMaterials();},
+ matEdit(id){matEdit=id;matColor=null;vMaterials();},
+ matColor(id){matColor=id;document.querySelectorAll("#m-colors button").forEach(b=>b.classList.toggle("on",b.dataset.id===id));},
+ matCancel(){matEdit=null;vMaterials();},
+ matSave(){
+  const t=$("#m-title").value.trim(),ed=editorValue("ed-mat");
+  if(!t){alert("Judul materi wajib diisi.");return;} if(ed.empty){alert("Isi materi masih kosong.");return;}
+  const sec=$("#m-section").value, color=L.safeColor(matColor||"");
+  if(matEdit==="new")D.materials.push({id:L.uid("m"),section:sec,title:t,html:ed.html,color,updated:Date.now()});
+  else{const m=D.materials.find(x=>x.id===matEdit);Object.assign(m,{section:sec,title:t,html:ed.html,color,updated:Date.now()});}
+  matSection=sec;matEdit=null;if(commit("Materi tersimpan"))vMaterials();
+ },
+ matDel(id){if(!confirm("Hapus materi ini?"))return;D.materials=D.materials.filter(m=>m.id!==id);commit("Materi dihapus");vMaterials();},
+ matUp(id){moveIn(D.materials,id,-1,m=>m.section===matSection);commit();vMaterials();},
+ matDown(id){moveIn(D.materials,id,1,m=>m.section===matSection);commit();vMaterials();},
+
+ qSec(id){qSection=id;qEdit=null;vQuestions();},
+ qNew(){qEdit="new";vQuestions();},
+ qEdit(id){qEdit=id;vQuestions();},
+ qCancel(){qEdit=null;vQuestions();},
+ qSave(){
+  const o=[0,1,2,3].map(i=>$("#q-o"+i).value.trim()), q=$("#q-q").value.trim(), e=$("#q-e").value.trim();
+  if(!q||o.some(x=>!x)||!e){alert("Lengkapi pertanyaan, keempat pilihan, dan penjelasan.");return;}
+  const item={q,o,a:Number($("#q-a").value),e,topic:$("#q-topic").value.trim()};
+  if(qEdit==="new")D.questions[qSection].push({id:L.uid("q"),...item});
+  else{const x=D.questions[qSection].find(z=>z.id===qEdit);Object.assign(x,item);}
+  qEdit=null;if(commit("Soal tersimpan"))vQuestions();
+ },
+ qDel(id){if(!confirm("Hapus soal ini?"))return;D.questions[qSection]=D.questions[qSection].filter(q=>q.id!==id);commit("Soal dihapus");vQuestions();},
+ qUp(id){moveIn(D.questions[qSection],id,-1);commit();vQuestions();},
+ qDown(id){moveIn(D.questions[qSection],id,1);commit();vQuestions();},
+ readSave(){
+  const ed=editorValue("ed-read");
+  if(ed.empty){alert("Teks bacaan masih kosong.");return;}
+  D.reading={title:$("#r-title").value.trim(),passage:ed.html};
+  if(commit("Teks bacaan tersimpan"))vQuestions();
+ },
+
+ skReset(i){
+  syncSkills();const p=D.skillPages[Number(i)];
+  if(!confirm("Kembalikan \""+p.label+"\" ke tampilan asli? Semua hasil edit halaman ini akan hilang."))return;
+  delete D.skills[skId(p.file)];
+  if(L.save(D)){toast("Dikembalikan ke asli");renderBanner();}vSkills();
+ },
+ skDel(i){const p=D.skillPages[Number(i)];if(!confirm("Hapus \""+p.label+"\" dari daftar? (File dan hasil editnya tidak dihapus)"))return;D.skillPages.splice(Number(i),1);commit("Dihapus dari daftar");vSkills();},
+
+ aNew(){audioEdit="new";vAudio();},
+ aEdit(id){audioEdit=id;vAudio();},
+ aCancel(){audioEdit=null;vAudio();},
+ aSave(){
+  const t=$("#a-title").value.trim(), raw=$("#a-url").value.trim(), url=L.normalizeAudioUrl(raw), script=$("#a-script").value.trim();
+  if(!t){alert("Judul audio wajib diisi.");return;}
+  if(raw&&!L.safeUrl(url)){alert("Link audio tidak valid.");return;}
+  if(!url&&!script){alert("Isi link audio atau teks untuk suara browser.");return;}
+  if(audioEdit==="new")D.audio.push({id:L.uid("audio"),title:t,url,script});
+  else Object.assign(D.audio.find(a=>a.id===audioEdit),{title:t,url,script});
+  audioEdit=null;if(commit("Audio tersimpan"))vAudio();
+ },
+ aDel(id){if(!confirm("Hapus audio ini?"))return;D.audio=D.audio.filter(a=>a.id!==id);commit("Audio dihapus");vAudio();},
+ aUp(id){moveIn(D.audio,id,-1);commit();vAudio();},
+ aDown(id){moveIn(D.audio,id,1);commit();vAudio();},
+
+ lUp(id,el){moveIn(D.links[el.dataset.g],id,-1);commit();vLinks();},
+ lDown(id,el){moveIn(D.links[el.dataset.g],id,1);commit();vLinks();},
+ lDel(id,el){if(!confirm("Hapus tautan ini?"))return;const g=el.dataset.g;D.links[g]=D.links[g].filter(l=>l.id!==id);commit("Tautan dihapus");vLinks();},
+ lEdit(id,el){
+  const l=D.links[el.dataset.g].find(x=>x.id===id);
+  modal(`<h3>Edit tautan</h3><form class="form" id="le-form"><label>Teks tombol<input id="le-label" value="${esc(l.label)}" required></label><label>Alamat (URL)<input id="le-url" value="${esc(l.url)}" required></label><div class="row"><button class="btn" type="submit">Simpan</button><button class="btn secondary" type="button" id="le-cancel">Batal</button></div></form>`,()=>{
+   $("#le-cancel").onclick=closeModal;
+   $("#le-form").onsubmit=e=>{e.preventDefault();const u=L.safeUrl($("#le-url").value);if(!u){alert("Alamat tidak valid.");return;}l.label=$("#le-label").value.trim();l.url=u;closeModal();commit();vLinks();};
+  });
+ },
+
+ accPw(user){
+  askPassword("Ganti password: "+user,pw=>{const a=L.findAccount(D,user);a.hash=L.hashPassword(a.user,pw);commit("Password diganti");vAccounts();renderBanner();});
+ },
+ accDel(user){
+  const a=L.findAccount(D,user);
+  if(a.role==="admin"&&D.accounts.filter(x=>x.role==="admin").length<2){alert("Harus ada minimal satu akun admin.");return;}
+  if(!confirm("Hapus akun "+user+"?"))return;
+  D.accounts=D.accounts.filter(x=>x.user!==user);commit("Akun dihapus");vAccounts();
+ },
+
+ export(){L.download(D);renderBanner();toast("File diunduh — unggah ke hosting untuk mempublikasikan");},
+ async pull(){
+  const p=await L.fetchPublished();
+  if(!p){alert("Tidak menemukan lumina-data.json di server (atau halaman ini dibuka dari file lokal).");return;}
+  if(!confirm("Ganti data di browser ini dengan versi dari server?"))return;
+  D=p;ensureSession();if(commit("Data diambil dari server",{noSync:true}))go("home");
+ },
+ reset(){
+  if(!confirm("Kembalikan materi, soal, audio, teks bacaan, dan tautan ke contoh awal? Tindakan ini tidak bisa dibatalkan."))return;
+  const keep={accounts:D.accounts,settings:D.settings};
+  D=L.normalize(L.defaults());D.accounts=keep.accounts;D.settings=keep.settings;
+  if(commit("Konten dikembalikan"))go("home");
+ }
+};
+function moveIn(arr,id,dir,filter){
+ const idx=arr.map((x,i)=>i).filter(i=>!filter||filter(arr[i]));
+ const pos=idx.findIndex(i=>arr[i].id===id), j=pos+dir;
+ if(pos<0||j<0||j>=idx.length)return;
+ [arr[idx[pos]],arr[idx[j]]]=[arr[idx[j]],arr[idx[pos]]];
+}
+document.addEventListener("click",e=>{
+ const t=e.target.closest("[data-tab]"); if(t&&t.closest("#tabs")){go(t.dataset.tab);return;}
+ const g=e.target.closest("[data-go]"); if(g){go(g.dataset.go);return;}
+ const b=e.target.closest("[data-act]"); if(!b||b.disabled)return;
+ const f=A[b.dataset.act]; if(f)f(b.dataset.id,b);
+});
+
+/* ---------- login & mulai ---------- */
+let fails=0, lockUntil=0;
+function showErr(m){const el=$("#login-error");el.textContent=m;el.style.display=m?"block":"none";}
+function showLogin(msg){$("#app").classList.add("hidden");$("#login-screen").classList.remove("hidden");showErr(msg||"");}
+function enter(){
+ $("#login-screen").classList.add("hidden");$("#app").classList.remove("hidden");
+ const me=L.currentAccount(D);$("#who").textContent="Masuk sebagai "+(me.name||me.user);
+ buildTabs();render();
+}
+$("#login-form").addEventListener("submit",e=>{
+ e.preventDefault();
+ if(Date.now()<lockUntil){showErr("Terlalu banyak percobaan. Coba lagi dalam "+Math.ceil((lockUntil-Date.now())/1000)+" detik.");return;}
+ const a=L.checkLogin(D,$("#login-user").value,$("#login-pass").value);
+ if(!a){fails++;$("#login-pass").value="";if(fails>=5){fails=0;lockUntil=Date.now()+30000;showErr("Terlalu banyak percobaan. Coba lagi dalam 30 detik.");}else showErr("Username atau password salah.");return;}
+ if(a.role!=="admin"){showErr("Akun ini bukan admin, jadi tidak boleh membuka Content Manager.");return;}
+ fails=0;L.setSession(a);e.target.reset();enter();
+});
+$("#logout").addEventListener("click",()=>{L.setSession(null);showLogin();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+window.addEventListener("focus",()=>{if(D&&tab==="skills"&&!$("#app").classList.contains("hidden"))vSkills();});
+L.load().then(d=>{D=d;const me=L.currentAccount(D);if(me&&me.role==="admin")enter();else showLogin();});
+</script>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 2 - Preposition Analysis</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+        .font-mono-code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-2 gap-2">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-sm shadow-sm">
+                        S2
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-teal-500/20 text-teal-300 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        </div>
+                        <h1 class="text-base md:text-lg font-bold tracking-tight text-white leading-tight mt-0.5">Skill 2: Preposition Analysis</h1>
+                    </div>
+                </div>
+
+                <!-- Global Stats / Quick Status -->
+                <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-xs">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Prep + Obj of Prep</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="flex items-center gap-1.5 text-indigo-400 font-medium">
+                        <span>Prep vs Conjunction</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Bar -->
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-1.5 pb-1 no-scrollbar">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30">
+                    🔍 1. Overview & Pitfalls
+                </button>
+                <button onclick="switchTab('formula')" id="tab-formula" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    📗 2. Preposition Blueprint
+                </button>
+                <button onclick="switchTab('lab')" id="tab-lab" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🔬 3. Prep vs Conjunction
+                </button>
+                <button onclick="switchTab('cases')" id="tab-cases" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    📘 4. Advanced Analysis
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🎯 5. Practice Quiz 
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW & PITFALLS ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">
+                        <span>Core Structure Axiom</span>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Objek Preposisi TIDAK PERNAH Bisa Menjadi Subjek Kalimat!</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Dalam TOEFL, preposisi berfungsi sebagai modifier, pelengkap, atau keterangan untuk menunjukkan hubungan kata benda dengan bagian lain dalam kalimat.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Essential Learning Objectives -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-teal-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Rumus Prep + Obj</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Selalu diikuti noun, noun phrase, atau gerund.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-indigo-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Menghindari Pengecohan</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Tidak terkecoh noun setelah prep sebagai subjek.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-amber-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Prep vs Conjunction</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Membedakan kata serupa (after, before, as).</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-emerald-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Subject-Verb Agreement</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Menyelaraskan verb dengan Head Noun sejati.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Critical Pitfalls Cards Section -->
+            <div class="space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5">
+                        <span class="text-rose-500">⚠️</span> Kesalahan Terbesar Peserta TOEFL (Common Pitfalls)
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <!-- Pitfall 1 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Terkecoh Objek Preposisi</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Mengira Noun setelah Preposisi sebagai Subjek Utama Kalimat.</p>
+                        <div class="bg-white p-2.5 rounded-lg border border-rose-200 text-xs font-mono-code space-y-0.5">
+                            <p class="text-slate-400">❌ Salah: <span class="text-slate-800"><span class="text-rose-600 underline">To the students</span>, the exam <span class="text-rose-600 font-bold">were</span> difficult.</span></p>
+                            <p class="text-emerald-700">✓ Benar: <span class="text-slate-800"><span class="text-slate-400">[To the students]</span>, the exam <span class="text-emerald-600 font-bold">was</span> difficult.</span></p>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Kata <em>students</em> adalah objek dari preposisi <em>to</em>, bukan subjek. Subjek aslinya adalah <strong>the exam</strong>.</p>
+                    </div>
+
+                    <!-- Pitfall 2 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Tertukar dengan Conjunction</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Bingung Membedakan Kata yang Berfungsi sebagai Prep vs Conj.</p>
+                        <div class="bg-white p-2.5 rounded-lg border border-rose-200 text-xs font-mono-code space-y-0.5">
+                            <p class="text-emerald-700">✓ Prep: <span class="text-slate-800">After <span class="text-teal-600 font-bold">dressing up</span>...</span> (Diikuti Gerund)</p>
+                            <p class="text-emerald-700">✓ Conj: <span class="text-slate-800">After <span class="text-indigo-600 font-bold">I dress up</span>...</span> (Diikuti S + V)</p>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Kata seperti <em>after, before, as</em> bisa menjadi preposisi atau konjungsi tergantung struktur setelahnya.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: PREPOSITION BLUEPRINT ==================== -->
+        <section id="content-formula" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Rumus Utama & Variasi Bentuk</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Preposition + Object of Preposition</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Preposition berfungsi sebagai modifier, pelengkap, atau keterangan. Bentuknya sangat bervariasi: <em>in, on, at, despite, because of, before, after, as, in front of,</em> dll.
+                    </p>
+                </div>
+
+                <div class="border-t border-slate-100 pt-4">
+                    <h3 class="text-base font-bold text-slate-900 mb-3">5 Variasi Bentuk Object of Preposition:</h3>
+                    
+                    <div class="space-y-2.5">
+                        <!-- Element 1: Noun -->
+                        <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 hover:border-emerald-400 transition flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
+                            <div class="flex-grow space-y-1.5">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <h4 class="font-bold text-slate-900 text-xs md:text-sm">Noun (Kata Benda)</h4>
+                                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-2 py-0.5 rounded-full w-max">Prep + Noun</span>
+                                </div>
+                                <div class="space-y-1.5 text-xs">
+                                    <div class="bg-white p-2 rounded-lg border border-slate-200">• The book <span class="text-amber-600 font-bold">on</span> <span class="text-emerald-700 font-bold">table</span> belongs to me.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Element 2: Noun Phrase -->
+                        <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 hover:border-emerald-400 transition flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">2</span>
+                            <div class="flex-grow space-y-1.5">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <h4 class="font-bold text-slate-900 text-xs md:text-sm">Noun Phrase (Frasa Kata Benda)</h4>
+                                    <span class="bg-slate-200 text-slate-700 text-[10px] font-semibold px-2 py-0.5 rounded-full w-max">Prep + Noun Phrase</span>
+                                </div>
+                                <div class="space-y-1.5 text-xs">
+                                    <div class="bg-white p-2 rounded-lg border border-slate-200">• She lives <span class="text-amber-600 font-bold">in</span> <span class="text-emerald-700 font-bold">a modern apartment in Jakarta</span>.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Element 3: Gerund / Gerund Phrase -->
+                        <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 hover:border-emerald-400 transition flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">3</span>
+                            <div class="flex-grow space-y-1.5">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <h4 class="font-bold text-slate-900 text-xs md:text-sm">Gerund / Gerund Phrase (V-ing)</h4>
+                                    <span class="bg-amber-100 text-amber-800 text-[10px] font-semibold px-2 py-0.5 rounded-full w-max">Prep + Gerund/Phrase</span>
+                                </div>
+                                <div class="space-y-1.5 text-xs">
+                                    <div class="bg-white p-2 rounded-lg border border-slate-200">• He succeeded <span class="text-amber-600 font-bold">by</span> <span class="text-emerald-700 font-bold">studying</span> diligently.</div>
+                                    <div class="bg-white p-2 rounded-lg border border-slate-200">• They got promoted <span class="text-amber-600 font-bold">after</span> <span class="text-emerald-700 font-bold">completing the annual project</span>.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Element 4: Noun Clause -->
+                        <div class="bg-slate-50 rounded-xl p-3.5 border border-slate-200 hover:border-emerald-400 transition flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center text-xs shrink-0 mt-0.5">4</span>
+                            <div class="flex-grow space-y-1.5">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                    <h4 class="font-bold text-slate-900 text-xs md:text-sm">Noun Clause (Klausa Kata Benda)</h4>
+                                    <span class="bg-teal-100 text-teal-800 text-[10px] font-semibold px-2 py-0.5 rounded-full w-max">Prep + Noun Clause</span>
+                                </div>
+                                <div class="space-y-1.5 text-xs">
+                                    <div class="bg-white p-2 rounded-lg border border-slate-200">• We are worried <span class="text-amber-600 font-bold">about</span> <span class="text-emerald-700 font-bold">what the committee decided yesterday</span>.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Analisis Kasus Utama -->
+                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
+                    <h3 class="font-bold text-slate-900 text-sm">Contoh Analisis Struktur Dasar:</h3>
+                    <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                        "<span class="text-amber-400 underline">To</span> <span class="text-teal-400 font-bold">the students</span>, the exam <span class="text-indigo-400 font-bold">was</span> difficult."
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="text-slate-400 text-[10px] block">Prep</span>
+                            <span class="font-bold text-amber-700">To</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="text-slate-400 text-[10px] block">Obj of Prep</span>
+                            <span class="font-bold text-teal-700">the students (n.p)</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="text-slate-400 text-[10px] block">Subject</span>
+                            <span class="font-bold text-emerald-700">the exam</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="text-slate-400 text-[10px] block">Verb</span>
+                            <span class="font-bold text-indigo-700">was</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="text-slate-400 text-[10px] block">Complement</span>
+                            <span class="font-bold text-slate-700">difficult</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: PREP VS CONJUNCTION LAB ==================== -->
+        <section id="content-lab" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Comparative Lab</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Preposition vs Conjunction</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Beberapa kata memiliki bentuk yang sama persis namun berkedudukan ganda sebagai Preposition atau Conjunction. Bedakan strukturnya:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="bg-emerald-50/60 rounded-xl p-4 border border-emerald-200 space-y-2">
+                        <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Preposition Pattern</span>
+                        <h3 class="font-bold text-slate-900 text-sm">Prep + Obj of Prep</h3>
+                        <p class="text-xs text-slate-600">Diikuti oleh kata benda, noun phrase, atau gerund (tanpa subjek mandiri).</p>
+                        <div class="bg-white p-2.5 rounded-lg border border-emerald-200 text-xs font-mono-code">
+                            "I will pick you up after <span class="text-emerald-700 font-bold">dressing up</span>."
+                        </div>
+                    </div>
+
+                    <div class="bg-indigo-50/60 rounded-xl p-4 border border-indigo-200 space-y-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Conjunction Pattern</span>
+                        <h3 class="font-bold text-slate-900 text-sm">Conj + Subject + Verb</h3>
+                        <p class="text-xs text-slate-600">Diikuti oleh klausa utuh yang memiliki subjek dan kata kerja (finite verb).</p>
+                        <div class="bg-white p-2.5 rounded-lg border border-indigo-200 text-xs font-mono-code">
+                            "I will pick you up after <span class="text-indigo-700 font-bold">I dress up</span>."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
+                    <span class="font-bold text-slate-900 block">💡 Catatan Linguistik:</span>
+                    <p class="text-slate-600 leading-relaxed">
+                        Kedua kalimat di atas memiliki arti yang persis sama saat diterjemahkan. Pada kalimat pertama, bentuk <em>dressing up</em> menjadi gerund karena terjadi penghapusan subjek <em>I</em> setelah preposisi <em>after</em>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: ADVANCED CASES (DENGAN TAMBAHAN KASUS INVERSI) ==================== -->
+        <section id="content-cases" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Further Examples</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Advanced Prepositional Phrase & Inversion Analysis</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Pembedahan tingkat lanjut untuk memastikan agar tidak terkecoh oleh preposisi berlapis.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Case 1 -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs leading-relaxed">
+                            "<span class="text-amber-400">On the rim of Bromo caldera</span>, <span class="text-emerald-400 font-bold">the sulfurous smoke</span> <span class="text-indigo-400 font-bold">rises</span> against the backdrop of a vast, misty sand sea."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">▫️ Prepositional Phrase:</span>
+                                <p class="text-slate-600"><em>On the rim of Bromo caldera</em> berfungsi sebagai adverb of place (keterangan tempat).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">▫️ Subject & Verb:</span>
+                                <p class="text-slate-600">Subject: <em>the sulfurous smoke</em> (Noun Uncountable). Verb: <em>rises</em> (menggunakan V-s).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">▫️ Keterangan:</span>
+                                <p class="text-slate-600">Objek preposisi <em>Bromo caldera</em> bukan subjek kalimat.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 2 -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs leading-relaxed">
+                            "<span class="text-amber-400">Under the authority of the KPK</span>, <span class="text-emerald-400 font-bold">the Regent</span> <span class="text-teal-400">of Pekalongan</span> <span class="text-indigo-400 font-bold">was arrested</span> for alleged involvement..."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">▫️ Prepositional Phrase:</span>
+                                <p class="text-slate-600"><em>Under the authority of the KPK</em> berfungsi sebagai adverb keterangan tambahan di awal kalimat.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">▫️ Head Noun & Verb:</span>
+                                <p class="text-slate-600">Subjek utamanya adalah <strong>the Regent</strong> (Bupati). Kata <em>Pekalongan</em> adalah objek preposisi <em>of</em> yang menjadi modifier.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">▫️ Subjective Agreement:</span>
+                                <p class="text-slate-600">Karena Head Noun tunggal (regent), verb yang dipakai adalah <strong>was</strong> (bukan were).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 3: Inversion (Baru) -->
+                    <div class="border border-teal-200 rounded-xl p-4 bg-teal-50/50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-teal-200 pb-2">
+                            <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Special Case: Inversion</span>
+                            <span class="text-[11px] text-teal-800 font-mono-code">Inversion Trigger</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs leading-relaxed">
+                            "<span class="text-amber-400 underline">On the hill</span> <span class="text-indigo-400 font-bold">stands</span> <span class="text-emerald-400 font-bold">an ancient Buddhist temple</span>."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">▫️ Prepositional Phrase (Keterangan Tempat):</span>
+                                <p class="text-slate-600"><em>On the hill</em> diletakkan di awal kalimat untuk penekanan (prepositional phrase of place).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">▫️ Fenomena Inversi (Inversion):</span>
+                                <p class="text-slate-600">Karena keterangan tempat ada di depan, terjadi pembalikan posisi: Verb (<span class="text-indigo-600 font-bold">stands</span>) mendahului Subject (<span class="text-emerald-600 font-bold">an ancient Buddhist temple</span>).</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">▫️ Tips TOEFL:</span>
+                                <p class="text-slate-600">Jangan keliru mengira objek preposisi (hill) sebagai subjek. Subjek aslinya adalah <span class="text-emerald-400 font-bold">temple</span> (tunggal), sehingga verb-nya menggunakan bentuk tunggal <span class="text-indigo-400 font-bold">stands</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: PRACTICE QUIZ (10 SOAL) ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Practice Quiz: Skill 2</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">
+                            Uji pemahaman Anda mengenai Preposition, Objek Preposisi, Subject-Verb Agreement, dan Prep vs Conjunction.
+                        </p>
+                    </div>
+                    <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                        <span>Score: </span>
+                        <span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 10</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Questions Container -->
+                <div id="quiz-container" class="space-y-4">
+                    <!-- Dynamic Questions generated by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-7xl mx-auto px-4">
+            LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 2: Preposition Analysis
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+            });
+
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) {
+                activeTabBtn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30";
+            }
+        }
+
+        // 10 Practice Questions for Skill 2
+        const quizQuestions = [
+            {
+                id: 1,
+                question: "In the drawer of the antique desk _____ several confidential letters from the colonial era.",
+                options: [
+                    { text: "lies", isCorrect: false },
+                    { text: "lie", isCorrect: true },
+                    { text: "lying", isCorrect: false },
+                    { text: "is lie", isCorrect: false }
+                ],
+                explanation: "Subjek kalimat adalah 'several confidential letters' (plural), sedangkan 'In the drawer of the antique desk' adalah prepositional phrase keterangan tempat di awal kalimat (inversi). Karena subjeknya jamak, verb yang tepat adalah 'lie'."
+            },
+            {
+                id: 2,
+                question: "Before _____ the formal research proposal, the graduate student consulted his academic advisor.",
+                options: [
+                    { text: "submitting", isCorrect: true },
+                    { text: "submitted", isCorrect: false },
+                    { text: "he submit", isCorrect: false },
+                    { text: "submission", isCorrect: false }
+                ],
+                explanation: "Kata 'Before' di sini berfungsi sebagai preposisi karena langsung diikuti oleh gerund 'submitting' tanpa adanya subjek klausa mandiri."
+            },
+            {
+                id: 3,
+                question: "Despite _____ heavy rain and thunderstorm, the outdoor archaeological excavation continued.",
+                options: [
+                    { text: "the", isCorrect: true },
+                    { text: "although", isCorrect: false },
+                    { text: "even", isCorrect: false },
+                    { text: "because", isCorrect: false }
+                ],
+                explanation: "'Despite' adalah preposisi yang harus diikuti oleh noun phrase ('the heavy rain and thunderstorm'). Konjungsi seperti 'although' atau 'even though' memerlukan klausa (S + V)."
+            },
+            {
+                id: 4,
+                question: "The box of imported ceramic plates _____ broken during the shipment from Central Java.",
+                options: [
+                    { text: "were", isCorrect: false },
+                    { text: "are", isCorrect: false },
+                    { text: "was", isCorrect: true },
+                    { text: "have been", isCorrect: false }
+                ],
+                explanation: "Head noun utamanya adalah 'The box' (singular), bukan 'imported ceramic plates' (yang merupakan objek preposisi 'of'). Maka verb singular yang tepat adalah 'was'."
+            },
+            {
+                id: 5,
+                question: "After _____ the museum exhibits, the tourists gathered in the courtyard for a group photograph.",
+                options: [
+                    { text: "they touring", isCorrect: false },
+                    { text: "touring", isCorrect: true },
+                    { text: "toured", isCorrect: false },
+                    { text: "tour", isCorrect: false }
+                ],
+                explanation: "Setelah preposisi 'after', kata kerja wajib berbentuk gerund ('touring') karena tidak ada subjek eksplisit sebelum kata kerja tersebut."
+            },
+            {
+                id: 6,
+                question: "Along with the financial reports and marketing spreadsheets, _____ submitted to the board.",
+                options: [
+                    { text: "was the proposal", isCorrect: true },
+                    { text: "were the proposal", isCorrect: false },
+                    { text: "the proposal are", isCorrect: false },
+                    { text: "proposals is", isCorrect: false }
+                ],
+                explanation: "Frasa 'Along with the financial reports and marketing spreadsheets' adalah prepositional modifier. Subjek aslinya adalah 'the proposal' (singular), dan terjadi inversi sehingga verb 'was' mendahului subjek."
+            },
+            {
+                id: 7,
+                question: "Because of _____ technical malfunction in the server, the online registration system temporarily crashed.",
+                options: [
+                    { text: "suddenly", isCorrect: false },
+                    { text: "a", isCorrect: true },
+                    { text: "it was", isCorrect: false },
+                    { text: "when", isCorrect: false }
+                ],
+                explanation: "'Because of' adalah preposisi majemuk yang harus diikuti oleh noun phrase ('a sudden technical malfunction')."
+            },
+            {
+                id: 8,
+                question: "She decided to pursue her graduate studies in linguistics after _____ several academic seminars in Jakarta.",
+                options: [
+                    { text: "attending", isCorrect: true },
+                    { text: "attended", isCorrect: false },
+                    { text: "she attend", isCorrect: false },
+                    { text: "attendance", isCorrect: false }
+                ],
+                explanation: "Kata 'after' diikuti oleh objek preposisi berupa gerund 'attending' karena posisinya sebagai preposisi penghubung."
+            },
+            {
+                id: 9,
+                question: "The quality of the traditional woven textiles produced in Pekalongan _____ widely recognized.",
+                options: [
+                    { text: "are", isCorrect: false },
+                    { text: "were", isCorrect: false },
+                    { text: "is", isCorrect: true },
+                    { text: "have", isCorrect: false }
+                ],
+                explanation: "Head noun yang menentukan verb utama adalah 'The quality' (singular), meskipun terdapat objek preposisi jamak 'traditional woven textiles'. Maka verb yang tepat adalah 'is'."
+            },
+            {
+                id: 10,
+                question: "Before _____ the final manuscript to the journal editor, the author proofread every single sentence.",
+                options: [
+                    { text: "submitting", isCorrect: true },
+                    { text: "submitted", isCorrect: false },
+                    { text: "submission", isCorrect: false },
+                    { text: "he submitting", isCorrect: false }
+                ],
+                explanation: "Preposisi 'before' langsung merangkai gerund 'submitting' sebagai objek preposisi dalam struktur kalimat."
+            }
+        ];
+
+        let userAnswers = {};
+        let score = 0;
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+
+            quizContainer.innerHTML = '';
+
+            quizQuestions.forEach((q, index) => {
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                
+                let optionsHTML = '';
+                const optionLetters = ['A', 'B', 'C', 'D'];
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) {
+                            btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        } else if (isSelected && !opt.isCorrect) {
+                            btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        } else {
+                            btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                        }
+                    }
+
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''} 
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${optionLetters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>
+                    `;
+                }
+
+                qCard.innerHTML = `
+                    <div class="flex items-start justify-between gap-4">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-relaxed">${q.question}</p>
+                    <div class="space-y-1.5">
+                        ${optionsHTML}
+                    </div>
+                    ${explanationHTML}
+                `;
+
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) {
+                    score++;
+                }
+            });
+
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        window.onload = function() {
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
