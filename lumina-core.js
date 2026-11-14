@@ -6,7 +6,8 @@ var KEY="luminaCMS", EXPORT_KEY="luminaExportedAt", SESSION_KEY="luminaSession";
 var DEFAULT_ADMIN={user:"admin",pass:"lumina2026",name:"Administrator"};
 var SECTIONS=["general","listening","swo","reading"];
 var QSECTIONS=["listening","swo","reading"];
-var LINK_GROUPS=["listening","swo","reading","routine"];
+var MAT_SECTIONS=["listening","swo","reading"];   /* bagian yang punya halaman daftar skill sendiri */
+var LINK_GROUPS=["routine"];                      /* tombol tautan bebas (hanya Suggested Practice Routine) */
 
 /* ---------- helpers ---------- */
 function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
@@ -118,7 +119,7 @@ function textToHTML(t){return String(t||"").split(/\n{2,}/).map(function(p){retu
 /* ---------- data bawaan ---------- */
 function defaults(){
  return {
-  version:2, updatedAt:0,
+  version:3, updatedAt:0,
   materials:[],
   questions:{
    listening:[
@@ -141,8 +142,20 @@ function defaults(){
   },
   audio:[{id:"audio-sample",title:"Sample conversation (browser voice)",url:"",script:"Woman: Have you finished the report for Professor Allen? Man: Almost. I still need to check the figures in the final section. Woman: The professor said he would like to receive it before noon tomorrow. Man: That should be fine. I will review it tonight and send it first thing in the morning. Woman: Great. Let me know if you need me to check anything."}],
   reading:{title:"Urban Trees and City Life",passage:"<p>Urban trees provide benefits that extend beyond their appearance. Their leaves can provide shade, reducing the amount of heat absorbed by streets and buildings. Trees also help manage rainwater: some water is intercepted by leaves, while roots can improve the soil's ability to absorb rainfall. In addition, urban vegetation creates habitats for birds and insects. However, planting trees in cities requires careful planning. Species must be selected according to local climate, available space, and maintenance needs. A tree that grows well in a park may not be suitable for a narrow sidewalk where roots could damage pavement or underground pipes. Therefore, successful urban forestry depends not simply on planting more trees, but on choosing appropriate species and caring for them over time.</p>"},
-  links:{listening:[],swo:[{label:"Buka Materi Structure →",url:"materiswoskill1.html"}],reading:[],routine:[]},
-  skillPages:[{label:"Skill 1: Subject & Verb",file:"materiswoskill1.html"}],
+  links:{routine:[]},
+  /* daftar tombol halaman skill untuk tiap bagian Materi (muncul setelah tombol "Buka Materi ..." diklik) */
+  materialPages:{
+   listening:[],
+   swo:[
+    {label:"Skill 1: Subject & Verb",file:"materiswoskill1.html"},
+    {label:"Skill 2",file:"materiswoskill2.html"},
+    {label:"Skill 3",file:"materiswoskill3.html"},
+    {label:"Skill 4",file:"materiswoskill4.html"},
+    {label:"Skill 5",file:"materiswoskill5.html"},
+    {label:"Skill 6",file:"materiswoskill6.html"}
+   ],
+   reading:[]
+  },
   skills:{},
   accounts:[],
   settings:{requireLogin:false}
@@ -150,10 +163,13 @@ function defaults(){
 }
 function seedAdmin(){return {user:DEFAULT_ADMIN.user,name:DEFAULT_ADMIN.name,role:"admin",hash:hashPassword(DEFAULT_ADMIN.user,DEFAULT_ADMIN.pass)};}
 function validQ(q){return q&&typeof q.q==="string"&&Array.isArray(q.o)&&q.o.length>=2&&typeof q.a==="number";}
+function cleanPages(arr){
+ return (Array.isArray(arr)?arr:[]).filter(function(p){return p&&p.label&&p.file;}).map(function(p){return {id:p.id||uid("p"),label:String(p.label),file:String(p.file)};});
+}
 
 function normalize(d){
  var base=defaults(); d=(d&&typeof d==="object")?d:{};
- var out={version:2,updatedAt:Number(d.updatedAt)||0};
+ var out={version:3,updatedAt:Number(d.updatedAt)||0};
  out.materials=(Array.isArray(d.materials)?d.materials:[]).filter(function(m){return m&&m.title;}).map(function(m){
   return {id:m.id||uid("m"),section:SECTIONS.indexOf(m.section)>=0?m.section:"general",title:String(m.title),html:String(m.html||""),color:safeColor(m.color),updated:Number(m.updated)||0};
  });
@@ -169,7 +185,25 @@ function normalize(d){
   var arr=d.links&&d.links[g];
   out.links[g]=Array.isArray(arr)?arr.filter(function(l){return l&&l.label&&l.url;}).map(function(l){return {id:l.id||uid("l"),label:String(l.label),url:String(l.url)};}):base.links[g].map(function(l){l.id=uid("l");return l;});
  });
- out.skillPages=Array.isArray(d.skillPages)?d.skillPages.filter(function(p){return p&&p.label&&p.file;}).map(function(p){return {label:String(p.label),file:String(p.file)};}):base.skillPages;
+
+ /* daftar halaman skill per bagian Materi.
+    Data lama (skillPages + links listening/swo/reading) otomatis dipindahkan ke sini. */
+ out.materialPages={};
+ if(d.materialPages&&typeof d.materialPages==="object"){
+  MAT_SECTIONS.forEach(function(s){out.materialPages[s]=cleanPages(d.materialPages[s]);});
+ }else{
+  var oldLinks=(d.links&&typeof d.links==="object")?d.links:{};
+  MAT_SECTIONS.forEach(function(s){
+   var list=s==="swo"?cleanPages(Array.isArray(d.skillPages)?d.skillPages:base.materialPages.swo):[];
+   (Array.isArray(oldLinks[s])?oldLinks[s]:[]).forEach(function(l){
+    if(l&&l.label&&l.url&&!list.some(function(x){return x.file===String(l.url);}))list.push({id:uid("p"),label:String(l.label),file:String(l.url)});
+   });
+   out.materialPages[s]=list;
+  });
+ }
+ /* kompatibilitas: skillPages = daftar halaman Structure */
+ out.skillPages=out.materialPages.swo.map(function(p){return {label:p.label,file:p.file};});
+
  out.skills={};
  if(d.skills&&typeof d.skills==="object"){
   Object.keys(d.skills).forEach(function(k){
@@ -230,7 +264,7 @@ function currentAccount(d){var s=getSession();return s?findAccount(d,s.user):nul
 function isDefaultPassword(a){return !!a&&a.hash===hashPassword(a.user,DEFAULT_ADMIN.pass);}
 
 window.Lumina={
- KEY:KEY,EXPORT_KEY:EXPORT_KEY,DEFAULT_ADMIN:DEFAULT_ADMIN,SECTIONS:SECTIONS,QSECTIONS:QSECTIONS,LINK_GROUPS:LINK_GROUPS,
+ KEY:KEY,EXPORT_KEY:EXPORT_KEY,DEFAULT_ADMIN:DEFAULT_ADMIN,SECTIONS:SECTIONS,QSECTIONS:QSECTIONS,MAT_SECTIONS:MAT_SECTIONS,LINK_GROUPS:LINK_GROUPS,
  esc:esc,uid:uid,safeUrl:safeUrl,safeColor:safeColor,normalizeAudioUrl:normalizeAudioUrl,
  sha256:sha256,hashPassword:hashPassword,sanitizeHTML:sanitizeHTML,sanitizeRich:sanitizeRich,textToHTML:textToHTML,
  defaults:defaults,normalize:normalize,load:load,loadLocal:loadLocal,save:save,hasLocal:hasLocal,fetchPublished:fetchPublished,

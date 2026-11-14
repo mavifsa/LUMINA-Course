@@ -88,6 +88,12 @@ body.loading .shell{visibility:hidden}
 .link-btn{display:inline-block;background:#2563eb;color:#fff;padding:.5rem 1rem;border-radius:.5rem;text-decoration:none;font-weight:600;font-size:.875rem;margin:.4rem .5rem 0 0}
 .link-btn:hover{filter:brightness(.93)}
 .material-action{margin-top:1rem}.material-action:empty{display:none}
+/* daftar tombol skill (halaman Buka Materi ...) */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.skill-btn{display:flex;align-items:center;gap:11px;padding:13px 14px;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:11px;background:#fff;color:var(--ink);text-decoration:none;font-size:13px;font-weight:700;line-height:1.4;transition:.15s}
+.skill-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px #26334b14;background:#f8faff}
+.skill-btn .ico{font-size:18px;flex:none}.skill-btn .lbl{flex:1;min-width:0;word-break:break-word}.skill-btn .arr{color:var(--blue);flex:none}
+.sub-title{font-size:15px;margin:24px 0 2px}
 details.cm{border:1px solid var(--line);border-left:5px solid var(--c,#cbd5e1);border-radius:10px;padding:10px 14px;margin-top:12px;background:#fff}
 details.cm summary{cursor:pointer;font-weight:700;font-size:14px}
 .cm-body{font-size:13.5px;line-height:1.75;color:#434e62;margin-top:10px}
@@ -159,7 +165,7 @@ details.cm summary{cursor:pointer;font-weight:700;font-size:14px}
    <div class="notice">This version includes instant scoring, answer explanations, a practice timer, and audio for the listening practice. Your results are stored locally in this browser.</div>
   </section>
 
-  <!-- MATERIALS -->
+  <!-- MATERIALS (ringkasan; tiap bagian punya tombol menuju daftar skill-nya) -->
   <section id="materials" class="panel page hidden">
    <div class="page-title"><div><div class="kicker">LEARNING LIBRARY</div><h2>TOEFL Materials</h2><p>Quick notes to help you understand the main TOEFL sections.</p></div></div>
    <div class="material-list">
@@ -172,8 +178,7 @@ details.cm summary{cursor:pointer;font-weight:700;font-size:14px}
       <li>Notice paraphrases in the answer choices.</li>
       <li>Pay attention to tone, contrast, and suggestions.</li>
      </ul>
-     <div class="custom-materials" data-custom="listening"></div>
-     <div class="material-action" data-links="listening"></div>
+     <div class="material-action"><button class="btn small" data-go="mat-listening">Buka Materi Listening →</button></div>
     </article>
 
     <article class="material">
@@ -184,8 +189,7 @@ details.cm summary{cursor:pointer;font-weight:700;font-size:14px}
       <li>Recognize noun, adjective, and adverb clauses.</li>
       <li>Check parallel structure, verb forms, and modifiers.</li>
      </ul>
-     <div class="custom-materials" data-custom="swo"></div>
-     <div class="material-action" data-links="swo"></div>
+     <div class="material-action"><button class="btn small" data-go="mat-swo">Buka Materi Structure →</button></div>
     </article>
 
     <article class="material">
@@ -196,8 +200,7 @@ details.cm summary{cursor:pointer;font-weight:700;font-size:14px}
       <li>Scan for names, dates, and key terms.</li>
       <li>Use context to infer unfamiliar vocabulary.</li>
      </ul>
-     <div class="custom-materials" data-custom="reading"></div>
-     <div class="material-action" data-links="reading"></div>
+     <div class="material-action"><button class="btn small" data-go="mat-reading">Buka Materi Reading →</button></div>
     </article>
 
     <article class="material">
@@ -212,6 +215,27 @@ details.cm summary{cursor:pointer;font-weight:700;font-size:14px}
     </article>
 
    </div>
+  </section>
+
+  <!-- DAFTAR SKILL: Listening -->
+  <section id="mat-listening" class="panel page hidden">
+   <div class="page-title"><div><div class="kicker">TOEFL MATERIALS</div><h2>Listening Comprehension</h2><p>Choose a lesson to open.</p></div><button class="btn secondary small" data-go="materials">← Back to materials</button></div>
+   <div class="skill-grid" data-skills="listening"></div>
+   <div class="custom-materials" data-custom="listening"></div>
+  </section>
+
+  <!-- DAFTAR SKILL: Structure -->
+  <section id="mat-swo" class="panel page hidden">
+   <div class="page-title"><div><div class="kicker">TOEFL MATERIALS</div><h2>Structure &amp; Written Expression</h2><p>Choose a skill to open its lesson.</p></div><button class="btn secondary small" data-go="materials">← Back to materials</button></div>
+   <div class="skill-grid" data-skills="swo"></div>
+   <div class="custom-materials" data-custom="swo"></div>
+  </section>
+
+  <!-- DAFTAR SKILL: Reading -->
+  <section id="mat-reading" class="panel page hidden">
+   <div class="page-title"><div><div class="kicker">TOEFL MATERIALS</div><h2>Reading Comprehension</h2><p>Choose a lesson to open.</p></div><button class="btn secondary small" data-go="materials">← Back to materials</button></div>
+   <div class="skill-grid" data-skills="reading"></div>
+   <div class="custom-materials" data-custom="reading"></div>
   </section>
 
   <section id="listening" class="panel page hidden">
@@ -250,7 +274,9 @@ function updateStats(){
 }
 function showPage(id){
  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("hidden",p.id!==id));
- document.querySelectorAll(".nav button[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+ /* halaman daftar skill (mat-*) tetap menyalakan menu "TOEFL Materials" */
+ const navId=id.indexOf("mat-")===0?"materials":id;
+ document.querySelectorAll(".nav button[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===navId));
  window.scrollTo({top:0,behavior:"smooth"});
 }
 document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
@@ -345,15 +371,27 @@ function renderAudio(){
  box.querySelectorAll("[data-tts-stop]").forEach(b=>b.addEventListener("click",stopAllAudio));
 }
 
-/* ---------- materi, tautan, bacaan ---------- */
+/* ---------- materi, daftar skill, tautan, bacaan ---------- */
 function renderMaterials(){
+ /* tombol-tombol skill pada halaman Buka Materi ... */
+ document.querySelectorAll("[data-skills]").forEach(box=>{
+  const pages=(cms.materialPages&&cms.materialPages[box.dataset.skills])||[];
+  const html=pages.map(p=>{
+   const u=L.safeUrl(p.file);if(!u)return "";
+   return `<a class="skill-btn" href="${esc(u)}"><span class="ico">📄</span><span class="lbl">${esc(p.label)}</span><span class="arr">→</span></a>`;
+  }).join("");
+  box.innerHTML=html||'<div class="empty" style="grid-column:1/-1">No lessons have been added here yet.</div>';
+ });
+ /* catatan teks tambahan (di bawah daftar skill; "general" di halaman TOEFL Materials) */
  document.querySelectorAll("[data-custom]").forEach(box=>{
-  const items=cms.materials.filter(m=>m.section===box.dataset.custom);
-  box.innerHTML=items.map(m=>`<details class="cm" style="--c:${esc(L.safeColor(m.color)||"#cbd5e1")}"><summary>${esc(m.title)}</summary><div class="cm-body">${L.sanitizeHTML(m.html)}</div></details>`).join("");
+  const sec=box.dataset.custom;
+  const items=cms.materials.filter(m=>m.section===sec);
+  const head=(sec!=="general"&&items.length)?'<h3 class="sub-title">Additional notes</h3>':"";
+  box.innerHTML=head+items.map(m=>`<details class="cm" style="--c:${esc(L.safeColor(m.color)||"#cbd5e1")}"><summary>${esc(m.title)}</summary><div class="cm-body">${L.sanitizeHTML(m.html)}</div></details>`).join("");
  });
  document.getElementById("general-materials").classList.toggle("hidden",!cms.materials.some(m=>m.section==="general"));
  document.querySelectorAll("[data-links]").forEach(box=>{
-  box.innerHTML=(cms.links[box.dataset.links]||[]).map(l=>{
+  box.innerHTML=((cms.links&&cms.links[box.dataset.links])||[]).map(l=>{
    const u=L.safeUrl(l.url);if(!u)return "";
    const ext=/^https?:/i.test(u);
    return `<a class="link-btn" href="${esc(u)}"${ext?' target="_blank" rel="noopener"':""}>${esc(l.label)}</a>`;

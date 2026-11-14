@@ -1,0 +1,223 @@
+{
+  "version": 2,
+  "updatedAt": 1794663741427,
+  "materials": [
+    {
+      "id": "m-mwgg7ym27ioai",
+      "section": "swo",
+      "title": "Skill 1 : Subject & Verb",
+      "html": "<ul><li>&nbsp;Mengenali bentuk-bentuk subject dan kata kerja.</li></ul>",
+      "color": "#3979ce",
+      "updated": 1794663348987
+    },
+    {
+      "id": "m-mwggdu4169kzz",
+      "section": "swo",
+      "title": "Skill 2 :  Preposition",
+      "html": "<ul><li>&nbsp;Menerangkan fungsi preposisi beserta posisinya dalam kalimat.</li></ul>",
+      "color": "#3979ce",
+      "updated": 1794663633513
+    },
+    {
+      "id": "m-mwgggdf5q4uc2",
+      "section": "swo",
+      "title": "Skill 3 : Appositive",
+      "html": "<ul><li>&nbsp;Menerangkan fungsi Appositive, variasi bentuknya, dan posisinya dalam kalimat.</li></ul>",
+      "color": "#3979ce",
+      "updated": 1794663741425
+    }
+  ],
+  "questions": {
+    "listening": [
+      {
+        "id": "q-mwgg5n15isf3s",
+        "q": "What are the speakers mainly discussing?",
+        "o": [
+          "A class schedule",
+          "A report that needs to be completed",
+          "A meeting with Professor Allen",
+          "A change in research topic"
+        ],
+        "a": 1,
+        "e": "They discuss checking the figures and submitting the report before the deadline.",
+        "topic": ""
+      },
+      {
+        "id": "q-mwgg5n15j9k4v",
+        "q": "What does the man still need to do?",
+        "o": [
+          "Write the introduction",
+          "Meet the professor",
+          "Check the figures",
+          "Print the report"
+        ],
+        "a": 2,
+        "e": "He says he still needs to check the figures in the final section.",
+        "topic": ""
+      },
+      {
+        "id": "q-mwgg5n15tott2",
+        "q": "When does the professor want to receive the report?",
+        "o": [
+          "Tonight",
+          "Tomorrow before noon",
+          "Tomorrow evening",
+          "Next week"
+        ],
+        "a": 1,
+        "e": "The woman says the professor wants it before noon tomorrow.",
+        "topic": ""
+      }
+    ],
+    "swo": [
+      {
+        "id": "q-mwgg5n15otgyl",
+        "q": "The committee _____ the final decision yesterday.",
+        "o": [
+          "make",
+          "makes",
+          "made",
+          "making"
+        ],
+        "a": 2,
+        "e": "The time expression 'yesterday' requires the simple past: made.",
+        "topic": ""
+      },
+      {
+        "id": "q-mwgg5n150pbbz",
+        "q": "The new library, _____ last year, is already popular with students.",
+        "o": [
+          "complete",
+          "completed",
+          "was completing",
+          "which completing"
+        ],
+        "a": 1,
+        "e": "The past participle 'completed' works as a reduced passive adjective clause.",
+        "topic": ""
+      },
+      {
+        "id": "q-mwgg5n15faz19",
+        "q": "Neither the students nor the teacher _____ aware of the schedule change.",
+        "o": [
+          "were",
+          "are",
+          "have",
+          "was"
+        ],
+        "a": 3,
+        "e": "With neither...nor, the verb agrees with the nearer subject. 'Teacher' is singular, so use was.",
+        "topic": ""
+      },
+      {
+        "id": "q-mwgg5n15rqsqs",
+        "q": "The researcher collected the data carefully, _____ the results were reliable.",
+        "o": [
+          "because",
+          "so",
+          "although",
+          "unless"
+        ],
+        "a": 1,
+        "e": "'So' introduces the result: careful collection led to reliable results.",
+        "topic": ""
+      }
+    ],
+    "reading": [
+      {
+        "id": "q-mwgg5n15dwm2e",
+        "q": "What is the main idea of the passage?",
+        "o": [
+          "Why cities should remove old trees",
+          "The benefits of urban trees and the need for careful planning",
+          "How birds migrate through cities",
+          "Why all tree species grow well on sidewalks"
+        ],
+        "a": 1,
+        "e": "The passage describes several benefits and explains why tree selection and maintenance matter.",
+        "topic": ""
+      },
+      {
+        "id": "q-mwgg5n15rjjpi",
+        "q": "According to the passage, how can trees help manage rainwater?",
+        "o": [
+          "By preventing all rainfall",
+          "By making streets wider",
+          "By intercepting water and improving soil absorption",
+          "By directing water into buildings"
+        ],
+        "a": 2,
+        "e": "The passage states that leaves intercept some water and roots can improve soil absorption.",
+        "topic": ""
+      },
+      {
+        "id": "q-mwgg5n15p3g8n",
+        "q": "The word 'intercepted' is closest in meaning to _____.",
+        "o": [
+          "collected or caught",
+          "heated",
+          "destroyed",
+          "measured"
+        ],
+        "a": 0,
+        "e": "In context, leaves catch or hold some of the rainwater.",
+        "topic": ""
+      },
+      {
+        "id": "q-mwgg5n1536fmm",
+        "q": "Why might a tree be unsuitable for a narrow sidewalk?",
+        "o": [
+          "It may attract too many birds",
+          "Its roots may damage pavement or pipes",
+          "It cannot receive sunlight",
+          "It may stop all traffic"
+        ],
+        "a": 1,
+        "e": "The passage specifically mentions possible damage from roots.",
+        "topic": ""
+      }
+    ]
+  },
+  "audio": [
+    {
+      "id": "audio-sample",
+      "title": "Sample conversation (browser voice)",
+      "url": "",
+      "script": "Woman: Have you finished the report for Professor Allen? Man: Almost. I still need to check the figures in the final section. Woman: The professor said he would like to receive it before noon tomorrow. Man: That should be fine. I will review it tonight and send it first thing in the morning. Woman: Great. Let me know if you need me to check anything."
+    }
+  ],
+  "reading": {
+    "title": "Urban Trees and City Life",
+    "passage": "<p>Urban trees provide benefits that extend beyond their appearance. Their leaves can provide shade, reducing the amount of heat absorbed by streets and buildings. Trees also help manage rainwater: some water is intercepted by leaves, while roots can improve the soil's ability to absorb rainfall. In addition, urban vegetation creates habitats for birds and insects. However, planting trees in cities requires careful planning. Species must be selected according to local climate, available space, and maintenance needs. A tree that grows well in a park may not be suitable for a narrow sidewalk where roots could damage pavement or underground pipes. Therefore, successful urban forestry depends not simply on planting more trees, but on choosing appropriate species and caring for them over time.</p>"
+  },
+  "links": {
+    "listening": [],
+    "swo": [
+      {
+        "id": "l-mwgg5n15codxo",
+        "label": "Buka Materi Structure →",
+        "url": "materiswoskill1.html"
+      }
+    ],
+    "reading": [],
+    "routine": []
+  },
+  "skillPages": [
+    {
+      "label": "Skill 1: Subject & Verb",
+      "file": "materiswoskill1.html"
+    }
+  ],
+  "skills": {},
+  "accounts": [
+    {
+      "user": "admin",
+      "name": "Administrator",
+      "role": "admin",
+      "hash": "76d7769dcb9ddf1f25db4690e97bd0520ef70a5a6e1214600e156b485a24e67c"
+    }
+  ],
+  "settings": {
+    "requireLogin": false
+  }
+}

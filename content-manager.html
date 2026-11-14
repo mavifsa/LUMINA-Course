@@ -69,6 +69,9 @@ button{cursor:pointer}
 .tag.admin{background:#fae9ed;color:var(--red)}
 .opts{display:grid;gap:3px;margin-top:6px;font-size:12px}
 .opts .ok{color:var(--green);font-weight:700}
+.boxhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.boxhead h3{margin:0}
+.sub{font-size:12.5px;color:var(--muted);line-height:1.55;margin:0 0 8px}
 table{width:100%;border-collapse:collapse;font-size:13px}
 td,th{text-align:left;padding:10px 8px;border-top:1px solid var(--line);vertical-align:middle}
 th{font-size:11px;letter-spacing:.8px;color:#8993a4;border-top:0}
@@ -126,7 +129,7 @@ footer{text-align:center;color:#8993a4;font-size:11px;padding:20px}
 <!-- APP -->
 <div id="app" class="hidden">
  <header class="hero"><div class="hero-inner">
-  <div><div class="eyebrow">LUMINA LEARNING PLATFORM</div><h1>Content Manager</h1><p>Kelola materi, soal, audio, tautan, dan akun untuk web TOEFL Exercise.</p></div>
+  <div><div class="eyebrow">LUMINA LEARNING PLATFORM</div><h1>Content Manager</h1><p>Kelola materi, soal, audio, dan akun untuk web TOEFL Exercise.</p></div>
   <div class="hero-actions">
    <span class="who" id="who"></span>
    <a class="btn ghost small" href="index.html" target="_blank" rel="noopener">Lihat web ↗</a>
@@ -150,11 +153,11 @@ const L=window.Lumina, esc=L.esc, $=s=>document.querySelector(s);
 let D=null, tab="home";
 const SEC_LABEL={general:"Umum",listening:"Listening",swo:"Structure",reading:"Reading"};
 const SEC_FULL={general:"Umum (TOEFL Materials)",listening:"Listening Comprehension",swo:"Structure & Written Expression",reading:"Reading Comprehension"};
-const LINK_LABEL={listening:"Listening",swo:"Structure & Written Expression",reading:"Reading",routine:"Suggested Practice Routine"};
-const TABS=[["home","⌂","Ringkasan"],["materials","📚","Materi"],["skills","📝","Halaman Skill"],["questions","❓","Soal latihan"],["audio","🎧","Audio"],["links","🔗","Tautan materi"],["accounts","👥","Akun & login"],["backup","💾","Backup & publikasi"]];
+const MAT_CHIPS=["listening","swo","reading","general"];   /* sub-menu pada tab Materi */
+const TABS=[["home","⌂","Ringkasan"],["materials","📚","Materi"],["questions","❓","Soal latihan"],["audio","🎧","Audio"],["accounts","👥","Akun & login"],["backup","💾","Backup & publikasi"]];
 const HL=["#fff3a3","#c9f2d9","#ffd3de","#cfe3ff","#ffdcb0"], TC=["#c0192f","#1d6fd0","#15803d","#b45309","#6d28d9"];
 const TAG_COLORS=["","#c0192f","#3979ce","#16866b","#bd7922","#7952b5"];
-let matSection="general", matEdit=null, matColor="";
+let matSection="swo", matEdit=null, matColor="";
 let qSection="listening", qEdit=null;
 let audioEdit=null;
 
@@ -229,7 +232,7 @@ function renderBanner(){
 function buildTabs(){$("#tabs").innerHTML=TABS.map(t=>`<button type="button" data-tab="${t[0]}" class="${t[0]===tab?"active":""}"><span>${t[1]}</span>${t[2]}</button>`).join("");}
 function go(t){tab=t;matEdit=null;qEdit=null;audioEdit=null;buildTabs();render();window.scrollTo({top:0,behavior:"smooth"});}
 function render(){
- ({home:vHome,materials:vMaterials,skills:vSkills,questions:vQuestions,audio:vAudio,links:vLinks,accounts:vAccounts,backup:vBackup})[tab]();
+ ({home:vHome,materials:vMaterials,questions:vQuestions,audio:vAudio,accounts:vAccounts,backup:vBackup})[tab]();
  renderBanner();
 }
 const title=(k,h,p)=>`<div class="page-title"><div class="kicker">${k}</div><h2>${h}</h2><p>${p}</p></div>`;
@@ -237,70 +240,111 @@ const title=(k,h,p)=>`<div class="page-title"><div class="kicker">${k}</div><h2>
 /* ---------- RINGKASAN ---------- */
 function vHome(){
  const qn=L.QSECTIONS.reduce((n,s)=>n+D.questions[s].length,0);
+ const pn=L.MAT_SECTIONS.reduce((n,s)=>n+D.materialPages[s].length,0);
  $("#view").innerHTML=title("RINGKASAN","Selamat datang","Pilih menu di sebelah kiri untuk mengisi atau memperbarui konten web.")+
  `<div class="stats">
-  <div class="stat"><b>${D.materials.length}</b><span>Materi tambahan</span></div>
+  <div class="stat"><b>${pn}</b><span>Halaman skill / materi</span></div>
   <div class="stat"><b>${qn}</b><span>Soal latihan</span></div>
   <div class="stat"><b>${D.audio.length}</b><span>Audio</span></div>
   <div class="stat"><b>${D.accounts.length}</b><span>Akun</span></div>
  </div>
  <div class="box"><h3>Cara kerja</h3>
   <ol class="hint" style="font-size:13px;padding-left:20px;margin:0;line-height:1.8">
-   <li>Isi / ubah konten di menu <b>Materi</b>, <b>Soal latihan</b>, <b>Audio</b>, <b>Tautan materi</b>, atau <b>Akun & login</b>. Setiap perubahan tersimpan otomatis di browser ini.</li>
+   <li>Semua konten materi diatur di menu <b>Materi</b>, dengan sub-menu <b>Listening</b>, <b>Structure</b>, dan <b>Reading</b>. Setiap perubahan tersimpan otomatis di browser ini.</li>
    <li>Klik <b>Lihat web ↗</b> di atas untuk memeriksa hasilnya (pratinjau di browser Anda).</li>
    <li>Agar siswa ikut melihat perubahan: buka <b>Backup & publikasi</b>, unduh <code>lumina-data.json</code>, lalu unggah ke folder yang sama dengan <code>index.html</code>.</li>
   </ol></div>
- <div class="note"><b>Tips pewarnaan:</b> di editor materi, blok teks lalu klik lingkaran <b>Sorot</b> (penanda latar) atau <b>Warna</b> (warna huruf). Setiap materi juga punya <b>warna label</b> untuk menandai kartunya.</div>`;
+ <div class="note"><b>Tips pewarnaan:</b> di editor catatan materi, blok teks lalu klik lingkaran <b>Sorot</b> (penanda latar) atau <b>Warna</b> (warna huruf). Setiap catatan juga punya <b>warna label</b> untuk menandai kartunya.</div>`;
 }
 
-/* ---------- HALAMAN SKILL ---------- */
+/* ---------- MATERI (sub-menu: Listening · Structure · Reading · Umum) ---------- */
 const skId=f=>String(f).replace(/\.html?$/i,"").split("/").pop();
-function vSkills(){
- syncSkills();
- let h=title("HALAMAN SKILL","Halaman materi Structure (Skill 1–8)","Ubah tampilan halaman materi langsung di halamannya — tanpa menyentuh kode.")+
- `<div class="note"><b>Cara mengedit:</b>
-  <ol style="margin:6px 0 0;padding-left:20px;line-height:1.8">
-   <li>Klik <b>Buka & edit</b> pada halaman yang diinginkan (login admin diminta bila perlu).</li>
-   <li>Klik teks lalu ketik. Blok teks, lalu klik warna <b>Sorot</b> (latar) atau <b>Warna</b> (huruf).</li>
-   <li>Klik sebuah kartu/baris (muncul garis merah putus-putus), lalu <b>⧉ Gandakan</b> untuk menambah, <b>↑ ↓</b> untuk memindah, <b>🗑 Hapus</b> untuk membuang. <b>＋ Catatan</b> menambah kotak catatan baru.</li>
-   <li><b>❓ Soal kuis</b> mengubah soal latihan. Klik <b>💾 Simpan</b> bila selesai.</li>
-  </ol></div>
- <div class="box"><h3>Daftar halaman</h3>`+
- (D.skillPages.length?D.skillPages.map((p,i)=>{const ed=!!D.skills[skId(p.file)];return `<div class="item"><div class="main"><div class="t">📝 ${esc(p.label)} <span class="tag ${ed?"admin":""}">${ed?"SUDAH DIEDIT":"ASLI"}</span></div><div class="s">${esc(p.file)}</div></div>
-  <div class="acts"><a class="btn small" href="${esc(p.file)}?edit=1" target="_blank">Buka &amp; edit</a>${ed?`<button class="btn secondary small" data-act="skReset" data-id="${i}">Kembalikan ke asli</button>`:""}<button class="btn danger small" data-act="skDel" data-id="${i}">Hapus dari daftar</button></div></div>`;}).join(""):`<div class="empty">Belum ada halaman.</div>`)+`</div>
- <div class="box"><h3>Tambah halaman ke daftar</h3><form class="form" id="sk-form"><div class="grid2"><label>Nama<input id="sk-label" required placeholder="mis. Skill 2: Object of Preposition"></label><label>Nama file<input id="sk-file" required placeholder="mis. materiswoskill2.html"></label></div>
- <p class="hint">Agar halaman bisa diedit, tambahkan dua baris ini sebelum <code>&lt;/body&gt;</code> pada file halaman tersebut: <code>&lt;script src="lumina-core.js"&gt;&lt;/script&gt;</code> dan <code>&lt;script src="lumina-skill-editor.js"&gt;&lt;/script&gt;</code>.</p>
- <div><button class="btn" type="submit">＋ Tambah</button></div></form></div>`;
- $("#view").innerHTML=h;
- $("#sk-form").onsubmit=e=>{
-  e.preventDefault();const f=$("#sk-file").value.trim();
-  if(!/^[\w\-.\/]+\.html?$/i.test(f)){alert("Nama file harus berakhiran .html (mis. materiswoskill2.html).");return;}
-  D.skillPages.push({label:$("#sk-label").value.trim(),file:f});if(commit("Halaman ditambahkan"))vSkills();
- };
-}
 
-/* ---------- MATERI ---------- */
+function pagesBox(s){
+ const arr=D.materialPages[s];
+ return `<div class="box"><h3>Daftar halaman — ${SEC_FULL[s]}</h3>
+  <p class="sub">Inilah tombol-tombol yang muncul di halaman yang terbuka setelah siswa mengeklik <b>“Buka Materi ${SEC_LABEL[s]}”</b> (mis. Skill 1, Skill 2, …). Mengeklik salah satu tombol membuka file halamannya. Urutan tombol mengikuti daftar ini.</p>`+
+ (arr.length?arr.map((p,i)=>{
+   const ed=!!D.skills[skId(p.file)], u=L.safeUrl(p.file);
+   return `<div class="item"><div class="main"><div class="t">📝 ${esc(p.label)} <span class="tag ${ed?"admin":""}">${ed?"SUDAH DIEDIT":"ASLI"}</span></div><div class="s">${esc(p.file)}</div></div>
+   <div class="acts"><button class="btn secondary small" data-act="pgUp" data-id="${p.id}" ${i===0?"disabled":""}>↑</button><button class="btn secondary small" data-act="pgDown" data-id="${p.id}" ${i===arr.length-1?"disabled":""}>↓</button>${u&&!/^(https?:|mailto:)/i.test(u)?`<a class="btn small" href="${esc(u)}?edit=1" target="_blank">Buka &amp; edit</a>`:""}<button class="btn secondary small" data-act="pgEdit" data-id="${p.id}">Ubah</button>${ed?`<button class="btn secondary small" data-act="pgReset" data-id="${p.id}">Kembalikan ke asli</button>`:""}<button class="btn danger small" data-act="pgDel" data-id="${p.id}">Hapus</button></div></div>`;
+  }).join(""):`<div class="empty">Belum ada halaman di bagian ini.</div>`)+
+ `</div>
+ <div class="box"><h3>Tambah halaman</h3>
+  <form class="form" id="pg-form"><div class="grid2"><label>Nama tombol<input id="pg-label" required placeholder="mis. Skill 7: Object of Preposition"></label><label>Nama file<input id="pg-file" required placeholder="mis. materiswoskill7.html"></label></div>
+  <div><button class="btn" type="submit">＋ Tambah</button></div></form>
+  <details style="margin-top:14px"><summary style="cursor:pointer;font-size:12.5px;font-weight:700;color:#536075">Tambah banyak sekaligus</summary>
+   <form class="form" id="pgbulk-form" style="margin-top:10px"><label>Satu baris satu halaman, format: <code>Nama tombol | namafile.html</code><textarea id="pgbulk" rows="5" placeholder="Skill 7 | materiswoskill7.html&#10;Skill 8 | materiswoskill8.html"></textarea></label>
+   <div><button class="btn" type="submit">＋ Tambah semua</button></div></form></details>
+  <p class="hint" style="margin-top:12px">Agar halaman bisa diedit lewat <b>Buka &amp; edit</b>, tambahkan dua baris ini sebelum <code>&lt;/body&gt;</code> pada file halamannya: <code>&lt;script src="lumina-core.js"&gt;&lt;/script&gt;</code> dan <code>&lt;script src="lumina-skill-editor.js"&gt;&lt;/script&gt;</code>. Untuk halaman di luar situs ini, isi nama file dengan alamat lengkap <code>https://…</code>.</p>
+ </div>`;
+}
+function routineBox(){
+ const arr=D.links.routine;
+ return `<div class="box"><h3>Tombol tautan — Suggested Practice Routine</h3>
+  <p class="sub">Tombol bebas (mis. ke Google Drive atau video) yang tampil di kartu “Suggested Practice Routine”.</p>`+
+ (arr.length?arr.map((l,i)=>`<div class="item"><div class="main"><div class="t">${esc(l.label)}</div><div class="s">${esc(l.url)}</div></div><div class="acts"><button class="btn secondary small" data-act="lUp" data-g="routine" data-id="${l.id}" ${i===0?"disabled":""}>↑</button><button class="btn secondary small" data-act="lDown" data-g="routine" data-id="${l.id}" ${i===arr.length-1?"disabled":""}>↓</button><button class="btn secondary small" data-act="lEdit" data-g="routine" data-id="${l.id}">Edit</button><button class="btn danger small" data-act="lDel" data-g="routine" data-id="${l.id}">Hapus</button></div></div>`).join(""):`<div class="empty" style="padding:8px">Belum ada tautan.</div>`)+
+ `<form class="form" id="link-form" style="margin-top:12px"><div class="grid2"><label>Teks tombol<input id="l-label" required placeholder="mis. Buka Latihan Mingguan"></label><label>Alamat (URL)<input id="l-url" required placeholder="https://… atau namafile.html"></label></div>
+  <div><button class="btn" type="submit">＋ Tambah tautan</button></div></form></div>`;
+}
 function vMaterials(){
- const chips=L.SECTIONS.map(s=>`<button class="chip ${s===matSection?"active":""}" data-act="matSec" data-id="${s}">${SEC_LABEL[s]} (${D.materials.filter(m=>m.section===s).length})</button>`).join("");
- let h=title("MATERI","Materi pembelajaran","Tambah dan ubah materi untuk halaman TOEFL Materials. Materi muncul di bagian yang sesuai.");
+ syncSkills();
+ const cnt=s=>(s==="general"?D.links.routine.length:D.materialPages[s].length)+D.materials.filter(m=>m.section===s).length;
+ const chips=MAT_CHIPS.map(s=>`<button class="chip ${s===matSection?"active":""}" data-act="matSec" data-id="${s}">${SEC_LABEL[s]} (${cnt(s)})</button>`).join("");
+ let h=title("MATERI","Materi pembelajaran","Pilih sub-menu Listening, Structure, atau Reading untuk mengatur daftar tombol skill dan catatan materinya. Semuanya tampil di halaman TOEFL Materials setelah tombol “Buka Materi …” diklik.");
  if(matEdit){
   const m=matEdit==="new"?{section:matSection,title:"",html:"",color:""}:D.materials.find(x=>x.id===matEdit);
   if(!m){matEdit=null;return vMaterials();}
   if(matEdit!=="new"&&matColor===null)matColor=m.color||"";
-  h+=`<div class="box"><h3>${matEdit==="new"?"Materi baru":"Edit materi"}</h3><div class="form">
-   <div class="grid2"><label>Judul materi<input id="m-title" value="${esc(m.title)}" placeholder="mis. Subject–Verb Agreement"></label>
+  h+=`<div class="box"><h3>${matEdit==="new"?"Catatan materi baru":"Edit catatan materi"}</h3><div class="form">
+   <div class="grid2"><label>Judul catatan<input id="m-title" value="${esc(m.title)}" placeholder="mis. Subject–Verb Agreement"></label>
    <label>Ditampilkan di bagian<select id="m-section">${L.SECTIONS.map(s=>`<option value="${s}" ${s===m.section?"selected":""}>${SEC_FULL[s]}</option>`).join("")}</select></label></div>
    <div class="fgroup"><span class="fl">Warna label kartu (tanda)</span><div class="colorpick" id="m-colors">${TAG_COLORS.map(c=>`<button type="button" data-act="matColor" data-id="${c}" class="${c===(matColor||"")?"on":""} ${c?"":"none"}" ${c?`style="background:${c}"`:""} title="${c||"Tanpa warna"}"></button>`).join("")}</div></div>
-   <div class="fgroup"><span class="fl">Isi materi</span>${editorHTML("ed-mat",m.html)}</div>
-   <div class="row"><button class="btn" data-act="matSave">Simpan materi</button><button class="btn secondary" data-act="matCancel">Batal</button></div></div></div>`;
+   <div class="fgroup"><span class="fl">Isi catatan</span>${editorHTML("ed-mat",m.html)}</div>
+   <div class="row"><button class="btn" data-act="matSave">Simpan catatan</button><button class="btn secondary" data-act="matCancel">Batal</button></div></div></div>`;
  }else{
+  h+=`<div class="chips">${chips}</div>`;
+  h+=matSection==="general"?routineBox():pagesBox(matSection);
   const list=D.materials.filter(m=>m.section===matSection);
-  h+=`<div class="chips">${chips}</div><div class="row" style="margin-bottom:10px"><button class="btn" data-act="matNew">＋ Materi baru di "${SEC_LABEL[matSection]}"</button></div><div class="box">`+
+  h+=`<div class="box"><div class="boxhead"><h3>Catatan materi tambahan — ${SEC_LABEL[matSection]}</h3><button class="btn small" data-act="matNew">＋ Catatan baru</button></div>
+   <p class="sub">${matSection==="general"?"Tampil di kartu “Additional Materials” pada halaman TOEFL Materials.":"Teks/rangkuman opsional yang tampil di bawah daftar tombol skill."}</p>`+
   (list.length?list.map((m,i)=>`<div class="item"><div class="main"><div class="t"><span class="dot" style="background:${esc(m.color||"#cbd5e1")}"></span>${esc(m.title)}</div><div class="s">${esc(L.sanitizeHTML(m.html).replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim().slice(0,110))}…</div></div>
-   <div class="acts"><button class="btn secondary small" data-act="matUp" data-id="${m.id}" ${i===0?"disabled":""}>↑</button><button class="btn secondary small" data-act="matDown" data-id="${m.id}" ${i===list.length-1?"disabled":""}>↓</button><button class="btn secondary small" data-act="matEdit" data-id="${m.id}">Edit</button><button class="btn danger small" data-act="matDel" data-id="${m.id}">Hapus</button></div></div>`).join(""):`<div class="empty">Belum ada materi di bagian ini.</div>`)+`</div>`;
+   <div class="acts"><button class="btn secondary small" data-act="matUp" data-id="${m.id}" ${i===0?"disabled":""}>↑</button><button class="btn secondary small" data-act="matDown" data-id="${m.id}" ${i===list.length-1?"disabled":""}>↓</button><button class="btn secondary small" data-act="matEdit" data-id="${m.id}">Edit</button><button class="btn danger small" data-act="matDel" data-id="${m.id}">Hapus</button></div></div>`).join(""):`<div class="empty">Belum ada catatan di bagian ini.</div>`)+`</div>`;
  }
  $("#view").innerHTML=h;
  if(matEdit)wireEditor("ed-mat");
+ else bindMatForms();
+}
+function validFile(f){return /^[\w\-.\/]+\.html?$/i.test(f)||/^https?:\/\/\S+$/i.test(f);}
+function bindMatForms(){
+ const pf=$("#pg-form");
+ if(pf)pf.onsubmit=e=>{
+  e.preventDefault();const f=$("#pg-file").value.trim();
+  if(!validFile(f)){alert("Nama file harus berakhiran .html (mis. materiswoskill7.html) atau berupa alamat https://…");return;}
+  D.materialPages[matSection].push({id:L.uid("p"),label:$("#pg-label").value.trim(),file:f});
+  if(commit("Halaman ditambahkan"))vMaterials();
+ };
+ const bf=$("#pgbulk-form");
+ if(bf)bf.onsubmit=e=>{
+  e.preventDefault();
+  const lines=$("#pgbulk").value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean), add=[], bad=[];
+  lines.forEach(ln=>{
+   const k=ln.indexOf("|"); let label,file;
+   if(k<0){file=ln;label=skId(ln);}else{label=ln.slice(0,k).trim();file=ln.slice(k+1).trim();}
+   if(label&&validFile(file))add.push({id:L.uid("p"),label,file});else bad.push(ln);
+  });
+  if(bad.length){alert("Baris berikut tidak valid (format: Nama | namafile.html):\n\n"+bad.join("\n"));return;}
+  if(!add.length){alert("Belum ada baris yang diisi.");return;}
+  D.materialPages[matSection].push(...add);
+  if(commit(add.length+" halaman ditambahkan"))vMaterials();
+ };
+ const lf=$("#link-form");
+ if(lf)lf.onsubmit=e=>{
+  e.preventDefault();const url=L.safeUrl($("#l-url").value);
+  if(!url){alert("Alamat tidak valid. Gunakan https://… atau nama file seperti materi.html");return;}
+  D.links.routine.push({id:L.uid("l"),label:$("#l-label").value.trim(),url});
+  if(commit())vMaterials();
+ };
 }
 
 /* ---------- SOAL ---------- */
@@ -349,26 +393,6 @@ function vAudio(){
  $("#view").innerHTML=h;
 }
 
-/* ---------- TAUTAN ---------- */
-function vLinks(){
- let h=title("TAUTAN MATERI","Tombol tautan materi","Atur tombol yang tampil di halaman TOEFL Materials (mis. ke halaman materi Skill 1–8, Google Drive, video, dll.).")+
- `<div class="box"><h3>Tambah tautan</h3><form class="form" id="link-form">
-  <div class="grid2"><label>Bagian<select id="l-group">${L.LINK_GROUPS.map(g=>`<option value="${g}">${LINK_LABEL[g]}</option>`).join("")}</select></label><label>Teks tombol<input id="l-label" required placeholder="mis. Buka Materi Skill 2"></label></div>
-  <label>Alamat (URL)<input id="l-url" required placeholder="https://… atau materiswoskill2.html"></label>
-  <div><button class="btn" type="submit">＋ Tambah tautan</button></div></form></div>`;
- L.LINK_GROUPS.forEach(g=>{
-  const arr=D.links[g];
-  h+=`<div class="box"><h3>${LINK_LABEL[g]}</h3>`+(arr.length?arr.map((l,i)=>`<div class="item"><div class="main"><div class="t">${esc(l.label)}</div><div class="s">${esc(l.url)}</div></div><div class="acts"><button class="btn secondary small" data-act="lUp" data-g="${g}" data-id="${l.id}" ${i===0?"disabled":""}>↑</button><button class="btn secondary small" data-act="lDown" data-g="${g}" data-id="${l.id}" ${i===arr.length-1?"disabled":""}>↓</button><button class="btn secondary small" data-act="lEdit" data-g="${g}" data-id="${l.id}">Edit</button><button class="btn danger small" data-act="lDel" data-g="${g}" data-id="${l.id}">Hapus</button></div></div>`).join(""):`<div class="empty" style="padding:8px">Belum ada tautan.</div>`)+`</div>`;
- });
- $("#view").innerHTML=h;
- $("#link-form").onsubmit=e=>{
-  e.preventDefault();const url=L.safeUrl($("#l-url").value);
-  if(!url){alert("Alamat tidak valid. Gunakan https://… atau nama file seperti materi.html");return;}
-  D.links[$("#l-group").value].push({id:L.uid("l"),label:$("#l-label").value.trim(),url});
-  if(commit())vLinks();
- };
-}
-
 /* ---------- AKUN ---------- */
 function vAccounts(){
  const me=L.currentAccount(D);
@@ -402,7 +426,7 @@ function vBackup(){
  `<div class="box"><h3>1. Publikasikan ke siswa</h3><p class="hint" style="font-size:13px">Unduh <code>lumina-data.json</code>, lalu unggah ke folder yang sama dengan <code>index.html</code> (timpa file lama). Semua pengunjung akan melihat materi, soal, audio, tautan, dan akun terbaru.</p><button class="btn" data-act="export">⬇ Unduh lumina-data.json</button></div>
  <div class="box"><h3>2. Pulihkan dari file</h3><p class="hint" style="font-size:13px">Ganti seluruh data di browser ini dengan isi file backup.</p><label class="btn secondary file-label" style="cursor:pointer">Pilih file backup (.json)<input id="imp" type="file" accept="application/json,.json" hidden></label></div>
  <div class="box"><h3>3. Ambil versi yang sudah dipublikasikan</h3><p class="hint" style="font-size:13px">Berguna jika Anda mengedit dari perangkat lain. Mengganti data di browser ini dengan <code>lumina-data.json</code> yang ada di server.</p><button class="btn secondary" data-act="pull">Ambil dari server</button></div>
- <div class="box"><h3>4. Kembalikan konten contoh</h3><p class="hint" style="font-size:13px">Mengembalikan materi, soal, audio, teks bacaan, dan tautan ke contoh awal. Akun dan pengaturan login tidak berubah.</p><button class="btn danger" data-act="reset">Kembalikan ke contoh awal</button></div>
+ <div class="box"><h3>4. Kembalikan konten contoh</h3><p class="hint" style="font-size:13px">Mengembalikan daftar halaman materi, catatan materi, soal, audio, teks bacaan, dan tautan ke contoh awal. Akun dan pengaturan login tidak berubah.</p><button class="btn danger" data-act="reset">Kembalikan ke contoh awal</button></div>
  <div class="note"><b>Catatan keamanan:</b> login ini berjalan di browser dan file <code>lumina-data.json</code> dapat dibuka siapa pun yang tahu alamatnya (password tersimpan dalam bentuk hash, bukan teks biasa, tetapi password lemah tetap bisa ditebak). Gunakan password yang kuat, dan jangan menyimpan data rahasia di web ini.</div>`;
  $("#imp").onchange=async e=>{
   const f=e.target.files[0];if(!f)return;
@@ -424,15 +448,37 @@ const A={
  matCancel(){matEdit=null;vMaterials();},
  matSave(){
   const t=$("#m-title").value.trim(),ed=editorValue("ed-mat");
-  if(!t){alert("Judul materi wajib diisi.");return;} if(ed.empty){alert("Isi materi masih kosong.");return;}
+  if(!t){alert("Judul catatan wajib diisi.");return;} if(ed.empty){alert("Isi catatan masih kosong.");return;}
   const sec=$("#m-section").value, color=L.safeColor(matColor||"");
   if(matEdit==="new")D.materials.push({id:L.uid("m"),section:sec,title:t,html:ed.html,color,updated:Date.now()});
   else{const m=D.materials.find(x=>x.id===matEdit);Object.assign(m,{section:sec,title:t,html:ed.html,color,updated:Date.now()});}
-  matSection=sec;matEdit=null;if(commit("Materi tersimpan"))vMaterials();
+  matSection=sec;matEdit=null;if(commit("Catatan tersimpan"))vMaterials();
  },
- matDel(id){if(!confirm("Hapus materi ini?"))return;D.materials=D.materials.filter(m=>m.id!==id);commit("Materi dihapus");vMaterials();},
+ matDel(id){if(!confirm("Hapus catatan ini?"))return;D.materials=D.materials.filter(m=>m.id!==id);commit("Catatan dihapus");vMaterials();},
  matUp(id){moveIn(D.materials,id,-1,m=>m.section===matSection);commit();vMaterials();},
  matDown(id){moveIn(D.materials,id,1,m=>m.section===matSection);commit();vMaterials();},
+
+ /* daftar halaman skill per sub-menu */
+ pgUp(id){moveIn(D.materialPages[matSection],id,-1);commit();vMaterials();},
+ pgDown(id){moveIn(D.materialPages[matSection],id,1);commit();vMaterials();},
+ pgDel(id){
+  const p=D.materialPages[matSection].find(x=>x.id===id);if(!p)return;
+  if(!confirm("Hapus \""+p.label+"\" dari daftar? (File dan hasil editnya tidak dihapus)"))return;
+  D.materialPages[matSection]=D.materialPages[matSection].filter(x=>x.id!==id);commit("Dihapus dari daftar");vMaterials();
+ },
+ pgEdit(id){
+  const p=D.materialPages[matSection].find(x=>x.id===id);if(!p)return;
+  modal(`<h3>Ubah halaman</h3><form class="form" id="pe-form"><label>Nama tombol<input id="pe-label" value="${esc(p.label)}" required></label><label>Nama file / alamat<input id="pe-file" value="${esc(p.file)}" required></label><div class="row"><button class="btn" type="submit">Simpan</button><button class="btn secondary" type="button" id="pe-cancel">Batal</button></div></form>`,()=>{
+   $("#pe-cancel").onclick=closeModal;
+   $("#pe-form").onsubmit=e=>{e.preventDefault();const f=$("#pe-file").value.trim();if(!validFile(f)){alert("Nama file harus berakhiran .html atau berupa alamat https://…");return;}p.label=$("#pe-label").value.trim();p.file=f;closeModal();commit();vMaterials();};
+  });
+ },
+ pgReset(id){
+  syncSkills();const p=D.materialPages[matSection].find(x=>x.id===id);if(!p)return;
+  if(!confirm("Kembalikan \""+p.label+"\" ke tampilan asli? Semua hasil edit halaman ini akan hilang."))return;
+  delete D.skills[skId(p.file)];
+  if(L.save(D)){toast("Dikembalikan ke asli");renderBanner();}vMaterials();
+ },
 
  qSec(id){qSection=id;qEdit=null;vQuestions();},
  qNew(){qEdit="new";vQuestions();},
@@ -456,14 +502,6 @@ const A={
   if(commit("Teks bacaan tersimpan"))vQuestions();
  },
 
- skReset(i){
-  syncSkills();const p=D.skillPages[Number(i)];
-  if(!confirm("Kembalikan \""+p.label+"\" ke tampilan asli? Semua hasil edit halaman ini akan hilang."))return;
-  delete D.skills[skId(p.file)];
-  if(L.save(D)){toast("Dikembalikan ke asli");renderBanner();}vSkills();
- },
- skDel(i){const p=D.skillPages[Number(i)];if(!confirm("Hapus \""+p.label+"\" dari daftar? (File dan hasil editnya tidak dihapus)"))return;D.skillPages.splice(Number(i),1);commit("Dihapus dari daftar");vSkills();},
-
  aNew(){audioEdit="new";vAudio();},
  aEdit(id){audioEdit=id;vAudio();},
  aCancel(){audioEdit=null;vAudio();},
@@ -480,14 +518,15 @@ const A={
  aUp(id){moveIn(D.audio,id,-1);commit();vAudio();},
  aDown(id){moveIn(D.audio,id,1);commit();vAudio();},
 
- lUp(id,el){moveIn(D.links[el.dataset.g],id,-1);commit();vLinks();},
- lDown(id,el){moveIn(D.links[el.dataset.g],id,1);commit();vLinks();},
- lDel(id,el){if(!confirm("Hapus tautan ini?"))return;const g=el.dataset.g;D.links[g]=D.links[g].filter(l=>l.id!==id);commit("Tautan dihapus");vLinks();},
+ /* tombol tautan (Suggested Practice Routine) */
+ lUp(id,el){moveIn(D.links[el.dataset.g],id,-1);commit();vMaterials();},
+ lDown(id,el){moveIn(D.links[el.dataset.g],id,1);commit();vMaterials();},
+ lDel(id,el){if(!confirm("Hapus tautan ini?"))return;const g=el.dataset.g;D.links[g]=D.links[g].filter(l=>l.id!==id);commit("Tautan dihapus");vMaterials();},
  lEdit(id,el){
   const l=D.links[el.dataset.g].find(x=>x.id===id);
   modal(`<h3>Edit tautan</h3><form class="form" id="le-form"><label>Teks tombol<input id="le-label" value="${esc(l.label)}" required></label><label>Alamat (URL)<input id="le-url" value="${esc(l.url)}" required></label><div class="row"><button class="btn" type="submit">Simpan</button><button class="btn secondary" type="button" id="le-cancel">Batal</button></div></form>`,()=>{
    $("#le-cancel").onclick=closeModal;
-   $("#le-form").onsubmit=e=>{e.preventDefault();const u=L.safeUrl($("#le-url").value);if(!u){alert("Alamat tidak valid.");return;}l.label=$("#le-label").value.trim();l.url=u;closeModal();commit();vLinks();};
+   $("#le-form").onsubmit=e=>{e.preventDefault();const u=L.safeUrl($("#le-url").value);if(!u){alert("Alamat tidak valid.");return;}l.label=$("#le-label").value.trim();l.url=u;closeModal();commit();vMaterials();};
   });
  },
 
@@ -509,7 +548,7 @@ const A={
   D=p;ensureSession();if(commit("Data diambil dari server",{noSync:true}))go("home");
  },
  reset(){
-  if(!confirm("Kembalikan materi, soal, audio, teks bacaan, dan tautan ke contoh awal? Tindakan ini tidak bisa dibatalkan."))return;
+  if(!confirm("Kembalikan daftar halaman materi, catatan, soal, audio, teks bacaan, dan tautan ke contoh awal? Tindakan ini tidak bisa dibatalkan."))return;
   const keep={accounts:D.accounts,settings:D.settings};
   D=L.normalize(L.defaults());D.accounts=keep.accounts;D.settings=keep.settings;
   if(commit("Konten dikembalikan"))go("home");
@@ -547,7 +586,8 @@ $("#login-form").addEventListener("submit",e=>{
 });
 $("#logout").addEventListener("click",()=>{L.setSession(null);showLogin();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
-window.addEventListener("focus",()=>{if(D&&tab==="skills"&&!$("#app").classList.contains("hidden"))vSkills();});
+/* saat kembali dari halaman skill (tab lain), segarkan label "SUDAH DIEDIT" */
+window.addEventListener("focus",()=>{if(D&&tab==="materials"&&!matEdit&&!$("#app").classList.contains("hidden")&&$("#modal").classList.contains("hidden")&&!document.activeElement.closest?.("form"))vMaterials();});
 L.load().then(d=>{D=d;const me=L.currentAccount(D);if(me&&me.role==="admin")enter();else showLogin();});
 </script>
 </body>
