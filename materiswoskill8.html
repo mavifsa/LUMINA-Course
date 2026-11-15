@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 8 - Correlative Conjunction</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+        .font-mono-code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-2 gap-2">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-sm shadow-sm">
+                        S8
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-teal-500/20 text-teal-300 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        </div>
+                        <h1 class="text-base md:text-lg font-bold tracking-tight text-white leading-tight mt-0.5">Skill 8: Correlative Conjunction</h1>
+                    </div>
+                </div>
+
+                <!-- Global Stats / Quick Status -->
+                <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-xs">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Parallel Pairs & Proximity Rules</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="flex items-center gap-1.5 text-indigo-400 font-medium">
+                        <span>Advanced Inversion Matrix</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Bar -->
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-1.5 pb-1 no-scrollbar">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30">
+                    🔍 1. Overview & Pitfalls
+                </button>
+                <button onclick="switchTab('pairs')" id="tab-pairs" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    📗 2. Correlative Pairs & Variations
+                </button>
+                <button onclick="switchTab('proximity')" id="tab-proximity" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🔬 3. Proximity & Inversion Rules
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🎯 4. Practice Quiz (10 Soal)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW & PITFALLS ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">
+                        <span>Core Structure Axiom</span>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Correlative Conjunction: Pasangan Kata Hubung untuk Elemen Setara.</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Terdiri dari 4 pasangan utama (<em>both... and...</em>, <em>not only... but also...</em>, <em>either... or...</em>, <em>neither... nor...</em>) yang wajib menghubungkan elemen gramatikal yang setara, serta mematuhi aturan kesesuaian verb (*proximity*) dan inversi klausa.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Essential Learning Objectives -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-teal-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Ciri Utama</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Selalu berpasangan & elemen setara.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-indigo-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Both... and...</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Verb selalu berbentuk jamak (plural).</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-amber-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Proximity Rule</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Verb mengikuti subjek terdekat.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-emerald-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Inversi Klausa</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Wajib inversi jika diikuti klausa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Critical Pitfalls Cards Section -->
+            <div class="space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5">
+                        <span class="text-rose-500">⚠️</span> Kesalahan Umum (Common Pitfalls)
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <!-- Pitfall 1 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Parallelism Mismatch Trap</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Menghubungkan dua elemen berbeda jenis (misal: noun dengan verb phrase) di antara pasangan correlative.</p>
+                        
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5">
+                                <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Jebakan:</span>
+                                <p class="text-slate-400">❌ Salah: <span class="text-slate-800">He wants <span class="text-rose-600 underline">both to study</span> and <span class="text-rose-600 underline">working</span>.</span></p>
+                                <p class="text-emerald-700">✓ Benar: <span class="text-slate-800">He wants <span class="text-emerald-600 font-bold">both to study</span> and <span class="text-emerald-600 font-bold">to work</span>.</span></p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Elemen setelah kata pertama dan kata kedua pasangan konjungsi wajib setara gramatikalnya.</p>
+                    </div>
+
+                    <!-- Pitfall 2 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Inversion Failure on Not Only</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Gagal melakukan inversi ketika frasa <em>not only</em> di awal kalimat diikuti oleh klausa utuh.</p>
+                        
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5">
+                                <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Jebakan:</span>
+                                <p class="text-slate-400">❌ Salah: <span class="text-slate-800">Not only <span class="text-rose-600 underline">he arrived</span> late, but also...</span></p>
+                                <p class="text-emerald-700">✓ Benar: <span class="text-slate-800">Not only <span class="text-emerald-600 font-bold">did he arrive</span> late, but also...</span></p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Ketika <em>not only</em> berada di awal kalimat, klausa pertamanya wajib mengalami inversi (auxiliary mendahului subjek).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: CORRELATIVE PAIRS & VARIATIONS ==================== -->
+        <section id="content-pairs" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Correlative Matrix</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">4 Anggota Utama Correlative Conjunction & Variasi Elemen</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Pasangan kata hubung ini menghubungkan berbagai bentuk elemen setara (Noun, Verb, Adjective, Prepositional Phrase, hingga Clause).
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Pair 1: Both... and... -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Both __ and __</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Keduanya ... dan ...</span>
+                        </div>
+                        <div class="space-y-2 text-xs font-mono-code">
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-teal-800 block">✓ Contoh Noun (Kata Benda):</span>
+                                <p class="text-slate-800 mt-1">"We need <span class="text-teal-700 font-bold">both laptop and mouse</span>."</p>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-teal-800 block">✓ Contoh Subject & Plural Verb:</span>
+                                <p class="text-slate-800 mt-1">"Both laptop and mouse <span class="text-teal-700 font-bold">are</span> essential to work."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pair 2: Not only... but also... -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Not only __ but also __</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Tidak hanya ... tapi juga ...</span>
+                        </div>
+                        <div class="space-y-2 text-xs font-mono-code">
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-indigo-800 block">✓ Contoh Proximity Subject:</span>
+                                <p class="text-slate-800 mt-1">"Not only Tiara but also Tia <span class="text-indigo-700 font-bold">likes</span> Tio."</p>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-indigo-800 block">✓ Contoh Inversi Klausa:</span>
+                                <p class="text-slate-800 mt-1">"Not only <span class="text-indigo-700 font-bold">did he arrive</span> late, but also forgot documents."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pair 3: Either... or... -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">3. Either __ or __</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Baik ... atau ... (Salah satu)</span>
+                        </div>
+                        <div class="space-y-2 text-xs font-mono-code">
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-amber-800 block">✓ Contoh Prep. Phrase:</span>
+                                <p class="text-slate-800 mt-1">"The cat is either <span class="text-amber-700 font-bold">under the table</span> or <span class="text-amber-700 font-bold">behind the sofa</span>."</p>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-amber-800 block">✓ Contoh Proximity Verb:</span>
+                                <p class="text-slate-800 mt-1">"Either the teachers or principal <span class="text-amber-700 font-bold">is</span> responsible."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pair 4: Neither... nor... -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">4. Neither __ nor __</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Baik ... maupun ... tidak</span>
+                        </div>
+                        <div class="space-y-2 text-xs font-mono-code">
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-purple-800 block">✓ Contoh Object Setara:</span>
+                                <p class="text-slate-800 mt-1">"He washed neither <span class="text-purple-700 font-bold">his hands</span> nor <span class="text-purple-700 font-bold">his face</span>."</p>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-purple-800 block">✓ Contoh Proximity Verb:</span>
+                                <p class="text-slate-800 mt-1">"Neither the manager nor the employees <span class="text-purple-700 font-bold">are</span> willing."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: PROXIMITY & INVERSION RULES ==================== -->
+        <section id="content-proximity" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-5">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Advanced Mechanics</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Aturan Proximity (Subject-Verb Match) & Inversi Klausa</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Dua aturan krusial dalam pengerjaan soal struktur TOEFL yang melibatkan correlative conjunction: penentuan bentuk verb dan pola inversi kalimat.
+                    </p>
+                </div>
+
+                <!-- Rule 1: Proximity Rule -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Aturan 1: Proximity Rule (Subject Terdekat)</span>
+                        <span class="text-[11px] text-slate-500 font-mono-code">Either... or / Neither... nor / Not only... but also</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Kecuali <em>both... and...</em> yang selalu menghasilkan verb plural (jamak), 3 jenis correlative lainnya menentukan bentuk verb (singular atau plural) berdasarkan <strong>subjek yang berada paling dekat dengan verb tersebut</strong>.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono-code">
+                        <div class="bg-white p-3 rounded-lg border border-emerald-200 space-y-1">
+                            <span class="text-[10px] font-sans font-bold text-emerald-800 block">✓ Contoh Subjek Terdekat Singular:</span>
+                            <p class="text-slate-800">"Not only Tiara but also Tia <span class="text-emerald-700 font-bold">likes</span> Tio."</p>
+                            <span class="text-[10px] text-slate-500 font-sans block">Subjek terdekat 'Tia' (singular) ➔ verb menggunakan '-s' (likes).</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-emerald-200 space-y-1">
+                            <span class="text-[10px] font-sans font-bold text-emerald-800 block">✓ Contoh Subjek Terdekat Plural:</span>
+                            <p class="text-slate-800">"Neither the manager nor the employees <span class="text-emerald-700 font-bold">are</span> willing."</p>
+                            <span class="text-[10px] text-slate-500 font-sans block">Subjek terdekat 'employees' (plural) ➔ verb menggunakan 'are'.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rule 2: Inversion Rule -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Aturan 2: Inversi Klausa</span>
+                        <span class="text-[11px] text-slate-500 font-mono-code">Not Only, Neither, Nor Inversion</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Jika kata pertama dari correlative atau struktur negatif (seperti <em>Not only</em> atau <em>Neither/Nor</em>) diletakkan di awal kalimat dan diikuti oleh klausa utuh, maka klausa pertama tersebut <strong>wajib mengalami inversi</strong> (auxiliary verb mendahului subjek).
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono-code">
+                        <div class="bg-white p-3 rounded-lg border border-emerald-200 space-y-1">
+                            <span class="text-[10px] font-sans font-bold text-emerald-800 block">✓ Inversi Kalimat Verbal (Not Only):</span>
+                            <p class="text-slate-800">"Not only <span class="text-emerald-700 font-bold">did he arrive</span> late, but also..."</p>
+                            <span class="text-[10px] text-slate-500 font-sans block">Auxiliary 'did' mendahului subjek 'he'.</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-emerald-200 space-y-1">
+                            <span class="text-[10px] font-sans font-bold text-emerald-800 block">✓ Inversi Kalimat Nominal (Neither):</span>
+                            <p class="text-slate-800">"Neither <span class="text-emerald-700 font-bold">was the report</span> accurate, nor..."</p>
+                            <span class="text-[10px] text-slate-500 font-sans block">To be 'was' mendahului subjek 'the report'.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Box -->
+                <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-xs space-y-2">
+                    <span class="font-bold text-teal-900 block">💡 Ringkasan Praktis TOEFL:</span>
+                    <ul class="list-disc pl-4 space-y-1 text-teal-800">
+                        <li><strong>Both... and...</strong> ➔ Selalu Plural Verb.</li>
+                        <li><strong>Not only... but also / Either... or / Neither... nor</strong> ➔ Verb mengikuti subjek terdekat (proximity).</li>
+                        <li><strong>Not Only di awal kalimat</strong> ➔ Wajib Inversi pada klausa pertama.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: PRACTICE QUIZ (10 SOAL) ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz: Skill 8 (10 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">
+                            Uji pemahaman Anda mengenai Correlative Conjunction, paralelisme elemen, aturan proximity verb, dan inversi klausa.
+                        </p>
+                    </div>
+                    <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                        <span>Score: </span>
+                        <span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 10</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Questions Container -->
+                <div id="quiz-container" class="space-y-4">
+                    <!-- Dynamic Questions generated by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-7xl mx-auto px-4">
+            LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 8: Correlative Conjunction
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+            });
+
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) {
+                activeTabBtn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30";
+            }
+        }
+
+        // 10 Practice Questions for Skill 8
+        const quizQuestions = [
+            {
+                id: 1,
+                question: "Both the linguistics professor and her research assistants _____ attending the international conference in Jakarta.",
+                options: [
+                    { text: "are", isCorrect: true },
+                    { text: "is", isCorrect: false },
+                    { text: "was", isCorrect: false },
+                    { text: "has", isCorrect: false }
+                ],
+                explanation: "Konjungsi 'both... and...' yang berfungsi sebagai subjek selalu menghasilkan bentuk verb plural (jamak), sehingga 'are' adalah pilihan yang tepat."
+            },
+            {
+                id: 2,
+                question: "Not only the historical archives but also the rare manuscript _____ damaged by the flood.",
+                options: [
+                    { text: "was", isCorrect: true },
+                    { text: "were", isCorrect: false },
+                    { text: "have", isCorrect: false },
+                    { text: "are", isCorrect: false }
+                ],
+                explanation: "Berdasarkan aturan Proximity (subjek terdekat), subjek yang paling dekat dengan verb adalah 'the rare manuscript' (singular), sehingga verb yang digunakan adalah 'was'."
+            },
+            {
+                id: 3,
+                question: "Not only _____ late for the seminar, but he also forgot to bring his research notes.",
+                options: [
+                    { text: "did he arrive", isCorrect: true },
+                    { text: "he arrived", isCorrect: false },
+                    { text: "arrived he", isCorrect: false },
+                    { text: "does he arrive", isCorrect: false }
+                ],
+                explanation: "Ketika frasa 'not only' berada di awal kalimat, klausa pertama wajib mengalami inversi (pembalikan posisi). Karena kalimat ini berbentuk past tense verbal, auxiliary 'did' mendahului subjek 'he'."
+            },
+            {
+                id: 4,
+                question: "Either the Department Head or the committee members _____ going to review the proposal today.",
+                options: [
+                    { text: "are", isCorrect: true },
+                    { text: "is", isCorrect: false },
+                    { text: "was", isCorrect: false },
+                    { text: "has", isCorrect: false }
+                ],
+                explanation: "Berdasarkan aturan Proximity pada 'either... or...', verb disesuaikan dengan subjek terdekat yaitu 'committee members' (plural), sehingga verb yang tepat adalah 'are'."
+            },
+            {
+                id: 5,
+                question: "The TOEFL examinee wanted to practice reading comprehension, writing essays, and _____ grammar structures.",
+                options: [
+                    { text: "mastering", isCorrect: true },
+                    { text: "to master", isCorrect: false },
+                    { text: "master", isCorrect: false },
+                    { text: "mastered", isCorrect: false }
+                ],
+                explanation: "Meskipun ini uji paralelisme umum, struktur correlative dan list memerlukan kesetaraan gerund ('reading', 'writing', dan 'mastering')."
+            },
+            {
+                id: 6,
+                question: "Neither the faculty members nor the dean _____ willing to compromise on the curriculum change.",
+                options: [
+                    { text: "is", isCorrect: true },
+                    { text: "are", isCorrect: false },
+                    { text: "were", isCorrect: false },
+                    { text: "have", isCorrect: false }
+                ],
+                explanation: "Berdasarkan aturan Proximity pada 'neither... nor...', subjek terdekat dengan verb adalah 'the dean' (singular), sehingga verb yang digunakan adalah 'is'."
+            },
+            {
+                id: 7,
+                question: "Not only _____ accessible to historians, but the digital archives also preserved fragile historical records.",
+                options: [
+                    { text: "were the documents", isCorrect: true },
+                    { text: "the documents were", isCorrect: false },
+                    { text: "did the documents were", isCorrect: false },
+                    { text: "the documents did", isCorrect: false }
+                ],
+                explanation: "Kalimat nominal dengan 'not only' di awal kalimat memerlukan inversi to be: 'were the documents' (to be 'were' mendahului subjek 'the documents')."
+            },
+            {
+                id: 8,
+                question: "The research project requires both accurate linguistic data _____ thorough pragmatic analysis.",
+                options: [
+                    { text: "and", isCorrect: true },
+                    { text: "or", isCorrect: false },
+                    { text: "nor", isCorrect: false },
+                    { text: "but", isCorrect: false }
+                ],
+                explanation: "Pasangan mutlak dari konjungsi correlative 'both' adalah 'and'."
+            },
+            {
+                id: 9,
+                question: "Either you submit the manuscript on time, _____ you will not be included in the journal publication.",
+                options: [
+                    { text: "or", isCorrect: true },
+                    { text: "nor", isCorrect: false },
+                    { text: "and", isCorrect: false },
+                    { text: "but", isCorrect: false }
+                ],
+                explanation: "Pasangan mutlak dari konjungsi correlative 'either' adalah 'or'."
+            },
+            {
+                id: 10,
+                question: "Neither the students nor the instructor _____ able to solve the complex syntactic problem.",
+                options: [
+                    { text: "was", isCorrect: true },
+                    { text: "were", isCorrect: false },
+                    { text: "have", isCorrect: false },
+                    { text: "are", isCorrect: false }
+                ],
+                explanation: "Berdasarkan aturan Proximity pada 'neither... nor...', subjek terdekat adalah 'the instructor' (singular, past tense), sehingga verb yang tepat adalah 'was'."
+            }
+        ];
+
+        let userAnswers = {};
+        let score = 0;
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+
+            quizContainer.innerHTML = '';
+
+            quizQuestions.forEach((q, index) => {
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                
+                let optionsHTML = '';
+                const optionLetters = ['A', 'B', 'C', 'D'];
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) {
+                            btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        } else if (isSelected && !opt.isCorrect) {
+                            btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        } else {
+                            btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                        }
+                    }
+
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''} 
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${optionLetters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>
+                    `;
+                }
+
+                qCard.innerHTML = `
+                    <div class="flex items-start justify-between gap-4">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-relaxed">${q.question}</p>
+                    <div class="space-y-1.5">
+                        ${optionsHTML}
+                    </div>
+                    ${explanationHTML}
+                `;
+
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) {
+                    score++;
+                }
+            });
+
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        window.onload = function() {
+            renderQuiz();
+        };
+    </script>
+    </script>
+    <script src="lumina-core.js"></script>
+    <script src="lumina-skill-editor.js"></script>
+</body>
+</html>

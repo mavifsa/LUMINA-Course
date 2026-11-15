@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 9 - Noun Clause (Advanced Rules)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+        .font-mono-code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-2 gap-2">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-sm shadow-sm">
+                        S9
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-teal-500/20 text-teal-300 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        </div>
+                        <h1 class="text-base md:text-lg font-bold tracking-tight text-white leading-tight mt-0.5">Skill 9: Noun Clause</h1>
+                    </div>
+                </div>
+
+                <!-- Global Stats / Quick Status -->
+                <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-xs">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Positions & Conjunctions</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="flex items-center gap-1.5 text-indigo-400 font-medium">
+                        <span>Advanced Hidden Rules & Subjunctive</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Bar -->
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-1.5 pb-1 no-scrollbar">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30">
+                    🔍 1. Overview & Pitfalls
+                </button>
+                <button onclick="switchTab('positions')" id="tab-positions" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    📗 2. NC Positions & Conjunction Matrix
+                </button>
+                <button onclick="switchTab('advanced')" id="tab-advanced" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🔬 3. Advanced Hidden Rules & Subjunctive
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🎯 4. Practice Quiz (10 Soal)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW & PITFALLS ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">
+                        <span>Core Structure Axiom</span>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Noun Clause Berfungsi Sama dengan Noun (Benda) dalam Kalimat.</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Sebagai klausa yang bertindak sebagai benda, Noun Clause (NC) dapat menempati posisi Subject, Object, Object of Preposition, atau Subject Complement dengan pola dasar mutlak: <strong>Conj + S + V</strong>, serta variasi konjungsi sistematis dan aturan lanjutan yang esensial untuk TOEFL tingkat tinggi.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Essential Learning Objectives -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-teal-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Pola Dasar NC</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Conj + Subject + Verb (Statement order).</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-indigo-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Empat Posisi NC</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Subject, Object, Obj of Prep, Complement.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-amber-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Hidden Rules</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">If vs Whether, Reduced NC, & Appositive.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-emerald-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Subjunctive Rule</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Wajib V1 / should setelah kata penunjuk penting.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Critical Pitfalls Cards Section -->
+            <div class="space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5">
+                        <span class="text-rose-500">⚠️</span> Kesalahan Umum (Common Pitfalls)
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <!-- Pitfall 1 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Inverted Order Trap in NC</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Menggunakan susunan tanya (Inverted S-V) di dalam Noun Clause padahal posisinya di tengah kalimat.</p>
+                        
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5">
+                                <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Jebakan:</span>
+                                <p class="text-slate-400">❌ Salah: <span class="text-slate-800">I don't know where <span class="text-rose-600 underline">is Hasfa</span>.</span></p>
+                                <p class="text-emerald-700">✓ Benar: <span class="text-slate-800">I don't know where <span class="text-emerald-600 font-bold">Hasfa is</span>.</span></p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Di dalam Noun Clause, susunan kata wajib berupa <span class="text-rose-600"> Subject + Verb</span> (statement order), bukan <span class="text-rose-600">Verb + Subject</span>.</p>
+                    </div>
+
+                    <!-- Pitfall 2 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Subjunctive Agreement Violation</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Mengikuti kaidah subject-verb agreement standar pada *that-clause* yang menuntut bentuk Subjunctive.</p>
+                        
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5">
+                                <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Jebakan:</span>
+                                <p class="text-slate-400">❌ Salah: <span class="text-slate-800">It is vital that every student <span class="text-rose-600 underline">passes</span> the test.</span></p>
+                                <p class="text-emerald-700">✓ Benar: <span class="text-slate-800">It is vital that every student <span class="text-emerald-600 font-bold">pass</span> the test.</span></p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Meskipun subjek (student) tunggal, kata sifat penunjuk penting/saran mewajibkan verb dasar (V1).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: NC POSITIONS & CONJUNCTION MATRIX ==================== -->
+        <section id="content-positions" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Systematic Conjunction Matrix</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Posisi Noun Clause & Variasi Konjungsi Lengkap</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Noun Clause mencakup variasi konjungsi secara sistematis: <strong>Question Words (5W1H)</strong>, <strong>That</strong> (dapat dihilangkan), dan <strong>If/Whether</strong>. Berikut perincian contoh di setiap posisi:
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Position 1: NC as Object -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Noun Clause as Object</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">S + V + [Conj + S + V]</span>
+                        </div>
+                        <div class="space-y-2 text-xs font-mono-code">
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-emerald-800 block">• Variasi 5W1H (Where):</span>
+                                <p class="text-slate-800 mt-1">"I don't know <span class="text-emerald-700 font-bold underline">where Hasfa is</span>."</p>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-emerald-800 block">• Variasi That (Eksplisit & Dihilangkan):</span>
+                                <p class="text-slate-800 mt-1">"I know <span class="text-emerald-700 font-bold underline">that UIN Gusdur is in Pekalongan</span>." <span class="text-slate-400 text-[10px]">(Atau: "I know UIN Gusdur is in Pekalongan.")</span></p>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-emerald-800 block">• Variasi If / Whether (Apakah):</span>
+                                <p class="text-slate-800 mt-1">"She asked <span class="text-emerald-700 font-bold underline">whether the research grant was approved</span>."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Position 2: NC as Subject -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Noun Clause as Subject</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">[Conj + S + V] + V</span>
+                        </div>
+                        <div class="space-y-2 text-xs font-mono-code">
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-indigo-800 block">• Variasi 5W1H (What):</span>
+                                <p class="text-slate-800 mt-1">"<span class="text-indigo-700 font-bold underline">What he said about environmental policies</span> shocked everyone."</p>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-indigo-800 block">• Variasi That (Bahwa):</span>
+                                <p class="text-slate-800 mt-1">"<span class="text-indigo-700 font-bold underline">That the economy is recovering</span> is obvious."</p>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-indigo-800 block">• Variasi Whether (Apakah):</span>
+                                <p class="text-slate-800 mt-1">"<span class="text-indigo-700 font-bold underline">Whether the seminar will be held tomorrow</span> remains unclear."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Position 3: NC as Complement -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">3. Noun Clause as Subject Complement</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">S + To Be + [Conj + S + V]</span>
+                        </div>
+                        <div class="space-y-2 text-xs font-mono-code">
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-amber-800 block">• Variasi 5W1H (Why):</span>
+                                <p class="text-slate-800 mt-1">"The core issue is <span class="text-amber-700 font-bold underline">why certain cultural traditions are forbidden</span>."</p>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-amber-800 block">• Variasi That:</span>
+                                <p class="text-slate-800 mt-1">"My primary assumption was <span class="text-amber-700 font-bold underline">that the corpus data was accurate</span>."</p>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-amber-800 block">• Variasi If / Whether:</span>
+                                <p class="text-slate-800 mt-1">"The question is <span class="text-amber-700 font-bold underline">whether the committee will approve the grant</span>."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Position 4: NC as Object of Preposition -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">4. Noun Clause as Object of Preposition</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">S + V + Prep + [Conj + S + V]</span>
+                        </div>
+                        <div class="space-y-2 text-xs font-mono-code">
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-purple-800 block">• Variasi 5W1H (Who):</span>
+                                <p class="text-slate-800 mt-1">"The documentary focuses on <span class="text-purple-700 font-bold underline">who is behind the deforestation</span>."</p>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                <span class="text-[10px] font-sans font-bold text-purple-800 block">• Variasi Whether (Khusus setelah Preposisi):</span>
+                                <p class="text-slate-800 mt-1">"They are arguing about <span class="text-purple-700 font-bold underline">whether the policy should be revised</span>." <span class="text-slate-400 text-[10px]">(Catatan: 'if' tidak lazim setelah preposisi, gunakan 'whether').</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: ADVANCED HIDDEN RULES & SUBJUNCTIVE ==================== -->
+        <section id="content-advanced" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-5">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Advanced Grammar Nuances</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Aturan Tersembunyi (Hidden Rules) & Subjunctive Noun Clause</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Kuasai aturan lanjutan berikut untuk mengantisipasi jebakan tingkat tinggi dalam soal struktur TOEFL.
+                    </p>
+                </div>
+
+                <!-- Rule 1: If vs Whether -->
+                <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Nuance 1: Aturan Khusus If vs. Whether</span>
+                        <span class="text-[11px] text-slate-500 font-mono-code">Preposition & Infinitive Constraint</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Meskipun if dan whether sama-sama berarti "apakah", keduanya tidak bisa saling menggantikan dalam kondisi berikut:
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono-code">
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                            <span class="text-[10px] font-sans font-bold text-teal-800 block">✓ Setelah Preposisi (Wajib Whether):</span>
+                            <p class="text-slate-800">"They argued about <span class="text-teal-700 font-bold">whether</span> to revise the policy."</p>
+                            <span class="text-[10px] text-slate-500 font-sans block">Tidak boleh menggunakan 'about if'.</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                            <span class="text-[10px] font-sans font-bold text-teal-800 block">✓ Di depan To-Infinitive:</span>
+                            <p class="text-slate-800">"She decided <span class="text-teal-700 font-bold">whether to accept</span> the grant."</p>
+                            <span class="text-[10px] text-slate-500 font-sans block">'Whether' dapat langsung diikuti inf, 'if' tidak.</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Rule 2: Reduced Noun Clause -->
+                <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Nuance 2: Reduced Noun Clause</span>
+                        <span class="text-[11px] text-slate-500 font-mono-code">Question Word + To-Infinitive</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Noun Clause yang berfungsi sebagai Object atau Complement (diawali question words) dapat diringkas menjadi infinitive phrase jika subjek kedua klausa sama.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs font-mono-code">
+                        <div class="bg-white p-3 rounded-lg border border-slate-200">
+                            <span class="text-[10px] font-sans font-bold text-amber-800 block">Klausa Penuh:</span>
+                            <p class="text-slate-800 mt-1">"She didn't know what she should do."</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200">
+                            <span class="text-[10px] font-sans font-bold text-amber-800 block">Klausa Tereduksi (Reduced):</span>
+                            <p class="text-slate-800 mt-1">"She didn't know <span class="text-amber-700 font-bold">what to do</span>."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rule 3: Noun Clause vs Appositive Clause -->
+                <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Nuance 3: Noun Clause vs. Appositive Clause</span>
+                        <span class="text-[11px] text-slate-500 font-mono-code">Abstract Noun + That + S + V</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Jangan terkecoh dengan Appositive Clause yang diawali kata that. Appositive tidak menggantikan noun, melainkan menjelaskan noun abstrak di depannya (seperti <em>the fact, the idea, the rumor</em>).
+                    </p>
+                    <div class="bg-white p-3 rounded-lg border border-purple-200 text-xs font-mono-code">
+                        <span class="text-[10px] font-sans font-bold text-purple-800 block">✓ Contoh Appositive Clause:</span>
+                        <p class="text-slate-800 mt-1">"The fact <span class="text-purple-700 font-bold">that he passed the exam</span> surprised everyone."</p>
+                        <span class="text-[10px] text-slate-500 font-sans block mt-1">That-clause di atas menjelaskan kata benda abstrak 'fact', bukan sebagai objek langsung.</span>
+                    </div>
+                </div>
+
+                <!-- Rule 4: Subjunctive & Should Insertion -->
+                <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Nuance 4: Subjunctive & Should Insertion</span>
+                        <span class="text-[11px] text-slate-500 font-mono-code">V1 / Bare Infinitive & Should</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Setelah ungkapan keharusan/penting, Noun Clause mewajibkan verb bare [dapat disisipi<strong> should</strong> dalam British English].
+                    </p>
+                    <div class="bg-white p-3 rounded-lg border border-indigo-200 text-xs font-mono-code space-y-1">
+                        <span class="text-[10px] font-sans font-bold text-indigo-800 block">✓ Contoh Subjunctive Formal:</span>
+                        <p class="text-slate-800">"It is crucial that he <span class="text-indigo-700 font-bold">attend</span> (or <span class="text-indigo-700 font-bold">should attend</span>) the meeting."</p>
+                        <span class="text-[10px] text-slate-500 font-sans block">Opsi seperti 'attends' atau 'attended' otomatis salah di tes TOEFL.</span>
+                    </div>
+                </div>
+               
+                <!-- Explanation Box -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                    <h3 class="font-bold text-slate-900 text-xs md:text-sm flex items-center gap-1.5">
+                        <span class="text-teal-600">📌</span> Konsep Dasar Subjunctive
+                    </h3>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Jika sebuah Noun Clause diawali dengan kata-kata yang menyatakan keharusan atau kepentingan (seperti <em>important, vital, essential, mandatory, suggest, demand, insist, require, propose</em>), maka verb di dalam <span class="text-rose-600 font-bold">that</span> clause <strong>wajib menggunakan bentuk dasar (V1 / bare infinitive)</strong>, terlepas dari apakah subjeknya tunggal atau jamak.
+                    </p>
+
+                    <div class="space-y-2 text-xs font-mono-code">
+                        <div class="bg-white p-3 rounded-lg border border-rose-200">
+                            <span class="text-[10px] font-sans font-bold text-rose-800 block">❌ Salah (Mengikuti Agreement Biasa):</span>
+                            <p class="text-slate-800 mt-1">"It is important that every student <span class="text-rose-600 font-bold underline">passes</span> the TOEFL test."</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-emerald-200">
+                            <span class="text-[10px] font-sans font-bold text-emerald-800 block">✓ Benar (Menggunakan Subjunctive V1):</span>
+                            <p class="text-slate-800 mt-1">"It is important that every student <span class="text-emerald-700 font-bold underline">pass</span> the TOEFL test."</p>
+                            <span class="text-[10px] text-slate-500 font-sans block mt-1">Meskipun 'student' tunggal, karena ada kata 'important', verb wajib V1 ('pass', bukan 'passes').</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Common Trigger Words -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <span class="font-bold text-slate-900 block">Adjectives (Kata Sifat Pemicu):</span>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-600">
+                            <li><strong>Important</strong> (penting)</li>
+                            <li><strong>Vital</strong> (sangat penting)</li>
+                            <li><strong>Essential</strong> (esensial)</li>
+                            <li><strong>Mandatory</strong> (wajib)</li>
+                            <li><strong>Necessary</strong> (perlu)</li>
+                            <li><strong>Crucial</strong> (penting)</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <span class="font-bold text-slate-900 block">Verbs (Kata Kerja Pemicu):</span>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-600">
+                            <li><strong>Demand</strong> (menuntut)</li>
+                            <li><strong>Insist</strong> (mendesak)</li>
+                            <li><strong>Require</strong> (membutuhkan)</li>
+                            <li><strong>Suggest</strong> (menyarankan)</li>
+                            <li><strong>Propose</strong> (mengusulkan)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: THE SUBJUNCTIVE RULE ==================== -->
+        <section id="content-subjunctive" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-5">
+               
+            </div>
+        </section>
+
+
+        <!-- ==================== TAB 4: PRACTICE QUIZ (10 SOAL) ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz: Skill 9 (10 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">
+                            Uji pemahaman Anda mengenai Noun Clause, posisi dalam kalimat, variasi konjungsi, aturan Subjunctive, hingga hidden rules tingkat lanjut.
+                        </p>
+                    </div>
+                    <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                        <span>Score: </span>
+                        <span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 10</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Questions Container -->
+                <div id="quiz-container" class="space-y-4">
+                    <!-- Dynamic Questions generated by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-7xl mx-auto px-4">
+            LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 9: Noun Clause
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+            });
+
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) {
+                activeTabBtn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30";
+            }
+        }
+
+        // 10 Practice Questions for Skill 9
+        const quizQuestions = [
+            {
+                id: 1,
+                question: "Scientists are still investigating _____ triggered the sudden climate anomaly in 1998.",
+                options: [
+                    { text: "what", isCorrect: true },
+                    { text: "that", isCorrect: false },
+                    { text: "if", isCorrect: false },
+                    { text: "whether", isCorrect: false }
+                ],
+                explanation: "Noun clause bertindak sebagai objek dari verb 'investigating'. Karena menanyakan subjek yang memicu anomali, kata tanya 'what' sebagai pronoun/conjunction adalah pilihan yang tepat."
+            },
+            {
+                id: 2,
+                question: "It is essential that every researcher _____ strict ethical standards during fieldwork.",
+                options: [
+                    { text: "maintain", isCorrect: true },
+                    { text: "maintains", isCorrect: false },
+                    { text: "maintained", isCorrect: false },
+                    { text: "is maintaining", isCorrect: false }
+                ],
+                explanation: "Berlaku aturan Subjunctive. Setelah kata sifat 'essential', verb di dalam that-clause wajib menggunakan bentuk dasar (V1) 'maintain', meskipun subjeknya 'researcher' (tunggal)."
+            },
+            {
+                id: 3,
+                question: "The linguistics professor explained _____ the semantic shift occurred in ancient manuscripts.",
+                options: [
+                    { text: "how", isCorrect: true },
+                    { text: "what", isCorrect: false },
+                    { text: "that", isCorrect: false },
+                    { text: "if", isCorrect: false }
+                ],
+                explanation: "Menjelaskan cara atau proses terjadinya pergeseran semantik, konjungsi noun clause 5W1H yang tepat adalah 'how' (bagaimana)."
+            },
+            {
+                id: 4,
+                question: "_____ he will attend the international conference in Jakarta remains uncertain.",
+                options: [
+                    { text: "Whether", isCorrect: true },
+                    { text: "That", isCorrect: false },
+                    { text: "What", isCorrect: false },
+                    { text: "Where", isCorrect: false }
+                ],
+                explanation: "Noun clause menempati posisi Subject di awal kalimat untuk menyatakan pilihan atau keraguan (apakah atau tidak), sehingga 'Whether' adalah pilihan yang paling tepat."
+            },
+            {
+                id: 5,
+                question: "I cannot remember where _____ during my research trip to Central Kalimantan.",
+                options: [
+                    { text: "I stayed", isCorrect: true },
+                    { text: "did I stay", isCorrect: false },
+                    { text: "stayed I", isCorrect: false },
+                    { text: "was I stay", isCorrect: false }
+                ],
+                explanation: "Di dalam Noun Clause, susunan kata wajib berupa *Subject + Verb* (statement order), bukan susunan pertanyaan terinversi ('did I stay'). Oleh karena itu, 'I stayed' adalah jawaban yang benar."
+            },
+            {
+                id: 6,
+                question: "They are arguing about _____ the economic policy should be revised or kept intact.",
+                options: [
+                    { text: "whether", isCorrect: true },
+                    { text: "if", isCorrect: false },
+                    { text: "that", isCorrect: false },
+                    { text: "what", isCorrect: false }
+                ],
+                explanation: "Sesuai hidden rule, setelah preposisi ('about'), konjungsi penunjuk alternatif yang diizinkan secara gramatikal adalah 'whether' (bukan 'if')."
+            },
+            {
+                id: 7,
+                question: "The core issue is _____ the government will implement the new monetary policy.",
+                options: [
+                    { text: "whether", isCorrect: true },
+                    { text: "that", isCorrect: false },
+                    { text: "what", isCorrect: false },
+                    { text: "which", isCorrect: false }
+                ],
+                explanation: "Noun clause berfungsi sebagai Subject Complement setelah to be 'is', menyatakan alternatif 'apakah' (whether)."
+            },
+            {
+                id: 8,
+                question: "Everyone was shocked by _____ the politician announced during the press conference.",
+                options: [
+                    { text: "what", isCorrect: true },
+                    { text: "that", isCorrect: false },
+                    { text: "if", isCorrect: false },
+                    { text: "whether", isCorrect: false }
+                ],
+                explanation: "Noun clause bertindak sebagai Object of Preposition ('by'). 'What' berfungsi ganda sebagai conjunction sekaligus pronoun yang merujuk pada hal yang diumumkan."
+            },
+            {
+                id: 9,
+                question: "It is vital that the historical archives _____ preserved in digital format.",
+                options: [
+                    { text: "be", isCorrect: true },
+                    { text: "are", isCorrect: false },
+                    { text: "were", isCorrect: false },
+                    { text: "is", isCorrect: false }
+                ],
+                explanation: "Aturan Subjunctive setelah kata sifat 'vital'. Passive verb wajib menggunakan bentuk dasar 'be preserved'."
+            },
+            {
+                id: 10,
+                question: "The fact _____ the research data was accurate convinced the review board.",
+                options: [
+                    { text: "that", isCorrect: true },
+                    { text: "whether", isCorrect: false },
+                    { text: "if", isCorrect: false },
+                    { text: "what", isCorrect: false }
+                ],
+                explanation: "Ini adalah Appositive Clause, di mana that-clause menjelaskan noun abstrak 'the fact' di depannya. Konjungsi yang tepat adalah 'that'."
+            }
+        ];
+
+        let userAnswers = {};
+        let score = 0;
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+
+            quizContainer.innerHTML = '';
+
+            quizQuestions.forEach((q, index) => {
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                
+                let optionsHTML = '';
+                const optionLetters = ['A', 'B', 'C', 'D'];
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) {
+                            btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        } else if (isSelected && !opt.isCorrect) {
+                            btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        } else {
+                            btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                        }
+                    }
+
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''} 
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${optionLetters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>
+                    `;
+                }
+
+                qCard.innerHTML = `
+                    <div class="flex items-start justify-between gap-4">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-relaxed">${q.question}</p>
+                    <div class="space-y-1.5">
+                        ${optionsHTML}
+                    </div>
+                    ${explanationHTML}
+                `;
+
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) {
+                    score++;
+                }
+            });
+
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        window.onload = function() {
+            renderQuiz();
+        };
+    </script>
+    </script>
+    <script src="lumina-core.js"></script>
+    <script src="lumina-skill-editor.js"></script>
+</body>
+</html>

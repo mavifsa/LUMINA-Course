@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 15 - Inversion after Negative Expression</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        /* Konten halaman (di luar header dan footer) diperkecil 10% */
+        main { zoom: 0.9; }
+
+        .rm { color: #e11d48; text-decoration: line-through; }
+        .ad { color: #047857; font-weight: 700; }
+        .hs { color: #0f766e; font-weight: 700; }
+        .ho { color: #4338ca; font-weight: 700; }
+        .bad { color: #e11d48; font-weight: 600; }
+        .ok { color: #047857; font-weight: 600; }
+
+        .box { border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; padding: 16px; }
+        .ex { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; }
+        .ex + .ex { margin-top: 6px; }
+        .cons { font-family: 'Fira Code', monospace; font-size: 11px; color: #64748b; }
+
+        .orig { border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; border: 1px solid; }
+        .orig + .orig { margin-top: 6px; }
+        .orig-tag { display: inline-block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 700; padding: 1px 8px; border-radius: 4px; color: #fff; margin-bottom: 3px; }
+        .orig-1 { background: #f0fdfa; border-color: #99f6e4; } .orig-1 .orig-tag { background: #0d9488; }
+        .orig-2 { background: #fffbeb; border-color: #fde68a; } .orig-2 .orig-tag { background: #d97706; }
+        .orig-3 { background: #eef2ff; border-color: #c7d2fe; } .orig-3 .orig-tag { background: #4f46e5; }
+        .orig-4 { background: #ecfdf5; border-color: #a7f3d0; } .orig-4 .orig-tag { background: #059669; }
+        .nn { color: #0f766e; font-weight: 700; background: #ccfbf1; border-radius: 3px; padding: 0 3px; }
+        .vb { color: #4338ca; font-weight: 700; background: #e0e7ff; border-radius: 3px; padding: 0 3px; }
+        .neg { color: #be123c; font-weight: 700; background: #ffe4e6; border-radius: 3px; padding: 0 3px; }
+
+        table.cmp { width: 100%; border-collapse: collapse; font-size: 12px; }
+        table.cmp th { background: #0f172a; color: #fff; padding: 6px 8px; text-align: left; font-weight: 700; }
+        table.cmp td { border: 1px solid #e2e8f0; padding: 6px 8px; background: #fff; vertical-align: top; }
+
+        /* Tab & tombol: ikon selalu di kiri teks, tanpa kotak putih saat diklik */
+        .tab-btn, button { -webkit-tap-highlight-color: transparent; }
+        .tab-btn:focus, button:focus { outline: none; }
+        .tab-btn:focus-visible { outline: 2px solid #2dd4bf; outline-offset: -2px; }
+        .tab-btn { display: inline-flex; flex-direction: row; align-items: center; gap: 6px; flex-shrink: 0; }
+        .tab-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-[7px] gap-[7px]">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-[13px] shadow-sm">S15</div>
+                    <div>
+                        <span class="bg-teal-500/20 text-teal-300 text-[9px] font-semibold px-[7px] py-px rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        <h1 class="text-[14px] md:text-base font-bold tracking-tight text-white leading-tight mt-0.5">Skill 15: Inversion after Negative Expression</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-[7px] bg-slate-800/80 px-[11px] py-[5px] rounded-lg border border-slate-700/60 text-[11px]">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-[7px] h-[7px] rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Neg + Aux + S + V</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="text-indigo-400 font-medium"><span>Mirip Interrogative</span></div>
+                </div>
+            </div>
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-[5px] pb-[3px]">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <span>1. Overview &amp; Pitfalls</span>
+                </button>
+                <button onclick="switchTab('list')" id="tab-list" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                    <span>2. Daftar Ekspresi</span>
+                </button>
+                <button onclick="switchTab('pattern')" id="tab-pattern" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                    <span>3. Pola &amp; Auxiliary</span>
+                </button>
+                <button onclick="switchTab('special')" id="tab-special" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                    <span>4. Pola Khusus</span>
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    <span>5. Practice Quiz</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">Core Structure Axiom</div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Ekspresi Negatif di Awal Kalimat → Auxiliary Pindah ke Depan Subject (WAJIB).</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Ketika ekspresi <b>negatif</b> atau <b>semi-negatif</b> diletakkan di awal kalimat sebagai <b>penekanan</b>, kalimat wajib inversi dengan pola <b>Neg + aux + S + V</b>, mirip kalimat tanya. Berbeda dengan inversi tempat, di sini yang pindah adalah <b>auxiliary</b>, bukan main verb.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Daftar Ekspresi</h3><p class="text-[11px] text-slate-600 leading-tight">Negatif, semi-negatif, no-, not-, only-.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Pola &amp; Auxiliary</h3><p class="text-[11px] text-slate-600 leading-tight">Aux, be, atau do-support.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Pola Khusus</h3><p class="text-[11px] text-slate-600 leading-tight">Not only, no sooner, only + adverbial.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Diagnostic Quiz</h3><p class="text-[11px] text-slate-600 leading-tight">20 Soal (Error Analysis &amp; Blank).</p></div>
+                </div>
+            </div>
+
+            <!-- Asal mula: 1 contoh saja -->
+            <div class="space-y-2.5">
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Asal Mula: Ekspresi Negatif Dipindah ke Awal untuk Penekanan</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mt-0.5">
+                        Kalimat biasa memiliki <span class="neg">ekspresi negatif</span> di tengah. Ketika dipindah ke awal, <span class="vb">auxiliary</span> ikut berpindah ke depan <span class="nn">subject</span>, seperti pada kalimat tanya.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Contoh</span>
+                            <span class="text-[11px] font-semibold text-indigo-700">Verb biasa: do-support</span>
+                        </div>
+                        <div>
+                            <div class="orig orig-1"><span class="orig-tag">Kalimat biasa</span><br><span class="nn">Dr. Mila</span> <span class="neg">seldom</span> cancels the syntax lecture without notice.</div>
+                            <div class="orig orig-2"><span class="orig-tag">Inversi negatif (Neg + aux + S + V)</span><br><span class="neg">Seldom</span> <span class="vb">does</span> <span class="nn">Dr. Mila</span> <span class="ad">cancel</span> the syntax lecture without notice.</div>
+                            <div class="orig orig-3"><span class="orig-tag">Tanpa inversi (salah)</span><br><span class="bad">❌</span> <span class="neg">Seldom</span> Dr. Mila cancels the syntax lecture without notice.</div>
+                        </div>
+                        <ul class="text-[11px] text-slate-600 leading-relaxed mt-2 space-y-0.5 list-disc pl-4">
+                            <li>Verb biasa tidak punya auxiliary, sehingga ditambahkan <i>does</i> (do-support).</li>
+                            <li><i>Does</i> membawa agreement dan tense, sehingga verb utama kembali ke V1 (<i>cancel</i>).</li>
+                            <li>Pola ini sama dengan kalimat tanya (Skill 13), bedanya kalimatnya tetap pernyataan.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                <h3 class="font-bold text-slate-900 text-sm">Langkah Cepat: Perlu Inversi atau Tidak?</h3>
+                <div class="text-xs font-mono-code space-y-1.5">
+                    <p><b>1.</b> Ekspresi <span class="neg">negatif / semi-negatif</span> berada di awal sebagai penekanan? Jika tidak → <span class="bad">tanpa inversi</span>.</p>
+                    <p><b>2.</b> Ekspresi itu adverbial (menerangkan verb / klausa), bukan bagian dari subject? Jika bagian subject (<i>No student ...</i>) → <span class="bad">tanpa inversi</span>.</p>
+                    <p><b>3.</b> Sudah ada aux / modal → pindahkan <span class="vb">aux pertama</span>. Be sebagai main verb → pindahkan <span class="vb">be</span>.</p>
+                    <p><b>4.</b> Verb biasa tanpa aux → tambah <span class="vb">do / does / did</span>, verb kembali V1.</p>
+                    <p><b>5.</b> Susun: <span class="ad">Neg + aux + S + V</span>.</p>
+                </div>
+            </div>
+
+            <div class="space-y-2.5">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5"><span class="text-rose-500">⚠️</span> Kesalahan Umum (Common Pitfalls)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Tidak Ada Inversi</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Ekspresi negatif di awal tetapi urutan tetap deklaratif.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Never <span class="text-rose-600 underline">I have</span> reminded you so many times.</p>
+                            <p class="ok">✓ Never <b>have I</b> reminded you so many times.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Verb Tidak Kembali ke V1</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Setelah do / does / did, verb utama wajib V1.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Seldom does Dr. Mila <span class="text-rose-600 underline">cancels</span> the lecture.</p>
+                            <p class="ok">✓ Seldom does Dr. Mila <b>cancel</b> the lecture.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #3</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Inversi di Klausa yang Salah</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Pada pola "only + adverbial", inversi terjadi di main clause, bukan di klausa setelah only.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Only when <span class="text-rose-600 underline">did he arrive</span>, she noticed the error.</p>
+                            <p class="ok">✓ Only when he arrived <b>did she notice</b> the error.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #4</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Negatif sebagai Bagian Subject</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Jika kata negatif menerangkan subject, tidak ada inversi.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> <span class="text-rose-600 underline">Has no student</span> passed the test.</p>
+                            <p class="ok">✓ <b>No student has</b> passed the test.</p>
+                            <p class="ok">✓ I have <b>never</b> reminded you. <span class="text-slate-400">(tidak di awal, tanpa inversi)</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: DAFTAR EKSPRESI ==================== -->
+        <section id="content-list" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Negative Expressions</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Daftar Ekspresi Pemicu Inversi</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Ketika ekspresi bermakna negatif atau semi-negatif ada di awal kalimat sebagai penekanan, kalimat <b>wajib inversi</b>.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Perbedaan dengan Inversi Tempat (Skill 14)</span>
+                    </div>
+                    <table class="cmp">
+                        <tr><th>Jenis</th><th>Yang pindah</th><th>Contoh</th></tr>
+                        <tr><td><b>Inversi tempat</b></td><td>Main verb (tanpa aux)</td><td class="font-mono-code">On the desk <span class="vb">sat</span> a textbook.</td></tr>
+                        <tr><td><b>Inversi negatif</b></td><td>Auxiliary (seperti Interrogative)</td><td class="font-mono-code"><span class="neg">Seldom</span> <span class="vb">does</span> Dr. Mila cancel the lecture.</td></tr>
+                    </table>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Negative Adverbs</span>
+                        <span class="cons">never, nowhere</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="neg">Never</span> <span class="vb">have</span> I reminded you so many times about the presentation. <span class="cons">(asal: I have never reminded you ...)</span></div>
+                        <div class="ex"><span class="neg">Nowhere</span> <span class="vb">have</span> I seen such a beautiful library.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Semi-Negative</span>
+                        <span class="cons">rarely, seldom (jarang) | hardly, scarcely, barely (hampir tidak) | little (hampir tidak / sedikit sekali)</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="neg">Seldom</span> <span class="vb">does</span> Dr. Mila cancel the syntax lecture without notice. <span class="cons">(asal: Dr. Mila seldom cancels ...)</span></div>
+                        <div class="ex"><span class="neg">Rarely</span> <span class="vb">do</span> students finish the test early.</div>
+                        <div class="ex"><span class="neg">Little</span> <span class="vb">did</span> he know about the plan.</div>
+                    </div>
+                    <p class="text-[11px] text-slate-600">Kata-kata ini sudah bermakna negatif, jadi jangan ditambah <i>not</i> atau <i>never</i> lagi (hindari negatif ganda).</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">3. No-Expressions</span>
+                        <span class="cons">at no time, on no account, under no circumstances, in no way, by no means, no sooner ... than</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="neg">Under no circumstances</span> <span class="vb">should</span> the students cheat during the TOEFL test. <span class="cons">(asal: The students should under no circumstances cheat ...)</span></div>
+                        <div class="ex"><span class="neg">At no time</span> <span class="vb">did</span> the committee reveal the results.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">4. Not-Expressions</span>
+                        <span class="cons">not only ... but also, not until</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="neg">Not only</span> <span class="vb">is</span> Usamah traveling abroad, but he is also studying language acquisition.</div>
+                        <div class="ex"><span class="neg">Not until</span> the results were announced <span class="vb">did</span> the students relax.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-slate-700 text-white text-[10px] font-bold px-2 py-0.5 rounded">5. Only-Expressions (Restrictive)</span>
+                        <span class="cons">only once, only then, only by + Ving, only after, only when</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="neg">Only once</span> <span class="vb">did</span> I see the rector in the PIBI room.</div>
+                        <div class="ex"><span class="neg">Only by studying every day</span> <span class="vb">can</span> you pass the TOEFL.</div>
+                    </div>
+                    <p class="text-[11px] text-slate-600">Kata <i>only</i> sendiri bersifat membatasi (restrictive), bukan "no-expression". Inversi berlaku bila <i>only + adverbial</i> berada di awal kalimat.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: POLA & AUXILIARY ==================== -->
+        <section id="content-pattern" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Core Pattern</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Pola: Negative Expression + Aux + S + V</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Cara menentukan auxiliary sama seperti membentuk kalimat tanya.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">a. Sudah Ada Aux / Modal</span>
+                        <span class="cons">pindahkan aux pertama</span>
+                    </div>
+                    <div>
+                        <div class="ex">I <b>have</b> never reminded you so many times. → <span class="neg">Never</span> <span class="vb">have</span> I reminded you so many times.</div>
+                        <div class="ex">The students <b>should</b> under no circumstances cheat. → <span class="neg">Under no circumstances</span> <span class="vb">should</span> the students cheat.</div>
+                        <div class="ex">He <b>has</b> never <u>been</u> so tired. → <span class="neg">Never</span> <span class="vb">has</span> he been so tired. <span class="cons">(hanya aux pertama yang pindah)</span></div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">b. Be sebagai Main Verb</span>
+                        <span class="cons">be itu sendiri yang pindah</span>
+                    </div>
+                    <div>
+                        <div class="ex">Dr. Mila <b>is</b> seldom late. → <span class="neg">Seldom</span> <span class="vb">is</span> Dr. Mila late.</div>
+                        <div class="ex"><span class="bad">❌</span> Seldom <span class="rm">does</span> Dr. Mila <span class="rm">be</span> late.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">c. Verb Biasa tanpa Aux</span>
+                        <span class="cons">do-support, verb kembali V1</span>
+                    </div>
+                    <div>
+                        <div class="ex">Dr. Mila seldom <u>cancels</u> the lecture. → <span class="neg">Seldom</span> <span class="vb">does</span> Dr. Mila <span class="ad">cancel</span> the lecture.</div>
+                        <div class="ex">She rarely <u>visited</u> the library. → <span class="neg">Rarely</span> <span class="vb">did</span> she <span class="ad">visit</span> the library.</div>
+                    </div>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Kapan Tidak Inversi</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Inversi hanya berlaku bila ekspresi negatif adalah <b>adverbial</b> yang berdiri di <b>awal kalimat</b> untuk penekanan. Jika negatif itu bagian dari subject atau berada di posisi normal, urutan tetap deklaratif.</p>
+                    <table class="cmp">
+                        <tr><th>Kondisi</th><th>Contoh benar</th></tr>
+                        <tr><td>Negatif tidak di awal</td><td class="font-mono-code">I have <b>never</b> reminded you.</td></tr>
+                        <tr><td>Negatif bagian dari subject</td><td class="font-mono-code"><b>No student</b> has passed the test.<br><b>Hardly anyone</b> knew the answer.</td></tr>
+                        <tr><td>Negatif adverbial di awal</td><td class="font-mono-code"><b>Never</b> have I reminded you.<br><b>Hardly</b> had she entered when the phone rang.</td></tr>
+                    </table>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pola</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>Ada aux / modal : <span class="neg">Neg</span> + <span class="vb">aux pertama</span> + S + sisa verb</p>
+                        <p>Be main verb &nbsp;&nbsp;: <span class="neg">Neg</span> + <span class="vb">be</span> + S + complement</p>
+                        <p>Verb biasa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="neg">Neg</span> + <span class="vb">do / does / did</span> + S + <span class="ad">V1</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: POLA KHUSUS ==================== -->
+        <section id="content-special" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-rose-100 text-rose-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Special Patterns</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Pola Khusus yang Sering Keluar</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Pada pola dua klausa, perhatikan <b>klausa mana</b> yang diinversi.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Not only ... but also</span>
+                        <span class="cons">inversi hanya pada klausa pertama</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="cons">Asal</span><br>Usamah is not only traveling abroad but also studying language acquisition.</div>
+                        <div class="ex"><span class="neg">Not only</span> <span class="vb">is</span> Usamah traveling abroad, but he is also studying language acquisition.<br><span class="cons">klausa kedua tetap normal (S + V)</span></div>
+                        <div class="ex"><span class="neg">Not only</span> <span class="vb">does</span> Usamah <span class="ad">travel</span> abroad, but he also <span class="ad">studies</span> language acquisition.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. No sooner ... than &amp; Hardly / Scarcely ... when</span>
+                        <span class="cons">klausa pertama: had + S + V3</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="neg">No sooner</span> <span class="vb">had</span> the lecture started <b>than</b> the power went out.</div>
+                        <div class="ex"><span class="neg">Hardly</span> <span class="vb">had</span> she entered the room <b>when</b> the phone rang.</div>
+                    </div>
+                    <p class="text-[11px] text-slate-600">Klausa pertama memakai past perfect yang diinversi, klausa kedua memakai simple past biasa. <i>No sooner</i> berpasangan dengan <b>than</b>, sedangkan <i>hardly / scarcely</i> dengan <b>when</b>.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">3. Only + Adverbial &amp; Not until</span>
+                        <span class="cons">inversi di main clause</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="neg">Only by studying every day</span> <span class="vb">can</span> you pass the TOEFL.</div>
+                        <div class="ex"><span class="neg">Only when he arrived</span> <span class="vb">did</span> she notice the error.<br><span class="cons">inversi di main clause (did she notice), klausa 'when he arrived' tetap normal</span></div>
+                        <div class="ex"><span class="neg">Not until the results were announced</span> <span class="vb">did</span> the students relax.</div>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="bad">❌</span> Only when <span class="rm">did he arrive</span> she noticed the error.</div>
+                        <div class="ex"><span class="bad">❌</span> Not until the results were announced the students relaxed.</div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pola</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>Not only S1 ... but also S2 &nbsp;&nbsp;&nbsp;: inversi di <span class="ad">klausa 1</span></p>
+                        <p>No sooner had S V3 <b>than</b> ... &nbsp;: inversi di <span class="ad">klausa 1</span></p>
+                        <p>Hardly had S V3 <b>when</b> ... &nbsp;&nbsp;&nbsp;: inversi di <span class="ad">klausa 1</span></p>
+                        <p>Only / Not until + adverbial &nbsp;: inversi di <span class="ad">main clause</span></p>
+                    </div>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-1">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Kesimpulan</span>
+                    <ul class="text-xs text-slate-700 leading-relaxed list-disc pl-5 space-y-1 mt-1">
+                        <li><b>Inversi tempat</b>: memindahkan <b>main verb</b> (is, sat, stood, lies) ke depan subject, dan rusak bila subject berupa pronoun.</li>
+                        <li><b>Inversi negatif</b>: memindahkan <b>auxiliary</b> (atau be) ke depan subject seperti kalimat tanya. Wajib bila ekspresi negatif (never, seldom, rarely, not only, dll.) berdiri di awal kalimat sebagai penekanan.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: QUIZ ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz (20 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">Bagian 1: 12 soal Error Analysis. Bagian 2: 8 soal Blank. Tingkat kesulitan: 30% mudah, 40% sedang, 30% sulit.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="resetQuiz()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">↺ Ulangi</button>
+                        <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                            <span>Score: </span><span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 20</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="quiz-container" class="space-y-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-5xl mx-auto px-4">LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 15: Inversion after Negative Expression</div>
+    </footer>
+
+    <script>
+        const TAB_ON  = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30";
+        const TAB_OFF = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => { btn.className = TAB_OFF; });
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) activeTabBtn.className = TAB_ON;
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+        const LEVELS = {
+            easy:   { label: "Mudah",  cls: "bg-emerald-100 text-emerald-800" },
+            medium: { label: "Sedang", cls: "bg-amber-100 text-amber-800" },
+            hard:   { label: "Sulit",  cls: "bg-rose-100 text-rose-800" }
+        };
+
+        const SECTIONS = {
+            "Error Analysis": { label: "Bagian 1", hint: "Pilih bagian bergaris bawah yang salah" },
+            "Blank":          { label: "Bagian 2", hint: "Pilih jawaban yang paling tepat" }
+        };
+
+        // Error Analysis: tepat 5 segmen ditandai [ ... ]; correct = indeks segmen yang salah (0-4).
+        function ea(text, correct, level, explanation) {
+            const segs = [];
+            const html = text.replace(/\[([^\]]+)\]/g, (m, s) => {
+                const idx = segs.length;
+                segs.push(s);
+                return `<span class='underline decoration-2 decoration-slate-500 underline-offset-4'>${s}</span><span class='text-slate-500 text-[11px] font-bold'>(${LETTERS[idx]})</span>`;
+            });
+            if (segs.length !== 5) console.warn("Error Analysis harus punya 5 segmen:", text);
+            return {
+                type: "Error Analysis",
+                level,
+                question: `Identify the error: '${html}'`,
+                options: segs.map((s, i) => ({ text: s, isCorrect: i === correct })),
+                explanation
+            };
+        }
+
+        // Blank: 5 opsi, opsi pertama = jawaban benar (diacak saat render)
+        function blank(question, correct, wrong, level, explanation) {
+            return {
+                type: "Blank",
+                level,
+                question,
+                options: [{ text: correct, isCorrect: true }, ...wrong.map(w => ({ text: w, isCorrect: false }))],
+                explanation
+            };
+        }
+
+        // Komposisi: 6 mudah, 8 sedang, 6 sulit. Tiap bagian diurutkan mudah → sulit.
+        const rawQuestions = [
+            // ===== BAGIAN 1: ERROR ANALYSIS (12) =====
+            // --- Mudah (4)
+            ea("[Never] [I have] [reminded] you [about] [this].", 1, "easy",
+               "Ekspresi negatif di awal membutuhkan inversi: 'Never have I reminded you about this.'"),
+            ea("[Seldom] [does] [Dr. Mila] [cancels] the [lecture].", 3, "easy",
+               "Setelah does, verb utama kembali V1: 'cancel'."),
+            ea("[Rarely] [do] [Dr. Mila] [visit] [the library].", 1, "easy",
+               "Subject tunggal 'Dr. Mila' membutuhkan 'does': 'Rarely does Dr. Mila visit the library.'"),
+            ea("[No sooner] [had] [he left] [when] [it rained].", 3, "easy",
+               "'No sooner' berpasangan dengan 'than': 'No sooner had he left than it rained.'"),
+            // --- Sedang (5)
+            ea("[Only] [when] [did] [he arrive] did she [notice] the error.", 2, "medium",
+               "Inversi hanya pada main clause. Klausa setelah 'only when' tetap normal: 'Only when he arrived did she notice the error.'"),
+            ea("[Not only] [Usamah is] [traveling] abroad, [but] he is [also] studying.", 1, "medium",
+               "Setelah 'not only' terjadi inversi: 'Not only is Usamah traveling abroad ...'."),
+            ea("[Hardly] [had] [she entered] [than] [the phone] rang.", 3, "medium",
+               "'Hardly' berpasangan dengan 'when': 'Hardly had she entered when the phone rang.'"),
+            ea("[Seldom] [does] [Dr. Mila] [be] [late] for class.", 1, "medium",
+               "Be sebagai main verb pindah sendiri tanpa do-support: 'Seldom is Dr. Mila late for class.'"),
+            ea("[Under no circumstances] [should] [the students] [cheated] [during] the test.", 3, "medium",
+               "Setelah modal 'should', verb wajib V1: 'cheat'."),
+            // --- Sulit (3)
+            ea("[Only] [by] [studying] [every day] [you can] pass the TOEFL.", 4, "hard",
+               "Setelah 'only by + Ving' di awal, main clause diinversi: 'can you pass'."),
+            ea("[Never] [been] [has] [he] [so] tired.", 1, "hard",
+               "Hanya aux pertama yang pindah ke depan subject: 'Never has he been so tired.'"),
+            ea("[Not until] [the results] [were announced] [the students relaxed] [completely].", 3, "hard",
+               "Main clause harus diinversi setelah 'not until': 'did the students relax completely'."),
+
+            // ===== BAGIAN 2: BLANK (8) =====
+            // --- Mudah (2)
+            blank("Never _____ I reminded you so many times.",
+               "have", ["do", "did", "am", "has"], "easy",
+               "Perfect tense: aux 'have' pindah ke depan subject 'I'."),
+            blank("Seldom _____ Dr. Mila cancel the syntax lecture without notice.",
+               "does", ["do", "is", "has", "cancels"], "easy",
+               "Verb biasa membutuhkan do-support. Subject tunggal: 'does', diikuti V1 'cancel'."),
+            // --- Sedang (3)
+            blank("Under no circumstances _____ the students cheat during the TOEFL test.",
+               "should", ["are", "is", "cheating", "to"], "medium",
+               "Modal 'should' pindah ke depan subject, diikuti V1 'cheat'."),
+            blank("Not only _____ Usamah traveling abroad, but he is also studying language acquisition.",
+               "is", ["does", "has", "are", "do"], "medium",
+               "Klausa pertama bermakna progressive: aux 'is' pindah ke depan subject."),
+            blank("Hardly had she entered the room _____ the phone rang.",
+               "when", ["than", "then", "that", "because"], "medium",
+               "'Hardly / scarcely' berpasangan dengan 'when'. ('No sooner' berpasangan dengan 'than')."),
+            // --- Sulit (3)
+            blank("Only by studying every day _____ pass the TOEFL.",
+               "can you", ["you can", "can", "do you can", "you do can"], "hard",
+               "Setelah 'only by + Ving' di awal, main clause diinversi: aux 'can' di depan subject."),
+            blank("Not until the results were announced _____.",
+               "did the students relax", ["the students relaxed", "the students did relax", "did the students relaxed", "relaxed the students"], "hard",
+               "Main clause diinversi dengan do-support, verb kembali V1: 'did the students relax'."),
+            blank("No sooner _____ the lecture started than the power went out.",
+               "had", ["has", "did", "were", "have"], "hard",
+               "'No sooner' diikuti past perfect yang diinversi: 'had + S + V3'.")
+        ];
+
+        const quizQuestions = rawQuestions.map((q, i) => ({
+            ...q,
+            id: i + 1,
+            question: `${i + 1}. ${q.question}`
+        }));
+
+        let userAnswers = {};
+        let score = 0;
+
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        function prepareQuiz() {
+            quizQuestions.forEach(q => { if (q.type === "Blank") shuffle(q.options); });
+        }
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+            quizContainer.innerHTML = '';
+            let lastType = null;
+
+            quizQuestions.forEach((q, index) => {
+                if (q.type !== lastType) {
+                    lastType = q.type;
+                    const total = quizQuestions.filter(x => x.type === q.type).length;
+                    const meta = SECTIONS[q.type];
+                    const head = document.createElement('div');
+                    head.className = "flex flex-wrap items-center gap-2 pt-2 pb-2 border-b border-slate-200";
+                    head.innerHTML = `
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">${meta.label}</span>
+                        <h3 class="text-sm font-bold text-slate-900">${q.type}</h3>
+                        <span class="text-xs text-slate-500">${meta.hint} (${total} soal)</span>`;
+                    quizContainer.appendChild(head);
+                }
+
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                let optionsHTML = '';
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        else if (isSelected) btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        else btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                    }
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''}
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${LETTERS[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>`;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>`;
+                }
+
+                const lv = LEVELS[q.level];
+                qCard.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                        <span class="bg-teal-100 text-teal-800 text-[9px] font-bold px-2 py-0.5 rounded-full">${q.type}</span>
+                        <span class="${lv.cls} text-[9px] font-bold px-2 py-0.5 rounded-full">${lv.label}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-loose">${q.question}</p>
+                    <div class="space-y-1.5">${optionsHTML}</div>
+                    ${explanationHTML}`;
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) score++;
+            });
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            score = 0;
+            document.getElementById('quiz-score').textContent = `0 / ${quizQuestions.length}`;
+            prepareQuiz();
+            renderQuiz();
+        }
+
+        window.onload = function () {
+            prepareQuiz();
+            renderQuiz();
+        };
+    </script>
+    </script>
+    <script src="lumina-core.js"></script>
+    <script src="lumina-skill-editor.js"></script>
+</body>
+</html>

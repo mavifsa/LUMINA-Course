@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 11 - AC yang Direduksi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        /* Konten halaman (di luar header dan footer) diperkecil 10% */
+        main { zoom: 0.9; }
+
+        .rm { color: #e11d48; text-decoration: line-through; }
+        .ad { color: #047857; font-weight: 700; }
+        .hs { color: #0f766e; font-weight: 700; }
+        .ho { color: #4338ca; font-weight: 700; }
+        .bad { color: #e11d48; font-weight: 600; }
+        .ok { color: #047857; font-weight: 600; }
+
+        /* Daftar contoh sederhana */
+        .box { border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; padding: 16px; }
+        .ex { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; }
+        .ex + .ex { margin-top: 6px; }
+        .cons { font-family: 'Fira Code', monospace; font-size: 11px; color: #64748b; }
+
+        /* Kotak asal mula adjective clause */
+        .orig { border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; border: 1px solid; }
+        .orig + .orig { margin-top: 6px; }
+        .orig-tag { display: inline-block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 700; padding: 1px 8px; border-radius: 4px; color: #fff; margin-bottom: 3px; }
+        .orig-1 { background: #f0fdfa; border-color: #99f6e4; } .orig-1 .orig-tag { background: #0d9488; }
+        .orig-2 { background: #fffbeb; border-color: #fde68a; } .orig-2 .orig-tag { background: #d97706; }
+        .orig-3 { background: #eef2ff; border-color: #c7d2fe; } .orig-3 .orig-tag { background: #4f46e5; }
+        .orig-4 { background: #ecfdf5; border-color: #a7f3d0; } .orig-4 .orig-tag { background: #059669; }
+        .nn { color: #0f766e; font-weight: 700; background: #ccfbf1; border-radius: 3px; padding: 0 3px; }
+        .cj { color: #b45309; font-weight: 700; background: #fef3c7; border-radius: 3px; padding: 0 3px; }
+
+        /* Tab & tombol: hilangkan kotak putih (ring fokus / tap highlight) saat diklik */
+        .tab-btn, button { -webkit-tap-highlight-color: transparent; }
+        .tab-btn:focus, button:focus { outline: none; }
+        .tab-btn:focus-visible { outline: 2px solid #2dd4bf; outline-offset: -2px; } /* hanya muncul untuk navigasi keyboard */
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <!-- Header (padding dan ukuran konten dikurangi ~10%) -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-[7px] gap-[7px]">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-[13px] shadow-sm">S11</div>
+                    <div>
+                        <span class="bg-teal-500/20 text-teal-300 text-[9px] font-semibold px-[7px] py-px rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        <h1 class="text-[14px] md:text-base font-bold tracking-tight text-white leading-tight mt-0.5">Skill 11: AC yang Direduksi</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-[7px] bg-slate-800/80 px-[11px] py-[5px] rounded-lg border border-slate-700/60 text-[11px]">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-[7px] h-[7px] rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Conjunction Removal</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="text-indigo-400 font-medium"><span>Participle &amp; To Infinitive</span></div>
+                </div>
+            </div>
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-[5px] pb-[3px]">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30">1. Overview &amp; Pitfalls</button>
+                <button onclick="switchTab('conj')" id="tab-conj" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">2. Hapus Conjunction</button>
+                <button onclick="switchTab('subject')" id="tab-subject" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">3. Hapus Conj-Subject</button>
+                <button onclick="switchTab('never')" id="tab-never" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">4. Tidak Boleh Direduksi</button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">5. Practice Quiz</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">Core Structure Axiom</div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Adjective Clause Reduction = Menghapus Elemen Tertentu agar Kalimat Ringkas, Makna Tetap.</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Yang dihapus bisa <b>conjunction saja</b> (who, whom, which, that) atau <b>conjunction + subject</b> sekaligus. Cara menentukannya: lihat apa yang diwakili conjunction di dalam klausa, <b>object</b> atau <b>subject</b>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Hapus Conjunction Saja</h3><p class="text-[11px] text-slate-600 leading-tight">Hanya bila conjunction = object.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Hapus Conj-Subject</h3><p class="text-[11px] text-slate-600 leading-tight">Ving, V3, adjective, prep. phrase, to infinitive.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Tidak Boleh Direduksi</h3><p class="text-[11px] text-slate-600 leading-tight">Non-defining clause dan whose.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Diagnostic Quiz</h3><p class="text-[11px] text-slate-600 leading-tight">20 Soal (Error Analysis & Blank).</p></div>
+                </div>
+            </div>
+
+            <!-- ===== BARU: Asal Mula Adjective Clause ===== -->
+            <div class="space-y-2.5">
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Asal Mula Adjective Clause: Dua Klausa Dijadikan Satu</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mt-0.5">
+                        Adjective clause lahir dari <b>dua kalimat yang membicarakan noun yang sama</b>. Kalimat kedua dipakai untuk menjelaskan noun tersebut. Noun yang berulang diganti <span class="cj">conjunction</span> (who, whom, which, that), lalu klausa itu diletakkan tepat di belakang <span class="nn">noun</span> yang dijelaskan.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <!-- Contoh 1: conjunction = object -->
+                    <div class="bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Contoh</span>
+                            <span class="text-[11px] font-semibold text-indigo-700">Conjunction mewakili object</span>
+                        </div>
+                        <div>
+                            <div class="orig orig-1"><span class="orig-tag">Klausa 1 (inti kalimat)</span><br><span class="nn">The man</span> is Ferry Irwandi.</div>
+                            <div class="orig orig-2"><span class="orig-tag">Klausa 2 (penjelas)</span><br>I met <span class="nn">the man</span> yesterday.</div>
+                            <div class="orig orig-3"><span class="orig-tag">Digabung: adjective clause</span><br><span class="nn">The man</span> <span class="cj">whom</span> I met yesterday is Ferry Irwandi.</div>
+                            <div class="orig orig-4"><span class="orig-tag">Direduksi</span><br><span class="nn">The man</span> <span class="rm">whom</span> I met yesterday is Ferry Irwandi.<br><span class="ad">The man I met yesterday is Ferry Irwandi.</span></div>
+                        </div>
+                        <ul class="text-[11px] text-slate-600 leading-relaxed mt-2 space-y-0.5 list-disc pl-4">
+                            <li>Pada klausa 2, <i>the man</i> adalah <b>object</b> dari <i>met</i> (I met him).</li>
+                            <li><i>The man</i> diganti <span class="cj">whom</span>, lalu klausa dipindah ke belakang <span class="nn">the man</span> di klausa 1.</li>
+                            <li>Setelah whom masih ada subject baru (<i>I</i>), jadi <span class="cj">whom</span> boleh dihapus saja. Makna tidak berubah.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                <h3 class="font-bold text-slate-900 text-sm">Langkah Cepat: Lihat Apa yang Ada Tepat Setelah Conjunction</h3>
+                <div class="text-xs font-mono-code space-y-1.5">
+                    <p>Conj + <span class="ho">Subject + Verb</span> → conj = object → <b>hapus conjunction saja</b></p>
+                    <p>Conj + <span class="hs">Verb</span> → conj = subject → <b>hapus conjunction (+ be), verb berubah</b></p>
+                </div>
+                <div class="text-xs font-mono-code space-y-1">
+                    <p>The man <span class="rm">whom</span> I met is Ferry. → The man I met is Ferry.</p>
+                    <p>The boy <span class="rm">who speaks</span> <span class="ad">speaking</span> at the front is Yusuf.</p>
+                </div>
+            </div>
+
+            <div class="space-y-2.5">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5"><span class="text-rose-500">⚠️</span> Kesalahan Umum (Common Pitfalls)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Menghapus Conjunction Subject Saja</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Menghapus who/which/that yang berfungsi sebagai subject tanpa mengubah verb.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> The man <span class="text-rose-600 underline">saw</span> me yesterday is Ferry.</p>
+                            <p class="ok">✓ The man who saw me yesterday is Ferry.</p>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Conjunction subject hanya boleh hilang bila verb berubah menjadi Ving / V3 / phrase.</p>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Sisa Conjunction di Klausa Tereduksi</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Menyisakan who/which sementara be sudah dibuang.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Dollar <span class="text-rose-600 underline">which presented</span> by him is oversimplified.</p>
+                            <p class="ok">✓ Dollar presented by him is oversimplified.</p>
+                            <p class="ok">✓ Dollar which is presented by him is oversimplified.</p>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Pilih salah satu: reduksi penuh (tanpa conjunction) atau klausa utuh (conjunction + be).</p>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #3</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Aktif vs Pasif Tertukar</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Memakai Ving untuk makna pasif, atau V3 untuk makna aktif.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> The funds <span class="text-rose-600 underline">collecting</span> by Ferry Irwandi ...</p>
+                            <p class="ok">✓ The funds <b>collected</b> by Ferry Irwandi ...</p>
+                            <p><span class="bad">❌</span> The teacher <span class="text-rose-600 underline">made</span> us engage ...</p>
+                            <p class="ok">✓ The teacher <b>making</b> us engage ...</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #4</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Ving setelah Ordinal / Superlative / Only</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Setelah the first, the smartest, the only, next, last, TOEFL memakai to infinitive.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> You are the only person <span class="text-rose-600 underline">understanding</span> me.</p>
+                            <p class="ok">✓ You are the only person <b>to understand</b> me.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: HAPUS CONJUNCTION SAJA ==================== -->
+        <section id="content-conj" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Reduction Type 1</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Penghapusan Conjunction Saja</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Conjunction <b>who, whom, which, that</b> boleh dihapus <b>hanya jika</b> mewakili <b>object</b> dalam klausa tersebut.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Conjunction = Object</span>
+                        <span class="cons">Noun + [whom / which / that + <b>Subject + Verb</b>] → Noun + <b>Subject + Verb</b></span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Setelah conjunction ada <b>subject baru</b>. Subject itu tetap menjadi pelaku verb, sehingga conjunction cukup dihapus dan makna tidak berubah.</p>
+                    <div>
+                        <div class="ex"><span class="cons">Orang (whom)</span><br>The man <span class="rm">whom</span> I met is Ferry Irwandi.<br><span class="ok">Red ➭</span> The man <span class="ho">I met</span> is Ferry Irwandi.</div>
+                        <div class="ex"><span class="cons">whom / that</span><br>Every official <span class="rm">whom / that</span> the activists criticize is highly defensive.<br><span class="ok">Red ➭</span> Every official <span class="ho">the activists criticize</span> is highly defensive.</div>
+                        <div class="ex"><span class="cons">Benda (which / that)</span><br>The book <span class="rm">that</span> I read is Madilog.<br><span class="ok">Red ➭</span> The book <span class="ho">I read</span> is Madilog.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Conjunction = Subject</span>
+                        <span class="cons">Noun + [who / which / that + <b>Verb</b>] → tidak boleh hanya dihapus</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Jika conjunction langsung diikuti <b>verb</b>, conjunction itu adalah subject. Menghapusnya begitu saja membuat kalimat kehilangan subject. Lihat Tab 3 untuk cara mereduksinya.</p>
+                    <div>
+                        <div class="ex"><span class="bad">❌</span> The man <span class="rm">who</span> saw me yesterday is Ferry. → The man saw me yesterday is Ferry.</div>
+                        <div class="ex"><span class="ok">✓</span> The man who saw me yesterday is Ferry. / The man <span class="ad">seeing</span> me ... <span class="text-slate-400">(sesuai Tab 3)</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: HAPUS CONJ-SUBJECT ==================== -->
+        <section id="content-subject" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Reduction Type 2</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Penghapusan Conj-Subject</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Jika conjunction mewakili <b>subject</b>, hasil reduksi mengubah verb menjadi <b>Participle (Ving / V3)</b> atau menyisakan <b>adjective / prepositional phrase / to infinitive</b>, tergantung jenis kalimatnya.</p>
+                </div>
+
+                <!-- a. Aktif -->
+                <div class="box space-y-2">
+                    <span class="bg-emerald-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">a. Kalimat Aktif → Present Participle (Ving)</span>
+                    <p class="text-xs text-slate-700">Buang conjunction, ubah verb menjadi Ving.</p>
+                    <div>
+                        <div class="ex">I like the teacher <span class="rm">who makes</span> <span class="ad">making</span> us engage in dialectics.<br><span class="cons">which/who + makes → making</span></div>
+                        <div class="ex">The boy <span class="rm">who speaks</span> <span class="ad">speaking</span> at the front is Yusuf.<br><span class="cons">who + speaks → speaking</span></div>
+                        <p class="text-[11px] text-slate-600 mt-1.5">Untuk verb present / umum. Simple past aktif (<i>who stole</i>) tidak diubah menjadi Ving karena maknanya bergeser (lihat Skill 10).</p>
+                    </div>
+                </div>
+
+                <!-- b. Pasif -->
+                <div class="box space-y-2">
+                    <span class="bg-indigo-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">b. Kalimat Pasif → Past Participle (V3)</span>
+                    <p class="text-xs text-slate-700">Buang conjunction + be, sisakan V3.</p>
+                    <div>
+                        <div class="ex">The funds <span class="rm">which were</span> <span class="ad">collected</span> by Ferry Irwandi will be used to mitigate forest fires.</div>
+                        <div class="ex">Dollar <span class="rm">which is</span> <span class="ad">presented</span> by him is oversimplified.</div>
+                    </div>
+                </div>
+
+                <!-- c. Adj / Prep / To inf -->
+                <div class="box space-y-3">
+                    <span class="bg-purple-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">c. Menyisakan Adjective / Prepositional Phrase / To Infinitive Phrase</span>
+
+                    <div>
+                        <p class="text-xs font-bold text-purple-800 mb-1">Menyisakan Adjective <span class="font-normal text-slate-500">(who/which + be + adjective)</span></p>
+                        <div class="ex">The man <span class="rm">who is</span> <span class="ad">responsible</span> for the MBG project is Sudaryono.</div>
+                    </div>
+
+                    <div>
+                        <p class="text-xs font-bold text-purple-800 mb-1">Menyisakan Prepositional Phrase <span class="font-normal text-slate-500">(who/which + be + prep. phrase)</span></p>
+                        <div class="ex">The committee <span class="rm">that was</span> <span class="ad">in the contest</span> blamed the participant's articulation.</div>
+                    </div>
+
+                    <div>
+                        <p class="text-xs font-bold text-purple-800 mb-1">Menjadi To Infinitive Phrase <span class="font-normal text-slate-500">(setelah ordinal number, superlative, next, last, only)</span></p>
+                        <p class="text-xs text-slate-700 mb-1.5">Bentuk: <b>to + V</b> (aktif) atau <b>to be + V3</b> (pasif). Setelah head ini, TOEFL memakai to infinitive, bukan Ving (<span class="bad">the only person understanding</span>).</p>
+                        <div class="ex"><span class="cons">Ordinal number (the first, second, next, last)</span><br>Bilal bin Rabah is the first man <span class="rm">who performed</span> <span class="ad">to perform</span> the adzan.</div>
+                        <div class="ex"><span class="cons">Superlative (the smartest, the best, the largest)</span><br>Nicolas Tesla is the smartest man <span class="rm">who won</span> <span class="ad">to win</span> the admiration of scientists worldwide.</div>
+                        <div class="ex"><span class="cons">The only</span><br>You are the only person <span class="rm">who understands</span> <span class="ad">to understand</span> me.</div>
+                        <div class="ex"><span class="cons">Makna pasif: to be + V3, atau ever + V3 (superlative + ever)</span><br>She was the second woman <span class="rm">who was</span> <span class="ad">to be elected</span> as rector.<br>It is the tallest building <span class="rm">that has ever been</span> <span class="ad">ever built</span> in the city.</div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pola</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>Aktif &nbsp;&nbsp;: conj + V → <span class="ad">Ving</span></p>
+                        <p>Pasif &nbsp;&nbsp;: conj + be + V3 → <span class="ad">V3</span></p>
+                        <p>Be + adj / prep. phrase : conj + be dibuang → <span class="ad">adj / prep. phrase</span></p>
+                        <p>Ordinal / superlative / only / next / last : conj + V → <span class="ad">to V</span> (pasif: <span class="ad">to be V3</span>)</p>
+                        <p>Verb utama : tetap mengikuti <span class="ad">head noun</span> → Every official criticized by the activists <b>is</b> ...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: TIDAK BOLEH DIREDUKSI ==================== -->
+        <section id="content-never" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-rose-100 text-rose-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Restriction</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">🔑 Adjective Clause yang Tidak Boleh Direduksi</h2>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Non-Defining Clause (Appositive)</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Jika klausa berada di antara tanda koma <span class="cons">, ... ,</span> (informasi tambahan yang tidak esensial), koma dan konjungsinya <b>tidak boleh dihilangkan secara sembarangan</b>.</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> My mother<b>,</b> <span class="hs">who is cooking in the kitchen</span><b>,</b> is 50 years old.</div>
+                        <div class="ex"><span class="bad">❌</span> My mother, <span class="text-rose-600 underline">cooking in the kitchen</span>, is 50 years old.</div>
+                    </div>
+                    <p class="text-[11px] text-slate-600 bg-white border border-slate-200 rounded-lg p-2.5">💡 Pola <i>which is + noun phrase</i> yang diubah menjadi appositive (mis. <i>Jakarta, the capital of Indonesia, is ...</i>) adalah bentuk lain yang dibahas di Skill 10. Pada soal, jangan menghapus conjunction non-defining tanpa alasan struktural yang jelas.</p>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Conjunction Whose (Kepemilikan)</span>
+                    <p class="text-xs text-slate-700 leading-relaxed"><b>Whose</b> tidak pernah bisa dihapus karena berfungsi menunjukkan kepemilikan.</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> I know the man <span class="hs">whose</span> car was stolen. <span class="text-slate-400">(Saya tahu pria yang mobilnya dicuri.)</span></div>
+                        <div class="ex"><span class="bad">❌</span> I know the man car was stolen.</div>
+                        <div class="ex"><span class="bad">❌</span> I know the man <span class="text-rose-600 underline">who</span> car was stolen. <span class="text-slate-400">(who bukan pengganti whose)</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan 3 Aturan</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>1. Conjunction = <span class="ho">object</span> → hapus conjunction saja.</p>
+                        <p>2. Conjunction = <span class="hs">subject</span> → hapus conjunction, verb berubah (Ving / V3 / adj / prep. phrase / to V).</p>
+                        <p>3. <span class="bad">Non-defining</span> (koma) dan <span class="bad">whose</span> → jangan direduksi sembarangan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: QUIZ ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz (20 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">Bagian 1: 12 soal Error Analysis. Bagian 2: 8 soal Blank. Tingkat kesulitan: 30% mudah, 40% sedang, 30% sulit.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="resetQuiz()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">↺ Ulangi</button>
+                        <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                            <span>Score: </span><span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 20</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="quiz-container" class="space-y-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-5xl mx-auto px-4">LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 11: AC yang Direduksi</div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+            });
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) activeTabBtn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30";
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+        const LEVELS = {
+            easy:   { label: "Mudah",  cls: "bg-emerald-100 text-emerald-800" },
+            medium: { label: "Sedang", cls: "bg-amber-100 text-amber-800" },
+            hard:   { label: "Sulit",  cls: "bg-rose-100 text-rose-800" }
+        };
+
+        const SECTIONS = {
+            "Error Analysis": { label: "Bagian 1", hint: "Pilih bagian bergaris bawah yang salah" },
+            "Blank":          { label: "Bagian 2", hint: "Pilih jawaban yang paling tepat" }
+        };
+
+        // Error Analysis: hanya 5 segmen yang digaris bawahi (ditandai [ ... ]); kata lain tetap polos.
+        // correct = indeks segmen yang salah (0-4).
+        function ea(text, correct, level, explanation) {
+            const segs = [];
+            const html = text.replace(/\[([^\]]+)\]/g, (m, s) => {
+                const idx = segs.length;
+                segs.push(s);
+                return `<span class='underline decoration-2 decoration-slate-500 underline-offset-4'>${s}</span><span class='text-slate-500 text-[11px] font-bold'>(${LETTERS[idx]})</span>`;
+            });
+            if (segs.length !== 5) console.warn("Error Analysis harus punya 5 segmen:", text);
+            return {
+                type: "Error Analysis",
+                level,
+                question: `Identify the error: '${html}'`,
+                options: segs.map((s, i) => ({ text: s, isCorrect: i === correct })),
+                explanation
+            };
+        }
+
+        // Blank: 5 opsi, opsi pertama = jawaban benar (diacak saat render)
+        function blank(question, correct, wrong, level, explanation) {
+            return {
+                type: "Blank",
+                level,
+                question,
+                options: [{ text: correct, isCorrect: true }, ...wrong.map(w => ({ text: w, isCorrect: false }))],
+                explanation
+            };
+        }
+
+        // Komposisi: 30% mudah (6), 40% sedang (8), 30% sulit (6). Tiap bagian diurutkan mudah → sulit.
+        const rawQuestions = [
+            // ===== BAGIAN 1: ERROR ANALYSIS (12) =====
+            // --- Mudah (4)
+            ea("[The man] [I] [met] [yesterday] [are] Ferry Irwandi.", 4, "easy",
+               "Conjunction object dihapus (The man (whom) I met). Verb utama mengikuti head 'The man' (tunggal): 'is'."),
+            ea("[The man who] [responsible] [for the MBG project] [is] [Sudaryono].", 0,"easy",
+               "'Who' tidak boleh tersisa tanpa verb. Pilih 'who is responsible' atau reduksi penuh 'responsible ...'."),
+            ea("[Every official] [criticized] [by the activists] [are] [highly defensive].", 3, "easy",
+               "Setelah direduksi, verb utama tetap mengikuti head 'Every official' (tunggal): 'is'."),
+            ea("I like [the teacher] [which] [makes] [us] [engage in dialectics].", 1, "easy",
+               "Head 'the teacher' adalah orang: 'who' atau 'that', bukan 'which'."),
+            // --- Sedang (5)
+            ea("You are [the only] [person] [understanding] [me] [now].", 2, "medium",
+               "Setelah 'the only', gunakan to infinitive: 'to understand'."),
+            ea("[Bilal bin Rabah] [is] [the first man] [performing] [the adzan].", 3, "medium",
+               "Setelah ordinal number, gunakan to infinitive: 'to perform'."),
+            ea("The [committee] [which] [in the contest] [blamed] [the participant's articulation].", 1, "medium",
+               "Jika 'be' dibuang, conjunction ikut dibuang: 'The committee in the contest ...' atau 'which was in the contest'."),
+            ea("I know [the man] [who] [car] [was stolen] [yesterday].", 1, "medium",
+               "Kepemilikan memakai 'whose', bukan 'who'. 'Whose' tidak boleh dihapus."),
+            ea("[Nicolas Tesla] [is] [the smartest man] [won] [the admiration] of scientists worldwide.", 3, "medium",
+               "Setelah superlative, gunakan to infinitive: 'to win'. 'Won' tidak bisa berdiri tanpa conjunction."),
+            // --- Sulit (3)
+            ea("[The proposals] [the committee] [rejected] [last month] [was] criticized by experts.", 4, "hard",
+               "'The committee rejected' adalah klausa object yang conjunction-nya dihapus. Verb utama mengikuti head 'The proposals' (plural): 'were'."),
+            ea("She was [the second] [woman] [being elected] [as] [rector].", 2, "hard",
+               "Ordinal number + makna pasif: 'to be elected'."),
+            ea("[It] [is] [the tallest building] [ever] [building] in the city.", 4, "hard",
+               "Superlative + 'ever' + makna pasif ('that has ever been built'): 'ever built'."),
+
+            // ===== BAGIAN 2: BLANK (8) =====
+            // --- Mudah (2)
+            blank("I know the man _____ car was stolen yesterday.",
+               "whose", ["who", "whom", "that", "which"], "easy",
+               "Menyatakan kepemilikan: 'whose'. Tidak boleh dihapus."),
+            blank("I like the teacher _____ us engage in dialectics.",
+               "making", ["makes", "who making", "made", "to make"], "easy",
+               "Aktif: 'who makes' menjadi 'making'."),
+            // --- Sedang (3)
+            blank("The funds _____ by Ferry Irwandi will be used to mitigate forest fires.",
+               "collected", ["collecting", "which collected", "to collect", "were collected"], "medium",
+               "Pasif: 'which were collected' menjadi 'collected'."),
+            blank("Every official _____ the activists criticize is highly defensive.",
+               "whom", ["who", "whose", "which", "whoever"], "medium",
+               "Setelah blank ada subject baru (RPO) dan head orang: 'whom'. Boleh dihapus karena mewakili object."),
+            blank("Bilal bin Rabah is the first man _____ the adzan.",
+               "to perform", ["performing", "performed", "who performing", "performs"], "medium",
+               "Ordinal number + aktif menjadi to infinitive: 'to perform'."),
+            // --- Sulit (3)
+            blank("The proposals _____ last month were criticized by experts.",
+               "the committee rejected", ["the committee rejecting", "rejecting the committee", "which the committee", "that rejecting"], "hard",
+               "Conjunction object dihapus, tersisa subject + verb: 'the committee rejected'."),
+            blank("She was the second woman _____ as rector of the university.",
+               "to be elected", ["to elect", "electing", "who electing", "who elects"], "hard",
+               "Ordinal number + pasif: 'to be elected'."),
+            blank("He was the last man _____ the building after the fire drill.",
+               "to leave", ["leaving", "left", "who leaving", "leaves"], "hard",
+               "'The last' + aktif menjadi to infinitive: 'to leave'.")
+        ];
+
+        const quizQuestions = rawQuestions.map((q, i) => ({
+            ...q,
+            id: i + 1,
+            question: `${i + 1}. ${q.question}`
+        }));
+
+        let userAnswers = {};
+        let score = 0;
+
+        // Opsi soal Blank diacak; Error Analysis tidak diacak (huruf A-E = penanda segmen)
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        function prepareQuiz() {
+            quizQuestions.forEach(q => { if (q.type === "Blank") shuffle(q.options); });
+        }
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+            quizContainer.innerHTML = '';
+            let lastType = null;
+
+            quizQuestions.forEach((q, index) => {
+                // Header sesi
+                if (q.type !== lastType) {
+                    lastType = q.type;
+                    const total = quizQuestions.filter(x => x.type === q.type).length;
+                    const meta = SECTIONS[q.type];
+                    const head = document.createElement('div');
+                    head.className = "flex flex-wrap items-center gap-2 pt-2 pb-2 border-b border-slate-200";
+                    head.innerHTML = `
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">${meta.label}</span>
+                        <h3 class="text-sm font-bold text-slate-900">${q.type}</h3>
+                        <span class="text-xs text-slate-500">${meta.hint} (${total} soal)</span>`;
+                    quizContainer.appendChild(head);
+                }
+
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                let optionsHTML = '';
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        else if (isSelected) btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        else btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                    }
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''}
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${LETTERS[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>`;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>`;
+                }
+
+                const lv = LEVELS[q.level];
+                qCard.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                        <span class="bg-teal-100 text-teal-800 text-[9px] font-bold px-2 py-0.5 rounded-full">${q.type}</span>
+                        <span class="${lv.cls} text-[9px] font-bold px-2 py-0.5 rounded-full">${lv.label}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-loose">${q.question}</p>
+                    <div class="space-y-1.5">${optionsHTML}</div>
+                    ${explanationHTML}`;
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) score++;
+            });
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            score = 0;
+            document.getElementById('quiz-score').textContent = `0 / ${quizQuestions.length}`;
+            prepareQuiz();
+            renderQuiz();
+        }
+
+        window.onload = function () {
+            prepareQuiz();
+            renderQuiz();
+        };
+    </script>
+    </script>
+    <script src="lumina-core.js"></script>
+    <script src="lumina-skill-editor.js"></script>
+</body>
+</html>

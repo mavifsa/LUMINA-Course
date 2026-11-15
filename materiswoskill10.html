@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 10 - Adjective Clause</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        .rm { color: #e11d48; text-decoration: line-through; }
+        .ad { color: #047857; font-weight: 700; }
+        .hs { color: #0f766e; font-weight: 700; }
+        .ho { color: #4338ca; font-weight: 700; }
+        .bad { color: #e11d48; font-weight: 600; }
+        .ok { color: #047857; font-weight: 600; }
+
+        /* Daftar contoh sederhana */
+        .box { border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; padding: 16px; }
+        .ex { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; }
+        .ex + .ex { margin-top: 6px; }
+        .cons { font-family: 'Fira Code', monospace; font-size: 11px; color: #64748b; }
+
+        /* Tab & tombol: hilangkan kotak putih (ring fokus / tap highlight) saat diklik */
+        .tab-btn, button { -webkit-tap-highlight-color: transparent; }
+        .tab-btn:focus, button:focus { outline: none; }
+        .tab-btn:focus-visible { outline: 2px solid #2dd4bf; outline-offset: -2px; } /* hanya muncul untuk navigasi keyboard */
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <!-- Header -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-2 gap-2">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-sm shadow-sm">S10</div>
+                    <div>
+                        <span class="bg-teal-500/20 text-teal-300 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        <h1 class="text-base md:text-lg font-bold tracking-tight text-white leading-tight mt-0.5">Skill 10: Adjective Clause</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-xs">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Modifier of Nouns</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="flex items-center gap-1.5 text-indigo-400 font-medium">
+                        <span>Reduction Rules</span>
+                    </div>
+                </div>
+            </div>
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-1.5 pb-1">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30">🔍 1. Overview & Pitfalls</button>
+                <button onclick="switchTab('pronouns')" id="tab-pronouns" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">📗 2. RPS & RPO</button>
+                <button onclick="switchTab('adverbs')" id="tab-adverbs" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">📘 3. Adverbs & Whose</button>
+                <button onclick="switchTab('reduction')" id="tab-reduction" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">🔬 4. Reduksi</button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">🎯 5. Practice Quiz</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW (dipertahankan) ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">Core Structure Axiom</div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Adjective Clause (AC) Berfungsi Menerangkan Head (Noun / Pronoun).</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        AC bertindak sebagai kata sifat dalam bentuk klausa yang diletakkan langsung setelah noun, indefinite pronoun, demonstrative pronoun, atau personal pronoun yang diterangkannya.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Subject & Object</h3><p class="text-[11px] text-slate-600 leading-tight">Relative pronoun berdasarkan fungsinya.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Adverbs & Whose</h3><p class="text-[11px] text-slate-600 leading-tight">Where, when, why, dan kepemilikan.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Clause Reduction</h3><p class="text-[11px] text-slate-600 leading-tight">Aturan dan variasi reduksi klausa.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Diagnostic Quiz</h3><p class="text-[11px] text-slate-600 leading-tight">20 Soal (Blank & Error Analysis).</p></div>
+                </div>
+            </div>
+
+            <div class="space-y-2.5">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5"><span class="text-rose-500">⚠️</span> Kesalahan Umum (Common Pitfalls)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Redundant Pronoun Trap</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Menulis ulang pronoun objek (him, it, them) setelah relative pronoun.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> The man whom I met <span class="text-rose-600 underline">him</span> is Ferry.</p>
+                            <p class="ok">✓ The man whom I met is Ferry.</p>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Relative pronoun sudah menggantikan noun tersebut, jadi pronoun tambahan tidak diperlukan.</p>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Who vs. Whom</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Memakai whom saat klausa membutuhkan subjek, atau sebaliknya.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> The boy <span class="text-rose-600 underline">whom</span> helped her ...</p>
+                            <p class="ok">✓ The boy who helped her ...</p>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Setelah relative pronoun ada verb → who (subject). Setelah relative pronoun ada subjek baru → whom (object).</p>
+                    </div>
+
+                     <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #3</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Subject-Verb Agreement di dalam AC</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Pada RPS, verb mengikuti <u>head noun</u>, bukan noun terdekat.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> The books that <span class="text-rose-600 underline">is</span> on the shelf are mine.</p>
+                            <p class="ok">✓ The books that are on the shelf are mine.</p>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Pada RPO, verb justru mengikuti subjek baru: "The books that <b>she</b> writes ..."</p>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #4</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Reduksi yang Salah Bentuk</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Memakai V-ing / V3 setelah ordinal number, superlative, atau the only; atau meninggalkan sisa "who/which" di klausa tereduksi.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> She is the first woman <span class="text-rose-600 underline">winning</span> the prize.</p>
+                            <p class="ok">✓ She is the first woman <b>to win</b> the prize.</p>
+                            <p><span class="bad">❌</span> Students <span class="text-rose-600 underline">who studying</span> here ...</p>
+                            <p class="ok">✓ Students studying here ... / who are studying here ...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: RPS & RPO ==================== -->
+        <section id="content-pronouns" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Relative Pronouns</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">RPS (Subject) dan RPO (Object)</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Perbedaan utamanya: apa yang ada <b>tepat setelah</b> relative pronoun. Jika verb, itu RPS. Jika subjek baru, itu RPO.</p>
+                </div>
+
+                <!-- RPS -->
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">RPS: Relative Pronoun as Subject</span>
+                        <span class="cons">Noun + [who / which / that + <b>Verb</b> ...]</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Relative pronoun langsung diikuti <b>verb</b>. RP tidak boleh dihilangkan. Verb mengikuti <b>head noun</b>. Pilihan RP: <b>who</b> / that (orang), <b>which</b> / that (benda).</p>
+                    <div>
+                        <div class="ex"><span class="cons">Noun + who + V</span><br>The man <span class="hs">who speaks</span> is Ferry Irwandi.</div>
+                        <div class="ex"><span class="cons">Noun + which + V</span><br>I like Gus Ulil's delivery <span class="hs">which makes us engage</span>.</div>
+                        <div class="ex"><span class="cons">Noun + that + modal + V</span><br>Yusuf is a boy <span class="hs">that can speak Arabic</span>.</div>
+                        <div class="ex"><span class="cons">Noun + who + be + V-ing</span><br>The students <span class="hs">who are waiting</span> outside are nervous.</div>
+                        <div class="ex"><span class="cons">Noun + which + be + V3 (pasif)</span><br>The manuscript <span class="hs">which was reviewed</span> by Nur Hayati is accepted.</div>
+                        <div class="ex"><span class="cons">Plural head → verb plural</span><br>The books <span class="hs">that are</span> on the shelf belong to Sinta.</div>
+                        <div class="ex"><span class="cons">Indefinite / demonstrative + who + V</span><br>Anyone <span class="hs">who cheats</span> will be disqualified. / Those <span class="hs">who arrive</span> late must wait.</div>
+                    </div>
+                </div>
+
+                <!-- RPO -->
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">RPO: Relative Pronoun as Object</span>
+                        <span class="cons">Noun + [whom / which / that / ∅ + <b>Subject + Verb</b> ...]</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Relative pronoun diikuti <b>subjek baru</b> dan verb. Verb mengikuti subjek baru itu, bukan head noun. Pilihan RP: <b>whom</b> / that (orang), <b>which</b> / that (benda), atau <b>dihilangkan</b> (zero pronoun).</p>
+                    <div>
+                        <div class="ex"><span class="cons">Noun + whom + S + V</span><br>The man <span class="ho">whom I met</span> is Ferry Irwandi.</div>
+                        <div class="ex"><span class="cons">Noun + that + S + V</span><br>The book <span class="ho">that I read</span> is Madilog.</div>
+                        <div class="ex"><span class="cons">Noun + which + S + V</span><br>The software <span class="ho">which we installed</span> is free.</div>
+                        <div class="ex"><span class="cons">Noun + ∅ + S + V (RP dihilangkan)</span><br>I have something <span class="ho">you like</span>. / The book <span class="ho">I read</span> is Madilog.</div>
+                        <div class="ex"><span class="cons">Subjek baru lebih panjang</span><br>The theory <span class="ho">which the author explained in chapter two</span> is controversial.</div>
+                        <div class="ex"><span class="cons">Verb mengikuti subjek baru</span><br>The books <span class="ho">that she writes</span> are popular.</div>
+                    </div>
+                </div>
+
+                <!-- Perbedaan singkat -->
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Perbedaan Struktur dalam Satu Lihat</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>RPS : The man <span class="hs">who saw</span> me ... <span class="text-slate-500">(RP + verb)</span></p>
+                        <p>RPO : The man <span class="ho">whom I saw</span> ... <span class="text-slate-500">(RP + subjek + verb)</span></p>
+                    </div>
+                    <p class="text-xs text-slate-700">RPS tidak bisa dihilangkan; RPO bisa (<i>The man I saw</i>).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: ADVERBS & WHOSE ==================== -->
+        <section id="content-adverbs" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Relative Adverbs & Possessive</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Relative Adverbs (Where, When, Why) & Whose</h2>
+                </div>
+
+                <div class="box space-y-3">
+                    <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Relative Adverbs</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Setelah <b>where / when / why</b>, klausa harus <b>lengkap</b> (S + V). Konstruksi: <span class="cons">Noun + where / when / why + S + V</span></p>
+
+                    <div class="space-y-2.5">
+                        <div>
+                            <p class="text-xs font-bold text-amber-800">WHERE <span class="font-normal text-slate-600">(= in / at / on which)</span> bisa dihubungkan dengan:</p>
+                            <p class="text-xs text-slate-700">place, city, country, house, building, area, region, situation</p>
+                            <div class="ex mt-1">Demak is the city <span class="ho">where</span> Raden Patah established the sultanate.</div>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-amber-800">WHEN <span class="font-normal text-slate-600">(= in / on / during which)</span> bisa dihubungkan dengan:</p>
+                            <p class="text-xs text-slate-700">time, day, year, moment, period, season, century, era</p>
+                            <div class="ex mt-1">I remember the moment <span class="ho">when</span> Gus Dur was impeached.</div>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-amber-800">WHY <span class="font-normal text-slate-600">(= for which)</span> bisa dihubungkan dengan:</p>
+                            <p class="text-xs text-slate-700">reason</p>
+                            <div class="ex mt-1">Many people know the reason <span class="ho">why</span> the movie was blocked.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                        <p class="font-bold text-slate-900">Where atau which?</p>
+                        <div class="ex">The city <span class="ho">where</span> I lived is Kudus. <span class="ok">✓</span> <span class="text-slate-400">(klausa lengkap)</span></div>
+                        <div class="ex">The city <span class="ho">which</span> I visited is Kudus. <span class="ok">✓</span> <span class="text-slate-400">(visited butuh objek)</span></div>
+                        <div class="ex"><span class="bad">❌</span> The city where I visited last week ...</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Possessive: Whose</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Menyatakan kepemilikan (his/her/its/their). Konstruksi: <span class="cons">Noun + whose + Noun (tanpa article) + V</span></p>
+                    <div>
+                        <div class="ex">I met the writer <span class="ho">whose book</span> is very famous.</div>
+                        <div class="ex">The researcher <span class="ho">whose book I reviewed</span> is a professor. <span class="text-slate-400">(whose + noun + S + V)</span></div>
+                        <div class="ex">The building <span class="ho">whose roof</span> collapsed was old. <span class="text-slate-400">(head benda)</span></div>
+                        <div class="ex"><span class="bad">❌</span> whose <u>the</u> book / who's book / whose his book</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <span class="bg-sky-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Preposition + Whom / Which</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Preposisi boleh di depan RP (formal, hanya whom/which) atau tetap di akhir klausa.</p>
+                    <div>
+                        <div class="ex">The professor <span class="ho">to whom</span> I spoke is from Leiden.</div>
+                        <div class="ex">The professor <span class="ho">(whom) I spoke to</span> is from Leiden.</div>
+                        <div class="ex"><span class="bad">❌</span> The professor to that I spoke ... / The professor whom I spoke ...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: REDUKSI ==================== -->
+        <section id="content-reduction" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Adjective Clause Reduction</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Reduksi Adjective Clause</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Reduksi dengan V-ing, V3, dan phrase hanya untuk <b>RPS</b>. Pada RPO, konjungsi (RP) cukup dihilangkan.
+                    </p>
+                </div>
+
+                <!-- 1 V-ing -->
+                <div class="box space-y-2">
+                    <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Menjadi V-ing (aktif)</span>
+                    <p class="text-xs text-slate-700">Buang RP + be, atau buang RP lalu ubah verb (present) menjadi V-ing.</p>
+                    <div>
+                        <div class="ex">The man <span class="rm">who is</span> <span class="ad">speaking</span> is my professor.</div>
+                        <div class="ex">Participants <span class="rm">who are</span> <span class="ad">not attending</span> the session will be contacted.</div>
+                        <div class="ex">A policy <span class="rm">which</span> <span class="ad">affecting</span> millions of workers was approved. <span class="text-slate-400">(which affects → affecting)</span></div>
+                        <div class="ex">Anyone <span class="rm">who</span> <span class="ad">wishing</span> to join must register. <span class="text-slate-400">(who wishes → wishing)</span></div>
+                    </div>
+                </div>
+
+                <!-- 2 V3 -->
+                <div class="box space-y-2">
+                    <span class="bg-indigo-600 text-white text-[11px] font-bold px-2 py-0.5 rounded">2. Menjadi V3 / Past Participle (pasif)</span>
+                    <p class="text-xs text-slate-700">Buang RP + be, sisakan V3.</p>
+                    <div>
+                        <div class="ex">The manuscript <span class="rm">which was</span> <span class="ad">reviewed</span> by Nur Hayati is accepted.</div>
+                        <div class="ex">The bridge <span class="rm">which is</span> <span class="ad">being built</span> will open soon.</div>
+                        <div class="ex">The candidates <span class="rm">who have been</span> <span class="ad">selected</span> will be notified.</div>
+                    </div>
+                </div>
+
+                <!-- 3 Phrase -->
+                <div class="box space-y-2">
+                    <span class="bg-purple-600 text-white text-[11px] font-bold px-2 py-0.5 rounded">3. Menjadi Prepositional / Adjective Phrase / Appositive</span>
+                    <p class="text-xs text-slate-700">Jika predikat berupa be + PP / adjective / noun, buang RP + be. Noun phrase menjadi appositive dengan koma.</p>
+                    <div>
+                        <div class="ex"><span class="cons">be + PP</span><br>The book <span class="rm">which is</span> <span class="ad">on the table</span> is mine.</div>
+                        <div class="ex"><span class="cons">be + adjective phrase</span><br>The students <span class="rm">who are</span> <span class="ad">eager to learn</span> improved quickly.</div>
+                        <div class="ex"><span class="cons">be + single adjective (pindah ke depan noun)</span><br>The people <span class="rm">who are</span> diligent succeed. → The <span class="ad">diligent</span> people succeed.</div>
+                        <div class="ex"><span class="cons">be + noun (appositive)</span><br>Jakarta, <span class="rm">which is</span> <span class="ad">the capital of Indonesia</span>, is a megacity.</div>
+                    </div>
+                </div>
+
+                <!-- 4 With -->
+                <div class="box space-y-2">
+                    <span class="bg-sky-600 text-white text-[11px] font-bold px-2 py-0.5 rounded">4. Menjadi With / Having</span>
+                    <p class="text-xs text-slate-700">Verb have/has diganti <b>with</b> (paling natural) atau <b>having</b>.</p>
+                    <div>
+                        <div class="ex">A house <span class="rm">which has</span> <span class="ad">with</span> three bedrooms is for sale.</div>
+                        <div class="ex">Students <span class="rm">who have</span> <span class="ad">having</span> completed the course may take the exam.</div>
+                    </div>
+                </div>
+
+                <!-- 5 Infinitive -->
+                <div class="box space-y-3">
+                    <span class="bg-rose-600 text-white text-[11px] font-bold px-2 py-0.5 rounded">5. Menjadi To Infinitive</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Dipakai setelah head tertentu. Bentuk: <b>to + V</b> (aktif), <b>to be + V3</b> (pasif), <b>not to + V</b> (negatif). RP dan modal dibuang. Setelah head ini, V-ing salah (<span class="bad">the first man walking</span>).</p>
+
+                    <div>
+                        <p class="text-xs font-bold text-rose-800 mb-1">Ordinal number <span class="font-normal text-slate-500">(the first, second, third, next, last)</span></p>
+                        <div class="ex">Neil Armstrong was the first man <span class="rm">who walked</span> <span class="ad">to walk</span> on the moon.</div>
+                        <div class="ex">She was the second woman <span class="rm">who was</span> <span class="ad">to be elected</span> as rector.</div>
+                        <div class="ex">The next train <span class="rm">that will</span> <span class="ad">to arrive</span> at platform 2 is express.</div>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-rose-800 mb-1">Superlative <span class="font-normal text-slate-500">(the best, the most important, the youngest, the largest)</span></p>
+                        <div class="ex">She is the youngest student <span class="rm">who has</span> <span class="ad">to win</span> the olympiad.</div>
+                        <div class="ex">This is the best way <span class="rm">that we can</span> <span class="ad">to learn</span> vocabulary.</div>
+                        <div class="ex">It is the tallest building <span class="rm">that has ever been</span> <span class="ad">ever built</span> in the city. <span class="text-slate-400">(pasif + ever → ever V3)</span></div>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-rose-800 mb-1">The only <span class="font-normal text-slate-500">(the only person / one / way / thing)</span></p>
+                        <div class="ex">Rina was the only candidate <span class="rm">who passed</span> <span class="ad">to pass</span> all the tests.</div>
+                        <div class="ex">The only thing <span class="rm">that can be</span> <span class="ad">to be done</span> is to wait.</div>
+                        <div class="ex">She was the only one <span class="rm">who did</span> <span class="ad">not to complain</span>.</div>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-rose-800 mb-1">Indefinite pronoun <span class="font-normal text-slate-500">(something, anything, nothing, someone, anyone, no one)</span></p>
+                        <div class="ex">I need someone <span class="rm">who can</span> <span class="ad">to help</span> me.</div>
+                        <div class="ex">She has nothing <span class="rm">that she can</span> <span class="ad">to wear</span>.</div>
+                        <div class="ex">He has no one <span class="rm">whom he can</span> <span class="ad">to talk to</span>. <span class="text-slate-400">(preposisi tetap ada)</span></div>
+                        <div class="ex">She wants something interesting <span class="ad">to read</span>. <span class="text-slate-400">(adjective sebelum to V)</span></div>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-rose-800 mb-1">Indefinite quantity <span class="font-normal text-slate-500">(much, many, little, few, a lot of, plenty of, enough, several)</span></p>
+                        <div class="ex">There is a lot of work <span class="rm">that we have</span> <span class="ad">to do</span>.</div>
+                        <div class="ex">She has little time <span class="rm">that she can</span> <span class="ad">to spare</span>.</div>
+                        <div class="ex">There are many problems <span class="rm">that must be</span> <span class="ad">to be solved</span>.</div>
+                        <div class="ex">We have enough money <span class="ad">to buy</span> a laptop.</div>
+                    </div>
+                    <p class="text-[11px] text-slate-600 bg-white border border-slate-200 rounded-lg p-2.5">💡 Bedakan makna: <i>someone <b>to help</b> me</i> = yang dapat membantu; <i>someone <b>helping</b> me</i> = yang sedang membantu.</p>
+                </div>
+
+                <!-- Tidak bisa direduksi -->
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-2">
+                    <span class="bg-rose-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">Yang Tidak Bisa Direduksi</span>
+                    <div>
+                        <div class="ex"><span class="cons">RPO (ada subjek baru) → hanya RP dihilangkan</span><br><span class="bad">The man met is Ferry.</span> → The man <span class="rm">whom</span> I met is Ferry.</div>
+                        <div class="ex"><span class="cons">Simple past aktif → makna bergeser</span><br><span class="bad">The man stealing the bag was arrested.</span> → The man who stole the bag was arrested.</div>
+                        <div class="ex"><span class="cons">Whose</span><br><span class="bad">The writer book is famous.</span> → The writer whose book is famous.</div>
+                        <div class="ex"><span class="cons">Preposition + whom/which</span><br><span class="bad">The method with analyzing ...</span> → The method with which we analyzed ...</div>
+                        <div class="ex"><span class="cons">Where / when / why</span><br>the reason <span class="rm">why</span> he left → the reason he left</div>
+                        <div class="ex"><span class="cons">Modal di luar special head</span><br><span class="bad">A tool can detecting plagiarism</span> → A tool which can detect plagiarism</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: QUIZ ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz (20 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">Bagian 1: 12 soal Error Analysis. Bagian 2: 8 soal Blank. Tingkat kesulitan: 30% mudah, 40% sedang, 30% sulit.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="resetQuiz()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">↺ Ulangi</button>
+                        <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                            <span>Score: </span><span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 20</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="quiz-container" class="space-y-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-5xl mx-auto px-4">LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 10: Adjective Clause</div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+            });
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) activeTabBtn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30";
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+        const LEVELS = {
+            easy:   { label: "Mudah",  cls: "bg-emerald-100 text-emerald-800" },
+            medium: { label: "Sedang", cls: "bg-amber-100 text-amber-800" },
+            hard:   { label: "Sulit",  cls: "bg-rose-100 text-rose-800" }
+        };
+
+        const SECTIONS = {
+            "Error Analysis": { label: "Bagian 1", hint: "Pilih bagian bergaris bawah yang salah" },
+            "Blank":          { label: "Bagian 2", hint: "Pilih jawaban yang paling tepat" }
+        };
+
+        // Error Analysis: hanya 5 segmen yang digaris bawahi (ditandai [ ... ]); kata lain tetap polos.
+        // correct = indeks segmen yang salah (0-4).
+        function ea(text, correct, level, explanation) {
+            const segs = [];
+            const html = text.replace(/\[([^\]]+)\]/g, (m, s) => {
+                const idx = segs.length;
+                segs.push(s);
+                return `<span class='underline decoration-2 decoration-slate-500 underline-offset-4'>${s}</span><span class='text-slate-500 text-[11px] font-bold'>(${LETTERS[idx]})</span>`;
+            });
+            if (segs.length !== 5) console.warn("Error Analysis harus punya 5 segmen:", text);
+            return {
+                type: "Error Analysis",
+                level,
+                question: `Identify the error: '${html}'`,
+                options: segs.map((s, i) => ({ text: s, isCorrect: i === correct })),
+                explanation
+            };
+        }
+
+        // Blank: 5 opsi, opsi pertama = jawaban benar (diacak saat render)
+        function blank(question, correct, wrong, level, explanation) {
+            return {
+                type: "Blank",
+                level,
+                question,
+                options: [{ text: correct, isCorrect: true }, ...wrong.map(w => ({ text: w, isCorrect: false }))],
+                explanation
+            };
+        }
+
+        // Komposisi: 30% mudah (6), 40% sedang (8), 30% sulit (6). Tiap bagian diurutkan mudah → sulit.
+        const rawQuestions = [
+            // ===== BAGIAN 1: ERROR ANALYSIS (12) =====
+            // --- Mudah (4)
+            ea("The man [whom] helped me [yesterday] is [a senior researcher] at [the university] in [Central Java].", 0, "easy",
+               "'Whom' langsung diikuti verb 'helped', jadi RP berfungsi sebagai subjek (RPS) dan harus 'who'."),
+            ea("The book [that] I [bought] [it] yesterday was [written] by [Tan Malaka].", 2, "easy",
+               "'That' sudah menggantikan objek 'bought'. Pronoun tambahan 'it' berlebihan (redundant pronoun)."),
+            ea("Tourists [often] [enjoy] the [historic] [city] [where] I visited last week.", 4, "easy",
+               "'Visited' masih membutuhkan objek, jadi klausa belum lengkap. 'Where' hanya dipakai bila klausa sudah lengkap; di sini harus 'which/that'."),
+            ea("The [students] [who studying] in the [library] are [preparing] for the [TOEFL].", 1, "easy",
+               "Setelah 'who' harus ada verb lengkap ('who are studying'), atau RP + be dibuang menjadi 'studying'. 'Who studying' tidak valid."),
+            // --- Sedang (5)
+            ea("[The books] that are on the shelf [belongs] to Sinta, [who] [donated] them [last year].", 1, "medium",
+               "Verb utama mengikuti subjek kalimat utama 'The books' (plural), sehingga 'belong', bukan 'belongs'."),
+            ea("The conference [invited] [a] [researcher] [whose the book] [became] a bestseller.", 3, "medium",
+               "Setelah 'whose', noun tidak boleh didahului article. Seharusnya 'whose book'."),
+            ea("[Awards] [were] given to the scientists [which] [conducted] the experiment [in Stockholm].", 2, "medium",
+               "'Which' tidak dipakai untuk orang. Head 'scientists' membutuhkan 'who' atau 'that'."),
+            ea("[In 2025], [Dewi] became [the first] woman in her [field] [winning] the national prize.", 4, "medium",
+               "Setelah ordinal number ('the first'), reduksi memakai infinitive: 'to win', bukan V-ing."),
+            ea("Many [students] use a [tool] [which] [can detecting] plagiarism [for free].", 3, "medium",
+               "Modal 'can' harus diikuti verb dasar: 'which can detect'. Modal tidak dapat diikuti V-ing."),
+            // --- Sulit (3)
+            ea("The theories [that] the author of the two recent studies [explain] in chapter two [are] widely [criticized] by [scholars].", 1, "hard",
+               "Pada RPO, verb mengikuti subjek barunya, yaitu 'the author' (tunggal), bukan 'studies' (noun terdekat) atau 'theories' (head). Seharusnya 'explains'."),
+            ea("The candidate [whom] the committee believed [was] the best [qualified] [for] the [position] will be announced.", 0, "hard",
+               "'The committee believed' hanyalah sisipan. 'Was' membutuhkan subjek, sehingga RP berfungsi sebagai subjek dan harus 'who', bukan 'whom'."),
+            ea("She is one of the [students] [who] [has] won the [national] [olympiad].", 2, "hard",
+               "Pada pola 'one of the + plural noun + who', RP merujuk ke noun plural ('students'), sehingga verb harus plural: 'have won'."),
+
+            // ===== BAGIAN 2: BLANK (8) =====
+            // --- Mudah (2)
+            blank("The linguistics professor _____ delivered the keynote speech is an expert in Javanese semantics.",
+               "who", ["whom", "which", "whose", "where"], "easy",
+               "Merujuk pada orang dan langsung diikuti verb 'delivered' (RPS), sehingga 'who'."),
+            blank("I met the researcher _____ book on sociolinguistics became a national bestseller.",
+               "whose", ["who", "whom", "which", "that"], "easy",
+               "Menunjukkan kepemilikan buku oleh sang peneliti, sehingga 'whose'."),
+            // --- Sedang (3)
+            blank("The student _____ the committee interviewed yesterday demonstrated profound knowledge of TOEFL structure.",
+               "whom", ["who", "whose", "which", "where"], "medium",
+               "Head orang dan RP diikuti subjek baru 'the committee' (RPO), sehingga 'whom'."),
+            blank("Demak is the historical city _____ Raden Patah established the first Islamic sultanate in Java.",
+               "where", ["when", "why", "which", "whose"], "medium",
+               "Head tempat dan klausa setelahnya sudah lengkap (S + V + O), sehingga 'where'."),
+            blank("Jakarta, _____ of Indonesia, is a megacity facing serious traffic problems.",
+               "the capital", ["which capital", "capital that", "who is capital", "that is the capital"], "medium",
+               "'Which is the capital of Indonesia' direduksi menjadi appositive 'the capital of Indonesia'."),
+            // --- Sulit (3)
+            blank("The method _____ the data were analyzed is described in detail in Chapter 3.",
+               "by which", ["which", "that", "by that", "whose"], "hard",
+               "'The data were analyzed' membutuhkan preposisi 'by'. Di depan RP hanya whom/which yang boleh: 'by which'. 'By that' tidak valid, sedangkan 'which/that' saja meninggalkan preposisi."),
+            blank("This is the tallest building ever _____ in the city.",
+               "built", ["building", "to build", "builds", "being built"], "hard",
+               "Superlative + 'ever' bermakna pasif ('that has ever been built') direduksi menjadi 'ever built'."),
+            blank("She has no one _____ about her problems.",
+               "to talk to", ["to talk", "talks to", "talking", "who talk"], "hard",
+               "Indefinite pronoun + infinitive. Preposisi 'to' dari 'talk to' tidak boleh hilang: 'no one to talk to about her problems'.")
+        ];
+
+        const quizQuestions = rawQuestions.map((q, i) => ({
+            ...q,
+            id: i + 1,
+            question: `${i + 1}. ${q.question}`
+        }));
+
+        let userAnswers = {};
+        let score = 0;
+
+        // Opsi soal Blank diacak; Error Analysis tidak diacak (huruf A-E = penanda segmen)
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        function prepareQuiz() {
+            quizQuestions.forEach(q => { if (q.type === "Blank") shuffle(q.options); });
+        }
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+            quizContainer.innerHTML = '';
+            let lastType = null;
+
+            quizQuestions.forEach((q, index) => {
+                // Header sesi
+                if (q.type !== lastType) {
+                    lastType = q.type;
+                    const total = quizQuestions.filter(x => x.type === q.type).length;
+                    const meta = SECTIONS[q.type];
+                    const head = document.createElement('div');
+                    head.className = "flex flex-wrap items-center gap-2 pt-2 pb-2 border-b border-slate-200";
+                    head.innerHTML = `
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">${meta.label}</span>
+                        <h3 class="text-sm font-bold text-slate-900">${q.type}</h3>
+                        <span class="text-xs text-slate-500">${meta.hint} (${total} soal)</span>`;
+                    quizContainer.appendChild(head);
+                }
+
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                let optionsHTML = '';
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        else if (isSelected) btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        else btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                    }
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''}
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${LETTERS[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>`;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>`;
+                }
+
+                const lv = LEVELS[q.level];
+                qCard.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                        <span class="bg-teal-100 text-teal-800 text-[9px] font-bold px-2 py-0.5 rounded-full">${q.type}</span>
+                        <span class="${lv.cls} text-[9px] font-bold px-2 py-0.5 rounded-full">${lv.label}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-loose">${q.question}</p>
+                    <div class="space-y-1.5">${optionsHTML}</div>
+                    ${explanationHTML}`;
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) score++;
+            });
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            score = 0;
+            document.getElementById('quiz-score').textContent = `0 / ${quizQuestions.length}`;
+            prepareQuiz();
+            renderQuiz();
+        }
+
+        window.onload = function () {
+            prepareQuiz();
+            renderQuiz();
+        };
+    </script>
+    </script>
+    <script src="lumina-core.js"></script>
+    <script src="lumina-skill-editor.js"></script>
+</body>
+</html>

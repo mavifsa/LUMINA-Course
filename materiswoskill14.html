@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 14 - Inversion after Place</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        /* Konten halaman (di luar header dan footer) diperkecil 10% */
+        main { zoom: 0.9; }
+
+        .rm { color: #e11d48; text-decoration: line-through; }
+        .ad { color: #047857; font-weight: 700; }
+        .hs { color: #0f766e; font-weight: 700; }
+        .ho { color: #4338ca; font-weight: 700; }
+        .bad { color: #e11d48; font-weight: 600; }
+        .ok { color: #047857; font-weight: 600; }
+
+        .box { border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; padding: 16px; }
+        .ex { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; }
+        .ex + .ex { margin-top: 6px; }
+        .cons { font-family: 'Fira Code', monospace; font-size: 11px; color: #64748b; }
+
+        .orig { border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; border: 1px solid; }
+        .orig + .orig { margin-top: 6px; }
+        .orig-tag { display: inline-block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 700; padding: 1px 8px; border-radius: 4px; color: #fff; margin-bottom: 3px; }
+        .orig-1 { background: #f0fdfa; border-color: #99f6e4; } .orig-1 .orig-tag { background: #0d9488; }
+        .orig-2 { background: #fffbeb; border-color: #fde68a; } .orig-2 .orig-tag { background: #d97706; }
+        .orig-3 { background: #eef2ff; border-color: #c7d2fe; } .orig-3 .orig-tag { background: #4f46e5; }
+        .orig-4 { background: #ecfdf5; border-color: #a7f3d0; } .orig-4 .orig-tag { background: #059669; }
+        .nn { color: #0f766e; font-weight: 700; background: #ccfbf1; border-radius: 3px; padding: 0 3px; }
+        .vb { color: #4338ca; font-weight: 700; background: #e0e7ff; border-radius: 3px; padding: 0 3px; }
+        .pl { color: #7c3aed; font-weight: 700; background: #ede9fe; border-radius: 3px; padding: 0 3px; }
+
+        table.cmp { width: 100%; border-collapse: collapse; font-size: 12px; }
+        table.cmp th { background: #0f172a; color: #fff; padding: 6px 8px; text-align: left; font-weight: 700; }
+        table.cmp td { border: 1px solid #e2e8f0; padding: 6px 8px; background: #fff; vertical-align: top; }
+
+        /* Tab & tombol: ikon selalu di kiri teks, tanpa kotak putih saat diklik */
+        .tab-btn, button { -webkit-tap-highlight-color: transparent; }
+        .tab-btn:focus, button:focus { outline: none; }
+        .tab-btn:focus-visible { outline: 2px solid #2dd4bf; outline-offset: -2px; }
+        .tab-btn { display: inline-flex; flex-direction: row; align-items: center; gap: 6px; flex-shrink: 0; }
+        .tab-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-[7px] gap-[7px]">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-[13px] shadow-sm">S14</div>
+                    <div>
+                        <span class="bg-teal-500/20 text-teal-300 text-[9px] font-semibold px-[7px] py-px rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        <h1 class="text-[14px] md:text-base font-bold tracking-tight text-white leading-tight mt-0.5">Skill 14: Inversion after Place</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-[7px] bg-slate-800/80 px-[11px] py-[5px] rounded-lg border border-slate-700/60 text-[11px]">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-[7px] h-[7px] rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Place + V + S</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="text-indigo-400 font-medium"><span>Tanpa Auxiliary</span></div>
+                </div>
+            </div>
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-[5px] pb-[3px]">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <span>1. Overview &amp; Pitfalls</span>
+                </button>
+                <button onclick="switchTab('rules')" id="tab-rules" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <span>2. Konsep &amp; Syarat</span>
+                </button>
+                <button onclick="switchTab('verbs')" id="tab-verbs" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <span>3. Jenis Verb</span>
+                </button>
+                <button onclick="switchTab('never')" id="tab-never" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>4. Tidak Boleh Inversi</span>
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    <span>5. Practice Quiz</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">Core Structure Axiom</div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Place di Awal Kalimat : Verb dipindah ke depan Subject, tanpa Auxiliary.</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Ketika <b>prepositional phrase of place</b> diletakkan di awal kalimat dan verb-nya <b>intransitive of existence / motion</b>, urutannya menjadi <b>Place + V + S</b>. Berbeda dengan kalimat tanya, <b>main verb langsung pindah</b> tanpa do / does / did.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Prepositional Phrase</h3><p class="text-[11px] text-slate-600 leading-tight">In, on, behind, inside, into ...</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Arah / Posisi Subject</h3><p class="text-[11px] text-slate-600 leading-tight">Bukan sekadar latar aktivitas.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Intransitive Verb</h3><p class="text-[11px] text-slate-600 leading-tight">Existence atau motion.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Diagnostic Quiz</h3><p class="text-[11px] text-slate-600 leading-tight">20 Soal (Error Analysis &amp; Blank).</p></div>
+                </div>
+            </div>
+
+            <!-- Asal mula: 1 contoh saja -->
+            <div class="space-y-2.5">
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Asal Mula: Dari Kalimat Biasa ke Inversi Tempat</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mt-0.5">
+                        Ekspresi <span class="pl">place</span> dipindah ke awal, lalu <span class="vb">verb</span> melompat ke depan <span class="nn">subject</span>. Tidak ada auxiliary yang ditambahkan.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Contoh</span>
+                            <span class="text-[11px] font-semibold text-indigo-700">Verb of existence (sit)</span>
+                        </div>
+                        <div>
+                            <div class="orig orig-1"><span class="orig-tag">Kalimat biasa (S + V + Place)</span><br><span class="nn">The textbook on language acquisition</span> <span class="vb">sat</span> <span class="pl">on the desk</span>.</div>
+                            <div class="orig orig-2"><span class="orig-tag">Inversi tempat (Place + V + S)</span><br><span class="pl">On the desk</span> <span class="vb">sat</span> <span class="nn">the textbook on language acquisition</span>.</div>
+                            <div class="orig orig-3"><span class="orig-tag">Bukan seperti kalimat tanya</span><br><span class="bad">❌</span> On the desk <span class="rm">did sit</span> the textbook on language acquisition.</div>
+                        </div>
+                        <ul class="text-[11px] text-slate-600 leading-relaxed mt-2 space-y-0.5 list-disc pl-4">
+                            <li><i>Sit</i> adalah intransitive verb of existence, jadi memenuhi syarat inversi.</li>
+                            <li>Verb tetap pada bentuk dan tense aslinya (<i>sat</i>), bukan kembali ke V1.</li>
+                            <li>Subject (<i>the textbook ...</i>) kini berada di belakang verb.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                <h3 class="font-bold text-slate-900 text-sm">Langkah Cepat: Boleh Inversi atau Tidak?</h3>
+                <div class="text-xs font-mono-code space-y-1.5">
+                    <p><b>1.</b> Kalimat dibuka <span class="pl">prepositional phrase of place</span>? (in, on, at, behind, under, inside, across, near, to, into ...)</p>
+                    <p><b>2.</b> Verb = <span class="ho">intransitive</span> of existence (be, sit, stand, lie, live, remain, hang) atau motion (come, go, walk, run, fly, flow)?</p>
+                    <p><b>3.</b> Subject = <span class="nn">noun</span>, bukan pronoun?</p>
+                    <p><b>4.</b> Ya semua → <span class="ad">Place + V + S</span> (tanpa aux). Verb mengikuti subject di belakangnya.</p>
+                    <p><b>5.</b> Ada yang tidak terpenuhi → pola biasa: <span class="bad">Place, S + V</span> (dengan koma).</p>
+                </div>
+            </div>
+
+            <div class="space-y-2.5">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5"><span class="text-rose-500">⚠️</span> Kesalahan Umum (Common Pitfalls)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Menambahkan Auxiliary</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Inversi tempat tidak memakai do / does / did.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> On the desk <span class="text-rose-600 underline">did sit</span> a textbook.</p>
+                            <p class="ok">✓ On the desk <b>sat</b> a textbook.</p>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Main verb langsung berada di depan subject.</p>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Verb Transitive</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Verb yang butuh object tidak boleh diinversi.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> On the wall <span class="text-rose-600 underline">painted</span> Usamah a minimalist painting.</p>
+                            <p class="ok">✓ On the wall, Usamah painted a minimalist painting.</p>
+                            <p class="ok">✓ On the wall <b>hangs</b> a minimalist painting.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #3</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Subject Pronoun</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Jika subject berupa pronoun, urutan tetap normal.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> On the desk sat <span class="text-rose-600 underline">it</span>.</p>
+                            <p class="ok">✓ On the desk <b>it sat</b>.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #4</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Agreement dengan Subject di Belakang</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Verb mengikuti subject sebenarnya (yang kini di belakang), bukan noun di dalam place.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Inside the cave <span class="text-rose-600 underline">was</span> the bats we found.</p>
+                            <p class="ok">✓ Inside the cave <b>were</b> the bats we found.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: KONSEP & SYARAT ==================== -->
+        <section id="content-rules" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Fundamental Rules</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Konsep dan 3 Syarat Inversi Tempat</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Inversi adalah pembalikan posisi subject dan verb ketika ekspresi tertentu diletakkan di awal kalimat. Tidak semua keterangan tempat memicunya.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Perbedaan dengan Kalimat Tanya (Skill 13)</span>
+                    </div>
+                    <table class="cmp">
+                        <tr><th>Jenis</th><th>Pola</th><th>Contoh</th></tr>
+                        <tr><td><b>Declarative</b></td><td class="font-mono-code">S + V + Place</td><td class="font-mono-code">The textbook sat on the desk.</td></tr>
+                        <tr><td><b>Pertanyaan</b></td><td class="font-mono-code">aux + S + V</td><td class="font-mono-code"><span class="vb">Did</span> the textbook <span class="ad">sit</span> on the desk?</td></tr>
+                        <tr><td><b>Inversi tempat</b></td><td class="font-mono-code">Place + V + S</td><td class="font-mono-code"><span class="pl">On the desk</span> <span class="vb">sat</span> the textbook.</td></tr>
+                    </table>
+                    <p class="text-xs text-slate-700 leading-relaxed">Pada kalimat tanya, verb biasa membutuhkan aux. Pada inversi tempat, <b>main verb itu sendiri</b> yang melompat ke depan subject.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Syarat 1</span>
+                        <span class="text-xs font-bold text-slate-900">Prepositional Phrase of Place</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Ekspresi tempat diawali preposition: <b>in, on, at, behind, under, inside, across, near, to, into</b>, dan sebagainya.</p>
+                    <div>
+                        <div class="ex"><span class="pl">Inside the cave</span> were the bats we found.</div>
+                        <div class="ex"><span class="pl">Behind that building</span> is a modern printing studio.</div>
+                    </div>
+                    <p class="text-[11px] text-slate-600 bg-white border border-slate-200 rounded-lg p-2.5">💡 Adverb tempat <i>here</i> dan <i>there</i> juga bisa memicu inversi (<i>Here comes the bus</i>), tetapi soal TOEFL umumnya berfokus pada prepositional phrase. Adverb negatif seperti <i>nowhere</i> bukan bagian dari skill ini karena memakai auxiliary (<i>Nowhere have I seen ...</i>).</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Syarat 2</span>
+                        <span class="text-xs font-bold text-slate-900">Menunjukkan Arah atau Posisi Subject</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Ekspresi tempat menjelaskan <b>ke mana subject bergerak</b> atau <b>di mana subject berada</b>. Jika tempat hanya menjadi <b>latar belakang aktivitas</b>, jangan diinversi.</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> <span class="pl">Into the PIBI room</span> walked Prof. Mawarida Safitri. <span class="cons">(arah gerak jelas)</span></div>
+                        <div class="ex"><span class="bad">❌</span> <span class="pl">In the PIBI room</span> slept Mursal.<br><span class="ok">✓</span> In the PIBI room, Mursal slept. <span class="cons">(tempat hanya latar aktivitas)</span></div>
+                    </div>
+                    <p class="text-[11px] text-slate-600 bg-white border border-slate-200 rounded-lg p-2.5">💡 <i>Slept</i> adalah verb aktivitas, bukan verb of existence / motion (Syarat 3). Dalam tulisan sastra bentuk seperti ini kadang muncul, tetapi soal TOEFL mengikuti aturan existence / motion.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Syarat 3</span>
+                        <span class="text-xs font-bold text-slate-900">Intransitive Verb of Existence / Motion</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Syarat yang paling sering terlupa. Inversi tempat hanya berpasangan dengan verb intransitive tertentu. Penjelasan lengkapnya ada di Tab 3.</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> On the wall <b>hangs</b> a minimalist painting. <span class="cons">(existence, intransitive)</span></div>
+                        <div class="ex"><span class="bad">❌</span> On the wall <span class="rm">painted</span> Usamah a minimalist painting. <span class="cons">(transitive)</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pola</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>Pola &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="pl">Prep. phrase of place</span> + <span class="vb">V</span> + <span class="nn">S</span></p>
+                        <p>Syarat &nbsp;&nbsp;&nbsp;: preposition + arah / posisi + verb intransitive (existence / motion)</p>
+                        <p>Auxiliary : <span class="bad">tidak dipakai</span></p>
+                        <p>Agreement &nbsp;: verb mengikuti <span class="ad">subject di belakangnya</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: JENIS VERB ==================== -->
+        <section id="content-verbs" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Verb Types</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Verb yang Boleh dan Tidak Boleh</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Inversi tempat hanya berpasangan dengan <b>intransitive verb</b> (tanpa object) yang menyatakan keberadaan atau perpindahan.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="box space-y-2">
+                        <span class="bg-emerald-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">Verb of Existence</span>
+                        <p class="text-xs text-slate-700">Sesuatu <b>ada atau berada</b> di suatu tempat.</p>
+                        <div class="cons">be (is, am, are, was, were), sit, stand, lie, live, remain, hang</div>
+                        <div class="ex">On the desk <span class="vb">sat</span> the textbook.</div>
+                    </div>
+                    <div class="box space-y-2">
+                        <span class="bg-purple-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">Verb of Motion</span>
+                        <p class="text-xs text-slate-700">Sesuatu <b>berpindah</b> dari satu tempat ke tempat lain.</p>
+                        <div class="cons">come, go, walk, run, fly, flow</div>
+                        <div class="ex">Into the PIBI room <span class="vb">walked</span> Prof. Mawarida Safitri.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Transitive Verb = Tidak Boleh</span>
+                        <span class="cons">verb yang membutuhkan object</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> On the wall <b>hangs</b> a minimalist painting. <span class="cons">hangs = existence, intransitive</span></div>
+                        <div class="ex"><span class="bad">❌</span> On the wall <span class="rm">painted</span> Usamah a minimalist painting. <span class="cons">painted = transitive</span></div>
+                        <div class="ex"><span class="ok">✓</span> On the wall, Usamah <b>painted</b> a minimalist painting. <span class="cons">(pola normal + koma)</span></div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Further Examples</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="cons">S + V + Place → Place + V + S</span><br>The bats we found <span class="vb">were</span> <span class="pl">inside the cave</span>.<br><span class="ok">➪</span> <span class="pl">Inside the cave</span> <span class="vb">were</span> the bats we found.</div>
+                        <div class="ex"><span class="cons">S + be + Place → Place + be + S</span><br>A modern printing studio <span class="vb">is</span> <span class="pl">behind that building</span>.<br><span class="ok">➪</span> <span class="pl">Behind that building</span> <span class="vb">is</span> a modern printing studio.</div>
+                        <div class="ex"><span class="cons">S + V + Place → Place + V + S</span><br>The textbook on language acquisition <span class="vb">sat</span> <span class="pl">on the desk</span>.<br><span class="ok">➪</span> <span class="pl">On the desk</span> <span class="vb">sat</span> the textbook on language acquisition.</div>
+                    </div>
+                    <p class="text-[11px] text-slate-600">Perhatikan contoh pertama: verb <i>were</i> mengikuti subject <i>the bats</i>, bukan <i>the cave</i>.</p>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pola</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>Existence : <span class="ad">be, sit, stand, lie, live, remain, hang</span> → boleh</p>
+                        <p>Motion &nbsp;&nbsp;&nbsp;&nbsp;: <span class="ad">come, go, walk, run, fly, flow</span> → boleh</p>
+                        <p>Transitive : <span class="bad">paint, read, write, build ...</span> → jangan diinversi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: TIDAK BOLEH INVERSI ==================== -->
+        <section id="content-never" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-rose-100 text-rose-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Restriction</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">🔑 Kapan Inversi Tempat Tidak Boleh Terjadi</h2>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Subject Berupa Pronoun</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Jika subject adalah kata ganti (<b>I, you, he, she, it, we, they</b>), urutan tetap normal: place + S + V.</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> On the desk <span class="nn">it</span> <span class="vb">sat</span>.</div>
+                        <div class="ex"><span class="bad">❌</span> On the desk <span class="vb">sat</span> <span class="rm">it</span>.</div>
+                    </div>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Tempat Hanya Latar Aktivitas</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Jika ekspresi tempat hanya menjelaskan di mana sebuah aktivitas berlangsung, pisahkan dengan <b>koma</b> dan gunakan pola normal.</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> In the PIBI classroom<b>,</b> Lizka studied Arabic syntax.</div>
+                        <div class="ex"><span class="bad">❌</span> In the PIBI classroom studied Lizka Arabic syntax.</div>
+                    </div>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">3. Verb Transitive</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Verb yang membutuhkan object tidak boleh berada di depan subject pada inversi tempat.</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> On the wall, Usamah painted a minimalist painting.</div>
+                        <div class="ex"><span class="bad">❌</span> On the wall painted Usamah a minimalist painting.</div>
+                    </div>
+                    <p class="text-[11px] text-slate-600 bg-white border border-slate-200 rounded-lg p-2.5">💡 Aturan 2 dan 3 saling berkaitan: verb aktivitas (<i>study, paint, read</i>) umumnya transitive, dan tempatnya hanya latar. Untuk keduanya, kembalikan ke pola <b>Place, S + V</b>.</p>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan 3 Aturan</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>1. Subject = <span class="bad">pronoun</span> → Place + S + V.</p>
+                        <p>2. Tempat = <span class="bad">latar aktivitas</span> → Place<b>,</b> S + V.</p>
+                        <p>3. Verb = <span class="bad">transitive</span> → Place<b>,</b> S + V + O.</p>
+                        <p>Semua aman → <span class="ad">Place + V + S</span> (tanpa aux).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: QUIZ ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz (20 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">Bagian 1: 12 soal Error Analysis. Bagian 2: 8 soal Blank. Tingkat kesulitan: 30% mudah, 40% sedang, 30% sulit.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="resetQuiz()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">↺ Ulangi</button>
+                        <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                            <span>Score: </span><span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 20</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="quiz-container" class="space-y-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-5xl mx-auto px-4">LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 14: Inversion after Place</div>
+    </footer>
+
+    <script>
+        const TAB_ON  = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30";
+        const TAB_OFF = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => { btn.className = TAB_OFF; });
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) activeTabBtn.className = TAB_ON;
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+        const LEVELS = {
+            easy:   { label: "Mudah",  cls: "bg-emerald-100 text-emerald-800" },
+            medium: { label: "Sedang", cls: "bg-amber-100 text-amber-800" },
+            hard:   { label: "Sulit",  cls: "bg-rose-100 text-rose-800" }
+        };
+
+        const SECTIONS = {
+            "Error Analysis": { label: "Bagian 1", hint: "Pilih bagian bergaris bawah yang salah" },
+            "Blank":          { label: "Bagian 2", hint: "Pilih jawaban yang paling tepat" }
+        };
+
+        // Error Analysis: tepat 5 segmen ditandai [ ... ]; correct = indeks segmen yang salah (0-4).
+        function ea(text, correct, level, explanation) {
+            const segs = [];
+            const html = text.replace(/\[([^\]]+)\]/g, (m, s) => {
+                const idx = segs.length;
+                segs.push(s);
+                return `<span class='underline decoration-2 decoration-slate-500 underline-offset-4'>${s}</span><span class='text-slate-500 text-[11px] font-bold'>(${LETTERS[idx]})</span>`;
+            });
+            if (segs.length !== 5) console.warn("Error Analysis harus punya 5 segmen:", text);
+            return {
+                type: "Error Analysis",
+                level,
+                question: `'${html}'`,
+                options: segs.map((s, i) => ({ text: s, isCorrect: i === correct })),
+                explanation
+            };
+        }
+
+        // Blank: 5 opsi, opsi pertama = jawaban benar (diacak saat render)
+        function blank(question, correct, wrong, level, explanation) {
+            return {
+                type: "Blank",
+                level,
+                question,
+                options: [{ text: correct, isCorrect: true }, ...wrong.map(w => ({ text: w, isCorrect: false }))],
+                explanation
+            };
+        }
+
+        // Komposisi: 6 mudah, 8 sedang, 6 sulit. Tiap bagian diurutkan mudah → sulit.
+        const rawQuestions = [
+            // ===== BAGIAN 1: ERROR ANALYSIS (12) =====
+            // --- Mudah (4)
+            ea("[On] the [desk] [did] [sit] [a textbook].", 2, "easy",
+               "Inversi tempat tidak memakai auxiliary. Main verb langsung di depan subject: 'On the desk sat a textbook.'"),
+            ea("[On] the [desk] [sat] [it] [quietly].", 3, "easy",
+               "Subject pronoun tidak diinversi: 'On the desk it sat quietly.'"),
+            ea("[Inside] the cave [was] [the bats] [we] [found].", 1, "easy",
+               "Verb mengikuti subject sebenarnya 'the bats' (plural): 'were'."),
+            ea("[On] the [wall] [painted] [Usamah] a [painting].", 2, "easy",
+               "'Painted' adalah transitive verb (punya object). Gunakan pola normal: 'On the wall, Usamah painted a painting.'"),
+            // --- Sedang (5)
+            ea("[In] the PIBI [room] [slept] [Mursal] [yesterday].", 2, "medium",
+               "'Slept' bukan verb of existence / motion dan tempatnya hanya latar. Gunakan: 'In the PIBI room, Mursal slept yesterday.'"),
+            ea("[Into] the [room] [walked] [he] [slowly].", 3, "medium",
+               "Subject pronoun 'he' tidak diinversi: 'Into the room he walked slowly.'"),
+            ea("[On] the [hill] [does] [stand] [a statue].", 2, "medium",
+               "Tidak ada auxiliary pada inversi tempat: 'On the hill stands a statue.'"),
+            ea("[Behind] that [building] [being] [a modern] [printing studio].", 2, "medium",
+               "Kalimat membutuhkan finite verb, bukan 'being': 'Behind that building is a modern printing studio.'"),
+            ea("[Across] the [river] [lives] [a farmer] and [his sons].", 2, "medium",
+               "Subject majemuk 'a farmer and his sons' (plural): 'live'."),
+            // --- Sulit (3)
+            ea("[Beside] the [windows] [stand] [a table] with [two chairs].", 2, "hard",
+               "Head subject adalah 'a table' (tunggal), bukan 'two chairs': 'stands'."),
+            ea("[Inside] the [box] [found] [Usamah] [a key].", 2, "hard",
+               "'Found' adalah transitive verb (object: a key). Gunakan: 'Inside the box, Usamah found a key.'"),
+            ea("[On] the [desks] [are] [a textbook] on [grammar].", 2, "hard",
+               "Head subject adalah 'a textbook' (tunggal), bukan 'desks': 'is'."),
+
+            // ===== BAGIAN 2: BLANK (8) =====
+            // --- Mudah (2)
+            blank("On the desk _____ a textbook on language acquisition.",
+               "sat", ["did sit", "sitting", "to sit", "sit"], "easy",
+               "Verb of existence intransitive, langsung di depan subject tanpa auxiliary."),
+            blank("Behind that building _____ a modern printing studio.",
+               "is", ["are", "do", "does", "being"], "easy",
+               "Subject 'a modern printing studio' tunggal, sehingga 'is'."),
+            // --- Sedang (3)
+            blank("Into the PIBI room _____ Prof. Mawarida Safitri.",
+               "walked", ["did walk", "walking", "to walk", "walk"], "medium",
+               "Verb of motion intransitive, tanpa auxiliary."),
+            blank("Inside the cave _____ the bats we found.",
+               "were", ["was", "is", "did", "be"], "medium",
+               "Verb mengikuti subject plural 'the bats'."),
+            blank("On the desk _____.",
+               "it sat", ["sat it", "did it sit", "sits it", "sat they"], "medium",
+               "Subject pronoun tidak diinversi: place + S + V."),
+            // --- Sulit (3)
+            blank("On the wall _____ a minimalist painting.",
+               "hangs", ["painted", "does hang", "hanging", "to hang"], "hard",
+               "'Hangs' adalah verb of existence intransitive. 'Painted' adalah transitive dan tidak bisa diinversi."),
+            blank("In the PIBI classroom _____ Arabic syntax.",
+               "Lizka studied", ["studied Lizka", "did Lizka study", "studied she", "studying Lizka"], "hard",
+               "'Studied' transitive dan tempat hanya latar aktivitas, sehingga tidak diinversi."),
+            blank("On the shelves above the desk _____ a dictionary on grammar.",
+               "lies", ["lie", "lying", "did lie", "have lain"], "hard",
+               "Head subject 'a dictionary' tunggal, bukan 'the shelves': 'lies'.")
+        ];
+
+        const quizQuestions = rawQuestions.map((q, i) => ({
+            ...q,
+            id: i + 1,
+            question: `${i + 1}. ${q.question}`
+        }));
+
+        let userAnswers = {};
+        let score = 0;
+
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        function prepareQuiz() {
+            quizQuestions.forEach(q => { if (q.type === "Blank") shuffle(q.options); });
+        }
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+            quizContainer.innerHTML = '';
+            let lastType = null;
+
+            quizQuestions.forEach((q, index) => {
+                if (q.type !== lastType) {
+                    lastType = q.type;
+                    const total = quizQuestions.filter(x => x.type === q.type).length;
+                    const meta = SECTIONS[q.type];
+                    const head = document.createElement('div');
+                    head.className = "flex flex-wrap items-center gap-2 pt-2 pb-2 border-b border-slate-200";
+                    head.innerHTML = `
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">${meta.label}</span>
+                        <h3 class="text-sm font-bold text-slate-900">${q.type}</h3>
+                        <span class="text-xs text-slate-500">${meta.hint} (${total} soal)</span>`;
+                    quizContainer.appendChild(head);
+                }
+
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                let optionsHTML = '';
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        else if (isSelected) btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        else btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                    }
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''}
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${LETTERS[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>`;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>`;
+                }
+
+                const lv = LEVELS[q.level];
+                qCard.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                        <span class="bg-teal-100 text-teal-800 text-[9px] font-bold px-2 py-0.5 rounded-full">${q.type}</span>
+                        <span class="${lv.cls} text-[9px] font-bold px-2 py-0.5 rounded-full">${lv.label}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-loose">${q.question}</p>
+                    <div class="space-y-1.5">${optionsHTML}</div>
+                    ${explanationHTML}`;
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) score++;
+            });
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            score = 0;
+            document.getElementById('quiz-score').textContent = `0 / ${quizQuestions.length}`;
+            prepareQuiz();
+            renderQuiz();
+        }
+
+        window.onload = function () {
+            prepareQuiz();
+            renderQuiz();
+        };
+    </script>
+    </script>
+    <script src="lumina-core.js"></script>
+    <script src="lumina-skill-editor.js"></script>
+</body>
+</html>

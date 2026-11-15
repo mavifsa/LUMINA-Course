@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 7 - Subordinating Conjunction</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+        .font-mono-code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-2 gap-2">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-sm shadow-sm">
+                        S7
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-teal-500/20 text-teal-300 text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        </div>
+                        <h1 class="text-base md:text-lg font-bold tracking-tight text-white leading-tight mt-0.5">Skill 7: Subordinating Conjunction</h1>
+                    </div>
+                </div>
+
+                <!-- Global Stats / Quick Status -->
+                <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-xs">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Adverbial Clause Positions</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="flex items-center gap-1.5 text-indigo-400 font-medium">
+                        <span>Advanced Clause Reduction Matrix</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation Bar -->
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-1.5 pb-1 no-scrollbar">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30">
+                    🔍 1. Overview & Pitfalls
+                </button>
+                <button onclick="switchTab('positions')" id="tab-positions" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    📗 2. AVC Positions
+                </button>
+                <button onclick="switchTab('reduction')" id="tab-reduction" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🔬 3. Clause Reduction
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    🎯 4. Practice Quiz (10 Soal)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW & PITFALLS ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">
+                        <span>Core Structure Axiom</span>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Subordinating Conjunction Menghubungkan Independent Clause dan Dependent Clause.</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Membentuk Adverbial Clause (AVC) yang menyatakan waktu, tujuan, sebab, kondisi, atau kontras. AVC dapat diletakkan di awal, tengah, atau akhir kalimat, serta sering muncul dalam bentuk reduksi (*reduced clause*) pada soal TOEFL tingkat lanjut.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Essential Learning Objectives -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-teal-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Main vs Dependent</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Mengenal struktur inti dan anak kalimat.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-indigo-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Posisi AVC</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Initial, Middle, dan Final positions.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-amber-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Aturan Koma</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Wajib koma jika AVC di posisi awal.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:border-emerald-400 transition duration-200 flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div class="space-y-0.5">
+                        <h3 class="font-bold text-slate-900 text-xs">Clause Reduction</h3>
+                        <p class="text-[11px] text-slate-600 leading-tight">Prasyarat mutlak & matriks 5 variasi reduksi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Critical Pitfalls Cards Section -->
+            <div class="space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5">
+                        <span class="text-rose-500">⚠️</span> Kesalahan Umum (Common Pitfalls)
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <!-- Pitfall 1 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Double Connector Trap</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Menggunakan Coordinating Conjunction bersamaan dengan Subordinating Conjunction dalam satu kalimat tanpa klausa tambahan.</p>
+                        
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5">
+                                <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Jebakan:</span>
+                                <p class="text-slate-400">❌ Salah: <span class="text-slate-800">Because you went, <span class="text-rose-600 underline">so</span> I went.</span></p>
+                                <p class="text-emerald-700">✓ Benar: <span class="text-slate-800">Because you went, I went. <span class="text-slate-400">(Pilih salah satu)</span></span></p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Satu konektor sudah cukup untuk menghubungkan dua klausa.</p>
+                    </div>
+
+                    <!-- Pitfall 2 -->
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Subject Mismatch in Reduction</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Melakukan reduksi klausa ketika subjek di Main Clause dan Sub Clause tidak merujuk pada entitas yang sama.</p>
+                        
+                        <div class="space-y-1.5 text-xs font-mono-code">
+                            <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5">
+                                <span class="text-[10px] font-sans font-bold text-slate-400 block">Contoh Jebakan:</span>
+                                <p class="text-slate-400">❌ Salah: <span class="text-slate-800">While leading the strike, the police arrested Munir.</span></p>
+                                <p class="text-emerald-700">✓ Benar: <span class="text-slate-800">While leading the strike, Munir was arrested by the police.</span></p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Subjek anak kalimat dan induk kalimat wajib sama persis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: AVC POSITIONS LAB ==================== -->
+        <section id="content-positions" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Position Lab</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Posisi Adverbial Clause (AVC) dalam Kalimat</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Adverbial Clause dapat ditempatkan di awal, tengah, maupun akhir kalimat dengan aturan tanda baca koma yang spesifik.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Position 1: Initial -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Initial Position (Di Depan)</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Conj + S + V , S + V</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                            "<span class="text-amber-300 font-bold">When you came here</span><span class="text-emerald-400 font-extrabold">,</span> <span class="text-teal-300 font-bold">I was watching the match</span>."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Struktur:</span>
+                                <p class="text-slate-600">Subordinating Conjunction berada di awal kalimat.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Aturan Koma:</span>
+                                <p class="text-slate-600"><strong>Wajib diberi koma</strong> di akhir Adverbial Clause sebelum Main Clause.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Contoh Lain:</span>
+                                <p class="text-slate-600">Because you go, I go.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Position 2: Final -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Final Position (Di Belakang)</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">S + V + Conj + S + V</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                            "<span class="text-teal-300 font-bold">I was watching the match</span> <span class="text-amber-300 font-bold">when you came here</span>."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Struktur:</span>
+                                <p class="text-slate-600">Main Clause di depan, diikuti Subordinating Conjunction dan anak kalimat.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Aturan Koma:</span>
+                                <p class="text-slate-600"><strong>Tidak memerlukan koma</strong> di antara kedua klausa.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Contoh Lain:</span>
+                                <p class="text-slate-600">I go because you go.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Position 3: Middle -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">3. Middle Position (Di Tengah - Jarang)</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">S, Conj + S + V, V</span>
+                        </div>
+                        <div class="bg-slate-900 text-white p-3 rounded-lg font-mono-code text-xs">
+                            "I<span class="text-emerald-400 font-extrabold">,</span> <span class="text-amber-300 font-bold">because you go</span><span class="text-emerald-400 font-extrabold">,</span> go."
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Catatan Gramatikal:</span>
+                                <p class="text-slate-600">Secara teori benar dan diapit dua koma, namun sangat jarang digunakan karena kurang alami.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Fungsi:</span>
+                                <p class="text-slate-600">Menyisipkan adverbial clause di tengah subjek dan verb utama.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+                                <span class="font-bold text-slate-900 block">Rekomendasi TOEFL:</span>
+                                <p class="text-slate-600">Lebih baik menggunakan posisi awal atau akhir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: CLAUSE REDUCTION MATRIX (LENGKAP DENGAN PRASYARAT & 5 VARIASI) ==================== -->
+        <section id="content-reduction" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-5">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Advanced Reduction Matrix</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Matriks Reduksi Adverbial Clause (TOEFL Structure)</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">
+                        Dalam TOEFL tingkat lanjut, Adverbial Clause sering diringkas (reduced) untuk efisiensi kalimat. Berikut prasyarat mutlak dan 5 variasi polanya:
+                    </p>
+                </div>
+
+                <!-- 1. PRASYARAT MUTLAK -->
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2.5">
+                    <h3 class="font-bold text-slate-900 text-xs md:text-sm flex items-center gap-1.5">
+                        <span class="text-amber-600">📌</span> 1. PRASYARAT MUTLAK (Mandatory Prerequisites)
+                    </h3>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Sebelum melakukan reduksi pada Adverbial Clause, 2 syarat ini <strong>wajib</strong> terpenuhi:
+                    </p>
+                    <ul class="list-disc pl-4 text-xs space-y-1.5 text-slate-700">
+                        <li><strong>Subject Identity:</strong> Subjek pada <em>Adverbial Clause</em> (anak kalimat) harus sama persis dengan subjek pada <em>Main Clause</em> (induk kalimat).
+                            <div class="mt-1 space-y-1 font-mono-code text-[11px]">
+                                <p class="text-rose-600">❌ Salah: "While leading the strike, the police arrested Munir." (Subjek anak kalimat he/Munir, induk kalimat *the police* ➔ Makna jadi keliru).</p>
+                                <p class="text-emerald-700">✓ Benar: "While leading the strike, Munir was arrested by the police."</p>
+                            </div>
+                        </li>
+                        <li class="mt-1"><strong>Verb State:</strong> Predikat pada klausa harus mengandung <em>To Be</em> (untuk bentuk continuous/passive) atau dapat diubah menjadi bentuk <em>participle</em>.</li>
+                    </ul>
+                </div>
+
+                <!-- 2. POLA UTAMA & VARIASI REDUKSI -->
+                <div class="space-y-3">
+                    <h3 class="text-base font-bold text-slate-900">2. Pola Utama & Variasi Reduksi:</h3>
+
+                    <!-- A. Conj + Participle -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">A. Conj + Participle (Active & Passive)</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Active & Passive Participle</span>
+                        </div>
+                        <div class="space-y-2 text-xs">
+                            <p class="text-slate-600">Digunakan jika subjek melakukan pekerjaan sendiri (Active) atau dikenai pekerjaan (Passive).</p>
+                            <div class="space-y-1.5 font-mono-code">
+                                <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                    <span class="text-[10px] font-sans font-bold text-emerald-800 block">• Active (Present Participle / V-ing): <span class="font-normal text-slate-500">Formula: Conj + V-ing</span></span>
+                                    <p class="text-slate-800 mt-1">"While <span class="text-emerald-700 font-bold">studying</span> economics, she understood inflation." <span class="text-slate-400 text-[10px]">(Asal: While she was studying...)</span></p>
+                                </div>
+                                <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                    <span class="text-[10px] font-sans font-bold text-emerald-800 block">• Passive (Past Participle / V3): <span class="font-normal text-slate-500">Formula: Conj + V3</span></span>
+                                    <p class="text-slate-800 mt-1">"If <span class="text-emerald-700 font-bold">handled</span> correctly, the economy will recover." <span class="text-slate-400 text-[10px]">(Asal: If it is handled correctly...)</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- B. Conj + Adj / Noun Phrase -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">B. Conj + Adj / Noun Phrase</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Adjective / Noun Phrase</span>
+                        </div>
+                        <div class="space-y-2 text-xs">
+                            <p class="text-slate-600">Digunakan jika predikat asalnya adalah <em>to be</em> + Adjective/Noun. Formula: <code>Conj + Adjective / Noun Phrase</code></p>
+                            <div class="space-y-1.5 font-mono-code">
+                                <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                    <p class="text-slate-800">• "Although <span class="text-indigo-700 font-bold">busy</span>, he finished the report." <span class="text-slate-400 text-[10px]">(Asal: Although he was busy...)</span></p>
+                                </div>
+                                <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                                    <p class="text-slate-800">• "When <span class="text-indigo-700 font-bold">a child</span>, she lived in Bandung." <span class="text-slate-400 text-[10px]">(Asal: When she was a child...)</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- C. Conj + Prepositional Phrase -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">C. Conj + Prepositional Phrase</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Prepositional Phrase</span>
+                        </div>
+                        <div class="space-y-2 text-xs">
+                            <p class="text-slate-600">Digunakan khusus untuk klausa yang menyatakan keberadaan (*to be + prepositional phrase*). Formula: <code>Conj + Prep Phrase</code></p>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200 font-mono-code">
+                                <p class="text-slate-800">"<strong>When in Jakarta</strong>, he visited the national archive." <span class="text-slate-400 text-[10px]">(Asal: When he was in Jakarta...)</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- D. Conj + V-ing (Preposition-like Conjunctions) -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">D. Conj + V-ing (Time Conjunctions)</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Before / After / Since / Until</span>
+                        </div>
+                        <div class="space-y-2 text-xs">
+                            <p class="text-slate-600">Sering dipakai oleh konjungsi waktu seperti *before, after, since, until*. Formula: <code>Conj + V-ing ...</code></p>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200 font-mono-code">
+                                <p class="text-slate-800">"Please check the document <strong>before submitting</strong> it." <span class="text-slate-400 text-[10px]">(Asal: ...before you submit it)</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- E. Total Deletion (Sebab-Akibat) -->
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                            <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">E. Total Deletion (Sebab-Akibat / Reason)</span>
+                            <span class="text-[11px] text-slate-500 font-mono-code">Because / Since Deletion</span>
+                        </div>
+                        <div class="space-y-2 text-xs">
+                            <p class="text-slate-600">Menghilangkan konjungsi total jika polanya menyatakan alasan, biasanya menggunakan *Because/Since* yang diganti langsung dengan bentuk *-ing*. Formula: <code>V-ing ... (di awal)</code></p>
+                            <div class="bg-white p-2.5 rounded-lg border border-slate-200 font-mono-code">
+                                <p class="text-slate-800">"<strong>Not knowing</strong> the answer, she remained silent." <span class="text-slate-400 text-[10px]">(Asal: Because she did not know the answer...)</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: PRACTICE QUIZ (10 SOAL) ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz: Skill 7 (10 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">
+                            Uji pemahaman Anda mengenai Subordinating Conjunction, posisi Adverbial Clause, aturan koma, dan clause reduction matrix.
+                        </p>
+                    </div>
+                    <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                        <span>Score: </span>
+                        <span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 10</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Questions Container -->
+                <div id="quiz-container" class="space-y-4">
+                    <!-- Dynamic Questions generated by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-7xl mx-auto px-4">
+            LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 7: Subordinating Conjunction
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+            });
+
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) {
+                activeTabBtn.className = "tab-btn px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap transition-all duration-200 text-teal-400 bg-slate-800 border border-teal-500/30";
+            }
+        }
+
+        // 10 Practice Questions for Skill 7
+        const quizQuestions = [
+            {
+                id: 1,
+                question: "_____ the economic crisis worsened in 1998, the government implemented monetary reforms.",
+                options: [
+                    { text: "Because", isCorrect: true },
+                    { text: "Because of", isCorrect: false },
+                    { text: "During", isCorrect: false },
+                    { text: "Despite", isCorrect: false }
+                ],
+                explanation: "Diperlukan subordinating conjunction yang diikuti oleh klausa lengkap (Subject 'crisis' + Verb 'worsened'). 'Because' adalah subordinating conjunction yang tepat, sedangkan 'because of' diikuti oleh noun phrase."
+            },
+            {
+                id: 2,
+                question: "Although _____ with numerous political challenges, President Habibie maintained his focus on reform.",
+                options: [
+                    { text: "faced", isCorrect: true },
+                    { text: "facing", isCorrect: false },
+                    { text: "he faces", isCorrect: false },
+                    { text: "was faced", isCorrect: false }
+                ],
+                explanation: "Ini adalah bentuk reduced adverbial clause of contrast (Passive). Asal lengkapnya 'Although he was faced with...'. Reduksi pasif menyisakan past participle 'faced' setelah konjungsi 'although'."
+            },
+            {
+                id: 3,
+                question: "When _____ the historical manuscripts, the researcher discovered crucial data on ethnopragmatics.",
+                options: [
+                    { text: "analyzing", isCorrect: true },
+                    { text: "analyzed", isCorrect: false },
+                    { text: "analysis", isCorrect: false },
+                    { text: "to analyze", isCorrect: false }
+                ],
+                explanation: "Reduced adverbial clause of time dalam bentuk aktif. Asal lengkapnya 'When he was analyzing...'. Bentuk reduksi aktif menggunakan present participle 'analyzing'."
+            },
+            {
+                id: 4,
+                question: "Please check the document carefully before _____ it to the department.",
+                options: [
+                    { text: "submitting", isCorrect: true },
+                    { text: "submit", isCorrect: false },
+                    { text: "submitted", isCorrect: false },
+                    { text: "submission", isCorrect: false }
+                ],
+                explanation: "Sesuai dengan pola Preposition-like Conjunction (seperti before/after), konjungsi diikuti langsung oleh bentuk V-ing ('submitting')."
+            },
+            {
+                id: 5,
+                question: "If _____, the experiment will provide valuable insights into second language acquisition.",
+                options: [
+                    { text: "conducted properly", isCorrect: true },
+                    { text: "conducting properly", isCorrect: false },
+                    { text: "properly conduct", isCorrect: false },
+                    { text: "to conduct properly", isCorrect: false }
+                ],
+                explanation: "Reduced conditional clause dalam bentuk pasif. Asal lengkapnya 'If it is conducted properly...'. Reduksi pasif menyisakan 'If conducted properly'."
+            },
+            {
+                id: 6,
+                question: "_____ fear of rising inflation, people rushed to acquire essential goods.",
+                options: [
+                    { text: "Because of", isCorrect: true },
+                    { text: "Because", isCorrect: false },
+                    { text: "Although", isCorrect: false },
+                    { text: "While", isCorrect: false }
+                ],
+                explanation: "Frasa 'fear of rising inflation' adalah sebuah Noun Phrase (bukan klausa lengkap S+V). Oleh karena itu, preposisi penunjuk sebab 'Because of' digunakan, bukan subordinating conjunction 'Because'."
+            },
+            {
+                id: 7,
+                question: "While _____ the seminar on sociolinguistics, Professor Muhandis emphasized the importance of context.",
+                options: [
+                    { text: "leading", isCorrect: true },
+                    { text: "led", isCorrect: false },
+                    { text: "leader", isCorrect: false },
+                    { text: "was leading", isCorrect: false }
+                ],
+                explanation: "Reduced adverbial clause of time (aktif). Asal lengkapnya 'While he was leading the seminar...'. Reduksi aktif menggunakan 'leading'."
+            },
+            {
+                id: 8,
+                question: "Not _____ the answer to the complex question, she remained silent during the discussion.",
+                options: [
+                    { text: "knowing", isCorrect: true },
+                    { text: "knew", isCorrect: false },
+                    { text: "known", isCorrect: false },
+                    { text: "know", isCorrect: false }
+                ],
+                explanation: "Pola Total Deletion untuk menyatakan sebab-akibat (Reason). Asal lengkapnya 'Because she did not know the answer...'. Diubah menjadi bentuk V-ing di awal kalimat ('Not knowing...')."
+            },
+            {
+                id: 9,
+                question: "When _____ in Jakarta, he always visits the national archive and historical library.",
+                options: [
+                    { text: "in Jakarta", isCorrect: true },
+                    { text: "being in Jakarta", isCorrect: false },
+                    { text: "was in Jakarta", isCorrect: false },
+                    { text: "he in Jakarta", isCorrect: false }
+                ],
+                explanation: "Reduced adverbial clause dengan Prepositional Phrase. Asal lengkapnya 'When he was in Jakarta...'. Reduksi menyisakan konjungsi dan prepositional phrase 'When in Jakarta'."
+            },
+            {
+                id: 10,
+                question: "Although _____ busy with the 1998 crisis, President Habibie stayed focused on national stability.",
+                options: [
+                    { text: "busy", isCorrect: true },
+                    { text: "busily", isCorrect: false },
+                    { text: "busyness", isCorrect: false },
+                    { text: "is busy", isCorrect: false }
+                ],
+                explanation: "Reduced adverbial clause dengan Adjective. Asal lengkapnya 'Although he was busy...'. Reduksi menyisakan 'Although busy'."
+            }
+        ];
+
+        let userAnswers = {};
+        let score = 0;
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+
+            quizContainer.innerHTML = '';
+
+            quizQuestions.forEach((q, index) => {
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                
+                let optionsHTML = '';
+                const optionLetters = ['A', 'B', 'C', 'D'];
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) {
+                            btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        } else if (isSelected && !opt.isCorrect) {
+                            btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        } else {
+                            btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                        }
+                    }
+
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''} 
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${optionLetters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>
+                    `;
+                }
+
+                qCard.innerHTML = `
+                    <div class="flex items-start justify-between gap-4">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-relaxed">${q.question}</p>
+                    <div class="space-y-1.5">
+                        ${optionsHTML}
+                    </div>
+                    ${explanationHTML}
+                `;
+
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) {
+                    score++;
+                }
+            });
+
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        window.onload = function() {
+            renderQuiz();
+        };
+    </script>
+    </script>
+    <script src="lumina-core.js"></script>
+    <script src="lumina-skill-editor.js"></script>
+</body>
+</html>

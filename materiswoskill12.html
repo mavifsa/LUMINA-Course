@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 12 - AVC yang Direduksi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        /* Konten halaman (di luar header dan footer) diperkecil 10% */
+        main { zoom: 0.9; }
+
+        .rm { color: #e11d48; text-decoration: line-through; }
+        .ad { color: #047857; font-weight: 700; }
+        .hs { color: #0f766e; font-weight: 700; }
+        .ho { color: #4338ca; font-weight: 700; }
+        .bad { color: #e11d48; font-weight: 600; }
+        .ok { color: #047857; font-weight: 600; }
+
+        .box { border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; padding: 16px; }
+        .ex { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; }
+        .ex + .ex { margin-top: 6px; }
+        .cons { font-family: 'Fira Code', monospace; font-size: 11px; color: #64748b; }
+
+        .orig { border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; border: 1px solid; }
+        .orig + .orig { margin-top: 6px; }
+        .orig-tag { display: inline-block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 700; padding: 1px 8px; border-radius: 4px; color: #fff; margin-bottom: 3px; }
+        .orig-1 { background: #f0fdfa; border-color: #99f6e4; } .orig-1 .orig-tag { background: #0d9488; }
+        .orig-2 { background: #fffbeb; border-color: #fde68a; } .orig-2 .orig-tag { background: #d97706; }
+        .orig-3 { background: #eef2ff; border-color: #c7d2fe; } .orig-3 .orig-tag { background: #4f46e5; }
+        .orig-4 { background: #ecfdf5; border-color: #a7f3d0; } .orig-4 .orig-tag { background: #059669; }
+        .nn { color: #0f766e; font-weight: 700; background: #ccfbf1; border-radius: 3px; padding: 0 3px; }
+        .cj { color: #b45309; font-weight: 700; background: #fef3c7; border-radius: 3px; padding: 0 3px; }
+
+        .pos { display: inline-block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 700; padding: 0 6px; border-radius: 4px; margin-right: 4px; color: #fff; }
+        .pos-i { background: #0d9488; } .pos-m { background: #d97706; } .pos-f { background: #4f46e5; }
+
+        table.cmp { width: 100%; border-collapse: collapse; font-size: 12px; }
+        table.cmp th { background: #0f172a; color: #fff; padding: 6px 8px; text-align: left; font-weight: 700; }
+        table.cmp td { border: 1px solid #e2e8f0; padding: 6px 8px; background: #fff; vertical-align: top; }
+
+        .tab-btn { display: inline-flex; flex-direction: row; align-items: center; gap: 6px; flex-shrink: 0; }
+        .tab-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-[7px] gap-[7px]">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-[13px] shadow-sm">S12</div>
+                    <div>
+                        <span class="bg-teal-500/20 text-teal-300 text-[9px] font-semibold px-[7px] py-px rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        <h1 class="text-[14px] md:text-base font-bold tracking-tight text-white leading-tight mt-0.5">Skill 12: AVC yang Direduksi</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-[7px] bg-slate-800/80 px-[11px] py-[5px] rounded-lg border border-slate-700/60 text-[11px]">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-[7px] h-[7px] rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Subject Reduction</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="text-indigo-400 font-medium"><span>Conj + Subj Reduction</span></div>
+                </div>
+            </div>
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-[5px] pb-[3px]">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30">
+                    <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <span>1. Overview &amp; Pitfalls</span>
+                </button>
+                <button onclick="switchTab('rules')" id="tab-rules" class="tab-btn inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                    <span>2. Syarat, Bentuk &amp; Posisi</span>
+                </button>
+                <button onclick="switchTab('subject')" id="tab-subject" class="tab-btn inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+                    <span>3. Subject Reduction</span>
+                </button>
+                <button onclick="switchTab('conjsubj')" id="tab-conjsubj" class="tab-btn inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/></svg>
+                    <span>4. Conj + Subj Reduction</span>
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn inline-flex items-center gap-1.5 px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    <span>5. Practice Quiz</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">Core Structure Axiom</div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">AVC Reduction = Memadatkan Conj + S + V Menjadi Frasa, Asal Subject Kedua Klausa SAMA.</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Adverbial clause (AVC) hanya boleh direduksi bila <b>subject AVC = subject main clause</b>. Setelah itu, tentukan: <b>conjunction masih dipertahankan</b> (Subject Reduction) atau <b>ikut dibuang</b> (Conj + Subj Reduction).
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Syarat Subject Sama</h3><p class="text-[11px] text-slate-600 leading-tight">Subject beda = dangling modifier.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Subject Reduction</h3><p class="text-[11px] text-slate-600 leading-tight">Conj tetap: While + Ving, When + V3.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Conj + Subj Reduction</h3><p class="text-[11px] text-slate-600 leading-tight">Conj hilang. Wajib untuk Reason.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Diagnostic Quiz</h3><p class="text-[11px] text-slate-600 leading-tight">20 Soal (Error Analysis &amp; Blank).</p></div>
+                </div>
+            </div>
+
+            <!-- Asal mula AVC reduction -->
+            <div class="space-y-2.5">
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Asal Mula: Dari AVC Utuh Menjadi Frasa</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mt-0.5">
+                        AVC punya susunan <span class="cj">conj</span> + <span class="nn">S</span> + V. Ketika <span class="nn">subject</span>-nya sama dengan subject main clause, subject itu bersifat <b>berulang</b> sehingga boleh dibuang. Verb lalu menyesuaikan diri menjadi participle atau adjective.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Contoh 1</span>
+                            <span class="text-[11px] font-semibold text-indigo-700">Subject Reduction (conj tetap)</span>
+                        </div>
+                        <div>
+                            <div class="orig orig-1"><span class="orig-tag">AVC utuh</span><br><span class="cj">While</span> <span class="nn">the researchers</span> were conducting the experiment, <span class="nn">the researchers</span> recorded every observation.</div>
+                            <div class="orig orig-2"><span class="orig-tag">Syarat</span><br>Subject AVC = subject main clause (the researchers). Boleh direduksi.</div>
+                            <div class="orig orig-4"><span class="orig-tag">Direduksi</span><br><span class="cj">While</span> <span class="rm">the researchers were</span> conducting the experiment, the researchers recorded every observation.<br><span class="ad">While conducting the experiment, the researchers recorded every observation.</span></div>
+                        </div>
+                        <p class="text-[11px] text-slate-600 leading-relaxed mt-2">Subject + be dibuang, <i>while</i> tetap ada, verb tersisa <b>Ving</b>.</p>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Contoh 2</span>
+                            <span class="text-[11px] font-semibold text-indigo-700">Conj + Subj Reduction (conj ikut hilang)</span>
+                        </div>
+                        <div>
+                            <div class="orig orig-1"><span class="orig-tag">AVC utuh</span><br><span class="cj">Because</span> <span class="nn">the researchers</span> lacked sufficient funding, <span class="nn">the researchers</span> postponed the project.</div>
+                            <div class="orig orig-2"><span class="orig-tag">Syarat</span><br>Subject sama. <i>Because</i> (Reason) tidak boleh bertemu Ving, jadi conj wajib hilang.</div>
+                            <div class="orig orig-4"><span class="orig-tag">Direduksi</span><br><span class="rm">Because the researchers</span> lacked sufficient funding, the researchers postponed the project.<br><span class="ad">Lacking sufficient funding, the researchers postponed the project.</span></div>
+                        </div>
+                        <p class="text-[11px] text-slate-600 leading-relaxed mt-2">Conj + subject dibuang, <i>lacked</i> menjadi <b>Lacking</b>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                <h3 class="font-bold text-slate-900 text-sm">Langkah Cepat Mereduksi AVC</h3>
+                <div class="text-xs font-mono-code space-y-1.5">
+                    <p><b>1.</b> Cek subject: AVC = main clause? Jika tidak → <span class="bad">jangan direduksi</span>.</p>
+                    <p><b>2.</b> Jenis AVC: Reason (because, since, as) → <span class="hs">Conj + Subj</span>. Contrast → conj tetap. Time / Condition → conj tetap atau hilang.</p>
+                    <p><b>3.</b> Bentuk verb: aktif → <span class="ad">Ving</span> | pasif → <span class="ad">V3</span> | be + adj → <span class="ad">adj</span> | sudah selesai lebih dulu → <span class="ad">having V3</span></p>
+                    <p><b>4.</b> Posisi: Subject Reduction → I / M / F. Conj + Subj → I / M.</p>
+                </div>
+            </div>
+
+            <div class="space-y-2.5">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5"><span class="text-rose-500">⚠️</span> Kesalahan Umum (Common Pitfalls)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Dangling Modifier</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Subject main clause bukan pelaku frasa reduksi.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Walking to campus, <span class="text-rose-600 underline">a wallet</span> was found by Usamah.</p>
+                            <p class="ok">✓ Walking to campus, <b>Usamah</b> found a wallet.</p>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Yang berjalan adalah Usamah, bukan dompet. Subject setelah koma harus pelaku frasa.</p>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Because + Ving / Adj</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Conj Reason (because, since, as) tidak boleh tersisa di depan hasil reduksi.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> <span class="text-rose-600 underline">Because lacking</span> sufficient funding, the researchers postponed ...</p>
+                            <p class="ok">✓ Lacking sufficient funding, the researchers postponed ...</p>
+                            <p class="ok">✓ Because they lacked sufficient funding, ... <span class="text-slate-400">(klausa utuh)</span></p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #3</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Aktif vs Pasif Tertukar</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Ving untuk makna aktif, V3 untuk makna pasif.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> When <span class="text-rose-600 underline">submitting</span> on time, the reports will be processed.</p>
+                            <p class="ok">✓ When <b>submitted</b> on time, the reports will be processed.</p>
+                            <p><span class="bad">❌</span> <span class="text-rose-600 underline">Built</span> the report, the team presented it.</p>
+                            <p class="ok">✓ <b>Having built</b> the report, the team presented it.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #4</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Membuang Conj yang Menjaga Makna</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Conj contrast (although, though) dan <i>before</i> sebaiknya tetap ada agar makna tidak berubah.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">✗</span> Tired, he continued working. <span class="text-slate-400">(pertentangan hilang)</span></p>
+                            <p class="ok">✓ <b>Although</b> tired, he continued working.</p>
+                            <p class="ok">✓ <b>Before</b> leaving, she locked the door.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: SYARAT, BENTUK & POSISI ==================== -->
+        <section id="content-rules" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Fundamental Rules</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Syarat, Bentuk Hasil, dan Posisi</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Hanya 4 jenis AVC yang bisa direduksi: <b>Time, Contrast, Reason, Condition</b>.</p>
+                </div>
+
+                <div class="box space-y-2">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Syarat Mutlak</span>
+                        <span class="cons">Subject AVC = Subject Main Clause</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Frasa hasil reduksi tidak punya subject sendiri, sehingga ia meminjam subject main clause. Jika subject berbeda, hasilnya <b>dangling modifier</b> (salah secara grammar).</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> While <span class="ho">Usamah</span> was walking to campus, <span class="ho">Usamah</span> found a wallet. → While walking to campus, <span class="ho">Usamah</span> found a wallet.</div>
+                        <div class="ex"><span class="bad">❌</span> While Usamah was walking to campus, <span class="hs">a wallet</span> was lost. → While walking to campus, a wallet was lost.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-2">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">4 Bentuk Hasil Reduksi</span>
+                    </div>
+                    <table class="cmp">
+                        <tr><th>Bentuk</th><th>Dipakai untuk</th><th>Contoh</th></tr>
+                        <tr><td class="font-mono-code"><b>Ving</b></td><td>Makna aktif</td><td class="font-mono-code">While <span class="ad">conducting</span> the experiment, ...</td></tr>
+                        <tr><td class="font-mono-code"><b>V3</b></td><td>Makna pasif</td><td class="font-mono-code">When <span class="ad">submitted</span> on time, ...</td></tr>
+                        <tr><td class="font-mono-code"><b>Adj / Adj Phrase</b></td><td>be + adjective (juga be + prepositional phrase)</td><td class="font-mono-code">Although <span class="ad">tired</span> from the long flight, ...</td></tr>
+                        <tr><td class="font-mono-code"><b>Having V3 / Having been V3</b></td><td>Kejadian di AVC <b>selesai lebih dulu</b> sebelum main clause (aktif / pasif)</td><td class="font-mono-code"><span class="ad">Having completed</span> the course, ...</td></tr>
+                    </table>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Posisi Hasil Reduksi</span>
+                        <span class="cons">Initial (I) / Middle (M) / Final (F)</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="pos pos-i">Initial</span>Initial: frasa di depan, diikuti koma.<br>While walking to campus, Usamah found a wallet.</div>
+                        <div class="ex"><span class="pos pos-m">Middle</span>: frasa disisipkan setelah subject, diapit dua koma.<br>Usamah, while walking to campus, found a wallet.</div>
+                        <div class="ex"><span class="pos pos-f">Final</span>: frasa di akhir kalimat, umumnya tanpa koma.<br>Usamah found a wallet while walking to campus.</div>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs text-slate-700 leading-relaxed space-y-1">
+                        <p><b>Aturan praktis:</b></p>
+                        <ul class="list-disc pl-5 space-y-0.5">
+                            <li><b>Subject Reduction</b> (conj tetap): bisa di <b>Initial, Middle, dan Final</b>.</li>
+                            <li><b>Conj + Subj Reduction</b> (conj hilang): umumnya hanya <b>Initial dan Middle</b>. Posisi Final dihindari karena tanpa conj hubungan logisnya kabur dan frasa bisa dikira menerangkan noun terdekat.</li>
+                            <li><b>AVC of Reason</b> hampir selalu muncul sebagai Conj + Subj Reduction sehingga biasanya di <b>Initial atau Middle</b>, bukan Final.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Perbandingan Dua Jenis Reduksi</h3>
+                    <table class="cmp">
+                        <tr><th></th><th>Subject Reduction</th><th>Conj + Subj Reduction</th></tr>
+                        <tr><td><b>Yang dibuang</b></td><td>Subject (+ be)</td><td>Conj + subject (+ be)</td></tr>
+                        <tr><td><b>Time</b></td><td>when, while, after, before, since, once</td><td>after, while, when</td></tr>
+                        <tr><td><b>Contrast</b></td><td>although, though, while</td><td>tidak dipakai (conj harus tetap)</td></tr>
+                        <tr><td><b>Condition</b></td><td>if, unless</td><td>if</td></tr>
+                        <tr><td><b>Reason</b></td><td class="bad">tidak bisa</td><td class="ok">wajib: because, since, as</td></tr>
+                        <tr><td><b>Posisi</b></td><td>I, M, F</td><td>I, M</td></tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: SUBJECT REDUCTION ==================== -->
+        <section id="content-subject" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Reduction Type 1</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Subject Reduction (Conjunction Tetap)</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Subject (dan be) dibuang, <b>conjunction tetap tampil</b>. Berlaku untuk AVC of Time, Contrast, dan Condition. <b>AVC of Reason tidak masuk</b> kategori ini.</p>
+                </div>
+
+                <div class="box space-y-1">
+                    <p class="text-xs font-bold text-slate-900">Conjunction yang berlaku</p>
+                    <div class="cons space-y-0.5">
+                        <p>Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: when, while, after, before, since, once</p>
+                        <p>Contrast : although, though, while</p>
+                        <p>Condition: if, unless</p>
+                        <p class="bad">Reason &nbsp;&nbsp;&nbsp;: tidak bisa (because + Ving / adj tidak berterima)</p>
+                    </div>
+                </div>
+
+                <!-- Ving -->
+                <div class="box space-y-2">
+                    <span class="bg-emerald-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">a. Aktif → Conj + Ving</span>
+                    <div class="ex"><span class="cons">Asli</span><br>While the researchers were conducting the experiment, they recorded every observation carefully.</div>
+                    <div class="ex">
+                        <span class="pos pos-i">I</span>While conducting the experiment, the researchers recorded every observation carefully.<br>
+                        <span class="pos pos-m">M</span>The researchers, while conducting the experiment, recorded every observation carefully.<br>
+                        <span class="pos pos-f">F</span>The researchers recorded every observation carefully while conducting the experiment.
+                    </div>
+                    <p class="text-[11px] text-slate-600">Subject <i>the researchers</i> + <i>were</i> dibuang. Maknanya aktif ("sedang melakukan") sehingga tersisa <b>While + Ving</b>.</p>
+                </div>
+
+                <!-- V3 -->
+                <div class="box space-y-2">
+                    <span class="bg-indigo-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">b. Pasif → Conj + V3</span>
+                    <div class="ex"><span class="cons">Asli</span><br>When the reports are submitted on time, they will be processed immediately.</div>
+                    <div class="ex">
+                        <span class="pos pos-i">I</span>When submitted on time, the reports will be processed immediately.<br>
+                        <span class="pos pos-m">M</span>The reports, when submitted on time, will be processed immediately.<br>
+                        <span class="pos pos-f">F</span>The reports will be processed immediately when submitted on time.
+                    </div>
+                    <p class="text-[11px] text-slate-600">Subject AVC (<i>the reports</i>) + <i>are</i> dibuang. Klausa asli pasif sehingga tersisa <b>When + V3</b>. Perhatikan: pronoun <i>they</i> di main clause berganti menjadi noun <i>the reports</i> pada posisi Initial, karena subject AVC sudah tidak ada untuk dirujuk.</p>
+                    <div class="bg-white border border-slate-200 rounded-lg p-2.5 text-[11px] text-slate-600 leading-relaxed">
+                        💡 Conj <b>if, unless, once</b> (dan <i>when</i> bermakna "jika") paling sering diikuti <b>V3 atau adjective</b>: <span class="font-mono-code">If asked, ... / Unless otherwise stated, ... / Once completed, ...</span>
+                    </div>
+                </div>
+
+                <!-- Adj -->
+                <div class="box space-y-2">
+                    <span class="bg-purple-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">c. Be + Adjective / Prepositional Phrase → Conj + Adj / Prep. Phrase</span>
+                    <div class="ex"><span class="cons">Asli</span><br>Although he was tired from the long flight, he continued working.</div>
+                    <div class="ex">
+                        <span class="pos pos-i">I</span>Although tired from the long flight, he continued working.<br>
+                        <span class="pos pos-m">M</span>He, although tired from the long flight, continued working.<br>
+                        <span class="pos pos-f">F</span>He continued working although tired from the long flight.
+                    </div>
+                    <p class="text-[11px] text-slate-600">Pola asli <i>subject + be + adjective</i>. Setelah subject dan <i>be</i> dibuang, conjunction langsung bertemu adjective (<i>tired</i>).</p>
+                    <div class="ex"><span class="cons">Dengan prepositional phrase</span><br>While he was in Jakarta, he visited the old city. → While <span class="ad">in Jakarta</span>, he visited the old city.</div>
+                </div>
+
+                <!-- Being optional -->
+                <div class="box space-y-2">
+                    <span class="bg-slate-700 text-white text-[12px] font-bold px-2 py-0.5 rounded">d. Being / Been pada Pasif</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Pada pasif, <i>being</i> boleh dipertahankan atau dihilangkan. Keduanya benar.</p>
+                    <div class="ex">While <span class="ad">(being)</span> questioned by the police, the suspect remained calm.</div>
+                    <p class="text-[11px] text-slate-600">Setelah subject dibuang, conjunction (<i>while, after, when</i>) berfungsi seperti preposition, sehingga bentuk Ving di belakangnya bersifat gerund: <i>after marrying you, while singing</i>.</p>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pola</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>Aktif &nbsp;&nbsp;: conj + S + V → conj + <span class="ad">Ving</span></p>
+                        <p>Pasif &nbsp;&nbsp;: conj + S + be + V3 → conj + <span class="ad">(being) V3</span></p>
+                        <p>Be + adj / prep. phrase : conj + S + be + adj → conj + <span class="ad">adj</span></p>
+                        <p>Posisi &nbsp;: <span class="pos pos-i">I</span><span class="pos pos-m">M</span><span class="pos pos-f">F</span> semua boleh</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: CONJ + SUBJ REDUCTION ==================== -->
+        <section id="content-conjsubj" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Reduction Type 2</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Conj + Subj Reduction (Conjunction Ikut Dibuang)</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Conjunction dan subject <b>sama-sama dibuang</b>. Kalimat langsung dibuka oleh participle atau adjective. Hubungan makna kini ditangkap dari konteks.</p>
+                </div>
+
+                <div class="box space-y-1">
+                    <p class="text-xs font-bold text-slate-900">Conjunction yang berlaku</p>
+                    <div class="cons space-y-0.5">
+                        <p>Time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: after, while, when &nbsp;<span class="text-slate-400">(before tidak: conj harus tetap, "Before leaving, ...")</span></p>
+                        <p>Condition: if</p>
+                        <p class="ok">Reason &nbsp;&nbsp;&nbsp;: because, since, as &nbsp;<b>(WAJIB menggunakan jenis ini)</b></p>
+                        <p class="bad">Contrast &nbsp;: tidak dipakai (conj hilang = pertentangan hilang)</p>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs text-slate-700">
+                    <b>Posisi:</b> dominan <span class="pos pos-i">I</span> dan <span class="pos pos-m">M</span>. Posisi <span class="pos pos-f">F</span> dihindari karena tanpa conjunction hubungan logis kalimat menjadi kabur.
+                </div>
+
+                <!-- Ving -->
+                <div class="box space-y-2">
+                    <span class="bg-emerald-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">a. Aktif → Ving</span>
+                    <div class="ex"><span class="cons">Asli</span><br>Because the researchers lacked sufficient funding, they postponed the project.</div>
+                    <div class="ex">
+                        <span class="pos pos-i">I</span>Lacking sufficient funding, the researchers postponed the project.<br>
+                        <span class="pos pos-m">M</span>The researchers, lacking sufficient funding, postponed the project.
+                    </div>
+                    <p class="text-[11px] text-slate-600"><i>Because</i> dan <i>the researchers</i> dibuang, verb aktif <i>lacked</i> menjadi <b>Lacking</b>.</p>
+                    <div class="ex"><span class="cons">Time (while / when)</span><br>While Usamah was walking to campus, he found a wallet. → <span class="ad">Walking to campus</span>, Usamah found a wallet.</div>
+                </div>
+
+                <!-- V3 -->
+                <div class="box space-y-2">
+                    <span class="bg-indigo-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">b. Pasif → V3</span>
+                    <div class="ex"><span class="cons">Asli</span><br>Since the laboratory was built with outdated equipment, it could not conduct the experiment.</div>
+                    <div class="ex">
+                        <span class="pos pos-i">I</span>Built with outdated equipment, the laboratory could not conduct the experiment.<br>
+                        <span class="pos pos-m">M</span>The laboratory, built with outdated equipment, could not conduct the experiment.
+                    </div>
+                    <p class="text-[11px] text-slate-600">Klausa asli pasif (<i>was built</i>). Conj, subject, dan <i>was</i> dibuang sehingga langsung <b>V3</b>. Bentuk <i>Being built</i> juga benar.</p>
+                </div>
+
+                <!-- Adj -->
+                <div class="box space-y-2">
+                    <span class="bg-purple-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">c. Be + Adjective → Adjective</span>
+                    <div class="ex"><span class="cons">Asli</span><br>As the professor was exhausted, he canceled the lecture.</div>
+                    <div class="ex">
+                        <span class="pos pos-i">I</span>Exhausted, the professor canceled the lecture. <span class="text-slate-400">(atau: Being exhausted, ...)</span><br>
+                        <span class="pos pos-m">M</span>The professor, exhausted, canceled the lecture.
+                    </div>
+                    <p class="text-[11px] text-slate-600"><i>Being</i> sering redundan karena adjective sudah cukup menjelaskan kondisi subject.</p>
+                </div>
+
+                <!-- Perfect -->
+                <div class="box space-y-2">
+                    <span class="bg-rose-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">d. Perfect Participle → Having V3 / Having been V3</span>
+                    <div class="ex"><span class="cons">Asli (Time: after)</span><br>After the PIBI students had completed the TOEFL preparation, they took the real test.</div>
+                    <div class="ex">
+                        <span class="pos pos-i">I</span>Having completed the TOEFL preparation, the PIBI students took the real test.<br>
+                        <span class="pos pos-m">M</span>The PIBI students, having completed the TOEFL preparation, took the real test.
+                    </div>
+                    <p class="text-[11px] text-slate-600">Dipakai bila kegiatan di AVC <b>selesai lebih dulu</b> sebelum main clause (makna "setelah"), dan juga lazim pada Reason. Aktif: <b>Having + V3</b>. Pasif: <b>Having been + V3</b>.</p>
+                    <div class="ex"><span class="cons">Pasif</span><br>After the volunteers had been trained by experts, they were ready to help. → <span class="ad">Having been trained</span> by experts, the volunteers were ready to help.</div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pola</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>Aktif &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: conj + S + V → <span class="ad">Ving</span></p>
+                        <p>Pasif &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: conj + S + be + V3 → <span class="ad">V3</span> (atau Being V3)</p>
+                        <p>Be + adj &nbsp;&nbsp;: conj + S + be + adj → <span class="ad">adj</span> (atau Being adj)</p>
+                        <p>Selesai dulu : conj + S + had V3 → <span class="ad">Having V3</span> / <span class="ad">Having been V3</span></p>
+                        <p>Posisi &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="pos pos-i">I</span><span class="pos pos-m">M</span> (hindari F)</p>
+                    </div>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-1">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Kesimpulan</span>
+                    <ul class="text-xs text-slate-700 leading-relaxed list-disc pl-5 space-y-1 mt-1">
+                        <li>AVC Reduction memadatkan kalimat akademik tanpa mengubah makna, dengan syarat <b>subject kedua klausa sama</b>.</li>
+                        <li><b>Subject Reduction</b>: conjunction masih terlihat (While, When, Although, If).</li>
+                        <li><b>Conj + Subj Reduction</b>: conjunction hilang, kalimat dibuka langsung oleh Ving / V3 / adjective.</li>
+                        <li><b>Reason</b> (because, since, as) tidak boleh bertahan di depan hasil reduksi, sehingga wajib memakai Conj + Subj Reduction.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: QUIZ ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz (20 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">Bagian 1: 12 soal Error Analysis. Bagian 2: 8 soal Blank. Tingkat kesulitan: 30% mudah, 40% sedang, 30% sulit.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="resetQuiz()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">↺ Ulangi</button>
+                        <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                            <span>Score: </span><span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 20</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="quiz-container" class="space-y-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-5xl mx-auto px-4">LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 12: AVC yang Direduksi</div>
+    </footer>
+
+    <script>
+        const TAB_ON  = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30";
+        const TAB_OFF = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => { btn.className = TAB_OFF; });
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) activeTabBtn.className = TAB_ON;
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+        const LEVELS = {
+            easy:   { label: "Mudah",  cls: "bg-emerald-100 text-emerald-800" },
+            medium: { label: "Sedang", cls: "bg-amber-100 text-amber-800" },
+            hard:   { label: "Sulit",  cls: "bg-rose-100 text-rose-800" }
+        };
+
+        const SECTIONS = {
+            "Error Analysis": { label: "Bagian 1", hint: "Pilih bagian bergaris bawah yang salah" },
+            "Blank":          { label: "Bagian 2", hint: "Pilih jawaban yang paling tepat" }
+        };
+
+        // Error Analysis: tepat 5 segmen ditandai [ ... ]; correct = indeks segmen yang salah (0-4).
+        function ea(text, correct, level, explanation) {
+            const segs = [];
+            const html = text.replace(/\[([^\]]+)\]/g, (m, s) => {
+                const idx = segs.length;
+                segs.push(s);
+                return `<span class='underline decoration-2 decoration-slate-500 underline-offset-4'>${s}</span><span class='text-slate-500 text-[11px] font-bold'>(${LETTERS[idx]})</span>`;
+            });
+            if (segs.length !== 5) console.warn("Error Analysis harus punya 5 segmen:", text);
+            return {
+                type: "Error Analysis",
+                level,
+                question: `'${html}'`,
+                options: segs.map((s, i) => ({ text: s, isCorrect: i === correct })),
+                explanation
+            };
+        }
+
+        // Blank: 5 opsi, opsi pertama = jawaban benar (diacak saat render)
+        function blank(question, correct, wrong, level, explanation) {
+            return {
+                type: "Blank",
+                level,
+                question,
+                options: [{ text: correct, isCorrect: true }, ...wrong.map(w => ({ text: w, isCorrect: false }))],
+                explanation
+            };
+        }
+
+        // Komposisi: 6 mudah, 8 sedang, 6 sulit. Tiap bagian diurutkan mudah → sulit.
+        const rawQuestions = [
+                      // ===== BAGIAN 1: ERROR ANALYSIS (12) =====
+            // --- Mudah (4)
+            ea("[While] [walk] to campus [yesterday], [Usamah] [found] a wallet.", 1, "easy",
+               "Makna aktif: subject dan be dibuang, sisanya Ving. 'While walking to campus'."),
+            ea("[Because] [lacking] sufficient [funding], [the researchers] [postponed] the project.", 0, "easy",
+               "AVC of Reason tidak boleh bertemu Ving. Conjunction wajib dibuang: 'Lacking sufficient funding, ...'."),
+            ea("[Having] [complete] the TOEFL preparation, [the students] [took] the real [test].", 1, "easy",
+               "Perfect participle aktif: 'Having + V3' = 'Having completed'."),
+            ea("[Exhausted], [the professor] [canceling] the [lecture] [yesterday].", 2, "easy",
+               "Setelah koma ada main clause lengkap, sehingga butuh finite verb: 'canceled'."),
+            // --- Sedang (5)
+            ea("[Walking] to campus, [a wallet] [was found] by [Usamah] [yesterday].", 1, "medium",
+               "Dangling modifier. Pelaku 'walking' adalah Usamah, sehingga subject main clause harus 'Usamah found a wallet'."),
+            ea("[The reports], [when] [submitting] on time, [will be] processed [immediately].", 2, "medium",
+               "Klausa asli pasif ('when they are submitted'). Setelah reduksi: 'when submitted'."),
+            ea("[Having built] with outdated equipment, [the laboratory] [could not] [conduct] the [experiment].", 0, "medium",
+               "Laboratory dibangun (pasif). Gunakan 'Built' atau 'Having been built', bukan 'Having built'."),
+            ea("[Unless] [stating] otherwise, [the students] [are required] to wear [uniforms].", 1, "medium",
+               "Makna pasif ('unless it is stated otherwise'). Gunakan V3: 'Unless stated otherwise'."),
+            ea("[The committee], [although] [reject] the proposal, [approved] the [budget].", 2, "medium",
+               "Setelah conj 'although' dengan subject dibuang, verb aktif menjadi Ving: 'although rejecting'."),
+            // --- Sulit (3)
+            ea("[Having finished] the experiment, [the results] [were recorded] by [the researchers] [carefully].", 1, "hard",
+               "Dangling modifier. Yang 'finished' adalah researchers, bukan results. Main clause: 'the researchers recorded the results'."),
+            ea("[Having been trained] by experts, [the volunteers] [was] ready to [help] [immediately].", 2, "hard",
+               "Verb utama mengikuti subject plural 'the volunteers': 'were'."),
+            ea("[Once] [completing], [the report] [must be] sent [immediately].", 1, "hard",
+               "Report adalah benda yang diselesaikan (pasif). 'Once' diikuti V3: 'Once completed'."),
+
+            // ===== BAGIAN 2: BLANK (8) =====
+            // --- Mudah (2)
+            blank("Usamah found a wallet _____ to campus.",
+               "while walking", ["while walk", "while walked", "walked", "while he walking"], "easy",
+               "Aktif: 'while he was walking' menjadi 'while walking'."),
+            blank("_____ sufficient funding, the researchers postponed the project.",
+               "Lacking", ["Because lacking", "Lacked", "To lack", "Having lacking"], "easy",
+               "AVC of Reason: conj + subject dibuang, verb aktif menjadi Ving."),
+            // --- Sedang (3)
+            blank("_____ on time, the reports will be processed immediately.",
+               "When submitted", ["When submitting", "When they submitted", "When submit", "When to submit"], "medium",
+               "Klausa asli pasif ('when they are submitted'). Subject + be dibuang, tersisa 'when submitted'."),
+            blank("_____ the TOEFL preparation, the PIBI students took the real test.",
+               "Having completed", ["Having been completed", "Had completed", "Having complete", "After to complete"], "medium",
+               "Kegiatan selesai lebih dulu dan maknanya aktif: 'Having + V3'."),
+            blank("The suspect, while _____ by the police, confessed to the crime.",
+               "questioned", ["questioning", "question", "was questioned", "to question"], "medium",
+               "Subject suspect dikenai tindakan (pasif), sehingga 'while (being) questioned'."),
+            // --- Sulit (3)
+            blank("Having read the report carefully, _____.",
+               "the manager approved the budget", ["the budget was approved by the manager", "the report was clear to the manager", "approval was given by the manager", "the manager's decision was made quickly"], "hard",
+               "Subject setelah koma harus pelaku 'having read', yaitu 'the manager'. Opsi lain dangling modifier."),
+            blank("The laboratory, _____ with outdated equipment, could not conduct the experiment.",
+               "built", ["since built", "because built", "building", "having build"], "hard",
+               "AVC of Reason pasif: Conj + Subj dibuang sehingga langsung V3. Conj Reason tidak tersisa."),
+            blank("_____ otherwise, all participants must submit the form before the deadline.",
+               "Unless stated", ["Unless stating", "If stating", "Unless they stated", "Unless to state"], "hard",
+               "Subject 'it' dibuang. Makna pasif dengan 'unless': 'Unless (it is) stated otherwise' → 'Unless stated otherwise'.")
+        ];
+
+        const quizQuestions = rawQuestions.map((q, i) => ({
+            ...q,
+            id: i + 1,
+            question: `${i + 1}. ${q.question}`
+        }));
+
+        let userAnswers = {};
+        let score = 0;
+
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        function prepareQuiz() {
+            quizQuestions.forEach(q => { if (q.type === "Blank") shuffle(q.options); });
+        }
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+            quizContainer.innerHTML = '';
+            let lastType = null;
+
+            quizQuestions.forEach((q, index) => {
+                if (q.type !== lastType) {
+                    lastType = q.type;
+                    const total = quizQuestions.filter(x => x.type === q.type).length;
+                    const meta = SECTIONS[q.type];
+                    const head = document.createElement('div');
+                    head.className = "flex flex-wrap items-center gap-2 pt-2 pb-2 border-b border-slate-200";
+                    head.innerHTML = `
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">${meta.label}</span>
+                        <h3 class="text-sm font-bold text-slate-900">${q.type}</h3>
+                        <span class="text-xs text-slate-500">${meta.hint} (${total} soal)</span>`;
+                    quizContainer.appendChild(head);
+                }
+
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                let optionsHTML = '';
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        else if (isSelected) btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        else btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                    }
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''}
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${LETTERS[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>`;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>`;
+                }
+
+                const lv = LEVELS[q.level];
+                qCard.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                        <span class="bg-teal-100 text-teal-800 text-[9px] font-bold px-2 py-0.5 rounded-full">${q.type}</span>
+                        <span class="${lv.cls} text-[9px] font-bold px-2 py-0.5 rounded-full">${lv.label}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-loose">${q.question}</p>
+                    <div class="space-y-1.5">${optionsHTML}</div>
+                    ${explanationHTML}`;
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) score++;
+            });
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            score = 0;
+            document.getElementById('quiz-score').textContent = `0 / ${quizQuestions.length}`;
+            prepareQuiz();
+            renderQuiz();
+        }
+
+        window.onload = function () {
+            prepareQuiz();
+            renderQuiz();
+        };
+    </script>
+    </script>
+    <script src="lumina-core.js"></script>
+    <script src="lumina-skill-editor.js"></script>
+</body>
+</html>

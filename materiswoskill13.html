@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 13 - Inversion in Question</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        /* Konten halaman (di luar header dan footer) diperkecil 10% */
+        main { zoom: 0.9; }
+
+        .rm { color: #e11d48; text-decoration: line-through; }
+        .ad { color: #047857; font-weight: 700; }
+        .hs { color: #0f766e; font-weight: 700; }
+        .ho { color: #4338ca; font-weight: 700; }
+        .bad { color: #e11d48; font-weight: 600; }
+        .ok { color: #047857; font-weight: 600; }
+
+        .box { border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; padding: 16px; }
+        .ex { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; }
+        .ex + .ex { margin-top: 6px; }
+        .cons { font-family: 'Fira Code', monospace; font-size: 11px; color: #64748b; }
+
+        .orig { border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; border: 1px solid; }
+        .orig + .orig { margin-top: 6px; }
+        .orig-tag { display: inline-block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 700; padding: 1px 8px; border-radius: 4px; color: #fff; margin-bottom: 3px; }
+        .orig-1 { background: #f0fdfa; border-color: #99f6e4; } .orig-1 .orig-tag { background: #0d9488; }
+        .orig-2 { background: #fffbeb; border-color: #fde68a; } .orig-2 .orig-tag { background: #d97706; }
+        .orig-3 { background: #eef2ff; border-color: #c7d2fe; } .orig-3 .orig-tag { background: #4f46e5; }
+        .orig-4 { background: #ecfdf5; border-color: #a7f3d0; } .orig-4 .orig-tag { background: #059669; }
+        .nn { color: #0f766e; font-weight: 700; background: #ccfbf1; border-radius: 3px; padding: 0 3px; }
+        .cj { color: #b45309; font-weight: 700; background: #fef3c7; border-radius: 3px; padding: 0 3px; }
+        .aux { color: #4338ca; font-weight: 700; background: #e0e7ff; border-radius: 3px; padding: 0 3px; }
+
+        table.cmp { width: 100%; border-collapse: collapse; font-size: 12px; }
+        table.cmp th { background: #0f172a; color: #fff; padding: 6px 8px; text-align: left; font-weight: 700; }
+        table.cmp td { border: 1px solid #e2e8f0; padding: 6px 8px; background: #fff; vertical-align: top; }
+
+        /* Tab & tombol: ikon selalu di kiri teks, tanpa kotak putih saat diklik */
+        .tab-btn, button { -webkit-tap-highlight-color: transparent; }
+        .tab-btn:focus, button:focus { outline: none; }
+        .tab-btn:focus-visible { outline: 2px solid #2dd4bf; outline-offset: -2px; }
+        .tab-btn { display: inline-flex; flex-direction: row; align-items: center; gap: 6px; flex-shrink: 0; }
+        .tab-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-[7px] gap-[7px]">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-[13px] shadow-sm">S13</div>
+                    <div>
+                        <span class="bg-teal-500/20 text-teal-300 text-[9px] font-semibold px-[7px] py-px rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        <h1 class="text-[14px] md:text-base font-bold tracking-tight text-white leading-tight mt-0.5">Skill 13: Inversion in Question</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-[7px] bg-slate-800/80 px-[11px] py-[5px] rounded-lg border border-slate-700/60 text-[11px]">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-[7px] h-[7px] rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Aux + S + V</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="text-indigo-400 font-medium"><span>Noun Clause: No Inversion</span></div>
+                </div>
+            </div>
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-[5px] pb-[3px]">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <span>1. Overview &amp; Pitfalls</span>
+                </button>
+                <button onclick="switchTab('concept')" id="tab-concept" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                    <span>2. Konsep &amp; Jenis Tanya</span>
+                </button>
+                <button onclick="switchTab('aux')" id="tab-aux" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
+                    <span>3. Jenis Auxiliary</span>
+                </button>
+                <button onclick="switchTab('sub')" id="tab-sub" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                    <span>4. Sebagai Sub Clause</span>
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    <span>5. Practice Quiz</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">Core Structure Axiom</div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Inversion in Question = Auxiliary (atau Be) Pindah ke Depan Subject. Jadi Sub Clause? Inversi Hilang.</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Pertanyaan <b>mandiri</b> memakai susunan <b>aux + S + V</b>. Begitu pertanyaan itu menjadi <b>bagian dari kalimat lain</b> (noun clause), susunannya kembali ke <b>S + V</b> seperti kalimat deklaratif.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Inversi Aux / Be</h3><p class="text-[11px] text-slate-600 leading-tight">Aux atau be pindah ke depan subject.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Yes/No &amp; Information</h3><p class="text-[11px] text-slate-600 leading-tight">Tanpa WH-word vs dengan WH-word.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Primary &amp; Modal Aux</h3><p class="text-[11px] text-slate-600 leading-tight">Be, have, do, dan modal + V1.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Diagnostic Quiz</h3><p class="text-[11px] text-slate-600 leading-tight">20 Soal (Error Analysis &amp; Blank).</p></div>
+                </div>
+            </div>
+
+            <!-- Asal mula: 1 contoh saja -->
+            <div class="space-y-2.5">
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Asal Mula: Dari Kalimat Deklaratif ke Pertanyaan, lalu ke Sub Clause</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mt-0.5">
+                        Satu kalimat yang sama bisa berubah bentuk tiga kali. Perhatikan posisi <span class="aux">auxiliary</span> dan <span class="nn">subject</span>-nya.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Contoh</span>
+                            <span class="text-[11px] font-semibold text-indigo-700">Verbal: butuh auxiliary</span>
+                        </div>
+                        <div>
+                            <div class="orig orig-1"><span class="orig-tag">Declarative</span><br><span class="nn">Ainun</span> studies Arabic syntax.<br><span class="cons">S + V + O (tidak ada aux)</span></div>
+                            <div class="orig orig-2"><span class="orig-tag">Interrogative (inversi)</span><br><span class="aux">Does</span> <span class="nn">Ainun</span> <span class="ad">study</span> Arabic syntax?<br><span class="cons">aux + S + V + O. Aux do-support ditambahkan, verb kembali V1.</span></div>
+                            <div class="orig orig-3"><span class="orig-tag">Menjadi sub clause (noun clause)</span><br>Usamah asks <span class="cj">if</span> <span class="nn">Ainun</span> <span class="ad">studies</span> Arabic syntax.<br><span class="cons">Inversi hilang: kembali S + V, ditambah conjunction.</span></div>
+                        </div>
+                        <ul class="text-[11px] text-slate-600 leading-relaxed mt-2 space-y-0.5 list-disc pl-4">
+                            <li>Verb biasa tidak bisa berpindah, jadi kalimat tanya memakai aux <i>do / does / did</i>.</li>
+                            <li>Aux membawa tense dan agreement, sehingga verb utama kembali ke bentuk dasar (V1).</li>
+                            <li>Pada sub clause tidak ada aux di depan subject, sehingga verb berkonjugasi lagi (<i>studies</i>).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                <h3 class="font-bold text-slate-900 text-sm">Langkah Cepat Membentuk Pertanyaan</h3>
+                <div class="text-xs font-mono-code space-y-1.5">
+                    <p><b>1.</b> Verb utama = <span class="ho">be</span> → pindahkan be: <i>Prof. Uceng is famous → <b>Is</b> Prof. Uceng famous?</i></p>
+                    <p><b>2.</b> Sudah ada aux / modal → pindahkan <span class="ho">aux pertama</span>: <i>Has he been studying?</i></p>
+                    <p><b>3.</b> Verb biasa tanpa aux → tambah <span class="ho">do / does / did</span>, verb kembali V1.</p>
+                    <p><b>4.</b> Information question: <span class="hs">WH-word</span> + aux + S + V. Pengecualian: WH-word sebagai subject tidak memakai inversi.</p>
+                    <p><b>5.</b> Menjadi sub clause → <span class="bad">tanpa inversi</span>: if / whether / WH-word + S + V.</p>
+                </div>
+            </div>
+
+            <div class="space-y-2.5">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5"><span class="text-rose-500">⚠️</span> Kesalahan Umum (Common Pitfalls)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Tidak Ada Inversi</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Pertanyaan mandiri tetap memakai susunan deklaratif.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> When <span class="text-rose-600 underline">you will</span> go for KKL in Bali?</p>
+                            <p class="ok">✓ When <b>will you</b> go for KKL in Bali?</p>
+                        </div>
+                        <p class="text-[11px] text-slate-600">Aux harus mendahului subject.</p>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Verb Tidak Kembali ke V1</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Setelah do / does / did dan modal, verb utama wajib V1.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Does Ainun <span class="text-rose-600 underline">studies</span> Arabic syntax?</p>
+                            <p class="ok">✓ Does Ainun <b>study</b> Arabic syntax?</p>
+                            <p><span class="bad">❌</span> Can you <span class="text-rose-600 underline">speaks</span> English?</p>
+                            <p class="ok">✓ Can you <b>speak</b> English?</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #3</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Inversi Terbawa ke Sub Clause</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Di dalam noun clause, susunan harus deklaratif.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Mursal is curious when <span class="text-rose-600 underline">will he</span> go for KKL.</p>
+                            <p class="ok">✓ Mursal is curious when <b>he will</b> go for KKL.</p>
+                            <p><span class="bad">❌</span> Usamah asks if <span class="text-rose-600 underline">does Ainun study</span> syntax.</p>
+                            <p class="ok">✓ Usamah asks if <b>Ainun studies</b> syntax.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #4</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Aux Dipaksakan pada WH-Subject</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Jika WH-word sendiri adalah subject, tidak ada inversi dan tidak ada do-support.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Who <span class="text-rose-600 underline">did call</span> you last night?</p>
+                            <p class="ok">✓ Who <b>called</b> you last night?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: KONSEP & JENIS TANYA ==================== -->
+        <section id="content-concept" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Fundamental Concept</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Konsep Inversi dan Jenis Kalimat Tanya</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Inversi adalah perubahan urutan <b>subject</b> dan <b>verb</b>. Auxiliary dipindahkan ke depan subject untuk membentuk kalimat tanya.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Dua Pola Inversi</span>
+                    </div>
+                    <table class="cmp">
+                        <tr><th>Jenis kalimat</th><th>Declarative</th><th>Interrogative</th></tr>
+                        <tr><td><b>Verbal</b><br><span class="cons">butuh auxiliary</span></td><td class="font-mono-code">Ainun studies Arabic syntax.<br><span class="cons">S + V + O</span></td><td class="font-mono-code"><span class="aux">Does</span> Ainun study Arabic syntax?<br><span class="cons">aux + S + V + O</span></td></tr>
+                        <tr><td><b>Be sebagai main verb</b> (nominal)<br><span class="cons">tanpa aux tambahan</span></td><td class="font-mono-code">Prof. Uceng is very famous.<br><span class="cons">S + V + Comp</span></td><td class="font-mono-code"><span class="aux">Is</span> Prof. Uceng very famous?<br><span class="cons">V + S + Comp</span></td></tr>
+                    </table>
+                    <p class="text-xs text-slate-700 leading-relaxed">Pada verbal, aux wajib hadir saat inversi. Pada kalimat dengan <i>be</i> sebagai main verb, <i>be</i> itu sendiri yang berpindah sehingga tidak perlu aux lain.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Yes/No Question</span>
+                        <span class="cons">aux + S + V (tanpa WH-word)</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Jawabannya <b>ya atau tidak</b>. Tidak memakai kata tanya.</p>
+                    <div>
+                        <div class="ex"><span class="cons">Nominal (be)</span><br><span class="aux">Are</span> you ready?</div>
+                        <div class="ex"><span class="cons">Modal</span><br><span class="aux">Can</span> you speak English?</div>
+                        <div class="ex"><span class="cons">Have (perfect)</span><br><span class="aux">Have</span> you finished the test?</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Information Question</span>
+                        <span class="cons">WH-word + aux + S + V</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Memakai kata tanya: <b>what, where, when, why, how, who, whom, whose, which</b>, dan variasinya (<i>how many, how much, how long</i>).</p>
+                    <div>
+                        <div class="ex"><span class="cons">When + modal</span><br>When <span class="aux">will</span> you go for KKL in Bali?</div>
+                        <div class="ex"><span class="cons">How many + have</span><br>How many times <span class="aux">have</span> I reminded you?</div>
+                        <div class="ex"><span class="cons">Nominal (be)</span><br>Whose number <span class="aux">is</span> it?</div>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs text-slate-700 leading-relaxed space-y-1.5">
+                        <p><b>Pengecualian: WH-word sebagai subject.</b> Jika kata tanya sendiri adalah subject, susunannya tetap seperti deklaratif, tanpa inversi dan tanpa do-support.</p>
+                        <div class="ex"><span class="ok">✓</span> Who <b>called</b> you last night? &nbsp;<span class="cons">(bukan: Who did call ...)</span></div>
+                        <div class="ex"><span class="ok">✓</span> What <b>happened</b> in the lab? &nbsp;<span class="cons">(bukan: What did happen ...)</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pola</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>Yes/No &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="ad">aux + S + V</span> &nbsp;&nbsp;(be: <span class="ad">be + S + Comp</span>)</p>
+                        <p>Information &nbsp;&nbsp;&nbsp;: <span class="ad">WH + aux + S + V</span></p>
+                        <p>WH = subject : <span class="ad">WH + V</span> &nbsp;(tanpa inversi)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: JENIS AUXILIARY ==================== -->
+        <section id="content-aux" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Auxiliary Verbs</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Jenis Auxiliary dalam Inversi</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Auxiliary adalah kata kerja bantu yang menjadi kunci pembentukan inversi.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Primary Auxiliaries</span>
+                    </div>
+                    <table class="cmp">
+                        <tr><th>Auxiliary</th><th>Bentuk yang berpindah</th><th>Contoh</th></tr>
+                        <tr><td><b>be</b></td><td class="font-mono-code">is, am, are, was, were</td><td class="font-mono-code"><span class="aux">Is</span> Ainun studying?<br><span class="aux">Was</span> the test finished?</td></tr>
+                        <tr><td><b>have</b></td><td class="font-mono-code">have, has, had</td><td class="font-mono-code"><span class="aux">Have</span> you finished the test?</td></tr>
+                        <tr><td><b>do</b></td><td class="font-mono-code">do, does, did</td><td class="font-mono-code"><span class="aux">Does</span> Ainun study syntax?</td></tr>
+                    </table>
+                    <p class="text-[11px] text-slate-600 leading-relaxed">Bentuk <i>be, been, being</i> tidak berpindah sendirian, hanya bentuk finite (<i>is, am, are, was, were</i>) yang berada di depan subject.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Modal Auxiliaries</span>
+                        <span class="cons">can, could, shall, should, will, would, may, might, must</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Setelah modal, verb <b>WAJIB V1</b>.</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> <span class="aux">Can</span> you <b>speak</b> English?</div>
+                        <div class="ex"><span class="bad">❌</span> Can you <span class="rm">speaks</span> / <span class="rm">spoke</span> English?</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">3. Aturan Penting</span>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-900 mb-1">a. Do-support: untuk verb biasa tanpa aux</p>
+                        <div class="ex">Ainun <u>studies</u> syntax. → <span class="aux">Does</span> Ainun <span class="ad">study</span> syntax?</div>
+                        <div class="ex">They <u>passed</u> the test. → <span class="aux">Did</span> they <span class="ad">pass</span> the test?</div>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-900 mb-1">b. Hanya aux pertama yang berpindah</p>
+                        <div class="ex">He <b>has</b> been studying English. → <span class="aux">Has</span> he been studying English?</div>
+                        <div class="ex">She <b>would</b> have finished the report. → <span class="aux">Would</span> she have finished the report?</div>
+                        <div class="ex">The report <b>has</b> been submitted. → <span class="aux">Has</span> the report been submitted?</div>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-900 mb-1">c. Kalimat pasif memakai be (bukan do)</p>
+                        <div class="ex"><span class="ok">✓</span> <span class="aux">Was</span> the experiment conducted by the researchers?</div>
+                        <div class="ex"><span class="bad">❌</span> <span class="rm">Did</span> the experiment conducted by the researchers?</div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pola</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>Modal + S + <span class="ad">V1</span></p>
+                        <p>Do / does / did + S + <span class="ad">V1</span></p>
+                        <p>Have / has / had + S + <span class="ad">V3</span> &nbsp;|&nbsp; Be + S + <span class="ad">Ving / V3</span></p>
+                        <p>Banyak aux → <span class="ad">aux pertama</span> pindah, sisanya tetap di belakang subject</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: SUB CLAUSE ==================== -->
+        <section id="content-sub" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-rose-100 text-rose-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Restriction</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Pertanyaan sebagai Sub Clause (Noun Clause)</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Bentuk interrogative <b>bisa menjadi sub clause</b>. Jika itu terjadi, <b>inversi tidak berlaku</b>, baik untuk yes/no maupun information question.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Cara Mengubah</span>
+                        <span class="cons">Pertanyaan → Declarative + Conjunction</span>
+                    </div>
+                    <table class="cmp">
+                        <tr><th>Jenis</th><th>Pertanyaan mandiri</th><th>Sub clause</th><th>Conjunction</th></tr>
+                        <tr><td><b>Yes/No</b></td><td class="font-mono-code">Does Ainun study Arabic syntax?</td><td class="font-mono-code">Usamah asks <span class="cj">if</span> Ainun studies Arabic syntax.</td><td>if / whether</td></tr>
+                        <tr><td><b>Information</b></td><td class="font-mono-code">When will he go for KKL in Bali?</td><td class="font-mono-code">Mursal is curious <span class="cj">when</span> he will go for KKL in Bali.</td><td>WH-word itu sendiri</td></tr>
+                        <tr><td><b>Nominal</b></td><td class="font-mono-code">Whose number is it?</td><td class="font-mono-code">Everyone in PIBI class knows <span class="cj">whose</span> number it is.</td><td>WH-word itu sendiri</td></tr>
+                    </table>
+                </div>
+
+                <div class="box space-y-2">
+                    <span class="bg-emerald-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">Yang Berubah Saat Menjadi Sub Clause</span>
+                    <ul class="text-xs text-slate-700 leading-relaxed list-disc pl-5 space-y-1">
+                        <li>Aux di depan subject <b>dikembalikan</b> ke susunan <span class="ho">S + V</span> (inversi hilang).</li>
+                        <li>Do-support (<i>do / does / did</i>) <b>dibuang</b>, verb utama berkonjugasi lagi (<i>study → studies</i>).</li>
+                        <li>Yes/No question memerlukan <span class="cj">if / whether</span>. Information question memakai <span class="cj">WH-word</span> sebagai penghubung.</li>
+                        <li>Sub clause ini disebut <b>noun clause</b> karena berposisi seperti noun (object, complement, dan sebagainya).</li>
+                    </ul>
+                    <div>
+                        <div class="ex"><span class="bad">❌</span> Usamah asks if <span class="rm">does Ainun study</span> Arabic syntax.</div>
+                        <div class="ex"><span class="ok">✓</span> Usamah asks if <b>Ainun studies</b> Arabic syntax.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-2">
+                    <span class="bg-purple-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">Dua Kasus yang Sering Menjebak</span>
+                    <div>
+                        <p class="text-xs font-bold text-purple-800 mb-1">1. Main clause sendiri berupa pertanyaan</p>
+                        <p class="text-xs text-slate-700 mb-1.5">Inversi hanya pada main clause, noun clause tetap deklaratif.</p>
+                        <div class="ex"><span class="ok">✓</span> <span class="aux">Do</span> you know where he lives?</div>
+                        <div class="ex"><span class="bad">❌</span> Do you know where <span class="rm">does he live</span>?</div>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-purple-800 mb-1">2. WH-word adalah subject di dalam noun clause</p>
+                        <p class="text-xs text-slate-700 mb-1.5">Susunannya tidak berubah karena memang tidak ada inversi sejak awal.</p>
+                        <div class="ex"><span class="ok">✓</span> Who called you? → I know <b>who called</b> you.</div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Aturan</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>1. Pertanyaan mandiri → <span class="ho">aux + S + V</span>.</p>
+                        <p>2. Pertanyaan menjadi sub clause → <span class="hs">if / whether / WH + S + V</span> (tanpa inversi).</p>
+                        <p>3. Main clause berupa pertanyaan → inversi hanya pada <span class="ho">main clause</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: QUIZ ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz (20 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">Bagian 1: 12 soal Error Analysis. Bagian 2: 8 soal Blank. Tingkat kesulitan: 30% mudah, 40% sedang, 30% sulit.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="resetQuiz()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">↺ Ulangi</button>
+                        <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                            <span>Score: </span><span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 20</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="quiz-container" class="space-y-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-5xl mx-auto px-4">LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 13: Inversion in Question</div>
+    </footer>
+
+    <script>
+        const TAB_ON  = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30";
+        const TAB_OFF = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => { btn.className = TAB_OFF; });
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) activeTabBtn.className = TAB_ON;
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+        const LEVELS = {
+            easy:   { label: "Mudah",  cls: "bg-emerald-100 text-emerald-800" },
+            medium: { label: "Sedang", cls: "bg-amber-100 text-amber-800" },
+            hard:   { label: "Sulit",  cls: "bg-rose-100 text-rose-800" }
+        };
+
+        const SECTIONS = {
+            "Error Analysis": { label: "Bagian 1", hint: "Pilih bagian bergaris bawah yang salah" },
+            "Blank":          { label: "Bagian 2", hint: "Pilih jawaban yang paling tepat" }
+        };
+
+        // Error Analysis: tepat 5 segmen ditandai [ ... ]; correct = indeks segmen yang salah (0-4).
+        function ea(text, correct, level, explanation) {
+            const segs = [];
+            const html = text.replace(/\[([^\]]+)\]/g, (m, s) => {
+                const idx = segs.length;
+                segs.push(s);
+                return `<span class='underline decoration-2 decoration-slate-500 underline-offset-4'>${s}</span><span class='text-slate-500 text-[11px] font-bold'>(${LETTERS[idx]})</span>`;
+            });
+            if (segs.length !== 5) console.warn("Error Analysis harus punya 5 segmen:", text);
+            return {
+                type: "Error Analysis",
+                level,
+                question: `'${html}'`,
+                options: segs.map((s, i) => ({ text: s, isCorrect: i === correct })),
+                explanation
+            };
+        }
+
+        // Blank: 5 opsi, opsi pertama = jawaban benar (diacak saat render)
+        function blank(question, correct, wrong, level, explanation) {
+            return {
+                type: "Blank",
+                level,
+                question,
+                options: [{ text: correct, isCorrect: true }, ...wrong.map(w => ({ text: w, isCorrect: false }))],
+                explanation
+            };
+        }
+
+        // Komposisi: 6 mudah, 8 sedang, 6 sulit. Tiap bagian diurutkan mudah → sulit.
+        const rawQuestions = [
+            // ===== BAGIAN 1: ERROR ANALYSIS (12) =====
+            // --- Mudah (4)
+            ea("[Does] [Ainun] [studies] Arabic [syntax] [every day]?", 2, "easy",
+               "Setelah do / does / did, verb utama kembali ke V1: 'Does Ainun study ...?'."),
+            ea("[Can] [you] [speaks] [English] [fluently]?", 2, "easy",
+               "Setelah modal, verb wajib V1: 'Can you speak English?'."),
+            ea("[How] many [times] [I have] [reminded] you [about] this?", 2, "easy",
+               "Aux harus mendahului subject: 'How many times have I reminded you?'."),
+            ea("[Are] [Prof. Uceng] [very] famous [among] [students]?", 0, "easy",
+               "Subject tunggal 'Prof. Uceng' membutuhkan be tunggal: 'Is Prof. Uceng ...?'."),
+            // --- Sedang (5)
+            ea("[Who] [did] call you [last] [night] [again]?", 1, "medium",
+               "WH-word sebagai subject tidak memakai inversi dan do-support: 'Who called you last night?'."),
+            ea("[Mursal] is [curious] [when] [will he] go for KKL in [Bali].", 3, "medium",
+               "Di dalam noun clause tidak ada inversi: 'when he will go'."),
+            ea("[Everyone] in PIBI class [knows] [whose] [number] [is it].", 4, "medium",
+               "Noun clause memakai susunan deklaratif: 'whose number it is'."),
+            ea("[Do] you [know] [where] [does] [he] live?", 3, "medium",
+               "Inversi hanya pada main clause. Noun clause tetap S + V: 'where he lives'."),
+            ea("[Has] [been] he [studying] [English] [since 2020]?", 1, "medium",
+               "Hanya aux pertama yang pindah ke depan subject: 'Has he been studying ...?'."),
+            // --- Sulit (3)
+            ea("[Nobody] [knows] [why] [did] the lab close [early].", 3, "hard",
+               "Noun clause tidak memakai inversi dan do-support: 'why the lab closed early'."),
+            ea("[Would] she [have] [finish] [the report] [by Friday]?", 2, "hard",
+               "Modal + have diikuti V3: 'Would she have finished the report ...?'."),
+            ea("[Did] [the experiment] [conducted] by [the researchers] [yesterday]?", 0, "hard",
+               "Kalimat pasif memakai be sebagai aux: 'Was the experiment conducted ...?'."),
+
+            // ===== BAGIAN 2: BLANK (8) =====
+            // --- Mudah (2)
+            blank("_____ Ainun study Arabic syntax?",
+               "Does", ["Do", "Is", "Are", "Has"], "easy",
+               "Subject tunggal orang ketiga + verb biasa V1: 'Does Ainun study ...?'."),
+            blank("_____ Prof. Uceng very famous?",
+               "Is", ["Does", "Do", "Are", "Has"], "easy",
+               "Be sebagai main verb berpindah ke depan subject tunggal: 'Is Prof. Uceng ...?'."),
+            // --- Sedang (3)
+            blank("When _____ you go for KKL in Bali next month?",
+               "will", ["does", "are", "have", "is"], "medium",
+               "Modal 'will' berpindah ke depan subject, diikuti V1 'go'."),
+            blank("How many times _____ I reminded you?",
+               "have", ["do", "did", "am", "has"], "medium",
+               "Perfect tense: 'have' pindah ke depan subject 'I', diikuti V3 'reminded'."),
+            blank("Usamah asks _____ Ainun studies Arabic syntax.",
+               "if", ["does", "that", "what", "whose"], "medium",
+               "Yes/No question menjadi noun clause dengan 'if' atau 'whether', tanpa inversi."),
+            // --- Sulit (3)
+            blank("Everyone in PIBI class knows whose number _____.",
+               "it is", ["is it", "does it", "it does", "is"], "hard",
+               "Noun clause tanpa inversi: 'whose number it is'."),
+            blank("Do you know where _____?",
+               "he lives", ["does he live", "does he lives", "lives he", "he live"], "hard",
+               "Noun clause tetap S + V dengan verb berkonjugasi: 'where he lives'."),
+            blank("_____ the report been submitted by the committee?",
+               "Has", ["Have", "Did", "Is", "Does"], "hard",
+               "Present perfect pasif dengan subject tunggal: 'Has the report been submitted ...?'.")
+        ];
+
+        const quizQuestions = rawQuestions.map((q, i) => ({
+            ...q,
+            id: i + 1,
+            question: `${i + 1}. ${q.question}`
+        }));
+
+        let userAnswers = {};
+        let score = 0;
+
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        function prepareQuiz() {
+            quizQuestions.forEach(q => { if (q.type === "Blank") shuffle(q.options); });
+        }
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+            quizContainer.innerHTML = '';
+            let lastType = null;
+
+            quizQuestions.forEach((q, index) => {
+                if (q.type !== lastType) {
+                    lastType = q.type;
+                    const total = quizQuestions.filter(x => x.type === q.type).length;
+                    const meta = SECTIONS[q.type];
+                    const head = document.createElement('div');
+                    head.className = "flex flex-wrap items-center gap-2 pt-2 pb-2 border-b border-slate-200";
+                    head.innerHTML = `
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">${meta.label}</span>
+                        <h3 class="text-sm font-bold text-slate-900">${q.type}</h3>
+                        <span class="text-xs text-slate-500">${meta.hint} (${total} soal)</span>`;
+                    quizContainer.appendChild(head);
+                }
+
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                let optionsHTML = '';
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        else if (isSelected) btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        else btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                    }
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''}
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${LETTERS[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>`;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>`;
+                }
+
+                const lv = LEVELS[q.level];
+                qCard.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                        <span class="bg-teal-100 text-teal-800 text-[9px] font-bold px-2 py-0.5 rounded-full">${q.type}</span>
+                        <span class="${lv.cls} text-[9px] font-bold px-2 py-0.5 rounded-full">${lv.label}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-loose">${q.question}</p>
+                    <div class="space-y-1.5">${optionsHTML}</div>
+                    ${explanationHTML}`;
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) score++;
+            });
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            score = 0;
+            document.getElementById('quiz-score').textContent = `0 / ${quizQuestions.length}`;
+            prepareQuiz();
+            renderQuiz();
+        }
+
+        window.onload = function () {
+            prepareQuiz();
+            renderQuiz();
+        };
+    </script>
+    </script>
+    <script src="lumina-core.js"></script>
+    <script src="lumina-skill-editor.js"></script>
+</body>
+</html>
