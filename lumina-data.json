@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "updatedAt": 1794734080716,
+  "updatedAt": 1794748500745,
   "materials": [],
   "questions": {
     "listening": [
@@ -296,6 +296,24 @@
         "bullet": "dot",
         "desc": "Perubahan posisi Subject dan Kata Kerjanya setelah ekspresi Negative tertentu pada sebuah klausa atau kalimat.",
         "descMode": "plain"
+      },
+      {
+        "id": "p-mwhuu8v1fmsql",
+        "label": "Skill 16 : Inversion in Conditional Sentence",
+        "file": "materiswoskill16.html",
+        "color": "#bd7922",
+        "bullet": "dot",
+        "desc": "Menjelaskan bentuk inversi yang terjadi pada Conditional Sentence (Type 1, 2, 3).",
+        "descMode": "plain"
+      },
+      {
+        "id": "p-mwhux24m0h24e",
+        "label": "Skill 17 : Inversion in Comparison",
+        "file": "materiswoskill17.html",
+        "color": "#bd7922",
+        "bullet": "dot",
+        "desc": "Inversi yang terjadi pada Subject dan Auxiliary-nya dalam Comparison.",
+        "descMode": "plain"
       }
     ],
     "reading": []
@@ -318,8 +336,44 @@
       "file": "materiswoskill45.html"
     },
     {
-      "label": "Skill 6 :",
+      "label": "Skill 6 : Coordinating Conjunction",
       "file": "materiswoskill6.html"
+    },
+    {
+      "label": "Skill 7 : Subordinating Conjunction",
+      "file": "materiswoskill7.html"
+    },
+    {
+      "label": "Skill 8 : Correlative Conjunction",
+      "file": "materiswoskill8.html"
+    },
+    {
+      "label": "Skill 9 : Noun Clause",
+      "file": "materiswoskill9.html"
+    },
+    {
+      "label": "Skill 10 : Adjective Clause",
+      "file": "materiswoskill10.html"
+    },
+    {
+      "label": "Skill 11 : AC Reduction",
+      "file": "materiswoskill11.html"
+    },
+    {
+      "label": "Skill 12 : AVC Reduction",
+      "file": "materiswoskill12.html"
+    },
+    {
+      "label": "Skill 13 :  Inversion in Question",
+      "file": "materiswoskill13.html"
+    },
+    {
+      "label": "Skill 14 : Inversion of Place Expression",
+      "file": "materiswoskill14.html"
+    },
+    {
+      "label": "Skill 15 : Inversion of Negative Expression",
+      "file": "materiswoskill15.html"
     }
   ],
   "skills": {
