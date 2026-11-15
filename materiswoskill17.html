@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 17 - Inversion in Comparisons</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        /* Konten halaman (di luar header dan footer) diperkecil 10% */
+        main { zoom: 0.9; }
+
+        .rm { color: #e11d48; text-decoration: line-through; }
+        .ad { color: #047857; font-weight: 700; }
+        .hs { color: #0f766e; font-weight: 700; }
+        .ho { color: #4338ca; font-weight: 700; }
+        .bad { color: #e11d48; font-weight: 600; }
+        .ok { color: #047857; font-weight: 600; }
+
+        .box { border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; padding: 16px; }
+        .ex { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; }
+        .ex + .ex { margin-top: 6px; }
+        .cons { font-family: 'Fira Code', monospace; font-size: 11px; color: #64748b; }
+
+        .orig { border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; border: 1px solid; }
+        .orig + .orig { margin-top: 6px; }
+        .orig-tag { display: inline-block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 700; padding: 1px 8px; border-radius: 4px; color: #fff; margin-bottom: 3px; }
+        .orig-1 { background: #f0fdfa; border-color: #99f6e4; } .orig-1 .orig-tag { background: #0d9488; }
+        .orig-2 { background: #fffbeb; border-color: #fde68a; } .orig-2 .orig-tag { background: #d97706; }
+        .orig-3 { background: #eef2ff; border-color: #c7d2fe; } .orig-3 .orig-tag { background: #4f46e5; }
+        .orig-4 { background: #ecfdf5; border-color: #a7f3d0; } .orig-4 .orig-tag { background: #059669; }
+        .nn { color: #0f766e; font-weight: 700; background: #ccfbf1; border-radius: 3px; padding: 0 3px; }
+        .cj { color: #b45309; font-weight: 700; background: #fef3c7; border-radius: 3px; padding: 0 3px; }
+        .vb { color: #4338ca; font-weight: 700; background: #e0e7ff; border-radius: 3px; padding: 0 3px; }
+
+        table.cmp { width: 100%; border-collapse: collapse; font-size: 12px; }
+        table.cmp th { background: #0f172a; color: #fff; padding: 6px 8px; text-align: left; font-weight: 700; }
+        table.cmp td { border: 1px solid #e2e8f0; padding: 6px 8px; background: #fff; vertical-align: top; }
+
+        /* Tab & tombol: ikon selalu di kiri teks, tanpa kotak putih saat diklik */
+        .tab-btn, button { -webkit-tap-highlight-color: transparent; }
+        .tab-btn:focus, button:focus { outline: none; }
+        .tab-btn:focus-visible { outline: 2px solid #2dd4bf; outline-offset: -2px; }
+        .tab-btn { display: inline-flex; flex-direction: row; align-items: center; gap: 6px; flex-shrink: 0; }
+        .tab-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-[7px] gap-[7px]">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-[13px] shadow-sm">S17</div>
+                    <div>
+                        <span class="bg-teal-500/20 text-teal-300 text-[9px] font-semibold px-[7px] py-px rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        <h1 class="text-[14px] md:text-base font-bold tracking-tight text-white leading-tight mt-0.5">Skill 17: Inversion in Comparisons</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-[7px] bg-slate-800/80 px-[11px] py-[5px] rounded-lg border border-slate-700/60 text-[11px]">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-[7px] h-[7px] rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>than / as + Aux + S</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="text-indigo-400 font-medium"><span>Opsional</span></div>
+                </div>
+            </div>
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-[5px] pb-[3px]">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <span>1. Overview &amp; Pitfalls</span>
+                </button>
+                <button onclick="switchTab('concept')" id="tab-concept" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+                    <span>2. Konsep &amp; Pola</span>
+                </button>
+                <button onclick="switchTab('aux')" id="tab-aux" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                    <span>3. Memilih Auxiliary</span>
+                </button>
+                <button onclick="switchTab('never')" id="tab-never" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>4. Pembatasan &amp; Pengecoh</span>
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    <span>5. Practice Quiz</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">Core Structure Axiom</div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Setelah Than / As, Auxiliary Boleh Maju ke Depan Subject. Inversi Ini OPSIONAL.</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Pada klausa pembanding, <b>than + S + aux</b> dan <b>than + aux + S</b> sama-sama benar. Bentuk inversi terdengar lebih formal. Hal yang diuji TOEFL adalah <b>kecocokan auxiliary</b> dengan verb utama, serta larangan inversi bila subject-nya <b>pronoun</b>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Opsional</h3><p class="text-[11px] text-slate-600 leading-tight">Normal atau inversi, sama-sama benar.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Than &amp; As</h3><p class="text-[11px] text-slate-600 leading-tight">More ... than, as ... as.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Aux Harus Cocok</h3><p class="text-[11px] text-slate-600 leading-tight">Do, be, have, atau modal.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Diagnostic Quiz</h3><p class="text-[11px] text-slate-600 leading-tight">20 Soal (Error Analysis &amp; Blank).</p></div>
+                </div>
+            </div>
+
+            <!-- Asal mula: 1 contoh saja -->
+            <div class="space-y-2.5">
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Asal Mula: Dari Klausa Pembanding Utuh ke Inversi</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mt-0.5">
+                        Klausa setelah <span class="cj">than</span> sebenarnya klausa lengkap, tetapi verb yang sama dengan kalimat utama dihilangkan. Yang tersisa hanya <span class="nn">subject</span> dan <span class="vb">auxiliary</span> penggantinya.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Contoh</span>
+                            <span class="text-[11px] font-semibold text-indigo-700">Verb biasa: do-support</span>
+                        </div>
+                        <div>
+                            <div class="orig orig-1"><span class="orig-tag">Klausa pembanding utuh</span><br>Hasan speaks Javanese better <span class="cj">than</span> <span class="nn">Alfa</span> speaks Javanese.</div>
+                            <div class="orig orig-2"><span class="orig-tag">Normal: than + S + aux</span><br>Hasan speaks Javanese better <span class="cj">than</span> <span class="nn">Alfa</span> <span class="vb">does</span>.</div>
+                            <div class="orig orig-4"><span class="orig-tag">Inversi: than + aux + S (opsional)</span><br>Hasan speaks Javanese better <span class="cj">than</span> <span class="vb">does</span> <span class="nn">Alfa</span>.</div>
+                            <div class="orig orig-3"><span class="orig-tag">Subject pronoun: jangan inversi</span><br><span class="ok">✓</span> ... better than <span class="nn">she</span> <span class="vb">does</span>. &nbsp;<span class="bad">❌</span> ... better than <span class="rm">does she</span>.</div>
+                        </div>
+                        <ul class="text-[11px] text-slate-600 leading-relaxed mt-2 space-y-0.5 list-disc pl-4">
+                            <li><i>Does</i> mewakili <i>speaks Javanese</i> yang tidak diulang.</li>
+                            <li>Kedua bentuk bermakna sama. Bentuk inversi lebih formal.</li>
+                            <li>Setelah <i>does</i>, verb utama tidak ditulis lagi.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                <h3 class="font-bold text-slate-900 text-sm">Langkah Cepat Menyelesaikan Soal</h3>
+                <div class="text-xs font-mono-code space-y-1.5">
+                    <p><b>1.</b> Ada ekspresi perbandingan: <span class="cj">more / -er ... than</span> atau <span class="cj">as ... as</span>?</p>
+                    <p><b>2.</b> Lihat <span class="ho">verb kalimat utama</span>: be → <span class="vb">be</span> | verb biasa → <span class="vb">do / does / did</span> | perfect → <span class="vb">have / has / had</span> | modal → <span class="vb">modal yang sama</span>.</p>
+                    <p><b>3.</b> Tense mengikuti kalimat utama, agreement mengikuti <span class="nn">subject di klausa pembanding</span>.</p>
+                    <p><b>4.</b> Subject berupa <span class="bad">pronoun</span> → hanya bentuk normal (<i>than she does</i>).</p>
+                    <p><b>5.</b> Jika dua bentuk benar (normal dan inversi), keduanya diterima. Yang salah biasanya auxiliary-nya.</p>
+                    <p><b>6.</b> <span class="cj">than / as</span> + noun phrase saja (tanpa verb) berfungsi sebagai preposition: <i>better than Alfa</i>. Tidak ada aux dan tidak ada inversi.</p>
+                </div>
+            </div>
+
+            <div class="space-y-2.5">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5"><span class="text-rose-500">⚠️</span> Kesalahan Umum (Common Pitfalls)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Aux Tidak Cocok dengan Verb Utama</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Kalimat utama memakai be, maka pembandingnya juga be, bukan do / does / did.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> The result was more accurate than <span class="text-rose-600 underline">did</span> the second one.</p>
+                            <p class="ok">✓ The result was more accurate than <b>was</b> the second one.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Inversi dengan Pronoun</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Jika subject di belakang berupa pronoun, urutan tetap normal.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Prof. Ilham knows more than <span class="text-rose-600 underline">does she</span>.</p>
+                            <p class="ok">✓ Prof. Ilham knows more than <b>she does</b>.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #3</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Agreement dengan Subject Belakang</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Setelah inversi, aux harus sesuai dengan subject yang kini berada di belakangnya.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> ... more complex than <span class="text-rose-600 underline">was</span> the previous schemes.</p>
+                            <p class="ok">✓ ... more complex than <b>were</b> the previous schemes.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #4</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Verb Utama Diulang</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Setelah aux pengganti, verb utama tidak ditulis lagi.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Hasan speaks better than does Alfa <span class="text-rose-600 underline">speak</span>.</p>
+                            <p class="ok">✓ Hasan speaks better than does Alfa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: KONSEP & POLA ==================== -->
+        <section id="content-concept" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Fundamental Concept</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Konsep dan Variasi Pola Inversi Perbandingan</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Inversi dapat terjadi setelah ekspresi perbandingan yang memakai <b>than</b> atau <b>as</b>. Sifatnya <b>opsional</b>: bentuk normal dan bentuk inversi sama-sama benar.</p>
+                </div>
+
+                <!-- Than / As: preposition atau conjunction -->
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Than / As: Preposition atau Conjunction?</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 space-y-1.5">
+                            <p class="text-xs font-bold text-slate-900">Preposition</p>
+                            <p class="cons">than / as + <b>noun phrase</b></p>
+                            <p class="text-[11px] text-slate-600 leading-relaxed">Tidak ada verb dan tidak ada auxiliary, sehingga <b>tidak ada yang diinversi</b>.</p>
+                            <div class="ex">Hasan speaks Javanese better than <span class="nn">Alfa</span>.</div>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 space-y-1.5">
+                            <p class="text-xs font-bold text-slate-900">Conjunction</p>
+                            <p class="cons">than / as + <b>klausa</b> (S + aux)</p>
+                            <p class="text-[11px] text-slate-600 leading-relaxed">Ada subject dan auxiliary pengganti, sehingga <b>boleh diinversi</b>.</p>
+                            <div class="ex">Hasan speaks Javanese better than <span class="nn">Alfa</span> <span class="vb">does</span>.</div>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-slate-600 leading-relaxed">Ketiga bentuk (<i>than Alfa</i>, <i>than Alfa does</i>, <i>than does Alfa</i>) bermakna sama. Inversi hanya mungkin bila than / as membuka sebuah klausa dan subject-nya noun, bukan pronoun. Pada pronoun, bentuk formal adalah <i>than she does</i> atau <i>than she</i>. Bentuk <i>than her</i> tergolong informal.</p>
+                </div>
+
+                <div class="space-y-1">
+                    <h3 class="text-sm font-bold text-slate-900">Variasi Pola</h3>
+                    <p class="text-xs text-slate-600">Setiap variasi menunjukkan bentuk normal dan bentuk inversinya.</p>
+                </div>
+
+                <!-- A. Tanpa aux -->
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-slate-700 text-white text-[10px] font-bold px-2 py-0.5 rounded">A. Tanpa Auxiliary</span>
+                        <span class="cons">than / as + noun phrase</span>
+                    </div>
+                    <div>
+                        <div class="ex">Hasan speaks Javanese better than <span class="nn">Alfa</span>.</div>
+                        <div class="ex">The result of the first experiment was more accurate than <span class="nn">the second one</span>.</div>
+                        <div class="ex">Naely was as curious about Comal city as <span class="nn">her friends</span>.</div>
+                    </div>
+                    <p class="text-[11px] text-slate-600">Perbandingan harus sepadan: noun dibandingkan dengan noun (hasil dengan hasil, orang dengan orang).</p>
+                </div>
+
+                <!-- B. Do-support -->
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">B. Comparative + Do-support</span>
+                        <span class="cons">than + S + do / does / did &nbsp;⇄&nbsp; than + do / does / did + S</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="cons">Normal</span><br>Hasan speaks Javanese better than <span class="nn">Alfa</span> <span class="vb">does</span>.</div>
+                        <div class="ex"><span class="cons">Inversi</span><br>Hasan speaks Javanese better than <span class="vb">does</span> <span class="nn">Alfa</span>.</div>
+                        <div class="ex"><span class="cons">Past</span><br>Hasan spoke Javanese better than <span class="vb">did</span> <span class="nn">Alfa</span>.</div>
+                        <div class="ex"><span class="cons">Subject plural</span><br>Students study harder than <span class="vb">do</span> <span class="nn">teachers</span>.</div>
+                    </div>
+                </div>
+
+                <!-- C. Be -->
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">C. Comparative + Be</span>
+                        <span class="cons">than + S + be &nbsp;⇄&nbsp; than + be + S</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="cons">Normal</span><br>President Prabowo's flagship nutritional program is more logistically complex than <span class="nn">the previous social assistance schemes</span> <span class="vb">were</span>.</div>
+                        <div class="ex"><span class="cons">Inversi</span><br>President Prabowo's flagship nutritional program is more logistically complex than <span class="vb">were</span> <span class="nn">the previous social assistance schemes</span>.</div>
+                        <div class="ex"><span class="cons">Contoh lain</span><br>The result of the first experiment was more accurate than <span class="vb">was</span> <span class="nn">the second one</span>.</div>
+                    </div>
+                </div>
+
+                <!-- D. Have -->
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">D. Comparative + Have (Perfect)</span>
+                        <span class="cons">than + S + have / has / had &nbsp;⇄&nbsp; than + have / has / had + S</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="cons">Normal</span><br>Alfa has studied longer than <span class="nn">Hasan</span> <span class="vb">has</span>.</div>
+                        <div class="ex"><span class="cons">Inversi</span><br>Alfa has studied longer than <span class="vb">has</span> <span class="nn">Hasan</span>.</div>
+                    </div>
+                </div>
+
+                <!-- E. Modal -->
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">E. Comparative + Modal</span>
+                        <span class="cons">than + S + modal &nbsp;⇄&nbsp; than + modal + S</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="cons">Normal</span><br>Rina can swim faster than <span class="nn">her sister</span> <span class="vb">can</span>.</div>
+                        <div class="ex"><span class="cons">Inversi</span><br>Rina can swim faster than <span class="vb">can</span> <span class="nn">her sister</span>.</div>
+                        <div class="ex"><span class="cons">Modal will</span><br>The new system will process the data faster than <span class="vb">will</span> <span class="nn">the old one</span>.</div>
+                        <div class="ex"><span class="cons">Modal could</span><br>Prof. Mawarida could explain the theory more clearly than <span class="vb">could</span> <span class="nn">her assistant</span>.</div>
+                    </div>
+                </div>
+
+                <!-- F. Equal -->
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">F. Equal: As ... As</span>
+                        <span class="cons">as + S + aux &nbsp;⇄&nbsp; as + aux + S</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="cons">Be, normal</span><br>Naely was as curious about Comal city as <span class="nn">her friends</span> <span class="vb">were</span>.</div>
+                        <div class="ex"><span class="cons">Be, inversi</span><br>Naely was as curious about Comal city as <span class="vb">were</span> <span class="nn">her friends</span>.</div>
+                        <div class="ex"><span class="cons">Do-support, inversi</span><br>Hasan speaks Javanese as fluently as <span class="vb">does</span> <span class="nn">Alfa</span>.</div>
+                    </div>
+                    <p class="text-[11px] text-slate-600 bg-white border border-slate-200 rounded-lg p-2.5">💡 Struktur ini sejajar dengan pola <i>than</i> dan bentuknya masih berterima, tetapi lebih jarang dan terdengar sangat formal. Soal TOEFL jauh lebih sering menguji pola dengan <i>than</i>.</p>
+                </div>
+
+                <!-- G. Negative equal -->
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-slate-700 text-white text-[10px] font-bold px-2 py-0.5 rounded">G. Negative Equal: Not So / As ... As</span>
+                        <span class="cons">not so / as ... as + S + aux &nbsp;⇄&nbsp; as + aux + S</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="cons">Normal</span><br>Naely was not so curious about Comal city as <span class="nn">her friends</span> <span class="vb">were</span>.</div>
+                        <div class="ex"><span class="cons">Inversi</span><br>Naely was not so curious about Comal city as <span class="vb">were</span> <span class="nn">her friends</span>.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-2">
+                    <span class="bg-teal-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">Ekspresi Perbandingan yang Berlaku</span>
+                    <div class="cons space-y-0.5">
+                        <p>Comparative &nbsp;&nbsp;&nbsp;&nbsp;: more / less / -er ... <b>than</b></p>
+                        <p>Equal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: as + adj / adv + <b>as</b></p>
+                        <p>Negative equal : not as / not so + adj / adv + <b>as</b></p>
+                    </div>
+                </div>
+
+                <div class="box space-y-2">
+                    <span class="bg-slate-700 text-white text-[12px] font-bold px-2 py-0.5 rounded">Hal yang Perlu Diingat</span>
+                    <ul class="text-xs text-slate-700 leading-relaxed list-disc pl-5 space-y-1">
+                        <li>Aux setelah than / as <b>menggantikan</b> verb yang sudah disebut di kalimat utama, sehingga verb itu tidak diulang.</li>
+                        <li>Kedua bentuk bermakna sama. Bentuk normal lebih umum, bentuk inversi lebih formal dan sering dipilih ketika subject di belakang panjang.</li>
+                        <li>Pada soal TOEFL, yang diuji biasanya <b>auxiliary yang tepat</b>, bukan memilih antara bentuk normal dan inversi.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pola</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>Preposition : ... <span class="cj">than / as</span> + <span class="nn">noun phrase</span> &nbsp;(tanpa aux)</p>
+                        <p>Normal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ... <span class="cj">than / as</span> + <span class="nn">S</span> + <span class="vb">aux / be</span></p>
+                        <p>Inversi &nbsp;&nbsp;&nbsp;&nbsp;: ... <span class="cj">than / as</span> + <span class="vb">aux / be</span> + <span class="nn">S</span></p>
+                        <p>Syarat &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: subject belakang = noun (bukan pronoun)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: MEMILIH AUXILIARY ==================== -->
+        <section id="content-aux" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Auxiliary Selection</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Memilih Auxiliary yang Tepat</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Lihat <b>verb pada kalimat utama</b>, lalu pilih auxiliary pengganti yang sepadan.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">a. Verb Biasa → do / does / did</span>
+                    </div>
+                    <div>
+                        <div class="ex">Hasan speaks Javanese better than <span class="vb">does</span> Alfa. <span class="cons">(present, subject tunggal)</span></div>
+                        <div class="ex">Hasan spoke Javanese better than <span class="vb">did</span> Alfa. <span class="cons">(past → did)</span></div>
+                        <div class="ex">Students study harder than <span class="vb">do</span> teachers. <span class="cons">(subject plural → do)</span></div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">b. Be → is / am / are / was / were</span>
+                    </div>
+                    <div>
+                        <div class="ex">The result of the first experiment was more accurate than <span class="vb">was</span> the second one.</div>
+                        <div class="ex">The new program was more complex than <span class="vb">were</span> the previous schemes. <span class="cons">(subject plural → were)</span></div>
+                        <div class="ex"><span class="bad">❌</span> ... was more accurate than <span class="rm">did</span> the second one. <span class="cons">(be tidak digantikan do)</span></div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">c. Perfect → have / has / had</span>
+                    </div>
+                    <div>
+                        <div class="ex">Alfa has studied longer than <span class="vb">has</span> Hasan.</div>
+                        <div class="ex">The students have studied longer than <span class="vb">have</span> the teachers.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">d. Modal → modal yang sama</span>
+                    </div>
+                    <div>
+                        <div class="ex">Rina can swim faster than <span class="vb">can</span> her sister.</div>
+                        <div class="ex">The new system will process the data faster than <span class="vb">will</span> the old one.</div>
+                        <div class="ex">Prof. Mawarida could explain the theory more clearly than <span class="vb">could</span> her assistant.</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">e. Dengan As ... As</span>
+                    </div>
+                    <div>
+                        <div class="ex">Naely was as curious about Comal city as <span class="vb">were</span> her friends. <span class="cons">(be → were, mengikuti 'her friends')</span></div>
+                        <div class="ex">Hasan speaks Javanese as fluently as <span class="vb">does</span> Alfa.</div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pemilihan Auxiliary</h3>
+                    <table class="cmp">
+                        <tr><th>Kalimat utama</th><th>Pengganti di klausa pembanding</th></tr>
+                        <tr><td class="font-mono-code">verb biasa (V1 / V2)</td><td class="font-mono-code">do / does / did</td></tr>
+                        <tr><td class="font-mono-code">be</td><td class="font-mono-code">is / am / are / was / were</td></tr>
+                        <tr><td class="font-mono-code">have + V3</td><td class="font-mono-code">have / has / had</td></tr>
+                        <tr><td class="font-mono-code">modal + V1</td><td class="font-mono-code">modal yang sama</td></tr>
+                    </table>
+                    <p class="text-[11px] text-slate-600">Tense mengikuti kalimat utama, agreement mengikuti subject di klausa pembanding.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: PEMBATASAN & PENGECOH ==================== -->
+        <section id="content-never" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-rose-100 text-rose-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Restriction</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">🔑 Pembatasan dan Pola Pengecoh</h2>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Subject Belakang Berupa Pronoun</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Seperti pada inversi tempat (Skill 14), inversi perbandingan <b>tidak boleh</b> dilakukan jika subject di bagian belakang berupa pronoun (<b>he, she, it, they, we, you, I</b>). Urutan tetap normal.</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> Prof. Ilham knows more about linguistics than <span class="nn">she</span> <span class="vb">does</span>.</div>
+                        <div class="ex"><span class="bad">❌</span> Prof. Ilham knows more about linguistics than <span class="rm">does she</span>.</div>
+                    </div>
+                    <p class="text-[11px] text-slate-600 bg-white border border-slate-200 rounded-lg p-2.5">💡 Pada contoh ini <i>she</i> merujuk pada orang lain yang dibandingkan dengan Prof. Ilham.</p>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Pola Pengecoh di TOEFL: Kesesuaian Auxiliary</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Soal sering menguji apakah auxiliary pembanding sesuai dengan verb kalimat utama dan subject-nya.</p>
+                    <div class="ex font-mono-code">
+                        The result of the first experiment was more accurate than _________.<br>
+                        <span class="cons">(A) did the second one</span><br>
+                        <span class="cons">(B) the second one did</span><br>
+                        <span class="ok">(C) was the second one</span><br>
+                        <span class="cons">(D) the second one being</span>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs text-slate-700 leading-relaxed space-y-1">
+                        <p><b>Jawaban: (C).</b> Verb kalimat utama adalah be (<i>was</i>), sehingga pembandingnya juga be, dan karena inversi, <i>was</i> berada di depan subject <i>the second one</i>.</p>
+                        <p><b>(A) dan (B)</b> salah karena memakai <i>did</i>. Do-support hanya untuk verb biasa, bukan be. <b>(D)</b> salah karena tidak ada verb finite.</p>
+                        <p>Bentuk normal <i>the second one was</i> juga benar, tetapi soal TOEFL tidak akan menyajikan dua jawaban benar sekaligus, jadi yang dinilai adalah <b>ketepatan auxiliary</b>.</p>
+                    </div>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">3. Tense dan Agreement</span>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> Hasan spoke Javanese better than <b>did</b> Alfa. <span class="cons">(past → did)</span></div>
+                        <div class="ex"><span class="bad">❌</span> Hasan spoke Javanese better than <span class="rm">does</span> Alfa. <span class="cons">(tense tidak cocok)</span></div>
+                        <div class="ex"><span class="ok">✓</span> ... more complex than <b>were</b> the previous schemes.</div>
+                        <div class="ex"><span class="bad">❌</span> ... more complex than <span class="rm">was</span> the previous schemes. <span class="cons">(subject plural)</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Aturan</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>1. Inversi setelah than / as bersifat <span class="ad">opsional</span>.</p>
+                        <p>2. Subject belakang <span class="bad">pronoun</span> → tanpa inversi.</p>
+                        <p>3. Aux = <span class="ho">sepadan dengan verb kalimat utama</span> (be → be, verb biasa → do).</p>
+                        <p>4. Verb utama <span class="bad">tidak diulang</span> setelah aux pengganti.</p>
+                    </div>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-1">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Kesimpulan Ringkas (Skill 16 &amp; 17)</span>
+                    <ul class="text-xs text-slate-700 leading-relaxed list-disc pl-5 space-y-1 mt-1">
+                        <li><b>Inversi pengandaian</b>: buang <i>if</i>, lalu pindahkan <i>should, were,</i> atau <i>had</i> ke depan subject. Type 2 tanpa <i>were</i> memakai pola <b>Were + S + to V1</b>.</li>
+                        <li><b>Inversi perbandingan</b>: opsional setelah <i>than</i> atau <i>as</i>. Majukan auxiliary / be ke depan subject. Tidak boleh bila subject belakang berupa pronoun (he, she, they, dan sebagainya).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: QUIZ ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz (20 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">Bagian 1: 12 soal Error Analysis. Bagian 2: 8 soal Blank. Tingkat kesulitan: 30% mudah, 40% sedang, 30% sulit.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="resetQuiz()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">↺ Ulangi</button>
+                        <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                            <span>Score: </span><span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 20</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="quiz-container" class="space-y-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-5xl mx-auto px-4">LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 17: Inversion in Comparisons</div>
+    </footer>
+
+    <script>
+        const TAB_ON  = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30";
+        const TAB_OFF = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => { btn.className = TAB_OFF; });
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) activeTabBtn.className = TAB_ON;
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+        const LEVELS = {
+            easy:   { label: "Mudah",  cls: "bg-emerald-100 text-emerald-800" },
+            medium: { label: "Sedang", cls: "bg-amber-100 text-amber-800" },
+            hard:   { label: "Sulit",  cls: "bg-rose-100 text-rose-800" }
+        };
+
+        const SECTIONS = {
+            "Error Analysis": { label: "Bagian 1", hint: "Pilih bagian bergaris bawah yang salah" },
+            "Blank":          { label: "Bagian 2", hint: "Pilih jawaban yang paling tepat" }
+        };
+
+        // Error Analysis: tepat 5 segmen ditandai [ ... ]; correct = indeks segmen yang salah (0-4).
+        function ea(text, correct, level, explanation) {
+            const segs = [];
+            const html = text.replace(/\[([^\]]+)\]/g, (m, s) => {
+                const idx = segs.length;
+                segs.push(s);
+                return `<span class='underline decoration-2 decoration-slate-500 underline-offset-4'>${s}</span><span class='text-slate-500 text-[11px] font-bold'>(${LETTERS[idx]})</span>`;
+            });
+            if (segs.length !== 5) console.warn("Error Analysis harus punya 5 segmen:", text);
+            return {
+                type: "Error Analysis",
+                level,
+                question: `Identify the error: '${html}'`,
+                options: segs.map((s, i) => ({ text: s, isCorrect: i === correct })),
+                explanation
+            };
+        }
+
+        // Blank: 5 opsi, opsi pertama = jawaban benar (diacak saat render)
+        function blank(question, correct, wrong, level, explanation) {
+            return {
+                type: "Blank",
+                level,
+                question,
+                options: [{ text: correct, isCorrect: true }, ...wrong.map(w => ({ text: w, isCorrect: false }))],
+                explanation
+            };
+        }
+
+        // Komposisi: 6 mudah, 8 sedang, 6 sulit. Tiap bagian diurutkan mudah → sulit.
+        const rawQuestions = [
+            // ===== BAGIAN 1: ERROR ANALYSIS (12) =====
+            // --- Mudah (4)
+            ea("[Hasan] [speaks] Javanese [better] [than] [do] Alfa.", 4, "easy",
+               "Subject di belakang 'Alfa' (tunggal), sehingga aux pengganti 'does'."),
+            ea("[Prof. Ilham] [knows] [more] about linguistics [than] [does she].", 4, "easy",
+               "Subject berupa pronoun tidak boleh diinversi: 'than she does'."),
+            ea("[The result] was [more accurate] [than] [did] [the second one].", 3, "easy",
+               "Kalimat utama memakai be ('was'), sehingga pembandingnya 'was', bukan 'did'."),
+            ea("[The new program] was [more complex] [than] [was] [the previous schemes].", 3, "easy",
+               "Subject 'the previous schemes' plural, sehingga 'were'."),
+            // --- Sedang (5)
+            ea("[Hasan] [speaks] Javanese [better] [than] [does Alfa speak].", 4, "medium",
+               "Verb utama tidak diulang setelah aux pengganti: 'than does Alfa'."),
+            ea("[Naely] was [as] [curious] about Comal city [as] [was] her friends.", 4, "medium",
+               "Subject 'her friends' plural, sehingga 'as were her friends'."),
+            ea("[Alfa] has [studied] [longer] [than] [have] Hasan.", 4, "medium",
+               "Subject 'Hasan' tunggal, sehingga 'has': 'than has Hasan'."),
+            ea("[The program] was [more] [complex] [as] [were] the previous schemes.", 3, "medium",
+               "Perbandingan 'more complex' berpasangan dengan 'than', bukan 'as'."),
+            ea("[Rina] can [swim] [faster] [than] [is] her sister.", 4, "medium",
+               "Kalimat utama memakai modal 'can', sehingga pembandingnya 'can' (bukan 'is')."),
+            // --- Sulit (3)
+            ea("[Hasan] [spoke] Javanese [better] [than] [does] Alfa.", 4, "hard",
+               "Kalimat utama bentuk past, sehingga aux pengganti 'did'."),
+            ea("[Naely] was [as] [curious] about Comal city [as] [were they].", 4, "hard",
+               "Subject pronoun tidak diinversi: 'as they were'."),
+            ea("[The old system] was [replaced] [more quickly] [than] [did the new one].", 4, "hard",
+               "Kalimat utama pasif dengan be ('was replaced'), sehingga pembandingnya 'was the new one'."),
+
+            // ===== BAGIAN 2: BLANK (8) =====
+            // --- Mudah (2)
+            blank("Hasan speaks Javanese better than _____ Alfa.",
+               "does", ["do", "is", "has", "speaks"], "easy",
+               "Verb biasa present dengan subject tunggal 'Alfa': 'does' (inversi), tanpa mengulang verb."),
+            blank("The new program was more complex than _____ the previous schemes.",
+               "were", ["was", "did", "do", "has"], "easy",
+               "Kalimat utama be dan subject plural 'the previous schemes': 'were'."),
+            // --- Sedang (3)
+            blank("Naely was as curious about Comal city as _____ her friends.",
+               "were", ["was", "did", "do", "has"], "medium",
+               "Be + subject plural 'her friends': 'as were her friends'."),
+            blank("Alfa has studied longer than _____ Hasan.",
+               "has", ["have", "had", "is", "was"], "medium",
+               "Kalimat utama present perfect dengan subject tunggal 'Hasan': 'has'."),
+            blank("Prof. Ilham knows more about linguistics than _____.",
+               "she does", ["does she", "is she", "she do", "do she"], "medium",
+               "Subject pronoun tidak diinversi: 'than she does'."),
+            // --- Sulit (3)
+            blank("The result of the first experiment was more accurate than _____.",
+               "was the second one", ["did the second one", "the second one did", "were the second one", "the second one being"], "hard",
+               "Kalimat utama memakai be, sehingga pembandingnya be: 'was the second one'. Do-support tidak dipakai untuk be."),
+            blank("Hasan spoke Javanese better than _____ Alfa.",
+               "did", ["does", "do", "was", "had"], "hard",
+               "Kalimat utama past tense dengan verb biasa, sehingga 'did'."),
+            blank("The old system was replaced more quickly than _____.",
+               "was the new one", ["did the new one", "the new one did", "were the new one", "the new one replaced"], "hard",
+               "Kalimat utama pasif dengan be, sehingga pembandingnya 'was' (subject 'the new one' tunggal).")
+        ];
+
+        const quizQuestions = rawQuestions.map((q, i) => ({
+            ...q,
+            id: i + 1,
+            question: `${i + 1}. ${q.question}`
+        }));
+
+        let userAnswers = {};
+        let score = 0;
+
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        function prepareQuiz() {
+            quizQuestions.forEach(q => { if (q.type === "Blank") shuffle(q.options); });
+        }
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+            quizContainer.innerHTML = '';
+            let lastType = null;
+
+            quizQuestions.forEach((q, index) => {
+                if (q.type !== lastType) {
+                    lastType = q.type;
+                    const total = quizQuestions.filter(x => x.type === q.type).length;
+                    const meta = SECTIONS[q.type];
+                    const head = document.createElement('div');
+                    head.className = "flex flex-wrap items-center gap-2 pt-2 pb-2 border-b border-slate-200";
+                    head.innerHTML = `
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">${meta.label}</span>
+                        <h3 class="text-sm font-bold text-slate-900">${q.type}</h3>
+                        <span class="text-xs text-slate-500">${meta.hint} (${total} soal)</span>`;
+                    quizContainer.appendChild(head);
+                }
+
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                let optionsHTML = '';
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        else if (isSelected) btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        else btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                    }
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''}
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${LETTERS[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>`;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>`;
+                }
+
+                const lv = LEVELS[q.level];
+                qCard.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                        <span class="bg-teal-100 text-teal-800 text-[9px] font-bold px-2 py-0.5 rounded-full">${q.type}</span>
+                        <span class="${lv.cls} text-[9px] font-bold px-2 py-0.5 rounded-full">${lv.label}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-loose">${q.question}</p>
+                    <div class="space-y-1.5">${optionsHTML}</div>
+                    ${explanationHTML}`;
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) score++;
+            });
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            score = 0;
+            document.getElementById('quiz-score').textContent = `0 / ${quizQuestions.length}`;
+            prepareQuiz();
+            renderQuiz();
+        }
+
+        window.onload = function () {
+            prepareQuiz();
+            renderQuiz();
+        };
+    </script>
+    </script>
+    <script src="lumina-core.js"></script>
+    <script src="lumina-skill-editor.js"></script>
+</body>
+</html>
