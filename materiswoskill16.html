@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Grammar Mastery: Skill 16 - Inversion in Conditionals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono-code { font-family: 'Fira Code', monospace; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+        /* Konten halaman (di luar header dan footer) diperkecil 10% */
+        main { zoom: 0.9; }
+
+        .rm { color: #e11d48; text-decoration: line-through; }
+        .ad { color: #047857; font-weight: 700; }
+        .hs { color: #0f766e; font-weight: 700; }
+        .ho { color: #4338ca; font-weight: 700; }
+        .bad { color: #e11d48; font-weight: 600; }
+        .ok { color: #047857; font-weight: 600; }
+
+        .box { border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; padding: 16px; }
+        .ex { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; }
+        .ex + .ex { margin-top: 6px; }
+        .cons { font-family: 'Fira Code', monospace; font-size: 11px; color: #64748b; }
+
+        .orig { border-radius: 8px; padding: 8px 12px; font-family: 'Fira Code', monospace; font-size: 12px; line-height: 1.7; color: #1e293b; border: 1px solid; }
+        .orig + .orig { margin-top: 6px; }
+        .orig-tag { display: inline-block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 700; padding: 1px 8px; border-radius: 4px; color: #fff; margin-bottom: 3px; }
+        .orig-1 { background: #f0fdfa; border-color: #99f6e4; } .orig-1 .orig-tag { background: #0d9488; }
+        .orig-2 { background: #fffbeb; border-color: #fde68a; } .orig-2 .orig-tag { background: #d97706; }
+        .orig-3 { background: #eef2ff; border-color: #c7d2fe; } .orig-3 .orig-tag { background: #4f46e5; }
+        .orig-4 { background: #ecfdf5; border-color: #a7f3d0; } .orig-4 .orig-tag { background: #059669; }
+        .nn { color: #0f766e; font-weight: 700; background: #ccfbf1; border-radius: 3px; padding: 0 3px; }
+        .cj { color: #b45309; font-weight: 700; background: #fef3c7; border-radius: 3px; padding: 0 3px; }
+        .vb { color: #4338ca; font-weight: 700; background: #e0e7ff; border-radius: 3px; padding: 0 3px; }
+
+        table.cmp { width: 100%; border-collapse: collapse; font-size: 12px; }
+        table.cmp th { background: #0f172a; color: #fff; padding: 6px 8px; text-align: left; font-weight: 700; }
+        table.cmp td { border: 1px solid #e2e8f0; padding: 6px 8px; background: #fff; vertical-align: top; }
+
+        /* Tab & tombol: ikon selalu di kiri teks, tanpa kotak putih saat diklik */
+        .tab-btn, button { -webkit-tap-highlight-color: transparent; }
+        .tab-btn:focus, button:focus { outline: none; }
+        .tab-btn:focus-visible { outline: 2px solid #2dd4bf; outline-offset: -2px; }
+        .tab-btn { display: inline-flex; flex-direction: row; align-items: center; gap: 6px; flex-shrink: 0; }
+        .tab-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+    <header class="bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center py-[7px] gap-[7px]">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-bold text-slate-950 text-[13px] shadow-sm">S16</div>
+                    <div>
+                        <span class="bg-teal-500/20 text-teal-300 text-[9px] font-semibold px-[7px] py-px rounded-full uppercase tracking-wider border border-teal-500/30">TOEFL Structure Mastery</span>
+                        <h1 class="text-[14px] md:text-base font-bold tracking-tight text-white leading-tight mt-0.5">Skill 16: Inversion in Conditionals</h1>
+                    </div>
+                </div>
+                <div class="flex items-center gap-[7px] bg-slate-800/80 px-[11px] py-[5px] rounded-lg border border-slate-700/60 text-[11px]">
+                    <div class="flex items-center gap-1.5 text-teal-400 font-medium">
+                        <span class="w-[7px] h-[7px] rounded-full bg-teal-400 animate-pulse"></span>
+                        <span>Should / Were / Had</span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <div class="text-indigo-400 font-medium"><span>If Wajib Dihapus</span></div>
+                </div>
+            </div>
+            <nav class="flex overflow-x-auto space-x-1 border-t border-slate-800/80 pt-[5px] pb-[3px]">
+                <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <span>1. Overview &amp; Pitfalls</span>
+                </button>
+                <button onclick="switchTab('rules')" id="tab-rules" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                    <span>2. Aturan Emas</span>
+                </button>
+                <button onclick="switchTab('types')" id="tab-types" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    <span>3. Tiga Tipe Conditional</span>
+                </button>
+                <button onclick="switchTab('special')" id="tab-special" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    <span>4. Kasus Khusus</span>
+                </button>
+                <button onclick="switchTab('practice')" id="tab-practice" class="tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
+                    <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    <span>5. Practice Quiz</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow">
+
+        <!-- ==================== TAB 1: OVERVIEW ==================== -->
+        <section id="content-overview" class="tab-content space-y-4">
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-4 md:p-6 text-white border border-slate-800 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-[10px] font-semibold border border-teal-500/40">Core Structure Axiom</div>
+                    <h2 class="text-xl md:text-2xl font-extrabold tracking-tight">Inversion in Conditionals = Hapus If, Lalu Pindahkan Should / Were / Had ke Depan Subject.</h2>
+                    <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+                        Mekanismenya sama dengan inversi negatif: auxiliary berpindah ke depan subject. Bedanya, di sini <b>if wajib dihapus</b>, dan hanya klausa pengandaian yang memuat <b>should, were, atau had</b> yang bisa diinversi.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">01</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Hapus If</h3><p class="text-[11px] text-slate-600 leading-tight">Wajib saat inversi.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">02</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Should / Were / Had</h3><p class="text-[11px] text-slate-600 leading-tight">Type 1, Type 2, Type 3.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">03</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Were + to V1</h3><p class="text-[11px] text-slate-600 leading-tight">Type 2 dengan verb biasa.</p></div>
+                </div>
+                <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-start gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">04</span>
+                    <div><h3 class="font-bold text-slate-900 text-xs">Diagnostic Quiz</h3><p class="text-[11px] text-slate-600 leading-tight">20 Soal (Error Analysis &amp; Blank).</p></div>
+                </div>
+            </div>
+
+            <!-- Asal mula: 1 contoh saja -->
+            <div class="space-y-2.5">
+                <div>
+                    <h3 class="text-base font-bold text-slate-900">Asal Mula: Dari Kalimat Pengandaian ke Inversi</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mt-0.5">
+                        Dua langkah saja: <span class="cj">hapus if</span>, lalu pindahkan <span class="vb">auxiliary</span> ke depan <span class="nn">subject</span>.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Contoh</span>
+                            <span class="text-[11px] font-semibold text-indigo-700">Type 3 (had + V3)</span>
+                        </div>
+                        <div>
+                            <div class="orig orig-1"><span class="orig-tag">Conditional biasa</span><br><span class="cj">If</span> <span class="nn">Nanang</span> <span class="vb">had</span> managed his friends, he would have been ready.</div>
+                            <div class="orig orig-2"><span class="orig-tag">Langkah 1: hapus if</span><br><span class="rm">If</span> Nanang had managed his friends, ...</div>
+                            <div class="orig orig-4"><span class="orig-tag">Langkah 2: pindahkan had ke depan subject</span><br><span class="vb">Had</span> <span class="nn">Nanang</span> <span class="ad">managed</span> his friends, he would have been ready.<br><span class="cons">Had + S + V3</span></div>
+                            <div class="orig orig-3"><span class="orig-tag">If tidak dihapus (salah)</span><br><span class="bad">❌</span> If had Nanang managed his friends, he would have been ready.</div>
+                        </div>
+                        <ul class="text-[11px] text-slate-600 leading-relaxed mt-2 space-y-0.5 list-disc pl-4">
+                            <li><i>Had</i> sudah ada di klausa pengandaian, jadi bisa langsung berpindah.</li>
+                            <li>Klausa utama (<i>he would have been ready</i>) tidak berubah.</li>
+                            <li>Makna kalimat tetap sama dengan versi memakai <i>if</i>, tetapi lebih formal.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                <h3 class="font-bold text-slate-900 text-sm">Langkah Cepat: Bisa Diinversi atau Tidak?</h3>
+                <div class="text-xs font-mono-code space-y-1.5">
+                    <p><b>1.</b> Klausa if memuat <span class="vb">should / were / had</span>? Jika tidak → <span class="bad">tidak bisa diinversi</span> (kecuali Type 2 verbal, lihat langkah 4).</p>
+                    <p><b>2.</b> <span class="cj">Hapus if</span>.</p>
+                    <p><b>3.</b> Pindahkan aux ke depan subject: <span class="ad">Should + S + V1</span> | <span class="ad">Were + S + complement</span> | <span class="ad">Had + S + V3</span></p>
+                    <p><b>4.</b> Type 2 dengan verb biasa (V2) → <span class="ad">Were + S + to V1</span>.</p>
+                    <p><b>5.</b> Negatif: <i>not</i> diletakkan setelah subject (<i>Had Nanang not managed ...</i>).</p>
+                </div>
+            </div>
+
+            <div class="space-y-2.5">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-1.5"><span class="text-rose-500">⚠️</span> Kesalahan Umum (Common Pitfalls)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #1</span>
+                            <span class="text-[11px] font-semibold text-rose-600">If Tidak Dihapus</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Inversi dan if tidak boleh muncul bersamaan.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> <span class="text-rose-600 underline">If</span> were PIBI 74 ready for the trip, ...</p>
+                            <p class="ok">✓ Were PIBI 74 ready for the trip, they would enjoy it.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #2</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Type 2 Verbal Tanpa Were</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Verb V2 tidak bisa langsung dipindah, dan do-support tidak berlaku.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> <span class="text-rose-600 underline">Canceled</span> Prof. Uceng the class, ...</p>
+                            <p><span class="bad">❌</span> <span class="text-rose-600 underline">Did</span> Prof. Uceng cancel the class, ...</p>
+                            <p class="ok">✓ <b>Were</b> Prof. Uceng <b>to cancel</b> the class, the students would be happy.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #3</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Bentuk Verb Salah Setelah Aux</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Should + V1, Had + V3, Were + complement.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> Should we <span class="text-rose-600 underline">went</span> to Black Canyon, ...</p>
+                            <p class="ok">✓ Should we <b>go</b> to Black Canyon, ...</p>
+                            <p><span class="bad">❌</span> Had Nanang <span class="text-rose-600 underline">manage</span> his friends, ...</p>
+                            <p class="ok">✓ Had Nanang <b>managed</b> his friends, ...</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Pitfall #4</span>
+                            <span class="text-[11px] font-semibold text-rose-600">Negatif Dikontraksi di Depan</span>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-900">Gunakan <i>not</i> setelah subject, bukan kontraksi di awal kalimat.</p>
+                        <div class="bg-white p-2 rounded border border-rose-200 space-y-0.5 text-xs font-mono-code">
+                            <p><span class="bad">❌</span> <span class="text-rose-600 underline">Hadn't</span> Nanang managed his friends, ...</p>
+                            <p class="ok">✓ Had Nanang <b>not</b> managed his friends, he would not have been ready.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: ATURAN EMAS ==================== -->
+        <section id="content-rules" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Golden Rule</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Aturan Emas Inversi Conditional</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Seperti inversi negatif, auxiliary berpindah ke depan subject. Bedanya, <b>if wajib dihapus</b> dan hanya tiga kata yang bisa dipindah.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Aturan 1</span>
+                        <span class="text-xs font-bold text-slate-900">Kata hubung IF wajib dihapus</span>
+                    </div>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> <span class="rm">If</span> we should go to Black Canyon for grilling, ... → <span class="vb">Should</span> we go to Black Canyon for grilling, ...</div>
+                        <div class="ex"><span class="bad">❌</span> If should we go to Black Canyon for grilling, ...</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Aturan 2</span>
+                        <span class="text-xs font-bold text-slate-900">Hanya Should, Were, atau Had yang bisa dipindah</span>
+                    </div>
+                    <table class="cmp">
+                        <tr><th>Tipe</th><th>Klausa if (asal)</th><th>Setelah inversi</th></tr>
+                        <tr><td><b>Type 1</b><br><span class="cons">varian should</span></td><td class="font-mono-code">If + S + <span class="vb">should</span> + V1</td><td class="font-mono-code"><span class="vb">Should</span> + S + <span class="ad">V1</span></td></tr>
+                        <tr><td><b>Type 2</b></td><td class="font-mono-code">If + S + <span class="vb">were</span> + complement</td><td class="font-mono-code"><span class="vb">Were</span> + S + <span class="ad">complement</span><br><span class="cons">(adj, noun, prep. phrase, Ving)</span></td></tr>
+                        <tr><td><b>Type 3</b></td><td class="font-mono-code">If + S + <span class="vb">had</span> + V3</td><td class="font-mono-code"><span class="vb">Had</span> + S + <span class="ad">V3</span></td></tr>
+                    </table>
+                    <p class="text-xs text-slate-700 leading-relaxed">Jika klausa if tidak memuat salah satu dari tiga kata ini, inversi tidak bisa dilakukan.</p>
+                    <div>
+                        <div class="ex"><span class="bad">❌</span> If we go to Black Canyon, we will swim in the river. → <span class="rm">Go we to Black Canyon</span> ...<br><span class="cons">Type 1 biasa (present simple) tidak memiliki should, were, atau had.</span></div>
+                        <div class="ex"><span class="bad">❌</span> If Nanang studies hard, he will pass. → <span class="rm">Studies Nanang hard</span> ...</div>
+                    </div>
+                </div>
+
+                <div class="box space-y-2">
+                    <span class="bg-indigo-600 text-white text-[12px] font-bold px-2 py-0.5 rounded">Hal yang Tidak Berubah</span>
+                    <ul class="text-xs text-slate-700 leading-relaxed list-disc pl-5 space-y-1">
+                        <li><b>Klausa utama</b> tetap sama (<i>will, would, would have</i>).</li>
+                        <li><b>Makna</b> kalimat tetap sama dengan versi memakai <i>if</i>, tetapi gaya lebih formal.</li>
+                        <li><b>Koma</b> tetap memisahkan klausa pengandaian dari klausa utama.</li>
+                        <li><i>Were</i> dipakai untuk semua subject, termasuk <i>I, he, she, it</i>.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Pola</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>Type 1 : If S should V1 &nbsp;&nbsp;→ <span class="ad">Should + S + V1</span></p>
+                        <p>Type 2 : If S were Comp &nbsp;→ <span class="ad">Were + S + Comp</span></p>
+                        <p>Type 3 : If S had V3 &nbsp;&nbsp;&nbsp;→ <span class="ad">Had + S + V3</span></p>
+                        <p>Syarat &nbsp;: <span class="cj">If dihapus</span>, aux pindah ke depan subject</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: TIGA TIPE ==================== -->
+        <section id="content-types" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Conditional Types</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">Tiga Tipe Conditional yang Bisa Diinversi</h2>
+                    <p class="text-slate-600 text-xs md:text-sm mt-0.5">Tiap tipe punya makna dan kata kunci inversi yang berbeda.</p>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Type 1</span>
+                        <span class="text-xs font-bold text-slate-900">Future Condition (kondisi nyata, mungkin terjadi)</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Pengandaian yang mungkin terjadi di masa kini atau masa depan. Bentuk biasanya <i>If + present simple</i> dan <b>tidak bisa diinversi</b>. Inversi hanya berlaku pada varian <b>should</b> (lebih formal, menyiratkan kemungkinan yang lebih kecil). Klausa utama biasanya <i>will, can, may</i>, atau kalimat perintah.</p>
+                    <div>
+                        <div class="ex"><span class="cons">Asal</span><br><span class="cj">If</span> we <span class="vb">should</span> go to Black Canyon for grilling, we will swim in the river.</div>
+                        <div class="ex"><span class="cons">Inversi</span><br><span class="vb">Should</span> we <span class="ad">go</span> to Black Canyon for grilling, we will swim in the river. <span class="cons">⇒ Should + S + V1</span></div>
+                        <div class="ex"><span class="vb">Should</span> you <span class="ad">need</span> help, please call me. <span class="cons">(klausa utama berupa perintah)</span></div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Type 2</span>
+                        <span class="text-xs font-bold text-slate-900">Present Unreal (berlawanan dengan fakta masa kini)</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Mengandaikan sesuatu yang <b>tidak nyata</b> atau berlawanan dengan fakta saat ini. Klausa if memakai <i>were</i> (atau V2), klausa utama <i>would + V1</i>. Setelah <i>were</i> bisa berupa adjective, noun, prepositional phrase, atau Ving.</p>
+                    <div>
+                        <div class="ex"><span class="cons">Asal</span><br><span class="cj">If</span> PIBI 74 <span class="vb">were</span> ready for the trip, they would enjoy it.</div>
+                        <div class="ex"><span class="cons">Inversi</span><br><span class="vb">Were</span> PIBI 74 <span class="ad">ready</span> for the trip, they would enjoy it. <span class="cons">⇒ Were + S + Adj</span></div>
+                        <div class="ex"><span class="vb">Were</span> he <span class="ad">a teacher</span>, he would explain it differently. <span class="cons">(Were + S + noun)</span></div>
+                        <div class="ex"><span class="vb">Were</span> she <span class="ad">studying abroad</span>, she would learn faster. <span class="cons">(Were + S + Ving)</span></div>
+                    </div>
+                </div>
+
+                <div class="box space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
+                        <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">Type 3</span>
+                        <span class="text-xs font-bold text-slate-900">Past Unreal (berlawanan dengan fakta masa lalu)</span>
+                    </div>
+                    <p class="text-xs text-slate-700 leading-relaxed">Mengandaikan sesuatu yang <b>berlawanan dengan apa yang sebenarnya terjadi di masa lalu</b>, sering menyiratkan penyesalan atau hasil yang berbeda. Klausa if memakai <i>had + V3</i>, klausa utama <i>would have + V3</i>.</p>
+                    <div>
+                        <div class="ex"><span class="cons">Asal</span><br><span class="cj">If</span> Nanang <span class="vb">had</span> managed his friends, he would have been ready.</div>
+                        <div class="ex"><span class="cons">Inversi</span><br><span class="vb">Had</span> Nanang <span class="ad">managed</span> his friends, he would have been ready. <span class="cons">⇒ Had + S + V3</span></div>
+                        <div class="ex"><span class="vb">Had</span> the students <span class="ad">been informed</span> earlier, they would have attended. <span class="cons">(Had + S + been + V3 untuk pasif)</span></div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan 3 Tipe</h3>
+                    <table class="cmp">
+                        <tr><th>Tipe</th><th>Makna</th><th>Klausa if → inversi</th><th>Klausa utama</th></tr>
+                        <tr><td>1</td><td>Mungkin terjadi</td><td class="font-mono-code">should → Should + S + V1</td><td class="font-mono-code">will / can / imperative</td></tr>
+                        <tr><td>2</td><td>Berlawanan fakta masa kini</td><td class="font-mono-code">were → Were + S + Comp</td><td class="font-mono-code">would + V1</td></tr>
+                        <tr><td>3</td><td>Berlawanan fakta masa lalu</td><td class="font-mono-code">had → Had + S + V3</td><td class="font-mono-code">would have + V3</td></tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: KASUS KHUSUS ==================== -->
+        <section id="content-special" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div>
+                    <span class="bg-rose-100 text-rose-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Special Cases</span>
+                    <h2 class="text-xl font-bold text-slate-900 mt-1.5">🔑 Kasus Khusus: Were + to V1 dan Bentuk Negatif</h2>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">1. Type 2 dengan Action Verb (V2)</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Jika klausa pengandaian Type 2 memakai verb biasa (V2) dan tidak ada <i>were</i>, kita wajib <b>memunculkan Were</b> dan mengubah verb menjadi <b>to + V1</b>.</p>
+                    <div>
+                        <div class="ex"><span class="cons">Asal</span><br><span class="cj">If</span> Prof. Uceng <u>canceled</u> the class, the students would be happy.</div>
+                        <div class="ex"><span class="ok">✓</span> <span class="vb">Were</span> Prof. Uceng <span class="ad">to cancel</span> the class, the students would be happy. <span class="cons">⇒ Were + S + to V1</span></div>
+                        <div class="ex"><span class="bad">❌</span> <span class="rm">Canceled</span> Prof. Uceng the class, the students would be happy.</div>
+                        <div class="ex"><span class="bad">❌</span> <span class="rm">Did</span> Prof. Uceng cancel the class, the students would be happy.</div>
+                        <div class="ex"><span class="bad">❌</span> Were Prof. Uceng <span class="rm">cancel</span> the class, the students would be happy. <span class="cons">(to hilang)</span></div>
+                    </div>
+                    <div class="ex"><span class="cons">Contoh lain</span><br>If the committee announced the results today, ... → <span class="vb">Were</span> the committee <span class="ad">to announce</span> the results today, ...</div>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">2. Bentuk Negatif</span>
+                    <p class="text-xs text-slate-700 leading-relaxed">Pada inversi, <b>not</b> diletakkan <b>setelah subject</b>. Bentuk kontraksi di awal kalimat (<i>Hadn't, Weren't</i>) tidak dipakai.</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> <span class="vb">Had</span> Nanang <b>not</b> managed his friends, he would not have been ready.</div>
+                        <div class="ex"><span class="ok">✓</span> <span class="vb">Were</span> Prof. Uceng <b>not</b> to cancel the class, the students would be unhappy.</div>
+                        <div class="ex"><span class="ok">✓</span> <span class="vb">Should</span> we <b>not</b> go to Black Canyon, we will stay at the campus.</div>
+                        <div class="ex"><span class="bad">❌</span> <span class="rm">Hadn't</span> Nanang managed his friends, he would not have been ready.</div>
+                    </div>
+                </div>
+
+                <div class="border border-rose-200 rounded-xl p-4 bg-rose-50/50 space-y-3">
+                    <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">3. Should vs Were: Jangan Tertukar</span>
+                    <p class="text-xs text-slate-700 leading-relaxed"><b>Should</b> diikuti V1 langsung, sedangkan <b>Were</b> pada verb biasa diikuti <b>to + V1</b>.</p>
+                    <div>
+                        <div class="ex"><span class="ok">✓</span> <span class="vb">Should</span> we <b>go</b> to Black Canyon, ...</div>
+                        <div class="ex"><span class="bad">❌</span> Should we <span class="rm">to go</span> to Black Canyon, ...</div>
+                        <div class="ex"><span class="ok">✓</span> <span class="vb">Were</span> we <b>to go</b> to Black Canyon, ...</div>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-4 space-y-2">
+                    <h3 class="font-bold text-slate-900 text-sm">Ringkasan Aturan</h3>
+                    <div class="text-xs font-mono-code space-y-1.5">
+                        <p>1. Type 2 verbal (V2) → <span class="ad">Were + S + to V1</span> (tanpa do-support).</p>
+                        <p>2. Negatif → <span class="ad">aux + S + not + ...</span> (tanpa kontraksi di awal).</p>
+                        <p>3. <span class="ho">Should</span> + V1 &nbsp;|&nbsp; <span class="ho">Were</span> + S + Comp / to V1 &nbsp;|&nbsp; <span class="ho">Had</span> + S + V3.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: QUIZ ==================== -->
+        <section id="content-practice" class="tab-content hidden space-y-4">
+            <div class="bg-white rounded-2xl p-5 md:p-6 border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Uji Mandiri</span>
+                        <h2 class="text-xl font-bold text-slate-900 mt-1.5">Diagnostic Practice Quiz (20 Soal)</h2>
+                        <p class="text-slate-600 text-xs md:text-sm">Soal Error Analysis & Blank</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="resetQuiz()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">↺ Ulangi</button>
+                        <div class="bg-slate-900 text-white px-3 py-1.5 rounded-xl text-center font-mono-code text-xs">
+                            <span>Score: </span><span id="quiz-score" class="text-teal-400 font-bold text-sm">0 / 20</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="quiz-container" class="space-y-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-1.5 text-center text-[8px] text-slate-400 mt-8">
+        <div class="max-w-5xl mx-auto px-4">LUMINA PROJECT 2026 • TOEFL Preparation Mastery • Skill 16: Inversion in Conditionals</div>
+    </footer>
+
+    <script>
+        const TAB_ON  = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap text-teal-400 bg-slate-800 border border-teal-500/30";
+        const TAB_OFF = "tab-btn px-2.5 py-[5px] rounded-md text-[11px] font-semibold whitespace-nowrap border border-transparent text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => { btn.className = TAB_OFF; });
+            const activeContent = document.getElementById(`content-${tabId}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+            const activeTabBtn = document.getElementById(`tab-${tabId}`);
+            if (activeTabBtn) activeTabBtn.className = TAB_ON;
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
+        const LEVELS = {
+            easy:   { label: "Mudah",  cls: "bg-emerald-100 text-emerald-800" },
+            medium: { label: "Sedang", cls: "bg-amber-100 text-amber-800" },
+            hard:   { label: "Sulit",  cls: "bg-rose-100 text-rose-800" }
+        };
+
+        const SECTIONS = {
+            "Error Analysis": { label: "Bagian 1", hint: "Pilih bagian bergaris bawah yang salah" },
+            "Blank":          { label: "Bagian 2", hint: "Pilih jawaban yang paling tepat" }
+        };
+
+        // Error Analysis: tepat 5 segmen ditandai [ ... ]; correct = indeks segmen yang salah (0-4).
+        function ea(text, correct, level, explanation) {
+            const segs = [];
+            const html = text.replace(/\[([^\]]+)\]/g, (m, s) => {
+                const idx = segs.length;
+                segs.push(s);
+                return `<span class='underline decoration-2 decoration-slate-500 underline-offset-4'>${s}</span><span class='text-slate-500 text-[11px] font-bold'>(${LETTERS[idx]})</span>`;
+            });
+            if (segs.length !== 5) console.warn("Error Analysis harus punya 5 segmen:", text);
+            return {
+                type: "Error Analysis",
+                level,
+                question: `'${html}'`,
+                options: segs.map((s, i) => ({ text: s, isCorrect: i === correct })),
+                explanation
+            };
+        }
+
+        // Blank: 5 opsi, opsi pertama = jawaban benar (diacak saat render)
+        function blank(question, correct, wrong, level, explanation) {
+            return {
+                type: "Blank",
+                level,
+                question,
+                options: [{ text: correct, isCorrect: true }, ...wrong.map(w => ({ text: w, isCorrect: false }))],
+                explanation
+            };
+        }
+
+        // Komposisi: 6 mudah, 8 sedang, 6 sulit. Tiap bagian diurutkan mudah → sulit.
+        const rawQuestions = [
+            // ===== BAGIAN 1: ERROR ANALYSIS (12) =====
+            // --- Mudah (4)
+            ea("[If] [had] [Nanang] [managed] [his friends], he would have been ready.", 0, "easy",
+               "Pada inversi, 'if' wajib dihapus: 'Had Nanang managed his friends, ...'."),
+            ea("[Should] [we] [went] [to] [Black Canyon], we will swim in the river.", 2, "easy",
+               "Setelah 'should' verb berbentuk V1: 'Should we go to Black Canyon, ...'."),
+            ea("[Had] [Nanang] [manage] [his] [friends], he would have been ready.", 2, "easy",
+               "Type 3: Had + S + V3, sehingga 'managed'."),
+            ea("[Was] [PIBI 74] [ready] [for] [the trip], they would enjoy it.", 0, "easy",
+               "Type 2 yang diinversi memakai 'Were', bukan 'Was': 'Were PIBI 74 ready for the trip, ...'."),
+            // --- Sedang (5)
+            ea("[Canceled] [Prof. Uceng] [the class], [the students] would [be happy].", 0, "medium",
+               "Verb V2 tidak bisa langsung dipindah. Type 2 verbal: 'Were Prof. Uceng to cancel the class, ...'."),
+            ea("[Did] [Prof. Uceng] [cancel] [the class], the students [would be happy].", 0, "medium",
+               "Do-support tidak berlaku pada inversi conditional. Gunakan 'Were Prof. Uceng to cancel ...'."),
+            ea("[Hadn't] [Nanang] [managed] [his friends], he [would not have been] ready.", 0, "medium",
+               "Bentuk negatif memakai 'not' setelah subject: 'Had Nanang not managed his friends, ...'."),
+            ea("[Were] [Prof. Uceng] [cancel] [the class], the students [would be happy].", 2, "medium",
+               "Type 2 dengan verb biasa: 'Were + S + to V1', sehingga 'to cancel'."),
+            ea("[Should] [Usamah] [needs] [help], [please] call me.", 2, "medium",
+               "Setelah 'should' verb tetap V1 meski subject tunggal: 'need'."),
+            // --- Sulit (3)
+            ea("[Were] [Prof. Uceng] [not] [cancel] [the class], the students would stay.", 3, "hard",
+               "Type 2 verbal negatif: 'Were Prof. Uceng not to cancel the class, ...'."),
+            ea("[Had] [been] [the students] [informed], [they] would have attended.", 1, "hard",
+               "Subject harus tepat setelah aux pertama: 'Had the students been informed, ...'."),
+            ea("[Should] [we] [to] [go] [to Black Canyon], we will swim in the river.", 2, "hard",
+               "'Should' diikuti V1 tanpa 'to'. 'To + V1' hanya dipakai setelah 'were' pada verb biasa."),
+
+            // ===== BAGIAN 2: BLANK (8) =====
+            // --- Mudah (2)
+            blank("_____ Nanang managed his friends, he would have been ready.",
+               "Had", ["Did", "Were", "Should", "Has"], "easy",
+               "Type 3 (had + V3): 'Had Nanang managed ...'."),
+            blank("_____ PIBI 74 ready for the trip, they would enjoy it.",
+               "Were", ["Was", "Had", "Should", "Did"], "easy",
+               "Type 2 diinversi dengan 'Were' (untuk semua subject)."),
+            // --- Sedang (3)
+            blank("_____ we go to Black Canyon for grilling, we will swim in the river.",
+               "Should", ["Were", "Had", "Did", "Will"], "medium",
+               "Type 1 varian should: 'Should + S + V1'. Klausa utama memakai 'will'."),
+            blank("Were Prof. Uceng _____ the class, the students would be happy.",
+               "to cancel", ["cancel", "canceled", "cancels", "to canceled"], "medium",
+               "Type 2 dengan verb biasa: Were + S + to V1."),
+            blank("Had Nanang _____ his friends, he would have been ready.",
+               "managed", ["manage", "managing", "manages", "to manage"], "medium",
+               "Type 3: Had + S + V3."),
+            // --- Sulit (3)
+            blank("_____ Nanang not managed his friends, he would not have been ready.",
+               "Had", ["Hadn't", "If had", "Did", "Were"], "hard",
+               "Negatif pada inversi: Had + S + not + V3, tanpa kontraksi dan tanpa 'if'."),
+            blank("_____ earlier, they would have attended.",
+               "Had the students been informed", ["Had been the students informed", "If had the students been informed", "Had the students informed", "The students had been informed"], "hard",
+               "Pasif Type 3: Had + S + been + V3, tanpa 'if'."),
+            blank("_____ the results today, the students would be relieved.",
+               "Were the committee to announce", ["Did the committee announce", "If were the committee to announce", "Were the committee announce", "The committee were to announce"], "hard",
+               "Type 2 verbal: Were + S + to V1, tanpa 'if' dan tanpa do-support.")
+        ];
+
+        const quizQuestions = rawQuestions.map((q, i) => ({
+            ...q,
+            id: i + 1,
+            question: `${i + 1}. ${q.question}`
+        }));
+
+        let userAnswers = {};
+        let score = 0;
+
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        function prepareQuiz() {
+            quizQuestions.forEach(q => { if (q.type === "Blank") shuffle(q.options); });
+        }
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            if (!quizContainer) return;
+            quizContainer.innerHTML = '';
+            let lastType = null;
+
+            quizQuestions.forEach((q, index) => {
+                if (q.type !== lastType) {
+                    lastType = q.type;
+                    const total = quizQuestions.filter(x => x.type === q.type).length;
+                    const meta = SECTIONS[q.type];
+                    const head = document.createElement('div');
+                    head.className = "flex flex-wrap items-center gap-2 pt-2 pb-2 border-b border-slate-200";
+                    head.innerHTML = `
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">${meta.label}</span>
+                        <h3 class="text-sm font-bold text-slate-900">${q.type}</h3>
+                        <span class="text-xs text-slate-500">${meta.hint} (${total} soal)</span>`;
+                    quizContainer.appendChild(head);
+                }
+
+                const qCard = document.createElement('div');
+                qCard.className = "border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-3";
+                let optionsHTML = '';
+
+                q.options.forEach((opt, optIdx) => {
+                    const isSelected = userAnswers[q.id] === optIdx;
+                    const isAnswered = userAnswers[q.id] !== undefined;
+                    let btnStyle = "bg-white border-slate-200 hover:border-teal-400 text-slate-800";
+                    if (isAnswered) {
+                        if (opt.isCorrect) btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                        else if (isSelected) btnStyle = "bg-rose-50 border-rose-400 text-rose-900";
+                        else btnStyle = "bg-white border-slate-200 text-slate-400 opacity-60";
+                    }
+                    optionsHTML += `
+                        <button onclick="handleSelectOption(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''}
+                            class="w-full text-left p-3 rounded-xl border transition-all duration-200 flex items-center gap-3 text-xs md:text-sm font-mono-code ${btnStyle}">
+                            <span class="w-5 h-5 rounded bg-slate-100 flex items-center justify-center font-bold shrink-0 text-slate-600 text-xs">${LETTERS[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>`;
+                });
+
+                let explanationHTML = '';
+                if (userAnswers[q.id] !== undefined) {
+                    explanationHTML = `
+                        <div class="bg-white border border-slate-200 rounded-lg p-3 text-xs space-y-1">
+                            <span class="font-bold text-slate-900 block">💡 Pembahasan:</span>
+                            <p class="text-slate-600 leading-relaxed">${q.explanation}</p>
+                        </div>`;
+                }
+
+                const lv = LEVELS[q.level];
+                qCard.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <span class="bg-slate-900 text-white text-[10px] font-bold px-2 py-0.5 rounded">Soal ${index + 1}</span>
+                        <span class="bg-teal-100 text-teal-800 text-[9px] font-bold px-2 py-0.5 rounded-full">${q.type}</span>
+                        <span class="${lv.cls} text-[9px] font-bold px-2 py-0.5 rounded-full">${lv.label}</span>
+                    </div>
+                    <p class="font-mono-code text-xs md:text-sm text-slate-900 font-medium leading-loose">${q.question}</p>
+                    <div class="space-y-1.5">${optionsHTML}</div>
+                    ${explanationHTML}`;
+                quizContainer.appendChild(qCard);
+            });
+        }
+
+        function handleSelectOption(qId, optIdx) {
+            userAnswers[qId] = optIdx;
+            score = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].isCorrect) score++;
+            });
+            document.getElementById('quiz-score').textContent = `${score} / ${quizQuestions.length}`;
+            renderQuiz();
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            score = 0;
+            document.getElementById('quiz-score').textContent = `0 / ${quizQuestions.length}`;
+            prepareQuiz();
+            renderQuiz();
+        }
+
+        window.onload = function () {
+            prepareQuiz();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
